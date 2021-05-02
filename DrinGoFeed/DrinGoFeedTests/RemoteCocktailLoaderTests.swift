@@ -36,12 +36,10 @@ class RemoteCocktailLoaderTests: XCTestCase {
         let (sut, client) = makeSUT()
         client.error = NSError(domain: "Test", code: 0)
         
-        var capturedError: RemoteCocktailLoader.Error?
-        sut.load { error in
-            capturedError = error
-        }
+        var capturedError = [RemoteCocktailLoader.Error]()
+        sut.load { capturedError.append($0) }
         
-        XCTAssertEqual(capturedError, .connectivity)
+        XCTAssertEqual(capturedError, [.connectivity])
     }
     
     // MARK: - Helpers
