@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C64DD9FE263F06FB009D70AE /* RemoteCocktailLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64DD9FD263F06FB009D70AE /* RemoteCocktailLoaderTests.swift */; };
+		C64DDA01263F14FA009D70AE /* RemoteCocktailLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64DDA00263F14FA009D70AE /* RemoteCocktailLoader.swift */; };
 		C6504A4F263EACA700F4FCD1 /* DrinGoFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6504A45263EACA600F4FCD1 /* DrinGoFeed.framework */; };
 		C6504A60263EBC9E00F4FCD1 /* CocktailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6504A5F263EBC9E00F4FCD1 /* CocktailItem.swift */; };
 		C6504A62263EC6F500F4FCD1 /* CocktailLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6504A61263EC6F500F4FCD1 /* CocktailLoader.swift */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		C64DD9FD263F06FB009D70AE /* RemoteCocktailLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCocktailLoaderTests.swift; sourceTree = "<group>"; };
+		C64DDA00263F14FA009D70AE /* RemoteCocktailLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCocktailLoader.swift; sourceTree = "<group>"; };
 		C6504A45263EACA600F4FCD1 /* DrinGoFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DrinGoFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6504A49263EACA600F4FCD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6504A4E263EACA700F4FCD1 /* DrinGoFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrinGoFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,6 +63,14 @@
 			path = "Feed Feature";
 			sourceTree = "<group>";
 		};
+		C64DD9FF263F1339009D70AE /* Feed API */ = {
+			isa = PBXGroup;
+			children = (
+				C64DDA00263F14FA009D70AE /* RemoteCocktailLoader.swift */,
+			);
+			path = "Feed API";
+			sourceTree = "<group>";
+		};
 		C6504A3B263EACA600F4FCD1 = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +94,7 @@
 			children = (
 				C6504A49263EACA600F4FCD1 /* Info.plist */,
 				C64DD9FC263F065D009D70AE /* Feed Feature */,
+				C64DD9FF263F1339009D70AE /* Feed API */,
 			);
 			path = DrinGoFeed;
 			sourceTree = "<group>";
@@ -205,6 +216,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C64DDA01263F14FA009D70AE /* RemoteCocktailLoader.swift in Sources */,
 				C6504A62263EC6F500F4FCD1 /* CocktailLoader.swift in Sources */,
 				C6504A60263EBC9E00F4FCD1 /* CocktailItem.swift in Sources */,
 			);
