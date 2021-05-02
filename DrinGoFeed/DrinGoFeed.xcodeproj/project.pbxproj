@@ -52,6 +52,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C64DD9FC263F065D009D70AE /* Feed Feature */ = {
+			isa = PBXGroup;
+			children = (
+				C6504A5F263EBC9E00F4FCD1 /* CocktailItem.swift */,
+				C6504A61263EC6F500F4FCD1 /* CocktailLoader.swift */,
+			);
+			path = "Feed Feature";
+			sourceTree = "<group>";
+		};
 		C6504A3B263EACA600F4FCD1 = {
 			isa = PBXGroup;
 			children = (
@@ -74,8 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				C6504A49263EACA600F4FCD1 /* Info.plist */,
-				C6504A5F263EBC9E00F4FCD1 /* CocktailItem.swift */,
-				C6504A61263EC6F500F4FCD1 /* CocktailLoader.swift */,
+				C64DD9FC263F065D009D70AE /* Feed Feature */,
 			);
 			path = DrinGoFeed;
 			sourceTree = "<group>";
