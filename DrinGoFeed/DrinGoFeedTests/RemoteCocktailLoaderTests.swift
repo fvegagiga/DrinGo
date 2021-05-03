@@ -66,7 +66,7 @@ class RemoteCocktailLoaderTests: XCTestCase {
         let (sut, client) = makeSUT()
 
         expect(sut, toCompleteWith: .success([]), when: {
-            let emptyListJSON = Data("{\"drinks\": []}".utf8)
+            let emptyListJSON = makeItemsJson([])
             client.complete(withStatusCode: 200, data: emptyListJSON)
         })
     }
