@@ -72,12 +72,12 @@ class RemoteCocktailLoaderTests: XCTestCase {
     
     private func expect(_ sut: RemoteCocktailLoader, toCompleteWithError error: RemoteCocktailLoader.Error, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
         
-        var capturedError = [RemoteCocktailLoader.Error]()
-        sut.load { capturedError.append($0) }
+        var capturedResults = [RemoteCocktailLoader.Result]()
+        sut.load { capturedResults.append($0) }
         
         action()
         
-        XCTAssertEqual(capturedError, [error], file: file, line: line)
+        XCTAssertEqual(capturedResults, [.failure(error)], file: file, line: line)
     }
     
     private class HTTPClientSpy: HTTPClient {

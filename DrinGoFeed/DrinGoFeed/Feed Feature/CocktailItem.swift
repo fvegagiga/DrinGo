@@ -4,7 +4,7 @@
 
 import Foundation
 
-struct CocktailItem {
+public struct CocktailItem: Equatable {
     let id: Int
     let name: String
     let description: String
