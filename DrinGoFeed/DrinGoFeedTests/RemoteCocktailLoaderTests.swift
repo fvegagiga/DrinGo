@@ -134,7 +134,9 @@ class RemoteCocktailLoaderTests: XCTestCase {
                                   quantity2: String?,
                                   quantity3: String?,
                                   quantity4: String?,
-                                  quantity5: String?) -> (model: CocktailItem, json: [String: Any]) {
+                                  quantity5: String?)
+    -> (model: CocktailItem, json: [String: Any?]) {
+        
         let item = CocktailItem(id: id,
                                 name: name,
                                 description: description,
@@ -142,7 +144,7 @@ class RemoteCocktailLoaderTests: XCTestCase {
                                 ingredients: [ingredient1, ingredient2, ingredient3, ingredient4, ingredient5].compactMap { $0 },
                                 quantity: [quantity1, quantity2, quantity3, quantity4, quantity5].compactMap { $0 })
         
-        let json = [
+        let json: [String: Any?] = [
             "idDrink": id,
             "strDrink": name,
             "strInstructions": description,
@@ -157,12 +159,12 @@ class RemoteCocktailLoaderTests: XCTestCase {
             "strMeasure3": quantity3,
             "strMeasure4": quantity4,
             "strMeasure5": quantity5
-        ].compactMapValues({ $0 })
+        ]
         
         return (item, json)
     }
     
-    private func makeItemsJson(_ items: [[String: Any]]) -> Data {
+    private func makeItemsJson(_ items: [[String: Any?]]) -> Data {
         let json = ["drinks": items]
         return try! JSONSerialization.data(withJSONObject: json)
     }
