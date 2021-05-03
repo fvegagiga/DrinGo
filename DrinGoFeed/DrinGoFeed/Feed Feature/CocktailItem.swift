@@ -5,10 +5,19 @@
 import Foundation
 
 public struct CocktailItem: Equatable {
-    let id: Int
-    let name: String
-    let description: String
-    let imageURL: URL
-    let ingredients: [String]
-    let quantity: [String]
+    public let id: Int
+    public let name: String
+    public let description: String
+    public let imageURL: URL
+    public let ingredients: [String]
+    public let quantity: [String]
+    
+    public init(id: Int, name: String, description: String, imageURL: URL, ingredients: [String], quantity: [String]) {
+        self.id = id
+        self.name = name
+        self.description = description
+        self.imageURL = imageURL
+        self.ingredients = ingredients
+        self.quantity = quantity
+    }
 }
