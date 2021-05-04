@@ -13,6 +13,7 @@
 		C6504A60263EBC9E00F4FCD1 /* CocktailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6504A5F263EBC9E00F4FCD1 /* CocktailItem.swift */; };
 		C6504A62263EC6F500F4FCD1 /* CocktailLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6504A61263EC6F500F4FCD1 /* CocktailLoader.swift */; };
 		C6E3015626412F4B009DC1D5 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E3015526412F4B009DC1D5 /* HTTPClient.swift */; };
+		C6E3015826412FE7009DC1D5 /* CocktailItemMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E3015726412FE7009DC1D5 /* CocktailItemMapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +36,7 @@
 		C6504A5F263EBC9E00F4FCD1 /* CocktailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailItem.swift; sourceTree = "<group>"; };
 		C6504A61263EC6F500F4FCD1 /* CocktailLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailLoader.swift; sourceTree = "<group>"; };
 		C6E3015526412F4B009DC1D5 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		C6E3015726412FE7009DC1D5 /* CocktailItemMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailItemMapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				C64DDA00263F14FA009D70AE /* RemoteCocktailLoader.swift */,
+				C6E3015726412FE7009DC1D5 /* CocktailItemMapper.swift */,
 				C6E3015526412F4B009DC1D5 /* HTTPClient.swift */,
 			);
 			path = "Feed API";
@@ -219,6 +222,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6E3015826412FE7009DC1D5 /* CocktailItemMapper.swift in Sources */,
 				C64DDA01263F14FA009D70AE /* RemoteCocktailLoader.swift in Sources */,
 				C6504A62263EC6F500F4FCD1 /* CocktailLoader.swift in Sources */,
 				C6E3015626412F4B009DC1D5 /* HTTPClient.swift in Sources */,
