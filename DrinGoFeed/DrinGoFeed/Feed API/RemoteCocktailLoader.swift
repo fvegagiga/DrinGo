@@ -30,11 +30,7 @@ public final class RemoteCocktailLoader {
         client.get(from: url) { result in
             switch result {
             case let .success((data, response)):
-                if let items = try? CocktailItemMapper.map(data, response) {
-                    completion(.success(items))
-                } else {
-                    completion(.failure(.invalidData))
-                }
+                completion(CocktailItemMapper.map(data, response))
             case .failure:
                 completion(.failure(.connectivity))
             }
@@ -84,13 +80,12 @@ private class CocktailItemMapper {
     
     static var OK_200: Int { return 200 }
     
-    static func map(_ data: Data, _ response: HTTPURLResponse) throws -> [CocktailItem] {
-        guard response.statusCode == OK_200 else {
-            throw RemoteCocktailLoader.Error.invalidData
+    static func map(_ data: Data, _ response: HTTPURLResponse) -> RemoteCocktailLoader.Result {
+        guard response.statusCode == OK_200,
+              let root = try? JSONDecoder().decode(Root.self, from: data) else {
+            return .failure(RemoteCocktailLoader.Error.invalidData)
         }
         
-        let root = try JSONDecoder().decode(Root.self, from: data)
-            
-        return root.drinks.map { $0.drink }
+        return .success(root.drinks.map { $0.drink })
     }
 }
