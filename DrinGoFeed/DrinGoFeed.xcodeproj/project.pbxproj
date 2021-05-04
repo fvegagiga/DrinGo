@@ -109,9 +109,17 @@
 			isa = PBXGroup;
 			children = (
 				C6504A55263EACA700F4FCD1 /* Info.plist */,
-				C64DD9FD263F06FB009D70AE /* RemoteCocktailLoaderTests.swift */,
+				C6E30159264155DC009DC1D5 /* Feed API */,
 			);
 			path = DrinGoFeedTests;
+			sourceTree = "<group>";
+		};
+		C6E30159264155DC009DC1D5 /* Feed API */ = {
+			isa = PBXGroup;
+			children = (
+				C64DD9FD263F06FB009D70AE /* RemoteCocktailLoaderTests.swift */,
+			);
+			path = "Feed API";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
