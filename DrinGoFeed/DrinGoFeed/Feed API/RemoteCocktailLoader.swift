@@ -4,11 +4,11 @@
 
 import Foundation
 
-public final class RemoteCocktailLoader {
+public final class RemoteCocktailLoader: CocktailLoader {
     private let url: URL
     private let client: HTTPClient
     
-    public typealias Result = Swift.Result<[CocktailItem], Error>
+    public typealias Result = CocktailLoader.Result
     
     public enum Error: Swift.Error {
         case connectivity
@@ -28,7 +28,7 @@ public final class RemoteCocktailLoader {
             case let .success((data, response)):
                 completion(CocktailItemMapper.map(data, response))
             case .failure:
-                completion(.failure(.connectivity))
+                completion(.failure(Error.connectivity))
             }
         }
     }

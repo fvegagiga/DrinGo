@@ -4,7 +4,7 @@
 
 import Foundation
 
-protocol CocktailLoader {
+public protocol CocktailLoader {
     typealias Result = Swift.Result<[CocktailItem], Error>
     
     func load(completion: @escaping (Result) -> Void)
