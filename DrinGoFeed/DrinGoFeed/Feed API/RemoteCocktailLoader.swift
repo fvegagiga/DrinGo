@@ -49,53 +49,36 @@ private class CocktailItemMapper {
     }
 
     private struct Drink: Decodable {
-        let id: Int
-        let name: String
-        let description: String
-        let imageURL: URL
-        let ingredient1: String?
-        let ingredient2: String?
-        let ingredient3: String?
-        let ingredient4: String?
-        let ingredient5: String?
-        let quantity1: String?
-        let quantity2: String?
-        let quantity3: String?
-        let quantity4: String?
-        let quantity5: String?
-        
-        private enum CodingKeys: String, CodingKey {
-            case id = "idDrink"
-            case name = "strDrink"
-            case description = "strInstructions"
-            case imageURL = "strDrinkThumb"
-            case ingredient1 = "strIngredient1"
-            case ingredient2 = "strIngredient2"
-            case ingredient3 = "strIngredient3"
-            case ingredient4 = "strIngredient4"
-            case ingredient5 = "strIngredient5"
-            case quantity1 = "strMeasure1"
-            case quantity2 = "strMeasure2"
-            case quantity3 = "strMeasure3"
-            case quantity4 = "strMeasure4"
-            case quantity5 = "strMeasure5"
-        }
+        let idDrink: Int
+        let strDrink: String
+        let strInstructions: String
+        let strDrinkThumb: URL
+        let strIngredient1: String?
+        let strIngredient2: String?
+        let strIngredient3: String?
+        let strIngredient4: String?
+        let strIngredient5: String?
+        let strMeasure1: String?
+        let strMeasure2: String?
+        let strMeasure3: String?
+        let strMeasure4: String?
+        let strMeasure5: String?
         
         var drink: CocktailItem {
-            CocktailItem(id: id,
-                         name: name,
-                         description: description,
-                         imageURL: imageURL,
-                         ingredients: [ingredient1,
-                                       ingredient2,
-                                       ingredient3,
-                                       ingredient4,
-                                       ingredient5].compactMap({$0}),
-                         quantity: [quantity1,
-                                    quantity2,
-                                    quantity3,
-                                    quantity4,
-                                    quantity5].compactMap({$0}))
+            CocktailItem(id: idDrink,
+                         name: strDrink,
+                         description: strInstructions,
+                         imageURL: strDrinkThumb,
+                         ingredients: [strIngredient1,
+                                       strIngredient2,
+                                       strIngredient3,
+                                       strIngredient4,
+                                       strIngredient5].compactMap({$0}),
+                         quantity: [strMeasure1,
+                                    strMeasure2,
+                                    strMeasure3,
+                                    strMeasure4,
+                                    strMeasure5].compactMap({$0}))
         }
     }
     
