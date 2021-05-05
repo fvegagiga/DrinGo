@@ -147,6 +147,7 @@ class RemoteCocktailLoaderTests: XCTestCase {
             XCTAssertNil(instance, "Instance should have been deallocated. Potential memory leak.", file: file, line: line)
         }
     }
+    
     private func makeCocktailItem(id: Int,
                                   name: String,
                                   description: String,
