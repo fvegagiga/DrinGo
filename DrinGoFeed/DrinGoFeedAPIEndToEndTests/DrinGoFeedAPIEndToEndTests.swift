@@ -8,20 +8,8 @@ import DrinGoFeed
 class DrinGoFeedAPIEndToEndTests: XCTestCase {
 
     func test_endToEndTestServerGETCocktailResult_matchesFixedTestAccountData() {
-        let testServerURL = URL(string: "https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=margarita")!
-        let client = URLSessionHTTPClient()
-        let loader = RemoteCocktailLoader(url: testServerURL, client: client)
         
-        let exp = expectation(description: "Wait for load completion")
-        
-        var receivedResult: CocktailLoader.Result?
-        loader.load { result in
-            receivedResult = result
-            exp.fulfill()
-        }
-        wait(for: [exp], timeout: 5.0)
-        
-        switch receivedResult {
+        switch getCocktailResult() {
         case let .success(items)?:
             XCTAssertEqual(items.count, 6, "Expected 6 items in the test account, got \(items.count) cocktails")
             XCTAssertEqual(items[0], expectedItem(at: 0))
@@ -40,6 +28,23 @@ class DrinGoFeedAPIEndToEndTests: XCTestCase {
     }
     
     // MARK: - Helpers
+    
+    private func getCocktailResult() -> RemoteCocktailLoader.Result? {
+        let testServerURL = URL(string: "https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=margarita")!
+        let client = URLSessionHTTPClient()
+        let loader = RemoteCocktailLoader(url: testServerURL, client: client)
+        
+        let exp = expectation(description: "Wait for load completion")
+        
+        var receivedResult: CocktailLoader.Result?
+        loader.load { result in
+            receivedResult = result
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 5.0)
+        
+        return receivedResult
+    }
     
     private func expectedItem(at index: Int) -> CocktailItem {
         return CocktailItem(id: id(at: index),
