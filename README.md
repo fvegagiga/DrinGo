@@ -1,5 +1,7 @@
 # DrinGo
 
+[![Build Status](https://travis-ci.org/fvegagiga/DrinGo.svg?branch=main)](https://travis-ci.org/fvegagiga/DrinGo)
+
 DrinGo is an iOS app to discover the best cocktails and drink recipes.
 
 
