@@ -166,7 +166,7 @@ class RemoteCocktailLoaderTests: XCTestCase {
                                 quantity: [quantity1, quantity2, quantity3, quantity4, quantity5].compactMap { $0 })
         
         let json: [String: Any?] = [
-            "idDrink": id,
+            "idDrink": String(id),
             "strDrink": name,
             "strInstructions": description,
             "strDrinkThumb": imageURL.absoluteString,
