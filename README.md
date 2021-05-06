@@ -45,4 +45,4 @@ Then the app should display an error message
 
 ## Architecture
 
-![Random Cocktail List Loading Feature](random_list_feature_architecture.png)
+![Random Cocktail List Loading Feature](cocktail_list_feature_architecture)
