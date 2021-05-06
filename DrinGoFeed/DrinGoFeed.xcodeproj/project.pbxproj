@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C61E1AD72643C68F0051E30C /* DrinGoFeedAPIEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61E1AD62643C68F0051E30C /* DrinGoFeedAPIEndToEndTests.swift */; };
+		C61E1AD92643C68F0051E30C /* DrinGoFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6504A45263EACA600F4FCD1 /* DrinGoFeed.framework */; };
 		C63CB1862642FBA300EC6EB4 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63CB1852642FBA300EC6EB4 /* URLSessionHTTPClient.swift */; };
 		C64DD9FE263F06FB009D70AE /* RemoteCocktailLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64DD9FD263F06FB009D70AE /* RemoteCocktailLoaderTests.swift */; };
 		C64DDA01263F14FA009D70AE /* RemoteCocktailLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64DDA00263F14FA009D70AE /* RemoteCocktailLoader.swift */; };
@@ -20,6 +22,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		C61E1ADA2643C68F0051E30C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C6504A3C263EACA600F4FCD1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C6504A44263EACA600F4FCD1;
+			remoteInfo = DrinGoFeed;
+		};
 		C6504A50263EACA700F4FCD1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C6504A3C263EACA600F4FCD1 /* Project object */;
@@ -30,6 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C61E1AD42643C68F0051E30C /* DrinGoFeedAPIEndToEndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrinGoFeedAPIEndToEndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C61E1AD62643C68F0051E30C /* DrinGoFeedAPIEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinGoFeedAPIEndToEndTests.swift; sourceTree = "<group>"; };
+		C61E1AD82643C68F0051E30C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C63CB1852642FBA300EC6EB4 /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
 		C64DD9FD263F06FB009D70AE /* RemoteCocktailLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCocktailLoaderTests.swift; sourceTree = "<group>"; };
 		C64DDA00263F14FA009D70AE /* RemoteCocktailLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCocktailLoader.swift; sourceTree = "<group>"; };
@@ -46,6 +58,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C61E1AD12643C68F0051E30C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C61E1AD92643C68F0051E30C /* DrinGoFeed.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C6504A42263EACA600F4FCD1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -64,6 +84,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C61E1AD52643C68F0051E30C /* DrinGoFeedAPIEndToEndTests */ = {
+			isa = PBXGroup;
+			children = (
+				C61E1AD62643C68F0051E30C /* DrinGoFeedAPIEndToEndTests.swift */,
+				C61E1AD82643C68F0051E30C /* Info.plist */,
+			);
+			path = DrinGoFeedAPIEndToEndTests;
+			sourceTree = "<group>";
+		};
 		C64DD9FC263F065D009D70AE /* Feed Feature */ = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +118,7 @@
 			children = (
 				C6504A47263EACA600F4FCD1 /* DrinGoFeed */,
 				C6504A52263EACA700F4FCD1 /* DrinGoFeedTests */,
+				C61E1AD52643C68F0051E30C /* DrinGoFeedAPIEndToEndTests */,
 				C6504A46263EACA600F4FCD1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -98,6 +128,7 @@
 			children = (
 				C6504A45263EACA600F4FCD1 /* DrinGoFeed.framework */,
 				C6504A4E263EACA700F4FCD1 /* DrinGoFeedTests.xctest */,
+				C61E1AD42643C68F0051E30C /* DrinGoFeedAPIEndToEndTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -152,6 +183,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		C61E1AD32643C68F0051E30C /* DrinGoFeedAPIEndToEndTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C61E1ADE2643C68F0051E30C /* Build configuration list for PBXNativeTarget "DrinGoFeedAPIEndToEndTests" */;
+			buildPhases = (
+				C61E1AD02643C68F0051E30C /* Sources */,
+				C61E1AD12643C68F0051E30C /* Frameworks */,
+				C61E1AD22643C68F0051E30C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C61E1ADB2643C68F0051E30C /* PBXTargetDependency */,
+			);
+			name = DrinGoFeedAPIEndToEndTests;
+			productName = DrinGoFeedAPIEndToEndTests;
+			productReference = C61E1AD42643C68F0051E30C /* DrinGoFeedAPIEndToEndTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		C6504A44263EACA600F4FCD1 /* DrinGoFeed */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C6504A59263EACA700F4FCD1 /* Build configuration list for PBXNativeTarget "DrinGoFeed" */;
@@ -197,6 +246,9 @@
 				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
+					C61E1AD32643C68F0051E30C = {
+						CreatedOnToolsVersion = 12.5;
+					};
 					C6504A44263EACA600F4FCD1 = {
 						CreatedOnToolsVersion = 12.5;
 						LastSwiftMigration = 1250;
@@ -221,11 +273,19 @@
 			targets = (
 				C6504A44263EACA600F4FCD1 /* DrinGoFeed */,
 				C6504A4D263EACA700F4FCD1 /* DrinGoFeedTests */,
+				C61E1AD32643C68F0051E30C /* DrinGoFeedAPIEndToEndTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C61E1AD22643C68F0051E30C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C6504A43263EACA600F4FCD1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -243,6 +303,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C61E1AD02643C68F0051E30C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C61E1AD72643C68F0051E30C /* DrinGoFeedAPIEndToEndTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C6504A41263EACA600F4FCD1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -269,6 +337,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		C61E1ADB2643C68F0051E30C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C6504A44263EACA600F4FCD1 /* DrinGoFeed */;
+			targetProxy = C61E1ADA2643C68F0051E30C /* PBXContainerItemProxy */;
+		};
 		C6504A51263EACA700F4FCD1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C6504A44263EACA600F4FCD1 /* DrinGoFeed */;
@@ -277,6 +350,42 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		C61E1ADC2643C68F0051E30C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 5MPC35WK7F;
+				INFOPLIST_FILE = DrinGoFeedAPIEndToEndTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fvg0902iosdev.DrinGoFeedAPIEndToEndTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		C61E1ADD2643C68F0051E30C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 5MPC35WK7F;
+				INFOPLIST_FILE = DrinGoFeedAPIEndToEndTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fvg0902iosdev.DrinGoFeedAPIEndToEndTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		C6504A57263EACA700F4FCD1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -490,6 +599,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C61E1ADE2643C68F0051E30C /* Build configuration list for PBXNativeTarget "DrinGoFeedAPIEndToEndTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C61E1ADC2643C68F0051E30C /* Debug */,
+				C61E1ADD2643C68F0051E30C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C6504A3F263EACA600F4FCD1 /* Build configuration list for PBXProject "DrinGoFeed" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
