@@ -15,14 +15,14 @@ public final class LocalFeedLoader {
         self.currentDate = currentDate
     }
     
-    public func save(_ items: [CocktailItem], completion: @escaping (SaveResult) -> Void) {
+    public func save(_ cocktails: [CocktailItem], completion: @escaping (SaveResult) -> Void) {
         store.deleteCachedFeed { [weak self] error in
             guard let self = self else { return }
             
             if let cacheDeletionError = error {
                 completion(cacheDeletionError)
             } else {
-                self.cache(items, with: completion)
+                self.cache(cocktails, with: completion)
             }
         }
     }

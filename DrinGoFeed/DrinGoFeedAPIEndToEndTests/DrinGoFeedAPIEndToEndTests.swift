@@ -10,14 +10,14 @@ class DrinGoFeedAPIEndToEndTests: XCTestCase {
     func test_endToEndTestServerGETCocktailResult_matchesFixedTestAccountData() {
         
         switch getCocktailResult() {
-        case let .success(items)?:
-            XCTAssertEqual(items.count, 6, "Expected 6 items in the test account, got \(items.count) cocktails")
-            XCTAssertEqual(items[0], expectedItem(at: 0))
-            XCTAssertEqual(items[1], expectedItem(at: 1))
-            XCTAssertEqual(items[2], expectedItem(at: 2))
-            XCTAssertEqual(items[3], expectedItem(at: 3))
-            XCTAssertEqual(items[4], expectedItem(at: 4))
-            XCTAssertEqual(items[5], expectedItem(at: 5))
+        case let .success(cocktails)?:
+            XCTAssertEqual(cocktails.count, 6, "Expected 6 items in the test account, got \(cocktails.count) cocktails")
+            XCTAssertEqual(cocktails[0], expectedCocktail(at: 0))
+            XCTAssertEqual(cocktails[1], expectedCocktail(at: 1))
+            XCTAssertEqual(cocktails[2], expectedCocktail(at: 2))
+            XCTAssertEqual(cocktails[3], expectedCocktail(at: 3))
+            XCTAssertEqual(cocktails[4], expectedCocktail(at: 4))
+            XCTAssertEqual(cocktails[5], expectedCocktail(at: 5))
 
         case let .failure(error)?:
             XCTFail("Expected successful feed result, got \(error) instead")
@@ -48,7 +48,7 @@ class DrinGoFeedAPIEndToEndTests: XCTestCase {
         return receivedResult
     }
     
-    private func expectedItem(at index: Int) -> CocktailItem {
+    private func expectedCocktail(at index: Int) -> CocktailItem {
         return CocktailItem(id: id(at: index),
                             name: name(at: index),
                             description: description(at: index),

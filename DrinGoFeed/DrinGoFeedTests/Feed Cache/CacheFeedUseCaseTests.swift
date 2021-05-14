@@ -16,7 +16,7 @@ class CacheFeedUseCaseTests: XCTestCase {
     func test_save_requestsCacheDeletion() {
         let (sut, store) = makeSUT()
         
-        sut.save(uniqueItems().models) { _ in }
+        sut.save(uniqueCocktails().models) { _ in }
         
         XCTAssertEqual(store.receivedMessages, [.deleteCachedFeed])
     }
@@ -25,7 +25,7 @@ class CacheFeedUseCaseTests: XCTestCase {
         let (sut, store) = makeSUT()
         let deletionError = anyNSError()
         
-        sut.save(uniqueItems().models) { _ in }
+        sut.save(uniqueCocktails().models) { _ in }
         store.completeDeletion(with: deletionError)
         
         XCTAssertEqual(store.receivedMessages, [.deleteCachedFeed])
@@ -33,13 +33,13 @@ class CacheFeedUseCaseTests: XCTestCase {
     
     func test_save_requestsNewCacheInsertionWithTimestampOnSuccessfulDeletion() {
         let timestamp = Date()
-        let items = uniqueItems()
+        let cocktails = uniqueCocktails()
         let (sut, store) = makeSUT(currentDate: { timestamp })
         
-        sut.save(items.models) { _ in }
+        sut.save(cocktails.models) { _ in }
         store.completeDeletionSuccessfully()
         
-        XCTAssertEqual(store.receivedMessages, [.deleteCachedFeed, .insert(items.local, timestamp)])
+        XCTAssertEqual(store.receivedMessages, [.deleteCachedFeed, .insert(cocktails.local, timestamp)])
     }
     
     func test_save_failsOnDeletionError() {
@@ -75,7 +75,7 @@ class CacheFeedUseCaseTests: XCTestCase {
         var sut: LocalFeedLoader? = LocalFeedLoader(store: store, currentDate: Date.init)
         
         var receivedResult = [LocalFeedLoader.SaveResult]()
-        sut?.save(uniqueItems().models, completion: { receivedResult.append($0) })
+        sut?.save(uniqueCocktails().models, completion: { receivedResult.append($0) })
         
         sut = nil
         store.completeDeletion(with: anyNSError())
@@ -88,7 +88,7 @@ class CacheFeedUseCaseTests: XCTestCase {
         var sut: LocalFeedLoader? = LocalFeedLoader(store: store, currentDate: Date.init)
         
         var receivedResult = [LocalFeedLoader.SaveResult]()
-        sut?.save(uniqueItems().models, completion: { receivedResult.append($0) })
+        sut?.save(uniqueCocktails().models, completion: { receivedResult.append($0) })
         
         store.completeDeletionSuccessfully()
         sut = nil
@@ -111,7 +111,7 @@ class CacheFeedUseCaseTests: XCTestCase {
         let exp = expectation(description: "Wait for save completion")
         
         var receivedError: Error?
-        sut.save(uniqueItems().models) { error in
+        sut.save(uniqueCocktails().models) { error in
             receivedError = error
             exp.fulfill()
         }
@@ -149,9 +149,9 @@ class CacheFeedUseCaseTests: XCTestCase {
             deletionCompletions[index](nil)
         }
         
-        func insert(_ items: [LocalCocktailItem], timestamp: Date, completion: @escaping InsertionCompletion) {
+        func insert(_ cocktails: [LocalCocktailItem], timestamp: Date, completion: @escaping InsertionCompletion) {
             insertionCompletions.append(completion)
-            receivedMessages.append(.insert(items, timestamp))
+            receivedMessages.append(.insert(cocktails, timestamp))
         }
         
         func completeInsertion(with error: Error, at index: Int = 0) {
@@ -163,12 +163,12 @@ class CacheFeedUseCaseTests: XCTestCase {
         }
     }
     
-    func uniqueItem(idx: Int) -> CocktailItem {
+    func uniqueCocktail(idx: Int) -> CocktailItem {
         return CocktailItem(id: idx, name: "any", description: "any", imageURL: anyURL(), ingredients: ["Ing1", "Ingr2"], quantity: ["Qt1", "Qt2"])
     }
     
-    func uniqueItems() -> (models: [CocktailItem], local: [LocalCocktailItem]) {
-        let models = [uniqueItem(idx: 0), uniqueItem(idx: 1)]
+    func uniqueCocktails() -> (models: [CocktailItem], local: [LocalCocktailItem]) {
+        let models = [uniqueCocktail(idx: 0), uniqueCocktail(idx: 1)]
         let localItems = models.map { LocalCocktailItem(id: $0.id, name: $0.name, description: $0.description, imageURL: $0.imageURL, ingredients: $0.ingredients, quantity: $0.quantity) }
         return (models, localItems)
     }
