@@ -17,8 +17,13 @@ func uniqueCocktails() -> (models: [CocktailItem], local: [LocalCocktailItem]) {
 
 extension Date {
     func minusCocktailCacheMaxAge() -> Date {
-        return adding(days: -7)
+        return adding(days: -feedCacheMaxAgeInDays)
     }
+    
+    private var feedCacheMaxAgeInDays: Int {
+        return 7
+    }
+    
     func adding(days: Int) -> Date {
         return Calendar(identifier: .gregorian).date(byAdding: .day, value: days, to: self)!
     }
