@@ -72,9 +72,9 @@ class CacheFeedUseCaseTests: XCTestCase {
     
     func test_save_doesNotDeliverDeletionErrorAfterSUTInstanceHasBeenDeallocated() {
         let store = FeedStoreSpy()
-        var sut: LocalFeedLoader? = LocalFeedLoader(store: store, currentDate: Date.init)
+        var sut: LocalCocktailLoader? = LocalCocktailLoader(store: store, currentDate: Date.init)
         
-        var receivedResult = [LocalFeedLoader.SaveResult]()
+        var receivedResult = [LocalCocktailLoader.SaveResult]()
         sut?.save(uniqueCocktails().models, completion: { receivedResult.append($0) })
         
         sut = nil
@@ -85,9 +85,9 @@ class CacheFeedUseCaseTests: XCTestCase {
     
     func test_save_doesNotDeliverInsertionErrorAfterSUTInstanceHasBeenDeallocated() {
         let store = FeedStoreSpy()
-        var sut: LocalFeedLoader? = LocalFeedLoader(store: store, currentDate: Date.init)
+        var sut: LocalCocktailLoader? = LocalCocktailLoader(store: store, currentDate: Date.init)
         
-        var receivedResult = [LocalFeedLoader.SaveResult]()
+        var receivedResult = [LocalCocktailLoader.SaveResult]()
         sut?.save(uniqueCocktails().models, completion: { receivedResult.append($0) })
         
         store.completeDeletionSuccessfully()
@@ -99,15 +99,15 @@ class CacheFeedUseCaseTests: XCTestCase {
     
     // MARK: - Helpers
     
-    private func makeSUT(currentDate: @escaping () -> Date = Date.init, file: StaticString = #filePath, line: UInt = #line) -> (sut: LocalFeedLoader, store: FeedStoreSpy) {
+    private func makeSUT(currentDate: @escaping () -> Date = Date.init, file: StaticString = #filePath, line: UInt = #line) -> (sut: LocalCocktailLoader, store: FeedStoreSpy) {
         let store = FeedStoreSpy()
-        let sut = LocalFeedLoader(store: store, currentDate: currentDate)
+        let sut = LocalCocktailLoader(store: store, currentDate: currentDate)
         trackForMemoryLeaks(store, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
         return (sut, store)
     }
     
-    private func expect(_ sut: LocalFeedLoader, toCompleteWithError expectedError: NSError?, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+    private func expect(_ sut: LocalCocktailLoader, toCompleteWithError expectedError: NSError?, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
         let exp = expectation(description: "Wait for save completion")
         
         var receivedError: Error?

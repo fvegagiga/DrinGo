@@ -4,7 +4,7 @@
 
 import Foundation
 
-public final class LocalFeedLoader {
+public final class LocalCocktailLoader {
     private let store: FeedStore
     private let currentDate: () -> Date
     private let calendar = Calendar(identifier: .gregorian)
@@ -29,7 +29,7 @@ public final class LocalFeedLoader {
     }
 }
 
-extension LocalFeedLoader {
+extension LocalCocktailLoader {
     public func save(_ cocktails: [CocktailItem], completion: @escaping (SaveResult) -> Void) {
         store.deleteCachedFeed { [weak self] error in
             guard let self = self else { return }
@@ -51,7 +51,7 @@ extension LocalFeedLoader {
     }
 }
 
-extension LocalFeedLoader: CocktailLoader {
+extension LocalCocktailLoader: CocktailLoader {
     public func load(completion: @escaping (LoadResult) -> Void) {
         store.retrieve { [weak self] result in
             guard let self = self else { return }
@@ -70,7 +70,7 @@ extension LocalFeedLoader: CocktailLoader {
     }
 }
 
-extension LocalFeedLoader {
+extension LocalCocktailLoader {
     public func validateCache() {
         store.retrieve { [weak self] result in
             guard let self = self else { return }
