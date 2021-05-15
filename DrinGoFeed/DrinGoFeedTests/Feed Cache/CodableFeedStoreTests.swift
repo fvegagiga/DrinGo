@@ -7,8 +7,34 @@ import DrinGoFeed
 
 class CodableFeedStore {
     private struct Cache: Codable {
-        let feed: [LocalCocktailItem]
+        let feed: [CodableCocktailItem]
         let timestamp: Date
+        
+        var localCocktails: [LocalCocktailItem] {
+            return feed.map { $0.local }
+        }
+    }
+    
+    private struct CodableCocktailItem: Codable {
+        private let id: Int
+        private let name: String
+        private let description: String
+        private let imageURL: URL
+        private let ingredients: [String]
+        private let quantity: [String]
+        
+        init(_ cocktail: LocalCocktailItem) {
+            self.id = cocktail.id
+            self.name = cocktail.name
+            self.description = cocktail.description
+            self.imageURL = cocktail.imageURL
+            self.ingredients = cocktail.ingredients
+            self.quantity = cocktail.quantity
+        }
+        
+        var local: LocalCocktailItem {
+            LocalCocktailItem(id: id, name: name, description: description, imageURL: imageURL, ingredients: ingredients, quantity: quantity)
+        }
     }
     
     private let storeURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("cocktail-feed.store")
@@ -20,12 +46,13 @@ class CodableFeedStore {
         
         let decoder = JSONDecoder()
         let cache = try! decoder.decode(Cache.self, from: data)
-        completion(.found(feed: cache.feed, timestamp: cache.timestamp))
+        completion(.found(feed: cache.localCocktails, timestamp: cache.timestamp))
     }
     
     func insert(_ cocktails: [LocalCocktailItem], timestamp: Date, completion: @escaping FeedStore.InsertionCompletion) {
         let encoder = JSONEncoder()
-        let encoded = try! encoder.encode(Cache(feed: cocktails, timestamp: timestamp))
+        let cache = Cache(feed: cocktails.map(CodableCocktailItem.init), timestamp: timestamp)
+        let encoded = try! encoder.encode(cache)
         try! encoded.write(to: storeURL)
         
         completion(nil)
