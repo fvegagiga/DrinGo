@@ -4,7 +4,7 @@
 
 import Foundation
 
-public struct LocalCocktailItem: Equatable {
+public struct LocalCocktailItem: Equatable, Codable {
     public let id: Int
     public let name: String
     public let description: String
