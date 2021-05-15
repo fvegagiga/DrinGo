@@ -4,13 +4,11 @@
 
 import Foundation
 
-public final class LocalCocktailLoader {
-    private let store: FeedStore
+private final class CocktailCachePolicy {
     private let currentDate: () -> Date
     private let calendar = Calendar(identifier: .gregorian)
     
-    public init(store: FeedStore, currentDate: @escaping () -> Date) {
-        self.store = store
+    init (currentDate: @escaping () -> Date) {
         self.currentDate = currentDate
     }
     
@@ -18,11 +16,23 @@ public final class LocalCocktailLoader {
         return 7
     }
     
-    private func validate(_ timestamp: Date) -> Bool {
+    func validate(_ timestamp: Date) -> Bool {
         guard let maxCacheAge = calendar.date(byAdding: .day, value: maxCacheAgeInDays, to: timestamp) else {
             return false
         }
         return currentDate() < maxCacheAge
+    }
+}
+
+public final class LocalCocktailLoader {
+    private let store: FeedStore
+    private let currentDate: () -> Date
+    private let cachePolicy: CocktailCachePolicy
+    
+    public init(store: FeedStore, currentDate: @escaping () -> Date) {
+        self.store = store
+        self.currentDate = currentDate
+        self.cachePolicy = CocktailCachePolicy(currentDate: currentDate)
     }
 }
 
@@ -61,7 +71,7 @@ extension LocalCocktailLoader: CocktailLoader {
             case let .failure(error):
                 completion(.failure(error))
 
-            case let .found(items, timestamp) where self.validate(timestamp):
+            case let .found(items, timestamp) where self.cachePolicy.validate(timestamp):
                 completion(.success(items.toModels()))
                 
             case .found, .empty:
@@ -80,7 +90,7 @@ extension LocalCocktailLoader {
             case .failure:
                 self.store.deleteCachedFeed { _ in }
                 
-            case let .found(_, timestamp) where !self.validate(timestamp):
+            case let .found(_, timestamp) where !self.cachePolicy.validate(timestamp):
                 self.store.deleteCachedFeed { _ in }
                 
             case .empty, .found:
