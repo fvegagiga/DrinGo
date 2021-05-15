@@ -81,15 +81,27 @@ Given the customer doesn’t have connectivity
 5. System delivers feed items.
 
 #### Retrieval error course (sad path):
-1. System deletes cache.
-2. System delivers error.
+1. System delivers error.
 
 #### Expired cache course (sad path):
-1. System deletes cache.
-2. System delivers no feed items.
+1. System delivers no feed items.
 
 #### Empty cache course (sad path):
 1. System delivers no feed items.
+
+
+### Validate Feed From Cache Use Case
+
+#### Primary course (happy path):
+1. Execute "Validate Cache" command with above data.
+2. System retrieves feed data from cache.
+3. System validates cache is less than seven days old.
+
+#### Retrieval error course (sad path):
+1. System deletes cache.
+
+#### Expired cache course (sad path):
+1. System deletes cache.
 
 
 ### Cache Cocktails Use Case
