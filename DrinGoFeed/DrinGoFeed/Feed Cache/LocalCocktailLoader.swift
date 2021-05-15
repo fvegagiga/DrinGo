@@ -9,9 +9,6 @@ public final class LocalCocktailLoader {
     private let currentDate: () -> Date
     private let calendar = Calendar(identifier: .gregorian)
     
-    public typealias SaveResult = Error?
-    public typealias LoadResult = CocktailLoader.Result
-    
     public init(store: FeedStore, currentDate: @escaping () -> Date) {
         self.store = store
         self.currentDate = currentDate
@@ -30,6 +27,8 @@ public final class LocalCocktailLoader {
 }
 
 extension LocalCocktailLoader {
+    public typealias SaveResult = Error?
+    
     public func save(_ cocktails: [CocktailItem], completion: @escaping (SaveResult) -> Void) {
         store.deleteCachedFeed { [weak self] error in
             guard let self = self else { return }
@@ -52,6 +51,8 @@ extension LocalCocktailLoader {
 }
 
 extension LocalCocktailLoader: CocktailLoader {
+    public typealias LoadResult = CocktailLoader.Result
+    
     public func load(completion: @escaping (LoadResult) -> Void) {
         store.retrieve { [weak self] result in
             guard let self = self else { return }
