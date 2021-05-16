@@ -23,6 +23,8 @@
 		C638D780264FCB3400C09917 /* CocktailCachePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C638D77F264FCB3400C09917 /* CocktailCachePolicy.swift */; };
 		C638D782264FEC0100C09917 /* CodableFeedStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C638D781264FEC0100C09917 /* CodableFeedStoreTests.swift */; };
 		C63CB1862642FBA300EC6EB4 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63CB1852642FBA300EC6EB4 /* URLSessionHTTPClient.swift */; };
+		C63CC9892651724F007EC72D /* DrinGoFeedCacheIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63CC9882651724F007EC72D /* DrinGoFeedCacheIntegrationTests.swift */; };
+		C63CC98B2651724F007EC72D /* DrinGoFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6504A45263EACA600F4FCD1 /* DrinGoFeed.framework */; };
 		C6414DC6264C1D880066DC59 /* CacheFeedUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6414DC5264C1D880066DC59 /* CacheFeedUseCaseTests.swift */; };
 		C64DD9FE263F06FB009D70AE /* LoadCocktailsFromRemoteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64DD9FD263F06FB009D70AE /* LoadCocktailsFromRemoteUseCaseTests.swift */; };
 		C64DDA01263F14FA009D70AE /* RemoteCocktailLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64DDA00263F14FA009D70AE /* RemoteCocktailLoader.swift */; };
@@ -42,6 +44,13 @@
 
 /* Begin PBXContainerItemProxy section */
 		C61E1ADA2643C68F0051E30C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C6504A3C263EACA600F4FCD1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C6504A44263EACA600F4FCD1;
+			remoteInfo = DrinGoFeed;
+		};
+		C63CC98C2651724F007EC72D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C6504A3C263EACA600F4FCD1 /* Project object */;
 			proxyType = 1;
@@ -75,6 +84,9 @@
 		C638D77F264FCB3400C09917 /* CocktailCachePolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailCachePolicy.swift; sourceTree = "<group>"; };
 		C638D781264FEC0100C09917 /* CodableFeedStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableFeedStoreTests.swift; sourceTree = "<group>"; };
 		C63CB1852642FBA300EC6EB4 /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
+		C63CC9862651724F007EC72D /* DrinGoFeedCacheIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrinGoFeedCacheIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C63CC9882651724F007EC72D /* DrinGoFeedCacheIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinGoFeedCacheIntegrationTests.swift; sourceTree = "<group>"; };
+		C63CC98A2651724F007EC72D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6414DC5264C1D880066DC59 /* CacheFeedUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheFeedUseCaseTests.swift; sourceTree = "<group>"; };
 		C64DD9FD263F06FB009D70AE /* LoadCocktailsFromRemoteUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadCocktailsFromRemoteUseCaseTests.swift; sourceTree = "<group>"; };
 		C64DDA00263F14FA009D70AE /* RemoteCocktailLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCocktailLoader.swift; sourceTree = "<group>"; };
@@ -100,6 +112,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C61E1AD92643C68F0051E30C /* DrinGoFeed.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C63CC9832651724F007EC72D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C63CC98B2651724F007EC72D /* DrinGoFeed.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,6 +178,15 @@
 			path = Codable;
 			sourceTree = "<group>";
 		};
+		C63CC9872651724F007EC72D /* DrinGoFeedCacheIntegrationTests */ = {
+			isa = PBXGroup;
+			children = (
+				C63CC9882651724F007EC72D /* DrinGoFeedCacheIntegrationTests.swift */,
+				C63CC98A2651724F007EC72D /* Info.plist */,
+			);
+			path = DrinGoFeedCacheIntegrationTests;
+			sourceTree = "<group>";
+		};
 		C6414DC4264C1D260066DC59 /* Feed Cache */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +227,7 @@
 				C6504A47263EACA600F4FCD1 /* DrinGoFeed */,
 				C6504A52263EACA700F4FCD1 /* DrinGoFeedTests */,
 				C61E1AD52643C68F0051E30C /* DrinGoFeedAPIEndToEndTests */,
+				C63CC9872651724F007EC72D /* DrinGoFeedCacheIntegrationTests */,
 				C6504A46263EACA600F4FCD1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -208,6 +238,7 @@
 				C6504A45263EACA600F4FCD1 /* DrinGoFeed.framework */,
 				C6504A4E263EACA700F4FCD1 /* DrinGoFeedTests.xctest */,
 				C61E1AD42643C68F0051E30C /* DrinGoFeedAPIEndToEndTests.xctest */,
+				C63CC9862651724F007EC72D /* DrinGoFeedCacheIntegrationTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -304,6 +335,24 @@
 			productReference = C61E1AD42643C68F0051E30C /* DrinGoFeedAPIEndToEndTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		C63CC9852651724F007EC72D /* DrinGoFeedCacheIntegrationTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C63CC9902651724F007EC72D /* Build configuration list for PBXNativeTarget "DrinGoFeedCacheIntegrationTests" */;
+			buildPhases = (
+				C63CC9822651724F007EC72D /* Sources */,
+				C63CC9832651724F007EC72D /* Frameworks */,
+				C63CC9842651724F007EC72D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C63CC98D2651724F007EC72D /* PBXTargetDependency */,
+			);
+			name = DrinGoFeedCacheIntegrationTests;
+			productName = DrinGoFeedCacheIntegrationTests;
+			productReference = C63CC9862651724F007EC72D /* DrinGoFeedCacheIntegrationTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		C6504A44263EACA600F4FCD1 /* DrinGoFeed */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C6504A59263EACA700F4FCD1 /* Build configuration list for PBXNativeTarget "DrinGoFeed" */;
@@ -352,6 +401,9 @@
 					C61E1AD32643C68F0051E30C = {
 						CreatedOnToolsVersion = 12.5;
 					};
+					C63CC9852651724F007EC72D = {
+						CreatedOnToolsVersion = 12.5;
+					};
 					C6504A44263EACA600F4FCD1 = {
 						CreatedOnToolsVersion = 12.5;
 						LastSwiftMigration = 1250;
@@ -377,12 +429,20 @@
 				C6504A44263EACA600F4FCD1 /* DrinGoFeed */,
 				C6504A4D263EACA700F4FCD1 /* DrinGoFeedTests */,
 				C61E1AD32643C68F0051E30C /* DrinGoFeedAPIEndToEndTests */,
+				C63CC9852651724F007EC72D /* DrinGoFeedCacheIntegrationTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		C61E1AD22643C68F0051E30C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C63CC9842651724F007EC72D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -412,6 +472,14 @@
 			files = (
 				C61E1AD72643C68F0051E30C /* DrinGoFeedAPIEndToEndTests.swift in Sources */,
 				C6E440F1264438B00082B92F /* XCTestCase+MemoryLeakTracking.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C63CC9822651724F007EC72D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C63CC9892651724F007EC72D /* DrinGoFeedCacheIntegrationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,6 +532,11 @@
 			target = C6504A44263EACA600F4FCD1 /* DrinGoFeed */;
 			targetProxy = C61E1ADA2643C68F0051E30C /* PBXContainerItemProxy */;
 		};
+		C63CC98D2651724F007EC72D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C6504A44263EACA600F4FCD1 /* DrinGoFeed */;
+			targetProxy = C63CC98C2651724F007EC72D /* PBXContainerItemProxy */;
+		};
 		C6504A51263EACA700F4FCD1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C6504A44263EACA600F4FCD1 /* DrinGoFeed */;
@@ -503,6 +576,42 @@
 					"@loader_path/../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fvg0902iosdev.DrinGoFeedAPIEndToEndTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		C63CC98E2651724F007EC72D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 5MPC35WK7F;
+				INFOPLIST_FILE = DrinGoFeedCacheIntegrationTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fvg0902iosdev.DrinGoFeedCacheIntegrationTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		C63CC98F2651724F007EC72D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 5MPC35WK7F;
+				INFOPLIST_FILE = DrinGoFeedCacheIntegrationTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fvg0902iosdev.DrinGoFeedCacheIntegrationTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -726,6 +835,15 @@
 			buildConfigurations = (
 				C61E1ADC2643C68F0051E30C /* Debug */,
 				C61E1ADD2643C68F0051E30C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C63CC9902651724F007EC72D /* Build configuration list for PBXNativeTarget "DrinGoFeedCacheIntegrationTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C63CC98E2651724F007EC72D /* Debug */,
+				C63CC98F2651724F007EC72D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
