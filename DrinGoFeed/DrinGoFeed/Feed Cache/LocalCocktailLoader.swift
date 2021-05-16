@@ -15,25 +15,26 @@ public final class LocalCocktailLoader {
 }
 
 extension LocalCocktailLoader {
-    public typealias SaveResult = Error?
+    public typealias SaveResult = Result<Void, Error>
     
     public func save(_ cocktails: [CocktailItem], completion: @escaping (SaveResult) -> Void) {
-        store.deleteCachedFeed { [weak self] error in
+        store.deleteCachedFeed { [weak self] deletionResult in
             guard let self = self else { return }
             
-            if let cacheDeletionError = error {
-                completion(cacheDeletionError)
-            } else {
+            switch deletionResult {
+            case .success:
                 self.cache(cocktails, with: completion)
+            case let .failure(error):
+                completion(.failure(error))
             }
         }
     }
     
     private func cache(_ items: [CocktailItem], with completion: @escaping (SaveResult) -> Void) {
-        store.insert(items.toLocal(), timestamp: currentDate()) { [weak self] error in
+        store.insert(items.toLocal(), timestamp: currentDate()) { [weak self] insertionResult in
             guard self != nil else { return }
             
-            completion(error)
+            completion(insertionResult)
         }
     }
 }
