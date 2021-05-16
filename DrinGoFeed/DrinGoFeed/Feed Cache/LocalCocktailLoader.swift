@@ -49,10 +49,10 @@ extension LocalCocktailLoader: CocktailLoader {
             case let .failure(error):
                 completion(.failure(error))
 
-            case let .found(items, timestamp) where CocktailCachePolicy.validate(timestamp, against: self.currentDate()):
-                completion(.success(items.toModels()))
+            case let .success(.some(cache)) where CocktailCachePolicy.validate(cache.timestamp, against: self.currentDate()):
+                completion(.success(cache.feed.toModels()))
                 
-            case .found, .empty:
+            case .success(.some), .success(.none):
                 completion(.success([]))
             }
         }
@@ -68,10 +68,10 @@ extension LocalCocktailLoader {
             case .failure:
                 self.store.deleteCachedFeed { _ in }
                 
-            case let .found(_, timestamp) where !CocktailCachePolicy.validate(timestamp, against: self.currentDate()):
+            case let .success(.some(cache)) where !CocktailCachePolicy.validate(cache.timestamp, against: self.currentDate()):
                 self.store.deleteCachedFeed { _ in }
                 
-            case .empty, .found:
+            case .success(.none), .success(.some):
                 break
             }
         }
