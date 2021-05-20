@@ -12,6 +12,7 @@
 		C6CA30382656BA2000657F12 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6CA30362656BA2000657F12 /* Main.storyboard */; };
 		C6CA303A2656BA2100657F12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6CA30392656BA2100657F12 /* Assets.xcassets */; };
 		C6CA303D2656BA2100657F12 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6CA303B2656BA2100657F12 /* LaunchScreen.storyboard */; };
+		C6CA30452656C39400657F12 /* CocktailListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CA30442656C39400657F12 /* CocktailListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		C6CA30392656BA2100657F12 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C6CA303C2656BA2100657F12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C6CA303E2656BA2100657F12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C6CA30442656C39400657F12 /* CocktailListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				C6CA30392656BA2100657F12 /* Assets.xcassets */,
 				C6CA303B2656BA2100657F12 /* LaunchScreen.storyboard */,
 				C6CA303E2656BA2100657F12 /* Info.plist */,
+				C6CA30442656C39400657F12 /* CocktailListViewController.swift */,
 			);
 			path = Prototype;
 			sourceTree = "<group>";
@@ -136,6 +139,7 @@
 			files = (
 				C6CA30312656BA2000657F12 /* AppDelegate.swift in Sources */,
 				C6CA30332656BA2000657F12 /* SceneDelegate.swift in Sources */,
+				C6CA30452656C39400657F12 /* CocktailListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
