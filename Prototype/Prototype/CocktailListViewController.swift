@@ -10,7 +10,7 @@ struct CocktailImageViewModel {
     let description: String
 }
 
-final class CoctailListViewController: UITableViewController {
+final class CocktailListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
