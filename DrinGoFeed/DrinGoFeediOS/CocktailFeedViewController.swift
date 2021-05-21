@@ -16,7 +16,7 @@ public protocol CocktailImageDataLoader {
 
 }
 
-final public class CocktailFeedViewController: UITableViewController {
+final public class CocktailFeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
     private var feedLoader: CocktailLoader?
     private var imageLoader: CocktailImageDataLoader?
     private var tableModel = [CocktailItem]()
@@ -32,6 +32,7 @@ final public class CocktailFeedViewController: UITableViewController {
         super.viewDidLoad()
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(load), for: .valueChanged)
+        tableView.prefetchDataSource = self
         load()
     }
         
@@ -59,12 +60,21 @@ final public class CocktailFeedViewController: UITableViewController {
         cell.cocktailImageView.image = nil
         cell.cocktailImageRetryButton.isHidden = true
         cell.cocktailImageContainer.startShimmering()
-        tasks[indexPath] = imageLoader?.loadImageData(from: cellModel.imageURL) { [weak cell] result in
-            let data = try? result.get()
-            cell?.cocktailImageView.image = data.map(UIImage.init) ?? nil
-            cell?.cocktailImageRetryButton.isHidden = (data != nil)
-            cell?.cocktailImageContainer.stopShimmering()
+
+        let loadImage = { [weak self, weak cell] in
+            guard let self = self else { return }
+
+            self.tasks[indexPath] = self.imageLoader?.loadImageData(from: cellModel.imageURL) { [weak cell] result in
+                let data = try? result.get()
+                let image = data.map(UIImage.init) ?? nil
+                cell?.cocktailImageView.image = image
+                cell?.cocktailImageRetryButton.isHidden = (image != nil)
+                cell?.cocktailImageContainer.stopShimmering()
+            }
         }
+        
+        cell.onRetry = loadImage
+        loadImage()
 
         return cell
     }
@@ -72,5 +82,12 @@ final public class CocktailFeedViewController: UITableViewController {
     public override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         tasks[indexPath]?.cancel()
         tasks[indexPath] = nil
+    }
+    
+    public func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        indexPaths.forEach { indexPath in
+            let cellModel = tableModel[indexPath.row]
+            _ = imageLoader?.loadImageData(from: cellModel.imageURL) { _ in }
+        }
     }
 }
