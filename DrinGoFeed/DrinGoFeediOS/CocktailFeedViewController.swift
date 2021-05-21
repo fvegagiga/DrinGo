@@ -5,13 +5,21 @@
 import UIKit
 import DrinGoFeed
 
+public protocol CocktailImageDataLoader {
+    func loadImageData(from url: URL)
+}
+
 final public class CocktailFeedViewController: UITableViewController {
     private var loader: CocktailLoader?
+    private var feedLoader: CocktailLoader?
+    private var imageLoader: CocktailImageDataLoader?
+
     private var tableModel = [CocktailItem]()
 
-    public convenience init(loader: CocktailLoader) {
+    public convenience init(feedLoader: CocktailLoader, imageLoader: CocktailImageDataLoader) {
         self.init()
-        self.loader = loader
+        self.feedLoader = feedLoader
+        self.imageLoader = imageLoader
     }
 
     public override func viewDidLoad() {
@@ -23,7 +31,7 @@ final public class CocktailFeedViewController: UITableViewController {
         
     @objc private func load() {
         refreshControl?.beginRefreshing()
-        loader?.load { [weak self] result in
+        feedLoader?.load { [weak self] result in
             if let feed = try? result.get() {
                 self?.tableModel = feed
                 self?.tableView.reloadData()
@@ -42,6 +50,7 @@ final public class CocktailFeedViewController: UITableViewController {
         let cell = CocktailFeedCell()
         cell.titleLabel.text = cellModel.name
         cell.descriptionLabel.text = cellModel.description
+        imageLoader?.loadImageData(from: cellModel.imageURL)
         return cell
     }
 
