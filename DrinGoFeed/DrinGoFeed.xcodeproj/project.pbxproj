@@ -11,6 +11,7 @@
 		C61E1AD92643C68F0051E30C /* DrinGoFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6504A45263EACA600F4FCD1 /* DrinGoFeed.framework */; };
 		C637318C264E516E00C1B9FE /* RemoteCocktailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C637318B264E516E00C1B9FE /* RemoteCocktailItem.swift */; };
 		C637318E264E51CB00C1B9FE /* LocalCocktailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C637318D264E51CB00C1B9FE /* LocalCocktailItem.swift */; };
+		C637936126580556000118E4 /* CocktailFeedViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C637936026580556000118E4 /* CocktailFeedViewControllerTests.swift */; };
 		C638A16D2650F5CB001C9371 /* CodableFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C638A16C2650F5CB001C9371 /* CodableFeedStore.swift */; };
 		C638A16F26510602001C9371 /* FeedStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C638A16E26510602001C9371 /* FeedStoreSpecs.swift */; };
 		C638A17126510691001C9371 /* XCTestCase+FeedStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C638A17026510691001C9371 /* XCTestCase+FeedStoreSpecs.swift */; };
@@ -83,6 +84,7 @@
 		C61E1AD82643C68F0051E30C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C637318B264E516E00C1B9FE /* RemoteCocktailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCocktailItem.swift; sourceTree = "<group>"; };
 		C637318D264E51CB00C1B9FE /* LocalCocktailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCocktailItem.swift; sourceTree = "<group>"; };
+		C637936026580556000118E4 /* CocktailFeedViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailFeedViewControllerTests.swift; sourceTree = "<group>"; };
 		C638A16C2650F5CB001C9371 /* CodableFeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableFeedStore.swift; sourceTree = "<group>"; };
 		C638A16E26510602001C9371 /* FeedStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStoreSpecs.swift; sourceTree = "<group>"; };
 		C638A17026510691001C9371 /* XCTestCase+FeedStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+FeedStoreSpecs.swift"; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				C6835BD326578FF0000EFEF8 /* Info.plist */,
+				C637936026580556000118E4 /* CocktailFeedViewControllerTests.swift */,
 			);
 			path = DrinGoFeediOSTests;
 			sourceTree = "<group>";
@@ -509,6 +512,7 @@
 					};
 					C6835BCB26578FF0000EFEF8 = {
 						CreatedOnToolsVersion = 12.5;
+						LastSwiftMigration = 1250;
 					};
 				};
 			};
@@ -653,6 +657,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C637936126580556000118E4 /* CocktailFeedViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1028,6 +1033,7 @@
 		C6835BD926578FF0000EFEF8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5MPC35WK7F;
 				INFOPLIST_FILE = DrinGoFeediOSTests/Info.plist;
@@ -1040,6 +1046,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.fvg0902iosdev.DrinGoFeediOSTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1048,6 +1055,7 @@
 		C6835BDA26578FF0000EFEF8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5MPC35WK7F;
 				INFOPLIST_FILE = DrinGoFeediOSTests/Info.plist;
