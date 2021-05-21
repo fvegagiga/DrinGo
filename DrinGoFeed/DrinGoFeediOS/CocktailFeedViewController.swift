@@ -7,6 +7,7 @@ import DrinGoFeed
 
 final public class CocktailFeedViewController: UITableViewController {
     private var loader: CocktailLoader?
+    private var tableModel = [CocktailItem]()
 
     public convenience init(loader: CocktailLoader) {
         self.init()
@@ -22,8 +23,24 @@ final public class CocktailFeedViewController: UITableViewController {
         
     @objc private func load() {
         refreshControl?.beginRefreshing()
-        loader?.load { [weak self] _ in
+        loader?.load { [weak self] result in
+            self?.tableModel = (try? result.get()) ?? []
+            self?.tableView.reloadData()
             self?.refreshControl?.endRefreshing()
         }
     }
+    
+    public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tableModel.count
+    }
+    
+    public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellModel = tableModel[indexPath.row]
+        let cell = CocktailFeedCell()
+        cell.titleLabel.text = cellModel.name
+        cell.descriptionLabel.text = cellModel.description
+        return cell
+    }
+
+    
 }
