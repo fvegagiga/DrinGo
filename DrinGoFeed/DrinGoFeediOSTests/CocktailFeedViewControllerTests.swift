@@ -145,6 +145,13 @@ class CocktailFeedViewControllerTests: XCTestCase {
     class LoaderSpy: CocktailLoader, CocktailImageDataLoader {
         
         // MARK: - FeedLoader
+        
+        private struct TaskSpy: CocktailImageDataLoaderTask {
+            let cancelCallback: () -> Void
+            func cancel() {
+                cancelCallback()
+            }
+        }
 
         private var feedRequests = [(CocktailLoader.Result) -> Void]()
         
@@ -170,12 +177,9 @@ class CocktailFeedViewControllerTests: XCTestCase {
         private(set) var loadedImageURLs = [URL]()
         private(set) var cancelledImageURLs = [URL]()
 
-        func loadImageData(from url: URL) {
+        func loadImageData(from url: URL) -> CocktailImageDataLoaderTask {
             loadedImageURLs.append(url)
-        }
-        
-        func cancelImageDataLoad(from url: URL) {
-            cancelledImageURLs.append(url)
+            return TaskSpy { [weak self] in self?.cancelledImageURLs.append(url) }
         }
     }
 }
