@@ -24,19 +24,25 @@ final class CocktailFeedViewController: UIViewController {
 class CocktailFeedViewControllerTests: XCTestCase {
 
     func test_init_doesNotLoadFeed() {
-        let loader = LoaderSpy()
-        _ = CocktailFeedViewController(loader: loader)
+        let (_, loader) = makeSUT()
         
         XCTAssertEqual(loader.loadCallCount, 0)
     }
     
     func test_viewDidLoad_loadsFeed() {
-        let loader = LoaderSpy()
-        let sut = CocktailFeedViewController(loader: loader)
-        
+        let (sut, loader) = makeSUT()
+
         sut.loadViewIfNeeded()
         
         XCTAssertEqual(loader.loadCallCount, 1)
+    }
+    
+    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: CocktailFeedViewController, loader: LoaderSpy) {
+        let loader = LoaderSpy()
+        let sut = CocktailFeedViewController(loader: loader)
+        trackForMemoryLeaks(loader, file: file, line: line)
+        trackForMemoryLeaks(sut, file: file, line: line)
+        return (sut, loader)
     }
 
     // MARK: - Helpers

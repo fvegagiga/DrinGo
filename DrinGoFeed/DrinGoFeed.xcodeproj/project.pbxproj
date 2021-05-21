@@ -14,6 +14,7 @@
 		C637936126580556000118E4 /* CocktailFeedViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C637936026580556000118E4 /* CocktailFeedViewControllerTests.swift */; };
 		C63793632658081F000118E4 /* DrinGoFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6504A45263EACA600F4FCD1 /* DrinGoFeed.framework */; platformFilter = ios; };
 		C63793642658081F000118E4 /* DrinGoFeed.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C6504A45263EACA600F4FCD1 /* DrinGoFeed.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C637936826580A67000118E4 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A01C2226427C530071A344 /* XCTestCase+MemoryLeakTracking.swift */; };
 		C638A16D2650F5CB001C9371 /* CodableFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C638A16C2650F5CB001C9371 /* CodableFeedStore.swift */; };
 		C638A16F26510602001C9371 /* FeedStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C638A16E26510602001C9371 /* FeedStoreSpecs.swift */; };
 		C638A17126510691001C9371 /* XCTestCase+FeedStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C638A17026510691001C9371 /* XCTestCase+FeedStoreSpecs.swift */; };
@@ -692,6 +693,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C637936126580556000118E4 /* CocktailFeedViewControllerTests.swift in Sources */,
+				C637936826580A67000118E4 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
