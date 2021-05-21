@@ -36,6 +36,7 @@
 		C6504A62263EC6F500F4FCD1 /* CocktailLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6504A61263EC6F500F4FCD1 /* CocktailLoader.swift */; };
 		C6559AD9264ED63E003569B1 /* LoadFeedFromCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6559AD8264ED63E003569B1 /* LoadFeedFromCacheUseCaseTests.swift */; };
 		C6559ADC264ED74E003569B1 /* FeedStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6559ADB264ED74E003569B1 /* FeedStoreSpy.swift */; };
+		C6835BCD26578FF0000EFEF8 /* DrinGoFeediOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6835BC426578FF0000EFEF8 /* DrinGoFeediOS.framework */; };
 		C6A01C2326427C530071A344 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A01C2226427C530071A344 /* XCTestCase+MemoryLeakTracking.swift */; };
 		C6D87F2C264D02AC00749974 /* LocalCocktailLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D87F2B264D02AC00749974 /* LocalCocktailLoader.swift */; };
 		C6D87F2E264D035500749974 /* FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D87F2D264D035500749974 /* FeedStore.swift */; };
@@ -66,6 +67,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = C6504A44263EACA600F4FCD1;
 			remoteInfo = DrinGoFeed;
+		};
+		C6835BCE26578FF0000EFEF8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C6504A3C263EACA600F4FCD1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C6835BC326578FF0000EFEF8;
+			remoteInfo = DrinGoFeediOS;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -101,6 +109,10 @@
 		C6504A61263EC6F500F4FCD1 /* CocktailLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailLoader.swift; sourceTree = "<group>"; };
 		C6559AD8264ED63E003569B1 /* LoadFeedFromCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadFeedFromCacheUseCaseTests.swift; sourceTree = "<group>"; };
 		C6559ADB264ED74E003569B1 /* FeedStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStoreSpy.swift; sourceTree = "<group>"; };
+		C6835BC426578FF0000EFEF8 /* DrinGoFeediOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DrinGoFeediOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6835BC726578FF0000EFEF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C6835BCC26578FF0000EFEF8 /* DrinGoFeediOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrinGoFeediOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6835BD326578FF0000EFEF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6A01C2226427C530071A344 /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 		C6D87F2B264D02AC00749974 /* LocalCocktailLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCocktailLoader.swift; sourceTree = "<group>"; };
 		C6D87F2D264D035500749974 /* FeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStore.swift; sourceTree = "<group>"; };
@@ -138,6 +150,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6504A4F263EACA700F4FCD1 /* DrinGoFeed.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6835BC126578FF0000EFEF8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6835BC926578FF0000EFEF8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C6835BCD26578FF0000EFEF8 /* DrinGoFeediOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,6 +258,8 @@
 				C6504A52263EACA700F4FCD1 /* DrinGoFeedTests */,
 				C61E1AD52643C68F0051E30C /* DrinGoFeedAPIEndToEndTests */,
 				C63CC9872651724F007EC72D /* DrinGoFeedCacheIntegrationTests */,
+				C6835BC526578FF0000EFEF8 /* DrinGoFeediOS */,
+				C6835BD026578FF0000EFEF8 /* DrinGoFeediOSTests */,
 				C6504A46263EACA600F4FCD1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -242,6 +271,8 @@
 				C6504A4E263EACA700F4FCD1 /* DrinGoFeedTests.xctest */,
 				C61E1AD42643C68F0051E30C /* DrinGoFeedAPIEndToEndTests.xctest */,
 				C63CC9862651724F007EC72D /* DrinGoFeedCacheIntegrationTests.xctest */,
+				C6835BC426578FF0000EFEF8 /* DrinGoFeediOS.framework */,
+				C6835BCC26578FF0000EFEF8 /* DrinGoFeediOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -275,6 +306,22 @@
 				C638D77B264FB49A00C09917 /* FeedCacheTestHelpers.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		C6835BC526578FF0000EFEF8 /* DrinGoFeediOS */ = {
+			isa = PBXGroup;
+			children = (
+				C6835BC726578FF0000EFEF8 /* Info.plist */,
+			);
+			path = DrinGoFeediOS;
+			sourceTree = "<group>";
+		};
+		C6835BD026578FF0000EFEF8 /* DrinGoFeediOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				C6835BD326578FF0000EFEF8 /* Info.plist */,
+			);
+			path = DrinGoFeediOSTests;
 			sourceTree = "<group>";
 		};
 		C6A01C2126427C370071A344 /* Helpers */ = {
@@ -311,6 +358,13 @@
 
 /* Begin PBXHeadersBuildPhase section */
 		C6504A40263EACA600F4FCD1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6835BBF26578FF0000EFEF8 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -392,6 +446,42 @@
 			productReference = C6504A4E263EACA700F4FCD1 /* DrinGoFeedTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		C6835BC326578FF0000EFEF8 /* DrinGoFeediOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C6835BD526578FF0000EFEF8 /* Build configuration list for PBXNativeTarget "DrinGoFeediOS" */;
+			buildPhases = (
+				C6835BBF26578FF0000EFEF8 /* Headers */,
+				C6835BC026578FF0000EFEF8 /* Sources */,
+				C6835BC126578FF0000EFEF8 /* Frameworks */,
+				C6835BC226578FF0000EFEF8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DrinGoFeediOS;
+			productName = DrinGoFeediOS;
+			productReference = C6835BC426578FF0000EFEF8 /* DrinGoFeediOS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		C6835BCB26578FF0000EFEF8 /* DrinGoFeediOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C6835BD826578FF0000EFEF8 /* Build configuration list for PBXNativeTarget "DrinGoFeediOSTests" */;
+			buildPhases = (
+				C6835BC826578FF0000EFEF8 /* Sources */,
+				C6835BC926578FF0000EFEF8 /* Frameworks */,
+				C6835BCA26578FF0000EFEF8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C6835BCF26578FF0000EFEF8 /* PBXTargetDependency */,
+			);
+			name = DrinGoFeediOSTests;
+			productName = DrinGoFeediOSTests;
+			productReference = C6835BCC26578FF0000EFEF8 /* DrinGoFeediOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -414,6 +504,12 @@
 					C6504A4D263EACA700F4FCD1 = {
 						CreatedOnToolsVersion = 12.5;
 					};
+					C6835BC326578FF0000EFEF8 = {
+						CreatedOnToolsVersion = 12.5;
+					};
+					C6835BCB26578FF0000EFEF8 = {
+						CreatedOnToolsVersion = 12.5;
+					};
 				};
 			};
 			buildConfigurationList = C6504A3F263EACA600F4FCD1 /* Build configuration list for PBXProject "DrinGoFeed" */;
@@ -433,6 +529,8 @@
 				C6504A4D263EACA700F4FCD1 /* DrinGoFeedTests */,
 				C61E1AD32643C68F0051E30C /* DrinGoFeedAPIEndToEndTests */,
 				C63CC9852651724F007EC72D /* DrinGoFeedCacheIntegrationTests */,
+				C6835BC326578FF0000EFEF8 /* DrinGoFeediOS */,
+				C6835BCB26578FF0000EFEF8 /* DrinGoFeediOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -460,6 +558,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		C6504A4C263EACA700F4FCD1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6835BC226578FF0000EFEF8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6835BCA26578FF0000EFEF8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -530,6 +642,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C6835BC026578FF0000EFEF8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6835BC826578FF0000EFEF8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -547,6 +673,11 @@
 			isa = PBXTargetDependency;
 			target = C6504A44263EACA600F4FCD1 /* DrinGoFeed */;
 			targetProxy = C6504A50263EACA700F4FCD1 /* PBXContainerItemProxy */;
+		};
+		C6835BCF26578FF0000EFEF8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C6835BC326578FF0000EFEF8 /* DrinGoFeediOS */;
+			targetProxy = C6835BCE26578FF0000EFEF8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -841,6 +972,100 @@
 			};
 			name = Release;
 		};
+		C6835BD626578FF0000EFEF8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 5MPC35WK7F;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = DrinGoFeediOS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fvg0902iosdev.DrinGoFeediOS;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C6835BD726578FF0000EFEF8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 5MPC35WK7F;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = DrinGoFeediOS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fvg0902iosdev.DrinGoFeediOS;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C6835BD926578FF0000EFEF8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5MPC35WK7F;
+				INFOPLIST_FILE = DrinGoFeediOSTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fvg0902iosdev.DrinGoFeediOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C6835BDA26578FF0000EFEF8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5MPC35WK7F;
+				INFOPLIST_FILE = DrinGoFeediOSTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fvg0902iosdev.DrinGoFeediOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -885,6 +1110,24 @@
 			buildConfigurations = (
 				C6504A5D263EACA700F4FCD1 /* Debug */,
 				C6504A5E263EACA700F4FCD1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C6835BD526578FF0000EFEF8 /* Build configuration list for PBXNativeTarget "DrinGoFeediOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C6835BD626578FF0000EFEF8 /* Debug */,
+				C6835BD726578FF0000EFEF8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C6835BD826578FF0000EFEF8 /* Build configuration list for PBXNativeTarget "DrinGoFeediOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C6835BD926578FF0000EFEF8 /* Debug */,
+				C6835BDA26578FF0000EFEF8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
