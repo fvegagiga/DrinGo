@@ -118,6 +118,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Cocktails" id="Zfb-t1-Cv5"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="U0s-YA-1qp">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refresh" destination="hYW-gn-bZc" eventType="valueChanged" id="fa4-rh-41J"/>
+                        </connections>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3DI-jC-GIK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
