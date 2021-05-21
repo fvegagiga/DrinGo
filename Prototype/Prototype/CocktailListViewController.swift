@@ -4,6 +4,12 @@
 
 import UIKit
 
+struct CocktailImageViewModel {
+    let title: String
+    let imageName: String
+    let description: String
+}
+
 final class CoctailListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
