@@ -10,7 +10,7 @@
         <!--Cocktails-->
         <scene sceneID="2Yk-pw-pOg">
             <objects>
-                <tableViewController id="hYW-gn-bZc" customClass="CoctailListViewController" customModule="Prototype" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="hYW-gn-bZc" customClass="CocktailListViewController" customModule="Prototype" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Kzc-Nw-xaT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,7 +26,7 @@
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CocktailImageCell" rowHeight="575" id="MlT-xU-Nb1">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CocktailImageCell" rowHeight="575" id="MlT-xU-Nb1" customClass="CocktailImageCell" customModule="Prototype" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="40.5" width="414" height="575"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MlT-xU-Nb1" id="Vni-go-FaY">
@@ -106,6 +106,11 @@
                                         <constraint firstItem="2IC-fD-vPW" firstAttribute="top" secondItem="Vni-go-FaY" secondAttribute="topMargin" priority="999" constant="6" id="qdv-nk-vEu"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="cocktailImageView" destination="Amv-h9-ORM" id="Azk-HK-U2N"/>
+                                    <outlet property="descriptionLabel" destination="dFS-gW-0wZ" id="b4b-tC-5WE"/>
+                                    <outlet property="titleLabel" destination="Qug-1J-oMF" id="l87-UM-3gg"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
