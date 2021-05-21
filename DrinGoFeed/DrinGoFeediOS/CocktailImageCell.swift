@@ -9,4 +9,5 @@ public final class CocktailFeedCell: UITableViewCell {
     public let descriptionLabel = UILabel()
     public let cocktailImageContainer = UIView()
     public let cocktailImageView = UIImageView()
+    public let cocktailImageRetryButton = UIButton()
 }

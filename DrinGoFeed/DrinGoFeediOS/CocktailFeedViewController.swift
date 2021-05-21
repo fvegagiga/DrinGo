@@ -57,10 +57,12 @@ final public class CocktailFeedViewController: UITableViewController {
         cell.titleLabel.text = cellModel.name
         cell.descriptionLabel.text = cellModel.description
         cell.cocktailImageView.image = nil
+        cell.cocktailImageRetryButton.isHidden = true
         cell.cocktailImageContainer.startShimmering()
         tasks[indexPath] = imageLoader?.loadImageData(from: cellModel.imageURL) { [weak cell] result in
             let data = try? result.get()
             cell?.cocktailImageView.image = data.map(UIImage.init) ?? nil
+            cell?.cocktailImageRetryButton.isHidden = (data != nil)
             cell?.cocktailImageContainer.stopShimmering()
         }
 
