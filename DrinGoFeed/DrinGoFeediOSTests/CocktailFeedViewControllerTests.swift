@@ -23,7 +23,9 @@ final class CocktailFeedViewController: UITableViewController {
     }
         
     @objc private func load() {
-        loader?.load() { _ in }
+        loader?.load { [weak self] _ in
+            self?.refreshControl?.endRefreshing()
+        }
     }
 }
 
@@ -63,6 +65,15 @@ class CocktailFeedViewControllerTests: XCTestCase {
         XCTAssertEqual(sut.refreshControl?.isRefreshing, true)
     }
     
+    func test_viewDidLoad_hidesLoadingIndicatorOnLoaderCompletion() {
+        let (sut, loader) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        loader.completeFeedLoading()
+        
+        XCTAssertEqual(sut.refreshControl?.isRefreshing, false)
+    }
+
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: CocktailFeedViewController, loader: LoaderSpy) {
         let loader = LoaderSpy()
         let sut = CocktailFeedViewController(loader: loader)
@@ -74,10 +85,18 @@ class CocktailFeedViewControllerTests: XCTestCase {
     // MARK: - Helpers
     
     class LoaderSpy: CocktailLoader {
-        private (set) var loadCallCount: Int = 0
+        private var completions = [(CocktailLoader.Result) -> Void]()
+        
+        var loadCallCount: Int {
+            return completions.count
+        }
         
         func load(completion: @escaping (CocktailLoader.Result) -> Void) {
-            loadCallCount += 1
+            completions.append(completion)
+        }
+        
+        func completeFeedLoading() {
+            completions[0](.success([]))
         }
     }
 }
