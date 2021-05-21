@@ -4,11 +4,12 @@
 
 import XCTest
 import UIKit
+import DrinGoFeed
 
 final class CocktailFeedViewController: UIViewController {
-    private var loader: CocktailFeedViewControllerTests.LoaderSpy?
+    private var loader: CocktailLoader?
 
-    convenience init(loader: CocktailFeedViewControllerTests.LoaderSpy) {
+    convenience init(loader: CocktailLoader) {
         self.init()
         self.loader = loader
     }
@@ -16,7 +17,7 @@ final class CocktailFeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loader?.load()
+        loader?.load() { _ in }
     }
 }
 
@@ -40,10 +41,10 @@ class CocktailFeedViewControllerTests: XCTestCase {
 
     // MARK: - Helpers
     
-    class LoaderSpy {
+    class LoaderSpy: CocktailLoader {
         private (set) var loadCallCount: Int = 0
-    
-        func load() {
+        
+        func load(completion: @escaping (CocktailLoader.Result) -> Void) {
             loadCallCount += 1
         }
     }

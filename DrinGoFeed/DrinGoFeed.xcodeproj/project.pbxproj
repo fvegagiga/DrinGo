@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,8 @@
 		C637318C264E516E00C1B9FE /* RemoteCocktailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C637318B264E516E00C1B9FE /* RemoteCocktailItem.swift */; };
 		C637318E264E51CB00C1B9FE /* LocalCocktailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C637318D264E51CB00C1B9FE /* LocalCocktailItem.swift */; };
 		C637936126580556000118E4 /* CocktailFeedViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C637936026580556000118E4 /* CocktailFeedViewControllerTests.swift */; };
+		C63793632658081F000118E4 /* DrinGoFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6504A45263EACA600F4FCD1 /* DrinGoFeed.framework */; platformFilter = ios; };
+		C63793642658081F000118E4 /* DrinGoFeed.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C6504A45263EACA600F4FCD1 /* DrinGoFeed.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C638A16D2650F5CB001C9371 /* CodableFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C638A16C2650F5CB001C9371 /* CodableFeedStore.swift */; };
 		C638A16F26510602001C9371 /* FeedStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C638A16E26510602001C9371 /* FeedStoreSpecs.swift */; };
 		C638A17126510691001C9371 /* XCTestCase+FeedStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C638A17026510691001C9371 /* XCTestCase+FeedStoreSpecs.swift */; };
@@ -55,6 +57,13 @@
 			remoteGlobalIDString = C6504A44263EACA600F4FCD1;
 			remoteInfo = DrinGoFeed;
 		};
+		C63793652658081F000118E4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C6504A3C263EACA600F4FCD1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C6504A44263EACA600F4FCD1;
+			remoteInfo = DrinGoFeed;
+		};
 		C63CC98C2651724F007EC72D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C6504A3C263EACA600F4FCD1 /* Project object */;
@@ -77,6 +86,20 @@
 			remoteInfo = DrinGoFeediOS;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C63793672658081F000118E4 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C63793642658081F000118E4 /* DrinGoFeed.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		C61E1AD42643C68F0051E30C /* DrinGoFeedAPIEndToEndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrinGoFeedAPIEndToEndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,6 +182,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C63793632658081F000118E4 /* DrinGoFeed.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,6 +204,13 @@
 				C61E1AD82643C68F0051E30C /* Info.plist */,
 			);
 			path = DrinGoFeedAPIEndToEndTests;
+			sourceTree = "<group>";
+		};
+		C63793622658081E000118E4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		C638A17226510998001C9371 /* FeedStoreSpecs */ = {
@@ -263,6 +294,7 @@
 				C6835BC526578FF0000EFEF8 /* DrinGoFeediOS */,
 				C6835BD026578FF0000EFEF8 /* DrinGoFeediOSTests */,
 				C6504A46263EACA600F4FCD1 /* Products */,
+				C63793622658081E000118E4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -457,10 +489,12 @@
 				C6835BC026578FF0000EFEF8 /* Sources */,
 				C6835BC126578FF0000EFEF8 /* Frameworks */,
 				C6835BC226578FF0000EFEF8 /* Resources */,
+				C63793672658081F000118E4 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				C63793662658081F000118E4 /* PBXTargetDependency */,
 			);
 			name = DrinGoFeediOS;
 			productName = DrinGoFeediOS;
@@ -668,6 +702,12 @@
 			isa = PBXTargetDependency;
 			target = C6504A44263EACA600F4FCD1 /* DrinGoFeed */;
 			targetProxy = C61E1ADA2643C68F0051E30C /* PBXContainerItemProxy */;
+		};
+		C63793662658081F000118E4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = C6504A44263EACA600F4FCD1 /* DrinGoFeed */;
+			targetProxy = C63793652658081F000118E4 /* PBXContainerItemProxy */;
 		};
 		C63CC98D2651724F007EC72D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
