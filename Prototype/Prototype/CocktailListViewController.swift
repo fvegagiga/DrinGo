@@ -28,7 +28,7 @@ final class CocktailListViewController: UITableViewController {
 extension CocktailImageCell {
     func configure(with model: CocktailImageViewModel) {
         titleLabel.text = model.title
-        cocktailImageView.image = UIImage(named: model.imageName)
+        fadeIn(UIImage(named: model.imageName))
         descriptionLabel.text = model.description
     }
 }
