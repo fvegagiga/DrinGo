@@ -106,6 +106,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="cocktailImageContainer" destination="KCp-si-1tp" id="4r8-Nd-Kc4"/>
                                     <outlet property="cocktailImageView" destination="Amv-h9-ORM" id="Azk-HK-U2N"/>
                                     <outlet property="descriptionLabel" destination="dFS-gW-0wZ" id="b4b-tC-5WE"/>
                                     <outlet property="titleLabel" destination="Qug-1J-oMF" id="l87-UM-3gg"/>
