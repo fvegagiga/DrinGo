@@ -10,7 +10,10 @@ public protocol CocktailImageDataLoaderTask {
 }
 
 public protocol CocktailImageDataLoader {
-    func loadImageData(from url: URL) -> CocktailImageDataLoaderTask
+    typealias Result = Swift.Result<Data, Error>
+
+    func loadImageData(from url: URL, completion: @escaping (Result) -> Void) -> CocktailImageDataLoaderTask
+
 }
 
 final public class CocktailFeedViewController: UITableViewController {
@@ -53,7 +56,11 @@ final public class CocktailFeedViewController: UITableViewController {
         let cell = CocktailFeedCell()
         cell.titleLabel.text = cellModel.name
         cell.descriptionLabel.text = cellModel.description
-        tasks[indexPath] = imageLoader?.loadImageData(from: cellModel.imageURL)
+        cell.cocktailImageContainer.startShimmering()
+        tasks[indexPath] = imageLoader?.loadImageData(from: cellModel.imageURL) { [weak cell] result in
+            cell?.cocktailImageContainer.stopShimmering()
+        }
+
         return cell
     }
 
