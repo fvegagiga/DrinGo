@@ -5,29 +5,7 @@
 import XCTest
 import UIKit
 import DrinGoFeed
-
-final class CocktailFeedViewController: UITableViewController {
-    private var loader: CocktailLoader?
-
-    convenience init(loader: CocktailLoader) {
-        self.init()
-        self.loader = loader
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(load), for: .valueChanged)
-        load()
-    }
-        
-    @objc private func load() {
-        refreshControl?.beginRefreshing()
-        loader?.load { [weak self] _ in
-            self?.refreshControl?.endRefreshing()
-        }
-    }
-}
+import DrinGoFeediOS
 
 class CocktailFeedViewControllerTests: XCTestCase {
     
