@@ -6,7 +6,7 @@ import XCTest
 import UIKit
 import DrinGoFeed
 
-final class CocktailFeedViewController: UIViewController {
+final class CocktailFeedViewController: UITableViewController {
     private var loader: CocktailLoader?
 
     convenience init(loader: CocktailLoader) {
@@ -16,7 +16,12 @@ final class CocktailFeedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(load), for: .valueChanged)
+        load()
+    }
         
+    @objc private func load() {
         loader?.load() { _ in }
     }
 }
@@ -36,6 +41,20 @@ class CocktailFeedViewControllerTests: XCTestCase {
         
         XCTAssertEqual(loader.loadCallCount, 1)
     }
+    
+    func test_pullToRefresh_loadsFeed() {
+        let (sut, loader) = makeSUT()
+        sut.loadViewIfNeeded()
+
+        sut.refreshControl?.allTargets.forEach { target in
+            sut.refreshControl?.actions(forTarget: target, forControlEvent: .valueChanged)?.forEach {
+                (target as NSObject).perform(Selector($0))
+            }
+        }
+        
+        XCTAssertEqual(loader.loadCallCount, 2)
+    }
+
     
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: CocktailFeedViewController, loader: LoaderSpy) {
         let loader = LoaderSpy()
