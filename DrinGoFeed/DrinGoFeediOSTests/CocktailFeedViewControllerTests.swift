@@ -58,6 +58,18 @@ class CocktailFeedViewControllerTests: XCTestCase {
         assertThat(sut, isRendering: [image0, image1, image2, image3])
     }
 
+    func test_loadFeedCompletion_doesNotAlterCurrentRenderingStateOnError() {
+        let image0 = makeImage()
+        let (sut, loader) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        loader.completeFeedLoading(with: [image0], at: 0)
+        assertThat(sut, isRendering: [image0])
+        
+        sut.simulateUserInitiatedFeedReload()
+        loader.completeFeedLoadingWithError(at: 1)
+        assertThat(sut, isRendering: [image0])
+    }
     
     // MARK: - Helpers
 
@@ -91,7 +103,7 @@ class CocktailFeedViewControllerTests: XCTestCase {
         XCTAssertEqual(cell.descriptionText, image.description, "Expected description text to be \(String(describing: image.description)) for image view at index (\(index)", file: file, line: line)
     }
     
-    private func makeImage(id: Int, title: String, description: String, imageURL: URL = URL(string: "http://any-url.com")!) -> CocktailItem {
+    private func makeImage(id: Int = 0, title: String = "a title", description: String = "a description", imageURL: URL = URL(string: "http://any-url.com")!) -> CocktailItem {
         return CocktailItem(id: id, name: title, description: description, imageURL: imageURL, ingredients: ["Ing1", "Ingr2"], quantity: ["Qt1", "Qt2"])
     }
 
@@ -109,6 +121,11 @@ class CocktailFeedViewControllerTests: XCTestCase {
         
         func completeFeedLoading(with feed: [CocktailItem] = [], at index: Int = 0) {
             completions[index](.success(feed))
+        }
+        
+        func completeFeedLoadingWithError(at index: Int = 0) {
+            let error = NSError(domain: "an error", code: 0)
+            completions[index](.failure(error))
         }
     }
 }
