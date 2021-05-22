@@ -65,6 +65,7 @@
 		C6719FD8265962AD00ACDF8A /* UIImageView+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6719FD7265962AD00ACDF8A /* UIImageView+Animations.swift */; };
 		C6719FDC2659695300ACDF8A /* CocktailFeedUIIntegrationTests+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6719FDB2659695300ACDF8A /* CocktailFeedUIIntegrationTests+Localization.swift */; };
 		C6719FDD26596B0700ACDF8A /* CocktailFeed.strings in Resources */ = {isa = PBXBuildFile; fileRef = C6719FDF26596B0700ACDF8A /* CocktailFeed.strings */; };
+		C6719FE326596C8700ACDF8A /* CocktailFeelLocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6719FE226596C8700ACDF8A /* CocktailFeelLocalizationTests.swift */; };
 		C6835BCD26578FF0000EFEF8 /* DrinGoFeediOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6835BC426578FF0000EFEF8 /* DrinGoFeediOS.framework */; };
 		C6A01C2326427C530071A344 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A01C2226427C530071A344 /* XCTestCase+MemoryLeakTracking.swift */; };
 		C6D87F2C264D02AC00749974 /* LocalCocktailLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D87F2B264D02AC00749974 /* LocalCocktailLoader.swift */; };
@@ -186,6 +187,7 @@
 		C6719FDB2659695300ACDF8A /* CocktailFeedUIIntegrationTests+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CocktailFeedUIIntegrationTests+Localization.swift"; sourceTree = "<group>"; };
 		C6719FDE26596B0700ACDF8A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/CocktailFeed.strings; sourceTree = "<group>"; };
 		C6719FE026596B8E00ACDF8A /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/CocktailFeed.strings; sourceTree = "<group>"; };
+		C6719FE226596C8700ACDF8A /* CocktailFeelLocalizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailFeelLocalizationTests.swift; sourceTree = "<group>"; };
 		C6835BC426578FF0000EFEF8 /* DrinGoFeediOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DrinGoFeediOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6835BC726578FF0000EFEF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6835BCC26578FF0000EFEF8 /* DrinGoFeediOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrinGoFeediOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -480,6 +482,14 @@
 			path = "Cocktail Feed Presentation";
 			sourceTree = "<group>";
 		};
+		C6719FE126596C6000ACDF8A /* Cocktail Feed Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				C6719FE226596C8700ACDF8A /* CocktailFeelLocalizationTests.swift */,
+			);
+			path = "Cocktail Feed Presentation";
+			sourceTree = "<group>";
+		};
 		C6835BC526578FF0000EFEF8 /* DrinGoFeediOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -496,6 +506,7 @@
 			children = (
 				C6835BD326578FF0000EFEF8 /* Info.plist */,
 				C6719FAC2658D8B600ACDF8A /* Cocktail Feed UI */,
+				C6719FE126596C6000ACDF8A /* Cocktail Feed Presentation */,
 			);
 			path = DrinGoFeediOSTests;
 			sourceTree = "<group>";
@@ -850,6 +861,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6719FE326596C8700ACDF8A /* CocktailFeelLocalizationTests.swift in Sources */,
 				C637936126580556000118E4 /* CocktailFeedUIIntegrationTests.swift in Sources */,
 				C6719FA92658D7BA00ACDF8A /* UIButton+TestHelpers.swift in Sources */,
 				C6719FA72658D78200ACDF8A /* UIRefreshControl+TestHelpers.swift in Sources */,
