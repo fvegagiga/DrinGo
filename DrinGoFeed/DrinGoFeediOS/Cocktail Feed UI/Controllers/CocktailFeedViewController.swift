@@ -19,6 +19,7 @@ public final class CocktailFeedViewController: UITableViewController, UITableVie
     public override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "DrinGo"
         refresh()
     }
     
