@@ -6,35 +6,28 @@ import UIKit
 import DrinGoFeed
 
 public final class CocktailFeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
-    private var feedLoader: CocktailLoader?
+    private var refreshController: FeedRefreshViewController?
     private var imageLoader: CocktailImageDataLoader?
-    private var tableModel = [CocktailItem]()
+    private var tableModel = [CocktailItem]() {
+        didSet { tableView.reloadData() }
+    }
     private var tasks = [IndexPath: CocktailImageDataLoaderTask]()
 
     public convenience init(feedLoader: CocktailLoader, imageLoader: CocktailImageDataLoader) {
         self.init()
-        self.feedLoader = feedLoader
+        self.refreshController = FeedRefreshViewController(feedLoader: feedLoader)
         self.imageLoader = imageLoader
     }
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-        refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(load), for: .valueChanged)
-        tableView.prefetchDataSource = self
-        load()
-    }
         
-    @objc private func load() {
-        refreshControl?.beginRefreshing()
-        feedLoader?.load { [weak self] result in
-            if let feed = try? result.get() {
-                self?.tableModel = feed
-                self?.tableView.reloadData()
-                self?.refreshControl?.endRefreshing()
-            }
-            self?.refreshControl?.endRefreshing()
+        refreshControl = refreshController?.view
+        refreshController?.onRefresh = { [weak self] feed in
+            self?.tableModel = feed
         }
+        tableView.prefetchDataSource = self
+        refreshController?.refresh()
     }
     
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
