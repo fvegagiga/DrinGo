@@ -4,12 +4,20 @@
 
 import DrinGoFeed
 
+struct FeedLoadingViewModel {
+    let isLoading: Bool
+}
+
 protocol FeedLoadingView {
-    func display(isLoading: Bool)
+    func display(_ viewModel: FeedLoadingViewModel)
+}
+
+struct FeedViewModel {
+    let feed: [CocktailItem]
 }
 
 protocol FeedView {
-    func display(feed: [CocktailItem])
+    func display(_ viewModel: FeedViewModel)
 }
 
 final class CocktailFeedPresenter {
@@ -23,12 +31,12 @@ final class CocktailFeedPresenter {
     var loadingView: FeedLoadingView?
     
     func loadFeed() {
-        loadingView?.display(isLoading: true)
+        loadingView?.display(FeedLoadingViewModel(isLoading: true))
         feedLoader.load { [weak self] result in
             if let feed = try? result.get() {
-                self?.feedView?.display(feed: feed)
+                self?.feedView?.display(FeedViewModel(feed: feed))
             }
-            self?.loadingView?.display(isLoading: false)
+            self?.loadingView?.display(FeedLoadingViewModel(isLoading: false))
         }
     }
 }
