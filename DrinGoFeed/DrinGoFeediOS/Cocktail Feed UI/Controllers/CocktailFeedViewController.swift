@@ -3,9 +3,6 @@
 //
 
 import UIKit
-import DrinGoFeed
-
-
 
 public final class CocktailFeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
     private var refreshController: FeedRefreshViewController?
