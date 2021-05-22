@@ -5,9 +5,9 @@
 import UIKit
 
 final class CocktailFeedCellController {
-    private let viewModel: CocktailImageViewModel
+    private let viewModel: CocktailImageViewModel<UIImage>
 
-    init(viewModel: CocktailImageViewModel) {
+    init(viewModel: CocktailImageViewModel<UIImage>) {
         self.viewModel = viewModel
     }
     

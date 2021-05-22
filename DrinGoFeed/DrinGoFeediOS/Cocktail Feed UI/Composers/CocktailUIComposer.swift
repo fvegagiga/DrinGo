@@ -22,7 +22,7 @@ public final class CocktailUIComposer {
     private static func adaptFeedToCellControllers(forwardingTo controller: CocktailFeedViewController, loader: CocktailImageDataLoader) -> ([CocktailItem]) -> Void {
         return { [weak controller] feed in
             controller?.tableModel = feed.map { model in
-                let viewModel = CocktailImageViewModel(model: model, imageLoader: loader)
+                let viewModel = CocktailImageViewModel(model: model, imageLoader: loader, imageTransformer: UIImage.init)
                 return CocktailFeedCellController(viewModel: viewModel)
             }
         }
