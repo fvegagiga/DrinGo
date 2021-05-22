@@ -9,8 +9,9 @@ public final class CocktailUIComposer {
     private init() {}
     
     public static func feedComposedWith(feedLoader: CocktailLoader, imageLoader: CocktailImageDataLoader) -> CocktailFeedViewController {
-        let presenter = CocktailFeedPresenter(feedLoader: feedLoader)
-        let refreshController = FeedRefreshViewController(loadFeed: presenter.loadFeed)
+        let presenter = CocktailFeedPresenter()
+        let presentationAdapter = CocktailFeedLoaderPresentationAdapter(feedLoader: feedLoader, presenter: presenter)
+        let refreshController = FeedRefreshViewController(loadFeed: presentationAdapter.loadFeed)
 
         let cocktailFeedController = CocktailFeedViewController(refreshController: refreshController)
         
@@ -51,3 +52,25 @@ private final class FeedViewAdapter: FeedView {
     }
 }
 
+private final class CocktailFeedLoaderPresentationAdapter {
+    private let feedLoader: CocktailLoader
+    private let presenter: CocktailFeedPresenter
+    
+    init(feedLoader: CocktailLoader, presenter: CocktailFeedPresenter) {
+        self.feedLoader = feedLoader
+        self.presenter = presenter
+    }
+    
+    func loadFeed() {
+        presenter.didStartLoadingFeed()
+        
+        feedLoader.load { [weak self] result in
+            switch result {
+            case let .success(feed):
+                self?.presenter.didFinishLoadingFeed(with: feed)
+            case let .failure(error):
+                self?.presenter.didFinishLoadingFeed(with: error)
+            }
+        }
+    }
+}
