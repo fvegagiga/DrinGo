@@ -35,7 +35,7 @@ final class CocktailFeedCellController: FeedImageView {
     func display(_ viewModel: CocktailImageViewModel<UIImage>) {
         cell?.titleLabel.text = viewModel.title
         cell?.descriptionLabel.text = viewModel.description
-        cell?.cocktailImageView.image = viewModel.image
+        cell?.cocktailImageView.setImageAnimated(viewModel.image)
         cell?.cocktailImageContainer.isShimmering = viewModel.isLoading
         cell?.cocktailImageRetryButton.isHidden = !viewModel.shouldRetry
         cell?.onRetry = delegate.didRequestImage
