@@ -240,7 +240,7 @@ class CocktailFeedViewControllerTests: XCTestCase {
 
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: CocktailFeedViewController, loader: LoaderSpy) {
         let loader = LoaderSpy()
-        let sut = CocktailFeedViewController(feedLoader: loader, imageLoader: loader)
+        let sut = CocktailUIComposer.feedComposedWith(feedLoader: loader, imageLoader: loader)
         trackForMemoryLeaks(loader, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
         return (sut, loader)

@@ -5,27 +5,23 @@
 import UIKit
 import DrinGoFeed
 
+
+
 public final class CocktailFeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
     private var refreshController: FeedRefreshViewController?
-    private var imageLoader: CocktailImageDataLoader?
-    private var tableModel = [CocktailItem]() {
+    var tableModel = [CocktailFeedCellController]() {
         didSet { tableView.reloadData() }
     }
-    private var cellControllers = [IndexPath: CocktailFeedCellController]()
-
-    public convenience init(feedLoader: CocktailLoader, imageLoader: CocktailImageDataLoader) {
+    
+    convenience init(refreshController: FeedRefreshViewController) {
         self.init()
-        self.refreshController = FeedRefreshViewController(feedLoader: feedLoader)
-        self.imageLoader = imageLoader
+        self.refreshController = refreshController
     }
 
     public override func viewDidLoad() {
         super.viewDidLoad()
         
         refreshControl = refreshController?.view
-        refreshController?.onRefresh = { [weak self] feed in
-            self?.tableModel = feed
-        }
         tableView.prefetchDataSource = self
         refreshController?.refresh()
     }
@@ -39,7 +35,7 @@ public final class CocktailFeedViewController: UITableViewController, UITableVie
     }
 
     public override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        removeCellController(forRowAt: indexPath)
+        cancelCellControllerLoad(forRowAt: indexPath)
     }
     
     public func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
@@ -49,18 +45,14 @@ public final class CocktailFeedViewController: UITableViewController, UITableVie
     }
     
     public func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
-        indexPaths.forEach(removeCellController)
+        indexPaths.forEach(cancelCellControllerLoad)
     }
     
     private func cellController(forRowAt indexPath: IndexPath) -> CocktailFeedCellController {
-        let cellModel = tableModel[indexPath.row]
-        let cellController = CocktailFeedCellController(model: cellModel, imageLoader: imageLoader!)
-        cellControllers[indexPath] = cellController
-        return cellController
+        return tableModel[indexPath.row]
     }
     
-    private func removeCellController(forRowAt indexPath: IndexPath) {
-        cellControllers[indexPath] = nil
+    private func cancelCellControllerLoad(forRowAt indexPath: IndexPath) {
+        cellController(forRowAt: indexPath).cancelLoad()
     }
-
 }

@@ -45,7 +45,7 @@ final class CocktailFeedCellController {
         task = imageLoader.loadImageData(from: model.imageURL) { _ in }
     }
     
-    deinit {
+    func cancelLoad() {
         task?.cancel()
     }
 }
