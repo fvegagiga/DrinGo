@@ -10,12 +10,12 @@ public final class CocktailUIComposer {
     
     public static func feedComposedWith(feedLoader: CocktailLoader, imageLoader: CocktailImageDataLoader) -> CocktailFeedViewController {
         let presentationAdapter = CocktailFeedLoaderPresentationAdapter(feedLoader: feedLoader)
-        let refreshController = FeedRefreshViewController(delegate: presentationAdapter)
         
         let bundle = Bundle(for: CocktailFeedViewController.self)
         let storyboard = UIStoryboard(name: "CocktailFeed", bundle: bundle)
         let cocktailFeedController = storyboard.instantiateInitialViewController() as! CocktailFeedViewController
-        cocktailFeedController.refreshController = refreshController
+        let refreshController = cocktailFeedController.refreshController!
+        refreshController.delegate = presentationAdapter
         
         presentationAdapter.presenter = CocktailFeedPresenter(
             feedView: FeedViewAdapter(controller: cocktailFeedController, imageLoader: imageLoader),
