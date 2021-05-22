@@ -9,22 +9,31 @@ public final class CocktailUIComposer {
     private init() {}
     
     public static func feedComposedWith(feedLoader: CocktailLoader, imageLoader: CocktailImageDataLoader) -> CocktailFeedViewController {
-        let cocktailFeedViewModel = CocktailFeedViewModel(feedLoader: feedLoader)
-        let refreshController = FeedRefreshViewController(viewModel: cocktailFeedViewModel)
+        let presenter = CocktailFeedPresenter(feedLoader: feedLoader)
+        let refreshController = FeedRefreshViewController(presenter: presenter)
 
         let cocktailFeedController = CocktailFeedViewController(refreshController: refreshController)
         
-        cocktailFeedViewModel.onFeedLoad = adaptFeedToCellControllers(forwardingTo: cocktailFeedController, loader: imageLoader)
-        
+        presenter.loadingView = refreshController
+        presenter.feedView = FeedViewAdapter(controller: cocktailFeedController, imageLoader: imageLoader)
+
         return cocktailFeedController
     }
+}
+
+private final class FeedViewAdapter: FeedView {
+    private weak var controller: CocktailFeedViewController?
+    private let imageLoader: CocktailImageDataLoader
     
-    private static func adaptFeedToCellControllers(forwardingTo controller: CocktailFeedViewController, loader: CocktailImageDataLoader) -> ([CocktailItem]) -> Void {
-        return { [weak controller] feed in
-            controller?.tableModel = feed.map { model in
-                let viewModel = CocktailImageViewModel(model: model, imageLoader: loader, imageTransformer: UIImage.init)
-                return CocktailFeedCellController(viewModel: viewModel)
-            }
+    init(controller: CocktailFeedViewController, imageLoader: CocktailImageDataLoader) {
+        self.controller = controller
+        self.imageLoader = imageLoader
+    }
+    
+    func display(feed: [CocktailItem]) {
+        controller?.tableModel = feed.map { model in
+            CocktailFeedCellController(viewModel: CocktailImageViewModel(model: model, imageLoader: imageLoader, imageTransformer: UIImage.init))
         }
     }
 }
+

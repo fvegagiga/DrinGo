@@ -57,6 +57,7 @@
 		C6719FC32658E3A700ACDF8A /* CocktailUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6719FC22658E3A700ACDF8A /* CocktailUIComposer.swift */; };
 		C6719FC62658EDAE00ACDF8A /* CocktailFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6719FC52658EDAE00ACDF8A /* CocktailFeedViewModel.swift */; };
 		C6719FC82658F32200ACDF8A /* CocktailImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6719FC72658F32200ACDF8A /* CocktailImageViewModel.swift */; };
+		C6719FCA265906F900ACDF8A /* CocktailFeedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6719FC9265906F900ACDF8A /* CocktailFeedPresenter.swift */; };
 		C6835BCD26578FF0000EFEF8 /* DrinGoFeediOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6835BC426578FF0000EFEF8 /* DrinGoFeediOS.framework */; };
 		C6A01C2326427C530071A344 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A01C2226427C530071A344 /* XCTestCase+MemoryLeakTracking.swift */; };
 		C6D87F2C264D02AC00749974 /* LocalCocktailLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D87F2B264D02AC00749974 /* LocalCocktailLoader.swift */; };
@@ -169,6 +170,7 @@
 		C6719FC22658E3A700ACDF8A /* CocktailUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailUIComposer.swift; sourceTree = "<group>"; };
 		C6719FC52658EDAE00ACDF8A /* CocktailFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailFeedViewModel.swift; sourceTree = "<group>"; };
 		C6719FC72658F32200ACDF8A /* CocktailImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailImageViewModel.swift; sourceTree = "<group>"; };
+		C6719FC9265906F900ACDF8A /* CocktailFeedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailFeedPresenter.swift; sourceTree = "<group>"; };
 		C6835BC426578FF0000EFEF8 /* DrinGoFeediOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DrinGoFeediOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6835BC726578FF0000EFEF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6835BCC26578FF0000EFEF8 /* DrinGoFeediOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrinGoFeediOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -466,6 +468,7 @@
 			children = (
 				C6719FC52658EDAE00ACDF8A /* CocktailFeedViewModel.swift */,
 				C6719FC72658F32200ACDF8A /* CocktailImageViewModel.swift */,
+				C6719FC9265906F900ACDF8A /* CocktailFeedPresenter.swift */,
 			);
 			path = "Cocktail Feed Presentation";
 			sourceTree = "<group>";
@@ -817,6 +820,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6719FCA265906F900ACDF8A /* CocktailFeedPresenter.swift in Sources */,
 				C637936E26582553000118E4 /* UIView+Shimmering.swift in Sources */,
 				C6719FC32658E3A700ACDF8A /* CocktailUIComposer.swift in Sources */,
 				C6719FBE2658DC3100ACDF8A /* FeedRefreshViewController.swift in Sources */,
