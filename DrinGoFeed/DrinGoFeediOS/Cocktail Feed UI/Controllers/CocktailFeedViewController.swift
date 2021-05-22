@@ -5,17 +5,6 @@
 import UIKit
 import DrinGoFeed
 
-public protocol CocktailImageDataLoaderTask {
-    func cancel()
-}
-
-public protocol CocktailImageDataLoader {
-    typealias Result = Swift.Result<Data, Error>
-
-    func loadImageData(from url: URL, completion: @escaping (Result) -> Void) -> CocktailImageDataLoaderTask
-
-}
-
 final public class CocktailFeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
     private var feedLoader: CocktailLoader?
     private var imageLoader: CocktailImageDataLoader?
