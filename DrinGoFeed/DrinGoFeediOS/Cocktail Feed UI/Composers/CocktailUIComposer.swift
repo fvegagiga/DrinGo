@@ -11,12 +11,16 @@ public final class CocktailUIComposer {
     public static func feedComposedWith(feedLoader: CocktailLoader, imageLoader: CocktailImageDataLoader) -> CocktailFeedViewController {
         let refreshController = FeedRefreshViewController(feedLoader: feedLoader)
         let cocktailFeedController = CocktailFeedViewController(refreshController: refreshController)
-        refreshController.onRefresh = { [weak cocktailFeedController] feed in
-            cocktailFeedController?.tableModel = feed.map { model in
-                CocktailFeedCellController(model: model, imageLoader: imageLoader)
-            }
-        }
+        refreshController.onRefresh = adaptFeedToCellControllers(forwardingTo: cocktailFeedController, loader: imageLoader)
         
         return cocktailFeedController
+    }
+    
+    private static func adaptFeedToCellControllers(forwardingTo controller: CocktailFeedViewController, loader: CocktailImageDataLoader) -> ([CocktailItem]) -> Void {
+        return { [weak controller] feed in
+            controller?.tableModel = feed.map { model in
+                CocktailFeedCellController(model: model, imageLoader: loader)
+            }
+        }
     }
 }
