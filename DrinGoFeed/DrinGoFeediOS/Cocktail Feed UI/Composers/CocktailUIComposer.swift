@@ -9,9 +9,12 @@ public final class CocktailUIComposer {
     private init() {}
     
     public static func feedComposedWith(feedLoader: CocktailLoader, imageLoader: CocktailImageDataLoader) -> CocktailFeedViewController {
-        let refreshController = FeedRefreshViewController(feedLoader: feedLoader)
+        let cocktailFeedViewModel = CocktailFeedViewModel(feedLoader: feedLoader)
+        let refreshController = FeedRefreshViewController(viewModel: cocktailFeedViewModel)
+
         let cocktailFeedController = CocktailFeedViewController(refreshController: refreshController)
-        refreshController.onRefresh = adaptFeedToCellControllers(forwardingTo: cocktailFeedController, loader: imageLoader)
+        
+        cocktailFeedViewModel.onFeedLoad = adaptFeedToCellControllers(forwardingTo: cocktailFeedController, loader: imageLoader)
         
         return cocktailFeedController
     }
