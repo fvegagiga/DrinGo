@@ -10,7 +10,7 @@ public final class CocktailUIComposer {
     
     public static func feedComposedWith(feedLoader: CocktailLoader, imageLoader: CocktailImageDataLoader) -> CocktailFeedViewController {
         let presenter = CocktailFeedPresenter(feedLoader: feedLoader)
-        let refreshController = FeedRefreshViewController(presenter: presenter)
+        let refreshController = FeedRefreshViewController(loadFeed: presenter.loadFeed)
 
         let cocktailFeedController = CocktailFeedViewController(refreshController: refreshController)
         
