@@ -12,10 +12,11 @@ public final class CocktailUIComposer {
         let presentationAdapter = CocktailFeedLoaderPresentationAdapter(feedLoader: feedLoader)
         let refreshController = FeedRefreshViewController(delegate: presentationAdapter)
         let cocktailFeedController = CocktailFeedViewController(refreshController: refreshController)
-        
-        let feedView = FeedViewAdapter(controller: cocktailFeedController, imageLoader: imageLoader)
-        let loadingView = WeakRefVirtualProxy(refreshController)
-        presentationAdapter.presenter = CocktailFeedPresenter(feedView: feedView, loadingView: loadingView)
+
+        presentationAdapter.presenter = CocktailFeedPresenter(
+            feedView: FeedViewAdapter(controller: cocktailFeedController, imageLoader: imageLoader),
+            loadingView: WeakRefVirtualProxy(refreshController)
+        )
 
         return cocktailFeedController
     }

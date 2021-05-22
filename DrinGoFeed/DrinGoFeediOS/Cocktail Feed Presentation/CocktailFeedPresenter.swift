@@ -4,16 +4,8 @@
 
 import DrinGoFeed
 
-struct FeedLoadingViewModel {
-    let isLoading: Bool
-}
-
 protocol FeedLoadingView {
     func display(_ viewModel: FeedLoadingViewModel)
-}
-
-struct FeedViewModel {
-    let feed: [CocktailItem]
 }
 
 protocol FeedView {
