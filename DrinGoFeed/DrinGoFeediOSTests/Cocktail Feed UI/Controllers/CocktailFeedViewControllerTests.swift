@@ -14,12 +14,7 @@ class CocktailFeedViewControllerTests: XCTestCase {
         
         sut.loadViewIfNeeded()
         
-        let bundle = Bundle(for: CocktailFeedViewController.self)
-        let localizedKey = "COCKTAIL_LIST_VIEW_TITLE"
-        let localizedTitle = bundle.localizedString(forKey: localizedKey, value: nil, table: "CocktailFeed")
-        
-        XCTAssertNotEqual(localizedKey, localizedTitle, "Missing localized string for key: \(localizedKey)")
-        XCTAssertEqual(sut.title, localizedTitle)
+        XCTAssertEqual(sut.title, localized("COCKTAIL_LIST_VIEW_TITLE"))
     }
     
     func test_loadFeedActions_requestFeedFromLoader() {
