@@ -52,7 +52,6 @@
 		C6719FB82658DA0400ACDF8A /* CocktailFeedCell+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6719FB72658DA0400ACDF8A /* CocktailFeedCell+TestHelpers.swift */; };
 		C6719FBA2658DA7000ACDF8A /* CocktailFeedViewControllerTests+LoaderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6719FB92658DA7000ACDF8A /* CocktailFeedViewControllerTests+LoaderSpy.swift */; };
 		C6719FBC2658DACB00ACDF8A /* CocktailFeedViewControllerTests+Assertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6719FBB2658DACB00ACDF8A /* CocktailFeedViewControllerTests+Assertions.swift */; };
-		C6719FBE2658DC3100ACDF8A /* FeedRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6719FBD2658DC3100ACDF8A /* FeedRefreshViewController.swift */; };
 		C6719FC02658DEC300ACDF8A /* CocktailFeedCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6719FBF2658DEC300ACDF8A /* CocktailFeedCellController.swift */; };
 		C6719FC32658E3A700ACDF8A /* CocktailUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6719FC22658E3A700ACDF8A /* CocktailUIComposer.swift */; };
 		C6719FC82658F32200ACDF8A /* CocktailImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6719FC72658F32200ACDF8A /* CocktailImageViewModel.swift */; };
@@ -169,7 +168,6 @@
 		C6719FB72658DA0400ACDF8A /* CocktailFeedCell+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CocktailFeedCell+TestHelpers.swift"; sourceTree = "<group>"; };
 		C6719FB92658DA7000ACDF8A /* CocktailFeedViewControllerTests+LoaderSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CocktailFeedViewControllerTests+LoaderSpy.swift"; sourceTree = "<group>"; };
 		C6719FBB2658DACB00ACDF8A /* CocktailFeedViewControllerTests+Assertions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CocktailFeedViewControllerTests+Assertions.swift"; sourceTree = "<group>"; };
-		C6719FBD2658DC3100ACDF8A /* FeedRefreshViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRefreshViewController.swift; sourceTree = "<group>"; };
 		C6719FBF2658DEC300ACDF8A /* CocktailFeedCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailFeedCellController.swift; sourceTree = "<group>"; };
 		C6719FC22658E3A700ACDF8A /* CocktailUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailUIComposer.swift; sourceTree = "<group>"; };
 		C6719FC72658F32200ACDF8A /* CocktailImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailImageViewModel.swift; sourceTree = "<group>"; };
@@ -440,7 +438,6 @@
 			isa = PBXGroup;
 			children = (
 				C63793692658130B000118E4 /* CocktailFeedViewController.swift */,
-				C6719FBD2658DC3100ACDF8A /* FeedRefreshViewController.swift */,
 				C6719FBF2658DEC300ACDF8A /* CocktailFeedCellController.swift */,
 			);
 			path = Controllers;
@@ -839,7 +836,6 @@
 				C6719FD0265922EF00ACDF8A /* FeedViewModel.swift in Sources */,
 				C6719FC32658E3A700ACDF8A /* CocktailUIComposer.swift in Sources */,
 				C6719FCE265922C600ACDF8A /* FeedLoadingViewModel.swift in Sources */,
-				C6719FBE2658DC3100ACDF8A /* FeedRefreshViewController.swift in Sources */,
 				C6719FC02658DEC300ACDF8A /* CocktailFeedCellController.swift in Sources */,
 				C637936A2658130B000118E4 /* CocktailFeedViewController.swift in Sources */,
 				C6719FB42658D93500ACDF8A /* CocktailImageDataLoader.swift in Sources */,

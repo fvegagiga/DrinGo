@@ -14,12 +14,11 @@ public final class CocktailUIComposer {
         let bundle = Bundle(for: CocktailFeedViewController.self)
         let storyboard = UIStoryboard(name: "CocktailFeed", bundle: bundle)
         let cocktailFeedController = storyboard.instantiateInitialViewController() as! CocktailFeedViewController
-        let refreshController = cocktailFeedController.refreshController!
-        refreshController.delegate = presentationAdapter
+        cocktailFeedController.delegate = presentationAdapter
         
         presentationAdapter.presenter = CocktailFeedPresenter(
             feedView: FeedViewAdapter(controller: cocktailFeedController, imageLoader: imageLoader),
-            loadingView: WeakRefVirtualProxy(refreshController)
+            loadingView: WeakRefVirtualProxy(cocktailFeedController)
         )
 
         return cocktailFeedController
@@ -69,7 +68,7 @@ private final class FeedViewAdapter: FeedView {
     }
 }
 
-private final class CocktailFeedLoaderPresentationAdapter: FeedRefreshViewControllerDelegate {
+private final class CocktailFeedLoaderPresentationAdapter: FeedViewControllerDelegate {
     private let feedLoader: CocktailLoader
     var presenter: CocktailFeedPresenter?
     
@@ -84,6 +83,7 @@ private final class CocktailFeedLoaderPresentationAdapter: FeedRefreshViewContro
             switch result {
             case let .success(feed):
                 self?.presenter?.didFinishLoadingFeed(with: feed)
+                
             case let .failure(error):
                 self?.presenter?.didFinishLoadingFeed(with: error)
             }
