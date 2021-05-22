@@ -419,7 +419,6 @@
 		C6719FAF2658D8F200ACDF8A /* Cocktail Feed UI */ = {
 			isa = PBXGroup;
 			children = (
-				C6719FC42658ED9700ACDF8A /* Models */,
 				C6719FC12658E39600ACDF8A /* Composers */,
 				C6719FB02658D8FE00ACDF8A /* Controllers */,
 				C6719FB12658D90500ACDF8A /* Views */,
@@ -462,13 +461,13 @@
 			path = Composers;
 			sourceTree = "<group>";
 		};
-		C6719FC42658ED9700ACDF8A /* Models */ = {
+		C6719FC42658ED9700ACDF8A /* Cocktail Feed Presentation */ = {
 			isa = PBXGroup;
 			children = (
 				C6719FC52658EDAE00ACDF8A /* CocktailFeedViewModel.swift */,
 				C6719FC72658F32200ACDF8A /* CocktailImageViewModel.swift */,
 			);
-			path = Models;
+			path = "Cocktail Feed Presentation";
 			sourceTree = "<group>";
 		};
 		C6835BC526578FF0000EFEF8 /* DrinGoFeediOS */ = {
@@ -476,6 +475,7 @@
 			children = (
 				C6835BC726578FF0000EFEF8 /* Info.plist */,
 				C6719FB22658D92100ACDF8A /* Cocktail Image Loader */,
+				C6719FC42658ED9700ACDF8A /* Cocktail Feed Presentation */,
 				C6719FAF2658D8F200ACDF8A /* Cocktail Feed UI */,
 			);
 			path = DrinGoFeediOS;
