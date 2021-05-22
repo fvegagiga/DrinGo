@@ -5,14 +5,9 @@
 import UIKit
 
 public final class CocktailFeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
-    private var refreshController: FeedRefreshViewController?
+    var refreshController: FeedRefreshViewController?
     var tableModel = [CocktailFeedCellController]() {
         didSet { tableView.reloadData() }
-    }
-    
-    convenience init(refreshController: FeedRefreshViewController) {
-        self.init()
-        self.refreshController = refreshController
     }
 
     public override func viewDidLoad() {
