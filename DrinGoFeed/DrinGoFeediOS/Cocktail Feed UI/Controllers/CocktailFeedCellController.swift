@@ -3,49 +3,47 @@
 //
 
 import UIKit
-import DrinGoFeed
 
 final class CocktailFeedCellController {
-    private var task: CocktailImageDataLoaderTask?
-    private let model: CocktailItem
-    private let imageLoader: CocktailImageDataLoader
-    
-    init(model: CocktailItem, imageLoader: CocktailImageDataLoader) {
-        self.model = model
-        self.imageLoader = imageLoader
+    private let viewModel: CocktailImageViewModel
+
+    init(viewModel: CocktailImageViewModel) {
+        self.viewModel = viewModel
     }
     
     func view() -> UITableViewCell {
-        let cell = CocktailFeedCell()
-        cell.titleLabel.text = model.name
-        cell.descriptionLabel.text = model.description
-        cell.cocktailImageView.image = nil
-        cell.cocktailImageRetryButton.isHidden = true
-        cell.cocktailImageContainer.startShimmering()
+        let cell = binded(CocktailFeedCell())
+        viewModel.loadImageData()
 
-        let loadImage = { [weak self, weak cell] in
-            guard let self = self else { return }
-            
-            self.task = self.imageLoader.loadImageData(from: self.model.imageURL) { [weak cell] result in
-                let data = try? result.get()
-                let image = data.map(UIImage.init) ?? nil
-                cell?.cocktailImageView.image = image
-                cell?.cocktailImageRetryButton.isHidden = (image != nil)
-                cell?.cocktailImageContainer.stopShimmering()
-            }
-        }
-        
-        cell.onRetry = loadImage
-        loadImage()
-        
         return cell
     }
     
     func preload() {
-        task = imageLoader.loadImageData(from: model.imageURL) { _ in }
+        viewModel.loadImageData()
     }
     
     func cancelLoad() {
-        task?.cancel()
+        viewModel.cancelImageDataLoad()
     }
+    
+    private func binded(_ cell: CocktailFeedCell) -> CocktailFeedCell {
+        cell.titleLabel.text = viewModel.title
+        cell.descriptionLabel.text = viewModel.description
+        cell.onRetry = viewModel.loadImageData
+        
+        viewModel.onImageLoad = { [weak cell] image in
+            cell?.cocktailImageView.image = image
+        }
+        
+        viewModel.onImageLoadingStateChange = { [weak cell] isLoading in
+            cell?.cocktailImageContainer.isShimmering = isLoading
+        }
+        
+        viewModel.onShouldRetryImageLoadStateChange = { [weak cell] shouldRetry in
+            cell?.cocktailImageRetryButton.isHidden = !shouldRetry
+        }
+        
+        return cell
+    }
+
 }
