@@ -45,6 +45,7 @@
 		C6559ADC264ED74E003569B1 /* FeedStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6559ADB264ED74E003569B1 /* FeedStoreSpy.swift */; };
 		C6719FA52658D70400ACDF8A /* UIImage+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6719FA42658D70400ACDF8A /* UIImage+TestHelpers.swift */; };
 		C6719FA72658D78200ACDF8A /* UIRefreshControl+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6719FA62658D78200ACDF8A /* UIRefreshControl+TestHelpers.swift */; };
+		C6719FA92658D7BA00ACDF8A /* UIButton+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6719FA82658D7BA00ACDF8A /* UIButton+TestHelpers.swift */; };
 		C6835BCD26578FF0000EFEF8 /* DrinGoFeediOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6835BC426578FF0000EFEF8 /* DrinGoFeediOS.framework */; };
 		C6A01C2326427C530071A344 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A01C2226427C530071A344 /* XCTestCase+MemoryLeakTracking.swift */; };
 		C6D87F2C264D02AC00749974 /* LocalCocktailLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D87F2B264D02AC00749974 /* LocalCocktailLoader.swift */; };
@@ -145,6 +146,7 @@
 		C6559ADB264ED74E003569B1 /* FeedStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStoreSpy.swift; sourceTree = "<group>"; };
 		C6719FA42658D70400ACDF8A /* UIImage+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+TestHelpers.swift"; sourceTree = "<group>"; };
 		C6719FA62658D78200ACDF8A /* UIRefreshControl+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIRefreshControl+TestHelpers.swift"; sourceTree = "<group>"; };
+		C6719FA82658D7BA00ACDF8A /* UIButton+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+TestHelpers.swift"; sourceTree = "<group>"; };
 		C6835BC426578FF0000EFEF8 /* DrinGoFeediOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DrinGoFeediOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6835BC726578FF0000EFEF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6835BCC26578FF0000EFEF8 /* DrinGoFeediOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrinGoFeediOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -358,6 +360,7 @@
 			children = (
 				C6719FA42658D70400ACDF8A /* UIImage+TestHelpers.swift */,
 				C6719FA62658D78200ACDF8A /* UIRefreshControl+TestHelpers.swift */,
+				C6719FA82658D7BA00ACDF8A /* UIButton+TestHelpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -720,6 +723,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C637936126580556000118E4 /* CocktailFeedViewControllerTests.swift in Sources */,
+				C6719FA92658D7BA00ACDF8A /* UIButton+TestHelpers.swift in Sources */,
 				C6719FA72658D78200ACDF8A /* UIRefreshControl+TestHelpers.swift in Sources */,
 				C637936826580A67000118E4 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 				C6719FA52658D70400ACDF8A /* UIImage+TestHelpers.swift in Sources */,
