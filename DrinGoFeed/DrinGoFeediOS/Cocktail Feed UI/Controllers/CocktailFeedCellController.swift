@@ -4,46 +4,40 @@
 
 import UIKit
 
-final class CocktailFeedCellController {
-    private let viewModel: CocktailImageViewModel<UIImage>
+protocol FeedImageCellControllerDelegate {
+    func didRequestImage()
+    func didCancelImageRequest()
+}
 
-    init(viewModel: CocktailImageViewModel<UIImage>) {
-        self.viewModel = viewModel
+final class CocktailFeedCellController: FeedImageView {
+    private let delegate: FeedImageCellControllerDelegate
+    private lazy var cell = CocktailFeedCell()
+
+    init(delegate: FeedImageCellControllerDelegate) {
+        self.delegate = delegate
     }
     
     func view() -> UITableViewCell {
-        let cell = binded(CocktailFeedCell())
-        viewModel.loadImageData()
-
+        delegate.didRequestImage()
         return cell
     }
     
     func preload() {
-        viewModel.loadImageData()
+        delegate.didRequestImage()
     }
     
     func cancelLoad() {
-        viewModel.cancelImageDataLoad()
+        delegate.didCancelImageRequest()
     }
     
-    private func binded(_ cell: CocktailFeedCell) -> CocktailFeedCell {
+    func display(_ viewModel: CocktailImageViewModel<UIImage>) {
+
         cell.titleLabel.text = viewModel.title
         cell.descriptionLabel.text = viewModel.description
-        cell.onRetry = viewModel.loadImageData
-        
-        viewModel.onImageLoad = { [weak cell] image in
-            cell?.cocktailImageView.image = image
-        }
-        
-        viewModel.onImageLoadingStateChange = { [weak cell] isLoading in
-            cell?.cocktailImageContainer.isShimmering = isLoading
-        }
-        
-        viewModel.onShouldRetryImageLoadStateChange = { [weak cell] shouldRetry in
-            cell?.cocktailImageRetryButton.isHidden = !shouldRetry
-        }
-        
-        return cell
+        cell.cocktailImageView.image = viewModel.image
+        cell.cocktailImageContainer.isShimmering = viewModel.isLoading
+        cell.cocktailImageRetryButton.isHidden = !viewModel.shouldRetry
+        cell.onRetry = delegate.didRequestImage
     }
 
 }
