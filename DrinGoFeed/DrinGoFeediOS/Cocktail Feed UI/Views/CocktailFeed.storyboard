@@ -26,7 +26,7 @@
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CocktailImageCell" rowHeight="575" id="jzd-XE-5Iv" customClass="CocktailImageCell" customModule="DrinGoFeediOS" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CocktailFeedCell" rowHeight="575" id="jzd-XE-5Iv" customClass="CocktailFeedCell" customModule="DrinGoFeediOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="40.5" width="414" height="575"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jzd-XE-5Iv" id="TL1-ed-SkY">
@@ -75,6 +75,9 @@
                                                             <state key="normal" title="↻">
                                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="retryButtonTapped" destination="jzd-XE-5Iv" eventType="touchUpInside" id="CRD-xl-5Rc"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.89019607840000003" green="0.89019607840000003" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -116,6 +119,13 @@
                                         <constraint firstAttribute="bottomMargin" secondItem="lom-Eu-KEt" secondAttribute="bottom" priority="999" constant="6" id="qaf-SR-wm5"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="cocktailImageContainer" destination="4YO-iv-4hZ" id="F8Y-G7-rqO"/>
+                                    <outlet property="cocktailImageRetryButton" destination="4YO-iv-4hZ" id="f5M-9F-jaW"/>
+                                    <outlet property="cocktailImageView" destination="rVC-4E-QkO" id="bTT-kX-3KS"/>
+                                    <outlet property="descriptionLabel" destination="WvI-BH-JNV" id="7GA-lt-q9a"/>
+                                    <outlet property="titleLabel" destination="siS-dm-HnQ" id="esm-Lj-uM3"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

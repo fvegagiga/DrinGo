@@ -5,21 +5,15 @@
 import UIKit
 
 public final class CocktailFeedCell: UITableViewCell {
-    public let titleLabel = UILabel()
-    public let descriptionLabel = UILabel()
-    public let cocktailImageContainer = UIView()
-    public let cocktailImageView = UIImageView()
-    
-    private(set) public lazy var cocktailImageRetryButton: UIButton = {
-        let button = UIButton()
-        button.addTarget(self, action: #selector(retryButtonTapped), for: .touchUpInside)
-        return button
-    }()
+    @IBOutlet private(set) public var titleLabel: UILabel!
+    @IBOutlet private(set) public var descriptionLabel: UILabel!
+    @IBOutlet private(set) public var cocktailImageContainer: UIView!
+    @IBOutlet private(set) public var cocktailImageView: UIImageView!
+    @IBOutlet private(set) public var cocktailImageRetryButton: UIButton!
     
     var onRetry: (() -> Void)?
     
-    @objc private func retryButtonTapped() {
+    @IBAction private func retryButtonTapped() {
         onRetry?()
     }
-
 }

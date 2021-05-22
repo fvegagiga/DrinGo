@@ -11,13 +11,15 @@ protocol FeedImageCellControllerDelegate {
 
 final class CocktailFeedCellController: FeedImageView {
     private let delegate: FeedImageCellControllerDelegate
-    private lazy var cell = CocktailFeedCell()
+    private var cell: CocktailFeedCell?
 
     init(delegate: FeedImageCellControllerDelegate) {
         self.delegate = delegate
     }
     
-    func view() -> UITableViewCell {
+    func view(in tableView: UITableView) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CocktailFeedCell") as! CocktailFeedCell
+        self.cell = cell
         delegate.didRequestImage()
         return cell
     }
@@ -25,19 +27,22 @@ final class CocktailFeedCellController: FeedImageView {
     func preload() {
         delegate.didRequestImage()
     }
-    
+        
     func cancelLoad() {
+        releaseCellForReuse()
         delegate.didCancelImageRequest()
     }
     
     func display(_ viewModel: CocktailImageViewModel<UIImage>) {
-
-        cell.titleLabel.text = viewModel.title
-        cell.descriptionLabel.text = viewModel.description
-        cell.cocktailImageView.image = viewModel.image
-        cell.cocktailImageContainer.isShimmering = viewModel.isLoading
-        cell.cocktailImageRetryButton.isHidden = !viewModel.shouldRetry
-        cell.onRetry = delegate.didRequestImage
+        cell?.titleLabel.text = viewModel.title
+        cell?.descriptionLabel.text = viewModel.description
+        cell?.cocktailImageView.image = viewModel.image
+        cell?.cocktailImageContainer.isShimmering = viewModel.isLoading
+        cell?.cocktailImageRetryButton.isHidden = !viewModel.shouldRetry
+        cell?.onRetry = delegate.didRequestImage
     }
-
+    
+    private func releaseCellForReuse() {
+        cell = nil
+    }
 }
