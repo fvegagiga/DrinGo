@@ -6,7 +6,7 @@ import XCTest
 import DrinGoFeed
 import DrinGoFeediOS
 
-extension CocktailFeedViewControllerTests {
+extension CocktailFeedUIIntegrationTests {
     
     func assertThat(_ sut: CocktailFeedViewController, isRendering feed: [CocktailItem], file: StaticString = #file, line: UInt = #line) {
         guard sut.numberOfRenderedFeedImageViews() == feed.count else {

@@ -7,7 +7,7 @@ import UIKit
 import DrinGoFeed
 import DrinGoFeediOS
 
-class CocktailFeedViewControllerTests: XCTestCase {
+class CocktailFeedUIIntegrationTests: XCTestCase {
     
     func test_feedView_hasTitle() {
         let (sut, _) = makeSUT()

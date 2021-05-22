@@ -6,7 +6,7 @@ import Foundation
 import XCTest
 import DrinGoFeediOS
 
-extension CocktailFeedViewControllerTests {
+extension CocktailFeedUIIntegrationTests {
     func localized(_ key: String, file: StaticString = #file, line: UInt = #line) -> String {
         let table = "CocktailFeed"
         let bundle = Bundle(for: CocktailFeedViewController.self)
