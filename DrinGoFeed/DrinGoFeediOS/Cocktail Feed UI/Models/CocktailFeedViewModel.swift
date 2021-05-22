@@ -6,26 +6,24 @@ import Foundation
 import DrinGoFeed
 
 final class CocktailFeedViewModel {
+    typealias Observer<T> = (T) -> Void
+
     private let feedLoader: CocktailLoader
     
     init(feedLoader: CocktailLoader) {
         self.feedLoader = feedLoader
     }
     
-    var onChange: ((CocktailFeedViewModel) -> Void)?
-    var onFeedLoad: (([CocktailItem]) -> Void)?
-
-    private(set) var isLoading: Bool = false {
-        didSet { onChange?(self) }
-    }
+    var onLoadingStateChange: Observer<Bool>?
+    var onFeedLoad: Observer<[CocktailItem]>?
     
     func loadFeed() {
-        isLoading = true
+        onLoadingStateChange?(true)
         feedLoader.load { [weak self] result in
             if let feed = try? result.get() {
                 self?.onFeedLoad?(feed)
             }
-            self?.isLoading = false
+            self?.onLoadingStateChange?(false)
         }
     }
 }
