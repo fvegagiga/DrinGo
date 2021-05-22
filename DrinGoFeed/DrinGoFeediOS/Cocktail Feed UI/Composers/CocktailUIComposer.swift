@@ -15,6 +15,7 @@ public final class CocktailUIComposer {
         let storyboard = UIStoryboard(name: "CocktailFeed", bundle: bundle)
         let cocktailFeedController = storyboard.instantiateInitialViewController() as! CocktailFeedViewController
         cocktailFeedController.delegate = presentationAdapter
+        cocktailFeedController.title = CocktailFeedPresenter.title
         
         presentationAdapter.presenter = CocktailFeedPresenter(
             feedView: FeedViewAdapter(controller: cocktailFeedController, imageLoader: imageLoader),
