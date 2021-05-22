@@ -5,7 +5,7 @@
 import UIKit
 import DrinGoFeed
 
-final public class CocktailFeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
+public final class CocktailFeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
     private var feedLoader: CocktailLoader?
     private var imageLoader: CocktailImageDataLoader?
     private var tableModel = [CocktailItem]()
