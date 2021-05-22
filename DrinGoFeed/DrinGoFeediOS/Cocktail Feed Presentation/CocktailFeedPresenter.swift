@@ -22,6 +22,10 @@ final class CocktailFeedPresenter {
         self.loadingView = loadingView
     }
     
+    static var title: String {
+        return "DrinGo"
+    }
+    
     func didStartLoadingFeed() {
         loadingView.display(FeedLoadingViewModel(isLoading: true))
     }
