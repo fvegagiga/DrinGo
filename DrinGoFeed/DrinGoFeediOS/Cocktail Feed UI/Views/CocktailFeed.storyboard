@@ -35,6 +35,7 @@
                             </constraints>
                             <connections>
                                 <outlet property="label" destination="LMa-xH-q5L" id="Re7-hE-qOQ"/>
+                                <outletCollection property="gestureRecognizers" destination="5dp-Ko-MVD" appends="YES" id="4CS-dh-ujQ"/>
                             </connections>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="Dyf-Jn-42Y">
@@ -164,6 +165,11 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zQ6-AH-sWO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="5dp-Ko-MVD">
+                    <connections>
+                        <action selector="hideMessageAnimated" destination="ufk-BN-vci" id="HW0-XG-OK1"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="897.10144927536237" y="109.82142857142857"/>
         </scene>
@@ -172,9 +178,6 @@
         <image name="cocktail_24" width="24" height="24"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
