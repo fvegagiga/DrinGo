@@ -16,7 +16,7 @@ public final class CocktailFeedViewController: UITableViewController, UITableVie
     
     var delegate: FeedViewControllerDelegate?
     
-    public let errorView = ErrorView()
+    @IBOutlet private(set) public var errorView: ErrorView?
     
     var tableModel = [CocktailFeedCellController]() {
         didSet { tableView.reloadData() }
@@ -41,7 +41,7 @@ public final class CocktailFeedViewController: UITableViewController, UITableVie
     }
     
     func display(_ viewModel: FeedErrorViewModel) {
-        errorView.message = viewModel.message
+        errorView?.message = viewModel.message
     }
     
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

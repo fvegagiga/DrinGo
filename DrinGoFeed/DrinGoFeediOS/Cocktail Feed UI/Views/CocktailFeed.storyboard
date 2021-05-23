@@ -15,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="ufk-BN-vci">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="ufk-BN-vci" customClass="ErrorView" customModule="DrinGoFeediOS" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="16"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -142,6 +142,9 @@
                             <action selector="refresh" destination="xvk-lO-uHc" eventType="valueChanged" id="kCN-Vj-CaL"/>
                         </connections>
                     </refreshControl>
+                    <connections>
+                        <outlet property="errorView" destination="ufk-BN-vci" id="6d8-oT-15i"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zQ6-AH-sWO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
