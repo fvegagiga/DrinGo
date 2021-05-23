@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import DrinGoFeed
 
 protocol FeedImageCellControllerDelegate {
     func didRequestImage()
