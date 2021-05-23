@@ -272,6 +272,16 @@
 			path = DrinGoFeedAPIEndToEndTests;
 			sourceTree = "<group>";
 		};
+		C61FA0D1265A59E60026D999 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C637936D26582553000118E4 /* UIView+Shimmering.swift */,
+				C6719FD52659626600ACDF8A /* UITableView+Dequeueing.swift */,
+				C6719FD7265962AD00ACDF8A /* UIImageView+Animations.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		C63793622658081E000118E4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -455,10 +465,8 @@
 		C6719FB12658D90500ACDF8A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C61FA0D1265A59E60026D999 /* Helpers */,
 				C637936B265817FF000118E4 /* CocktailFeedCell.swift */,
-				C637936D26582553000118E4 /* UIView+Shimmering.swift */,
-				C6719FD52659626600ACDF8A /* UITableView+Dequeueing.swift */,
-				C6719FD7265962AD00ACDF8A /* UIImageView+Animations.swift */,
 				C61FA0CF265A569D0026D999 /* ErrorView.swift */,
 				C6719FD1265951EE00ACDF8A /* CocktailFeed.storyboard */,
 				C6719FD32659529D00ACDF8A /* CocktailFeed.xcassets */,
