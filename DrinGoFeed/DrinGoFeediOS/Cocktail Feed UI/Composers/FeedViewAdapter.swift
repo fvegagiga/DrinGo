@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import DrinGoFeed
 
 final class FeedViewAdapter: FeedView {
     private weak var controller: CocktailFeedViewController?

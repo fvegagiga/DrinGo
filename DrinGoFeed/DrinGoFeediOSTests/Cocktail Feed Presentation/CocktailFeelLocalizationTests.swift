@@ -3,7 +3,7 @@
 //
 
 import XCTest
-@testable import DrinGoFeediOS
+@testable import DrinGoFeed
 
 final class FeedLocalizationTests: XCTestCase {
     
