@@ -16,18 +16,35 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="ufk-BN-vci" customClass="ErrorView" customModule="DrinGoFeediOS" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="16"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="36"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LMa-xH-q5L">
+                                    <rect key="frame" x="0.0" y="8" width="414" height="20"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" red="0.99951404330000004" green="0.41759261489999999" blue="0.4154433012" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="LMa-xH-q5L" secondAttribute="trailing" id="6lJ-o7-zHH"/>
+                                <constraint firstItem="LMa-xH-q5L" firstAttribute="leading" secondItem="ufk-BN-vci" secondAttribute="leading" id="FpM-mS-VRX"/>
+                                <constraint firstItem="LMa-xH-q5L" firstAttribute="top" secondItem="ufk-BN-vci" secondAttribute="top" constant="8" id="PhF-rM-eO6"/>
+                                <constraint firstAttribute="bottom" secondItem="LMa-xH-q5L" secondAttribute="bottom" constant="8" id="vKx-Gx-MUw"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="label" destination="LMa-xH-q5L" id="Re7-hE-qOQ"/>
+                            </connections>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="Dyf-Jn-42Y">
-                            <rect key="frame" x="0.0" y="640.00000034679067" width="414" height="16"/>
+                            <rect key="frame" x="0.0" y="660.00000034679067" width="414" height="16"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CocktailFeedCell" rowHeight="575" id="jzd-XE-5Iv" customClass="CocktailFeedCell" customModule="DrinGoFeediOS" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="40.5" width="414" height="575"/>
+                                <rect key="frame" x="0.0" y="60.5" width="414" height="575"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jzd-XE-5Iv" id="TL1-ed-SkY">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="575"/>
@@ -155,6 +172,9 @@
         <image name="cocktail_24" width="24" height="24"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
