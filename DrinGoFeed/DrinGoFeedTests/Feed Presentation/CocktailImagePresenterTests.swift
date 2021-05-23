@@ -58,7 +58,7 @@ class CocktailImagePresenterTests: XCTestCase {
     }
     
     func test_didFinishLoadingImageData_displaysRetryOnFailedImageTransformation() {
-        let (sut, view) = makeSUT(imageTransformer: { _ in nil })
+        let (sut, view) = makeSUT(imageTransformer: fail)
         let cocktail = uniqueCocktail()
         let data = Data()
         
@@ -81,6 +81,10 @@ class CocktailImagePresenterTests: XCTestCase {
         trackForMemoryLeaks(sut, file: file, line: line)
         
         return(sut, view)
+    }
+    
+    private var fail: (Data) -> Any? {
+        return { _ in nil }
     }
     
     private class ViewSpy: FeedImageView {
