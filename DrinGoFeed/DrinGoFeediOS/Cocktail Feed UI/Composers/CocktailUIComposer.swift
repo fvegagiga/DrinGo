@@ -21,22 +21,27 @@ public final class CocktailUIComposer {
     }
 }
 
-private final class MainQueueDispatchDecorator: CocktailLoader {
-    private let decoratee: CocktailLoader
+private final class MainQueueDispatchDecorator<T> {
+    private let decoratee: T
     
-    init(decoratee: CocktailLoader) {
+    init(decoratee: T) {
         self.decoratee = decoratee
     }
     
+    func dispatch(completion: @escaping () -> Void) {
+        guard Thread.isMainThread else {
+            return DispatchQueue.main.async(execute: completion)
+        }
+        
+        completion()
+    }
+}
+
+extension MainQueueDispatchDecorator: CocktailLoader where T == CocktailLoader {
+
     func load(completion: @escaping (CocktailLoader.Result) -> Void) {
-        decoratee.load { result in
-            if Thread.isMainThread {
-                completion(result)
-            } else {
-                DispatchQueue.main.async {
-                    completion(result)
-                }
-            }
+        decoratee.load { [weak self] result in
+            self?.dispatch { completion(result) }
         }
     }
 }
