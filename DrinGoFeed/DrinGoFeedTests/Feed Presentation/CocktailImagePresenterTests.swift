@@ -80,9 +80,8 @@ class CocktailImagePresenterTests: XCTestCase {
     func test_didFinishLoadingImageData_displaysRetryOnFailedImageTransformation() {
         let (sut, view) = makeSUT(imageTransformer: fail)
         let cocktail = uniqueCocktail()
-        let data = Data()
         
-        sut.didFinishLoadingImageData(with: data, for: cocktail)
+        sut.didFinishLoadingImageData(with: Data(), for: cocktail)
         
         let message = view.messages.first
         XCTAssertEqual(view.messages.count, 1)
@@ -95,11 +94,10 @@ class CocktailImagePresenterTests: XCTestCase {
     
     func test_didFinishLoadingImageData_displaysImageOnSuccessfulTransformation() {
         let cocktail = uniqueCocktail()
-        let data = Data()
         let transformedData = AnyImage()
         let (sut, view) = makeSUT(imageTransformer: { _ in transformedData })
         
-        sut.didFinishLoadingImageData(with: data, for: cocktail)
+        sut.didFinishLoadingImageData(with: Data(), for: cocktail)
         
         let message = view.messages.first
         XCTAssertEqual(view.messages.count, 1)
