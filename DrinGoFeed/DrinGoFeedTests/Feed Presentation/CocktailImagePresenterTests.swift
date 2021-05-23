@@ -6,32 +6,43 @@ import XCTest
 import DrinGoFeed
 
 protocol FeedImageView {
-    func display(_ model: CocktailImageViewModel)
+    associatedtype Image
+    
+    func display(_ model: CocktailImageViewModel<Image>)
 }
 
-struct CocktailImageViewModel {
+struct CocktailImageViewModel<Image> {
     let title: String
     let description: String
-    let image: Any?
+    let image: Image?
     let isLoading: Bool
     let shouldRetry: Bool
 }
 
-private final class CocktailImagePresenter {
-    private let view: FeedImageView
-    private let imageTransformer: (Data) -> Any?
+private final class CocktailImagePresenter<View: FeedImageView, Image> where View.Image == Image {
+    private let view: View
+    private let imageTransformer: (Data) -> Image?
     
-    init(view: FeedImageView, imageTransformer: @escaping (Data) -> Any?) {
+    init(view: View, imageTransformer: @escaping (Data) -> Image?) {
         self.view = view
         self.imageTransformer = imageTransformer
     }
     
     func didStartLoadingImageData(for model: CocktailItem) {
-        view.display(CocktailImageViewModel(title: model.name, description: model.description, image: nil, isLoading: true, shouldRetry: false))
+        view.display(CocktailImageViewModel(title: model.name,
+                                            description: model.description,
+                                            image: nil,
+                                            isLoading: true,
+                                            shouldRetry: false))
     }
     
     func didFinishLoadingImageData(with data: Data, for model: CocktailItem) {
-        view.display(CocktailImageViewModel(title: model.name, description: model.description, image: imageTransformer(data), isLoading: false, shouldRetry: true))
+        let image = imageTransformer(data)
+        view.display(CocktailImageViewModel(title: model.name,
+                                            description: model.description,
+                                            image: image,
+                                            isLoading: false,
+                                            shouldRetry: image == nil))
     }
 }
 
@@ -72,9 +83,25 @@ class CocktailImagePresenterTests: XCTestCase {
         XCTAssertNil(message?.image)
     }
     
+    func test_didFinishLoadingImageData_displaysImageOnSuccessfulTransformation() {
+        let cocktail = uniqueCocktail()
+        let data = Data()
+        let transformedData = AnyImage()
+        let (sut, view) = makeSUT(imageTransformer: { _ in transformedData })
+        
+        sut.didFinishLoadingImageData(with: data, for: cocktail)
+        
+        let message = view.messages.first
+        XCTAssertEqual(view.messages.count, 1)
+        XCTAssertEqual(message?.title, cocktail.name)
+        XCTAssertEqual(message?.isLoading, false)
+        XCTAssertEqual(message?.shouldRetry, false)
+        XCTAssertEqual(message?.image, transformedData)
+    }
+    
     // MARK: - Helpers
     
-    private func makeSUT(imageTransformer: @escaping (Data) -> Any? = { _ in nil }, file: StaticString = #filePath, line: UInt = #line) -> (sut: CocktailImagePresenter, view: ViewSpy) {
+    private func makeSUT(imageTransformer: @escaping (Data) -> AnyImage? = { _ in nil }, file: StaticString = #filePath, line: UInt = #line) -> (sut: CocktailImagePresenter<ViewSpy, AnyImage>, view: ViewSpy) {
         let view = ViewSpy()
         let sut = CocktailImagePresenter(view: view, imageTransformer: imageTransformer)
         trackForMemoryLeaks(view, file: file, line: line)
@@ -83,15 +110,17 @@ class CocktailImagePresenterTests: XCTestCase {
         return(sut, view)
     }
     
-    private var fail: (Data) -> Any? {
+    private var fail: (Data) -> AnyImage? {
         return { _ in nil }
     }
     
+    private struct AnyImage: Equatable {}
+    
     private class ViewSpy: FeedImageView {
         
-        var messages = [CocktailImageViewModel]()
+        var messages = [CocktailImageViewModel<AnyImage>]()
         
-        func display(_ model: CocktailImageViewModel) {
+        func display(_ model: CocktailImageViewModel<AnyImage>) {
             messages.append(model)
         }
     }
