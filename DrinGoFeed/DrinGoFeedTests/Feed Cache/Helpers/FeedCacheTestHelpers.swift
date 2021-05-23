@@ -5,7 +5,7 @@
 import Foundation
 import DrinGoFeed
 
-func uniqueCocktail(idx: Int) -> CocktailItem {
+func uniqueCocktail(idx: Int = 0) -> CocktailItem {
     return CocktailItem(id: idx, name: "any", description: "any", imageURL: anyURL(), ingredients: ["Ing1", "Ingr2"], quantity: ["Qt1", "Qt2"])
 }
 
