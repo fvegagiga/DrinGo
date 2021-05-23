@@ -42,6 +42,13 @@ final class CocktailFeedPresenter {
     private let loadingView: FeedLoadingView
     private let errorView: FeedErrorView
     
+    static var title: String {
+        return NSLocalizedString("COCKTAIL_LIST_VIEW_TITLE",
+            tableName: "CocktailFeed",
+            bundle: Bundle(for: CocktailFeedPresenter.self),
+            comment: "Title for the feed view")
+    }
+    
     private var feedLoadError: String {
         return NSLocalizedString("COCKTAIL_LIST_VIEW_CONNECTION_ERROR",
             tableName: "CocktailFeed",
@@ -113,6 +120,10 @@ class CocktailFeedPresenterTests: XCTestCase {
             .display(errorMessage: localized("COCKTAIL_LIST_VIEW_CONNECTION_ERROR")),
             .display(isLoading: false)
         ])
+    }
+    
+    func test_title_isLocalized() {
+        XCTAssertEqual(CocktailFeedPresenter.title, localized("COCKTAIL_LIST_VIEW_TITLE"))
     }
     
     // MARK: - Helpers
