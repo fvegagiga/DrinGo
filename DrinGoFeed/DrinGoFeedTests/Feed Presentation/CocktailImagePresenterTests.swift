@@ -44,6 +44,14 @@ private final class CocktailImagePresenter<View: FeedImageView, Image> where Vie
                                             isLoading: false,
                                             shouldRetry: image == nil))
     }
+    
+    func didFinishLoadingImageData(with error: Error, for model: CocktailItem) {
+        view.display(CocktailImageViewModel(title: model.name,
+                                            description: model.description,
+                                            image: nil,
+                                            isLoading: false,
+                                            shouldRetry: true))
+    }
 }
 
 class CocktailImagePresenterTests: XCTestCase {
@@ -63,6 +71,7 @@ class CocktailImagePresenterTests: XCTestCase {
         let message = view.messages.first
         XCTAssertEqual(view.messages.count, 1)
         XCTAssertEqual(message?.title, cocktail.name)
+        XCTAssertEqual(message?.description, cocktail.description)
         XCTAssertEqual(message?.isLoading, true)
         XCTAssertEqual(message?.shouldRetry, false)
         XCTAssertNil(message?.image)
@@ -78,6 +87,7 @@ class CocktailImagePresenterTests: XCTestCase {
         let message = view.messages.first
         XCTAssertEqual(view.messages.count, 1)
         XCTAssertEqual(message?.title, cocktail.name)
+        XCTAssertEqual(message?.description, cocktail.description)
         XCTAssertEqual(message?.isLoading, false)
         XCTAssertEqual(message?.shouldRetry, true)
         XCTAssertNil(message?.image)
@@ -94,11 +104,27 @@ class CocktailImagePresenterTests: XCTestCase {
         let message = view.messages.first
         XCTAssertEqual(view.messages.count, 1)
         XCTAssertEqual(message?.title, cocktail.name)
+        XCTAssertEqual(message?.description, cocktail.description)
         XCTAssertEqual(message?.isLoading, false)
         XCTAssertEqual(message?.shouldRetry, false)
         XCTAssertEqual(message?.image, transformedData)
     }
     
+    func test_didFinishLoadingImageDataWithError_displaysRetry() {
+        let cocktail = uniqueCocktail()
+        let (sut, view) = makeSUT()
+        
+        sut.didFinishLoadingImageData(with: anyNSError(), for: cocktail)
+        
+        let message = view.messages.first
+        XCTAssertEqual(view.messages.count, 1)
+        XCTAssertEqual(message?.title, cocktail.name)
+        XCTAssertEqual(message?.description, cocktail.description)
+        XCTAssertEqual(message?.isLoading, false)
+        XCTAssertEqual(message?.shouldRetry, true)
+        XCTAssertNil(message?.image)
+    }
+
     // MARK: - Helpers
     
     private func makeSUT(imageTransformer: @escaping (Data) -> AnyImage? = { _ in nil }, file: StaticString = #filePath, line: UInt = #line) -> (sut: CocktailImagePresenter<ViewSpy, AnyImage>, view: ViewSpy) {
