@@ -16,7 +16,8 @@ public final class CocktailUIComposer {
             feedView: FeedViewAdapter(
                 controller: cocktailFeedController,
                 imageLoader: MainQueueDispatchDecorator(decoratee: imageLoader)),
-            loadingView: WeakRefVirtualProxy(cocktailFeedController)
+            loadingView: WeakRefVirtualProxy(cocktailFeedController),
+            errorView: WeakRefVirtualProxy(cocktailFeedController)
         )
 
         return cocktailFeedController

@@ -12,7 +12,7 @@ public final class ErrorView: UIView {
     public var message: String?
 }
 
-public final class CocktailFeedViewController: UITableViewController, UITableViewDataSourcePrefetching, FeedLoadingView {
+public final class CocktailFeedViewController: UITableViewController, UITableViewDataSourcePrefetching, FeedLoadingView, FeedErrorView {
     
     var delegate: FeedViewControllerDelegate?
     
@@ -38,6 +38,10 @@ public final class CocktailFeedViewController: UITableViewController, UITableVie
         } else {
             refreshControl?.endRefreshing()
         }
+    }
+    
+    func display(_ viewModel: FeedErrorViewModel) {
+        errorView.message = viewModel.message
     }
     
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

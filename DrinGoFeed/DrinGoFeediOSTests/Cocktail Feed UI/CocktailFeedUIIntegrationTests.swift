@@ -79,6 +79,16 @@ class CocktailFeedUIIntegrationTests: XCTestCase {
         assertThat(sut, isRendering: [image0])
     }
     
+    func test_loadFeedCompletion_rendersErrorMessageOnError() {
+        let (sut, loader) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        XCTAssertEqual(sut.errorMessage, nil)
+        
+        loader.completeFeedLoadingWithError(at: 0)
+        XCTAssertEqual(sut.errorMessage, localized("COCKTAIL_LIST_VIEW_CONNECTION_ERROR"))
+    }
+    
     func test_feedImageView_loadsImageURLWhenVisible() {
         let image0 = makeImage(imageURL: URL(string: "http://url-0.com")!)
         let image1 = makeImage(imageURL: URL(string: "http://url-1.com")!)
@@ -253,14 +263,6 @@ class CocktailFeedUIIntegrationTests: XCTestCase {
         loader.completeImageLoading(with: anyImageData())
         
         XCTAssertNil(view?.renderedImage, "Expected no rendered image when an image load finishes after the view is not visible anymore")
-    }
-
-    func test_errorView_doesNotRenderErrorOnLoad() {
-        let (sut, _) = makeSUT()
-        
-        sut.loadViewIfNeeded()
-        
-        XCTAssertEqual(sut.errorMessage, nil)
     }
 
     
