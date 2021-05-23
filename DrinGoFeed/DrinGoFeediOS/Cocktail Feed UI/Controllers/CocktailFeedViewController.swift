@@ -13,7 +13,15 @@ public final class CocktailFeedViewController: UITableViewController, UITableVie
     var delegate: FeedViewControllerDelegate?
     
     var tableModel = [CocktailFeedCellController]() {
-        didSet { tableView.reloadData() }
+        didSet {
+            if Thread.isMainThread {
+                tableView.reloadData()
+            } else {
+                DispatchQueue.main.async { [weak self] in
+                    self?.tableView.reloadData()
+                }
+            }
+        }
     }
 
     public override func viewDidLoad() {
