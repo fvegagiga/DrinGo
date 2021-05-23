@@ -29,11 +29,7 @@ public final class CocktailFeedViewController: UITableViewController, UITableVie
     }
     
     func display(_ viewModel: FeedLoadingViewModel) {
-        if viewModel.isLoading {
-            refreshControl?.beginRefreshing()
-        } else {
-            refreshControl?.endRefreshing()
-        }
+        refreshControl?.update(isRefreshing: viewModel.isLoading)
     }
     
     func display(_ viewModel: FeedErrorViewModel) {
