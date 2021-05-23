@@ -18,14 +18,20 @@ struct CocktailImageViewModel {
 }
 
 private final class CocktailImagePresenter {
-    let view: FeedImageView
+    private let view: FeedImageView
+    private let imageTransformer: (Data) -> Any?
     
-    init(view: FeedImageView) {
+    init(view: FeedImageView, imageTransformer: @escaping (Data) -> Any?) {
         self.view = view
+        self.imageTransformer = imageTransformer
     }
     
     func didStartLoadingImageData(for model: CocktailItem) {
         view.display(CocktailImageViewModel(title: model.name, description: model.description, image: nil, isLoading: true, shouldRetry: false))
+    }
+    
+    func didFinishLoadingImageData(with data: Data, for model: CocktailItem) {
+        view.display(CocktailImageViewModel(title: model.name, description: model.description, image: imageTransformer(data), isLoading: false, shouldRetry: true))
     }
 }
 
@@ -51,11 +57,26 @@ class CocktailImagePresenterTests: XCTestCase {
         XCTAssertNil(message?.image)
     }
     
+    func test_didFinishLoadingImageData_displaysRetryOnFailedImageTransformation() {
+        let (sut, view) = makeSUT(imageTransformer: { _ in nil })
+        let cocktail = uniqueCocktail()
+        let data = Data()
+        
+        sut.didFinishLoadingImageData(with: data, for: cocktail)
+        
+        let message = view.messages.first
+        XCTAssertEqual(view.messages.count, 1)
+        XCTAssertEqual(message?.title, cocktail.name)
+        XCTAssertEqual(message?.isLoading, false)
+        XCTAssertEqual(message?.shouldRetry, true)
+        XCTAssertNil(message?.image)
+    }
+    
     // MARK: - Helpers
     
-    private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: CocktailImagePresenter, view: ViewSpy) {
+    private func makeSUT(imageTransformer: @escaping (Data) -> Any? = { _ in nil }, file: StaticString = #filePath, line: UInt = #line) -> (sut: CocktailImagePresenter, view: ViewSpy) {
         let view = ViewSpy()
-        let sut = CocktailImagePresenter(view: view)
+        let sut = CocktailImagePresenter(view: view, imageTransformer: imageTransformer)
         trackForMemoryLeaks(view, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
         
