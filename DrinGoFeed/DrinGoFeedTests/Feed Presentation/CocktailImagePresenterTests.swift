@@ -5,55 +5,6 @@
 import XCTest
 import DrinGoFeed
 
-protocol FeedImageView {
-    associatedtype Image
-    
-    func display(_ model: CocktailImageViewModel<Image>)
-}
-
-struct CocktailImageViewModel<Image> {
-    let title: String
-    let description: String
-    let image: Image?
-    let isLoading: Bool
-    let shouldRetry: Bool
-}
-
-private final class CocktailImagePresenter<View: FeedImageView, Image> where View.Image == Image {
-    private let view: View
-    private let imageTransformer: (Data) -> Image?
-    
-    init(view: View, imageTransformer: @escaping (Data) -> Image?) {
-        self.view = view
-        self.imageTransformer = imageTransformer
-    }
-    
-    func didStartLoadingImageData(for model: CocktailItem) {
-        view.display(CocktailImageViewModel(title: model.name,
-                                            description: model.description,
-                                            image: nil,
-                                            isLoading: true,
-                                            shouldRetry: false))
-    }
-    
-    func didFinishLoadingImageData(with data: Data, for model: CocktailItem) {
-        let image = imageTransformer(data)
-        view.display(CocktailImageViewModel(title: model.name,
-                                            description: model.description,
-                                            image: image,
-                                            isLoading: false,
-                                            shouldRetry: image == nil))
-    }
-    
-    func didFinishLoadingImageData(with error: Error, for model: CocktailItem) {
-        view.display(CocktailImageViewModel(title: model.name,
-                                            description: model.description,
-                                            image: nil,
-                                            isLoading: false,
-                                            shouldRetry: true))
-    }
-}
-
 class CocktailImagePresenterTests: XCTestCase {
 
     func test_init_doesNotSendMessagesToView() {
