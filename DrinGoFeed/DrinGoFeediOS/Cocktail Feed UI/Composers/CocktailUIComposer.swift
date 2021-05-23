@@ -13,7 +13,9 @@ public final class CocktailUIComposer {
         let cocktailFeedController = CocktailFeedViewController.makeWith(delegate: presentationAdapter, title: CocktailFeedPresenter.title)
         
         presentationAdapter.presenter = CocktailFeedPresenter(
-            feedView: FeedViewAdapter(controller: cocktailFeedController, imageLoader: imageLoader),
+            feedView: FeedViewAdapter(
+                controller: cocktailFeedController,
+                imageLoader: MainQueueDispatchDecorator(decoratee: imageLoader)),
             loadingView: WeakRefVirtualProxy(cocktailFeedController)
         )
 
@@ -46,6 +48,14 @@ extension MainQueueDispatchDecorator: CocktailLoader where T == CocktailLoader {
     }
 }
 
+extension MainQueueDispatchDecorator: CocktailImageDataLoader where T == CocktailImageDataLoader {
+    
+    func loadImageData(from url: URL, completion: @escaping (CocktailImageDataLoader.Result) -> Void) -> CocktailImageDataLoaderTask {
+        decoratee.loadImageData(from: url) { [weak self] result in
+            self?.dispatch { completion(result) }
+        }
+    }
+}
 
 private extension CocktailFeedViewController {
     static func makeWith(delegate: FeedViewControllerDelegate, title: String) -> CocktailFeedViewController {
