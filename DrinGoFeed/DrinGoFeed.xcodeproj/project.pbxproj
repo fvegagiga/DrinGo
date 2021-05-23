@@ -18,6 +18,7 @@
 		C61FA0D3265A5A230026D999 /* FeedErrorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61FA0D2265A5A230026D999 /* FeedErrorViewModel.swift */; };
 		C61FA0D5265A5A800026D999 /* UIRefreshControl+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61FA0D4265A5A800026D999 /* UIRefreshControl+Helpers.swift */; };
 		C61FA0D8265A632A0026D999 /* CocktailFeedPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61FA0D7265A632A0026D999 /* CocktailFeedPresenterTests.swift */; };
+		C61FA0DB265A67680026D999 /* CocktailFeed.strings in Resources */ = {isa = PBXBuildFile; fileRef = C61FA0DD265A67680026D999 /* CocktailFeed.strings */; };
 		C637318C264E516E00C1B9FE /* RemoteCocktailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C637318B264E516E00C1B9FE /* RemoteCocktailItem.swift */; };
 		C637318E264E51CB00C1B9FE /* LocalCocktailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C637318D264E51CB00C1B9FE /* LocalCocktailItem.swift */; };
 		C637936126580556000118E4 /* CocktailFeedUIIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C637936026580556000118E4 /* CocktailFeedUIIntegrationTests.swift */; };
@@ -150,6 +151,8 @@
 		C61FA0D2265A5A230026D999 /* FeedErrorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedErrorViewModel.swift; sourceTree = "<group>"; };
 		C61FA0D4265A5A800026D999 /* UIRefreshControl+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIRefreshControl+Helpers.swift"; sourceTree = "<group>"; };
 		C61FA0D7265A632A0026D999 /* CocktailFeedPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailFeedPresenterTests.swift; sourceTree = "<group>"; };
+		C61FA0DC265A67680026D999 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/CocktailFeed.strings; sourceTree = "<group>"; };
+		C61FA0DE265A676D0026D999 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/CocktailFeed.strings; sourceTree = "<group>"; };
 		C637318B264E516E00C1B9FE /* RemoteCocktailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCocktailItem.swift; sourceTree = "<group>"; };
 		C637318D264E51CB00C1B9FE /* LocalCocktailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCocktailItem.swift; sourceTree = "<group>"; };
 		C637936026580556000118E4 /* CocktailFeedUIIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailFeedUIIntegrationTests.swift; sourceTree = "<group>"; };
@@ -293,6 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				C61FA0D7265A632A0026D999 /* CocktailFeedPresenterTests.swift */,
+				C61FA0DD265A67680026D999 /* CocktailFeed.strings */,
 			);
 			path = "Feed Presentation";
 			sourceTree = "<group>";
@@ -796,6 +800,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C61FA0DB265A67680026D999 /* CocktailFeed.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -960,6 +965,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		C61FA0DD265A67680026D999 /* CocktailFeed.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C61FA0DC265A67680026D999 /* en */,
+				C61FA0DE265A676D0026D999 /* it */,
+			);
+			name = CocktailFeed.strings;
+			sourceTree = "<group>";
+		};
 		C6719FDF26596B0700ACDF8A /* CocktailFeed.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
