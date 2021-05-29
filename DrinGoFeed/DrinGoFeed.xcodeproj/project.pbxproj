@@ -33,6 +33,8 @@
 		C620D45226624E9F008BEC8C /* HTTPURLResponse+StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C620D45126624E9F008BEC8C /* HTTPURLResponse+StatusCode.swift */; };
 		C620D454266250ED008BEC8C /* URLProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = C620D453266250ED008BEC8C /* URLProtocolStub.swift */; };
 		C620D456266254C6008BEC8C /* LocalCocktailImageDataLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C620D455266254C6008BEC8C /* LocalCocktailImageDataLoaderTests.swift */; };
+		C620D45826625E48008BEC8C /* LocalCocktailImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C620D45726625E48008BEC8C /* LocalCocktailImageDataLoader.swift */; };
+		C620D45A26625EBA008BEC8C /* CocktailImageDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C620D45926625EBA008BEC8C /* CocktailImageDataStore.swift */; };
 		C637318C264E516E00C1B9FE /* RemoteCocktailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C637318B264E516E00C1B9FE /* RemoteCocktailItem.swift */; };
 		C637318E264E51CB00C1B9FE /* LocalCocktailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C637318D264E51CB00C1B9FE /* LocalCocktailItem.swift */; };
 		C637936126580556000118E4 /* CocktailFeedUIIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C637936026580556000118E4 /* CocktailFeedUIIntegrationTests.swift */; };
@@ -171,6 +173,8 @@
 		C620D45126624E9F008BEC8C /* HTTPURLResponse+StatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPURLResponse+StatusCode.swift"; sourceTree = "<group>"; };
 		C620D453266250ED008BEC8C /* URLProtocolStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolStub.swift; sourceTree = "<group>"; };
 		C620D455266254C6008BEC8C /* LocalCocktailImageDataLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCocktailImageDataLoaderTests.swift; sourceTree = "<group>"; };
+		C620D45726625E48008BEC8C /* LocalCocktailImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCocktailImageDataLoader.swift; sourceTree = "<group>"; };
+		C620D45926625EBA008BEC8C /* CocktailImageDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailImageDataStore.swift; sourceTree = "<group>"; };
 		C637318B264E516E00C1B9FE /* RemoteCocktailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCocktailItem.swift; sourceTree = "<group>"; };
 		C637318D264E51CB00C1B9FE /* LocalCocktailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCocktailItem.swift; sourceTree = "<group>"; };
 		C637936026580556000118E4 /* CocktailFeedUIIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailFeedUIIntegrationTests.swift; sourceTree = "<group>"; };
@@ -590,6 +594,8 @@
 				C6D87F2D264D035500749974 /* FeedStore.swift */,
 				C637318D264E51CB00C1B9FE /* LocalCocktailItem.swift */,
 				C638D77F264FCB3400C09917 /* CocktailCachePolicy.swift */,
+				C620D45726625E48008BEC8C /* LocalCocktailImageDataLoader.swift */,
+				C620D45926625EBA008BEC8C /* CocktailImageDataStore.swift */,
 			);
 			path = "Feed Cache";
 			sourceTree = "<group>";
@@ -875,11 +881,13 @@
 				C6504A62263EC6F500F4FCD1 /* CocktailLoader.swift in Sources */,
 				C61FA0EF265A7ED60026D999 /* CocktailImageViewModel.swift in Sources */,
 				C61FA0E6265A6A510026D999 /* FeedLoadingViewModel.swift in Sources */,
+				C620D45A26625EBA008BEC8C /* CocktailImageDataStore.swift in Sources */,
 				C61FA0E1265A68560026D999 /* CocktailFeedPresenter.swift in Sources */,
 				C620D44F2662474F008BEC8C /* RemoteCocktailImageDataLoader.swift in Sources */,
 				C6D87F2E264D035500749974 /* FeedStore.swift in Sources */,
 				C6D87F2C264D02AC00749974 /* LocalCocktailLoader.swift in Sources */,
 				C638A16D2650F5CB001C9371 /* CodableFeedStore.swift in Sources */,
+				C620D45826625E48008BEC8C /* LocalCocktailImageDataLoader.swift in Sources */,
 				C620D45226624E9F008BEC8C /* HTTPURLResponse+StatusCode.swift in Sources */,
 				C6E3015626412F4B009DC1D5 /* HTTPClient.swift in Sources */,
 				C61FA0E8265A6A5D0026D999 /* FeedErrorViewModel.swift in Sources */,
