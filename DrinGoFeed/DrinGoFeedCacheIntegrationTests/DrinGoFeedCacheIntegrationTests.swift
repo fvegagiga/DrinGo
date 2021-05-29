@@ -20,14 +20,14 @@ class DrinGoFeedCacheIntegrationTests: XCTestCase {
     }
     
     func test_load_deliversNoItemsOnEmptyCache() {
-        let sut = makeSUT()
+        let sut = makeCocktailLoader()
 
         expect(sut, toLoad: [])
     }
     
     func test_load_deliversItemsSavedOnASeparateInstance() {
-        let sutToPerformSave = makeSUT()
-        let sutToPerformLoad = makeSUT()
+        let sutToPerformSave = makeCocktailLoader()
+        let sutToPerformLoad = makeCocktailLoader()
         let feed = uniqueCocktails().models
         
         save(feed, with: sutToPerformSave)
@@ -36,9 +36,9 @@ class DrinGoFeedCacheIntegrationTests: XCTestCase {
     }
     
     func test_save_overridesItemsSavedOnASeparateInstance() {
-        let sutToPerformFirstSave = makeSUT()
-        let sutToPerformLastSave = makeSUT()
-        let sutToPerformLoad = makeSUT()
+        let sutToPerformFirstSave = makeCocktailLoader()
+        let sutToPerformLastSave = makeCocktailLoader()
+        let sutToPerformLoad = makeCocktailLoader()
         let firstFeed = uniqueCocktails().models
         let latestFeed = uniqueCocktails().models
         
@@ -48,15 +48,51 @@ class DrinGoFeedCacheIntegrationTests: XCTestCase {
         expect(sutToPerformLoad, toLoad: latestFeed)
     }
     
-    // MARK: Helpers
+    // MARK: - LocalCocktailImageDataLoader Tests
     
-    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> LocalCocktailLoader {
+    func test_loadImageData_deliversSavedDataOnASeparateInstance() {
+        let imageLoaderToPerformSave = makeImageLoader()
+        let imageLoaderToPerformLoad = makeImageLoader()
+        let cocktailLoader = makeCocktailLoader()
+        let cocktail = uniqueCocktail()
+        let dataToSave = anyData()
+        
+        save([cocktail], with: cocktailLoader)
+        save(dataToSave, for: testSpecificFilePath(), with: imageLoaderToPerformSave)
+        
+        expect(imageLoaderToPerformLoad, toLoad: dataToSave, for: testSpecificFilePath())
+    }
+    
+    // MARK: - Helpers
+    
+    private func makeCocktailLoader(file: StaticString = #file, line: UInt = #line) -> LocalCocktailLoader {
         let storeURL = testSpecificStoreURL()
         let store = CodableFeedStore(storeURL: storeURL)
         let sut = LocalCocktailLoader(store: store, currentDate: Date.init)
         trackForMemoryLeaks(store, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
         return sut
+    }
+    
+    private func makeImageLoader(file: StaticString = #file, line: UInt = #line) -> LocalCocktailImageDataLoader {
+        let storeURL = testSpecificStoreURL()
+        let store = CodableFeedStore(storeURL: storeURL)
+        let sut = LocalCocktailImageDataLoader(store: store)
+        trackForMemoryLeaks(store, file: file, line: line)
+        trackForMemoryLeaks(sut, file: file, line: line)
+        return sut
+    }
+    
+    private func save(_ items: [CocktailItem], with loader: LocalCocktailLoader, file: StaticString = #file, line: UInt = #line) {
+        let saveExp = expectation(description: "Wait for save completion")
+        loader.save(items) { result in
+            if case let Result.failure(error) = result {
+                XCTAssertNil(error, "Expected to save feed successfully", file: file, line: line)
+            }
+            saveExp.fulfill()
+        }
+
+        wait(for: [saveExp], timeout: 1.0)
     }
     
     private func expect(_ sut: LocalCocktailLoader, toLoad expectedItems: [CocktailItem], file: StaticString = #file, line: UInt = #line) {
@@ -74,22 +110,40 @@ class DrinGoFeedCacheIntegrationTests: XCTestCase {
         }
         wait(for: [exp], timeout: 1.0)
     }
-    
-    private func save(_ items: [CocktailItem], with loader: LocalCocktailLoader, file: StaticString = #file, line: UInt = #line) {
+
+    private func save(_ data: Data, for url: URL, with loader: LocalCocktailImageDataLoader, file: StaticString = #file, line: UInt = #line) {
         let saveExp = expectation(description: "Wait for save completion")
-        loader.save(items) { result in
+        loader.save(data, for: url) { result in
             if case let Result.failure(error) = result {
-                XCTAssertNil(error, "Expected to save feed successfully", file: file, line: line)
+                XCTFail("Expected to save image data successfully, got error: \(error)", file: file, line: line)
             }
             saveExp.fulfill()
         }
-
         wait(for: [saveExp], timeout: 1.0)
     }
-
-
+    
+    private func expect(_ sut: LocalCocktailImageDataLoader, toLoad expectedData: Data, for url: URL, file: StaticString = #file, line: UInt = #line) {
+        let exp = expectation(description: "Wait for load completion")
+        _ = sut.loadImageData(from: url) { result in
+            switch result {
+            case let .success(loadedData):
+                XCTAssertEqual(loadedData, expectedData, file: file, line: line)
+                
+            case let .failure(error):
+                XCTFail("Expected successful image data result, got \(error) instead", file: file, line: line)
+            }
+            
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 1.0)
+    }
+    
     private func testSpecificStoreURL() -> URL {
         return cachesDirectory().appendingPathComponent("\(type(of: self)).store")
+    }
+    
+    private func testSpecificFilePath() -> URL {
+        return cachesDirectory().appendingPathComponent("\(type(of: self)).png")
     }
     
     private func cachesDirectory() -> URL {
