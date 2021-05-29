@@ -15,19 +15,29 @@ class CodableCocktailImageDataStoreTests: XCTestCase {
     
     func test_retrieveImageData_deliversNotFoundWhenStoredDataURLDoesNotMatch() {
         let sut = makeSUT()
-        let url = URL(string: "http://a-url.com")!
-        let nonMatchingURL = URL(string: "http://another-url.com")!
+        let url = testSpecificFilePath()
+        let nonMatchingURL = testSpecificNoMatchingFilePath()
         
         insert(anyData(), for: url, into: sut)
         
         expect(sut, toCompleteRetrievalWith: notFound(), for: nonMatchingURL)
     }
 
+    func test_retrieveImageData_deliversFoundDataWhenThereIsAStoredImageDataMatchingURL() {
+        let sut = makeSUT()
+        let storedData = anyData()
+        let filePath = testSpecificFilePath()
+        
+        insert(storedData, for: filePath, into: sut)
+        
+        expect(sut, toCompleteRetrievalWith: found(storedData), for: filePath)
+    }
+
     
     // - MARK: Helpers
     
     private func makeSUT(storeURL: URL? = nil, file: StaticString = #filePath, line: UInt = #line) -> CodableFeedStore {
-        let sut = CodableFeedStore(storeURL: storeURL ?? testSpecificStoreURL())
+        let sut = CodableFeedStore(storeURL: storeURL ?? testSpecificFilePath())
         trackForMemoryLeaks(sut, file: file, line: line)
         
         return sut
@@ -35,6 +45,10 @@ class CodableCocktailImageDataStoreTests: XCTestCase {
     
     private func notFound() -> CocktailImageDataStore.RetrievalResult {
         return .success(.none)
+    }
+
+    private func found(_ data: Data) -> CocktailImageDataStore.RetrievalResult {
+        return .success(data)
     }
 
     private func expect(_ sut: CodableFeedStore, toCompleteRetrievalWith expectedResult: CocktailImageDataStore.RetrievalResult, for url: URL,  file: StaticString = #file, line: UInt = #line) {
@@ -80,8 +94,12 @@ class CodableCocktailImageDataStoreTests: XCTestCase {
     }
 
 
-    private func testSpecificStoreURL() -> URL {
-        return cachesDirectory().appendingPathComponent("\(type(of: self)).store")
+    private func testSpecificFilePath() -> URL {
+        return cachesDirectory().appendingPathComponent("\(type(of: self)).png")
+    }
+    
+    private func testSpecificNoMatchingFilePath() -> URL {
+        return cachesDirectory().appendingPathComponent("wrongFile.png")
     }
     
     private func cachesDirectory() -> URL {
