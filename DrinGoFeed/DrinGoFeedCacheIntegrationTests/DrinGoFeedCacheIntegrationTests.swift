@@ -65,6 +65,23 @@ class DrinGoFeedCacheIntegrationTests: XCTestCase {
         expect(imageLoaderToPerformLoad, toLoad: dataToSave, for: testSpecificFilePath())
     }
     
+    func test_saveImageData_overridesSavedImageDataOnASeparateInstance() {
+        let imageLoaderToPerformFirstSave = makeImageLoader()
+        let imageLoaderToPerformLastSave = makeImageLoader()
+        let imageLoaderToPerformLoad = makeImageLoader()
+        let feedLoader = makeCocktailLoader()
+        let cocktail = uniqueCocktail()
+        let firstImageData = Data("first".utf8)
+        let lastImageData = Data("last".utf8)
+        
+        save([cocktail], with: feedLoader)
+        save(firstImageData, for: testSpecificFilePath(), with: imageLoaderToPerformFirstSave)
+        save(lastImageData, for: testSpecificFilePath(), with: imageLoaderToPerformLastSave)
+
+        expect(imageLoaderToPerformLoad, toLoad: lastImageData, for: testSpecificFilePath())
+    }
+
+    
     // MARK: - Helpers
     
     private func makeCocktailLoader(file: StaticString = #file, line: UInt = #line) -> LocalCocktailLoader {
