@@ -27,6 +27,20 @@ class DrinGoFeedAPIEndToEndTests: XCTestCase {
         }
     }
     
+    func test_endToEndTestServerGETCocktailImageDataResult_matchesFixedTestAccountData() {
+        switch getCocktailImageDataResult() {
+        case let .success(data)?:
+            XCTAssertFalse(data.isEmpty, "Expected non-empty image data")
+            
+        case let .failure(error)?:
+            XCTFail("Expected successful image data result, got \(error) instead")
+            
+        default:
+            XCTFail("Expected successful image data result, got no result instead")
+        }
+    }
+
+    
     // MARK: - Helpers
     
     private func getCocktailResult(file: StaticString = #filePath, line: UInt = #line) -> RemoteCocktailLoader.Result? {
@@ -47,6 +61,26 @@ class DrinGoFeedAPIEndToEndTests: XCTestCase {
         
         return receivedResult
     }
+    
+    private func getCocktailImageDataResult(file: StaticString = #file, line: UInt = #line) -> CocktailImageDataLoader.Result? {
+        let url = imageURL(at: 0)
+        let client = URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
+        let loader = RemoteCocktailImageDataLoader(client: client)
+        trackForMemoryLeaks(client, file: file, line: line)
+        trackForMemoryLeaks(loader, file: file, line: line)
+        
+        let exp = expectation(description: "Wait for load completion")
+        
+        var receivedResult: CocktailImageDataLoader.Result?
+        _ = loader.loadImageData(from: url) { result in
+            receivedResult = result
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 5.0)
+        
+        return receivedResult
+    }
+
     
     private func expectedCocktail(at index: Int) -> CocktailItem {
         return CocktailItem(id: id(at: index),
