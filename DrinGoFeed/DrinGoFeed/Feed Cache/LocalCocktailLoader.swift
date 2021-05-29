@@ -61,19 +61,21 @@ extension LocalCocktailLoader: CocktailLoader {
 }
 
 extension LocalCocktailLoader {
-    public func validateCache() {
+    public typealias ValidationResult = Result<Void, Error>
+
+    public func validateCache(completion: @escaping (ValidationResult) -> Void = { _ in }) {
         store.retrieve { [weak self] result in
             guard let self = self else { return }
             
             switch result {
             case .failure:
-                self.store.deleteCachedFeed { _ in }
+                self.store.deleteCachedFeed { _ in completion(.success(())) }
                 
             case let .success(.some(cache)) where !CocktailCachePolicy.validate(cache.timestamp, against: self.currentDate()):
-                self.store.deleteCachedFeed { _ in }
+                self.store.deleteCachedFeed { _ in completion(.success(())) }
                 
-            case .success(.none), .success(.some):
-                break
+            case .success:
+                completion(.success(()))
             }
         }
     }
