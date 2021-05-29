@@ -32,6 +32,14 @@ class CacheCocktailImageDataUseCaseTests: XCTestCase {
         })
     }
 
+    func test_saveImageDataFromURL_succeedsOnSuccessfulStoreInsertion() {
+        let (sut, store) = makeSUT()
+        
+        expect(sut, toCompleteWith: .success(()), when: {
+            store.completeInsertionSuccessfully()
+        })
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: LocalCocktailImageDataLoader, store: CocktailImageDataStoreSpy) {
