@@ -13,9 +13,11 @@ final class CocktailImageDataStoreSpy: CocktailImageDataStore {
 
     private(set) var receivedMessages = [Message]()
     private var retrievalCompletions = [(CocktailImageDataStore.RetrievalResult) -> Void]()
+    private var insertionCompletions = [(CocktailImageDataStore.InsertionResult) -> Void]()
     
     func insert(_ data: Data, for url: URL, completion: @escaping (CocktailImageDataStore.InsertionResult) -> Void) {
         receivedMessages.append(.insert(data: data, for: url))
+        insertionCompletions.append(completion)
     }
 
     func retrieve(dataForURL url: URL, completion: @escaping (CocktailImageDataStore.RetrievalResult) -> Void) {
@@ -29,5 +31,9 @@ final class CocktailImageDataStoreSpy: CocktailImageDataStore {
     
     func completeRetrieval(with data: Data?, at index: Int = 0) {
         retrievalCompletions[index](.success(data))
+    }
+    
+    func completeInsertion(with error: Error, at index: Int = 0) {
+        insertionCompletions[index](.failure(error))
     }
 }
