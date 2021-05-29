@@ -76,6 +76,16 @@ class LocalCocktailImageDataLoaderTests: XCTestCase {
         XCTAssertTrue(received.isEmpty, "Expected no received results after instance has been deallocated")
     }
 
+    func test_saveImageDataForURL_requestsImageDataInsertionForURL() {
+        let (sut, store) = makeSUT()
+        let url = anyURL()
+        let data = anyData()
+        
+        sut.save(data, for: url) { _ in }
+        
+        XCTAssertEqual(store.receivedMessages, [.insert(data: data, for: url)])
+    }
+
     
     // MARK: - Helpers
     
@@ -122,11 +132,16 @@ class LocalCocktailImageDataLoaderTests: XCTestCase {
     private class StoreSpy: CocktailImageDataStore {
         enum Message: Equatable {
             case retrieve(dataFor: URL)
+            case insert(data: Data, for: URL)
         }
         
         private var completions = [(CocktailImageDataStore.Result) -> Void]()
         private(set) var receivedMessages = [Message]()
         
+        func insert(_ data: Data, for url: URL, completion: @escaping (CocktailImageDataStore.InsertionResult) -> Void) {
+            receivedMessages.append(.insert(data: data, for: url))
+        }
+
         func retrieve(dataForURL url: URL, completion: @escaping (CocktailImageDataStore.Result) -> Void) {
             receivedMessages.append(.retrieve(dataFor: url))
             completions.append(completion)
@@ -139,5 +154,6 @@ class LocalCocktailImageDataLoaderTests: XCTestCase {
         func complete(with data: Data?, at index: Int = 0) {
             completions[index](.success(data))
         }
+        
     }
 }
