@@ -67,6 +67,33 @@ class ValidateFeedCacheUseCaseTests: XCTestCase {
         XCTAssertEqual(store.receivedMessages, [.retrieve, .deleteCachedFeed])
     }
     
+    
+    func test_validateCache_failsOnDeletionErrorOfExpiredCache() {
+        let feed = uniqueCocktails()
+        let fixedCurrentDate = Date()
+        let expiredTimestamp = fixedCurrentDate.minusCocktailCacheMaxAge().adding(seconds: -1)
+        let (sut, store) = makeSUT(currentDate: { fixedCurrentDate })
+        let deletionError = anyNSError()
+        
+        expect(sut, toCompleteWith: .failure(deletionError), when: {
+            store.completeRetrieval(with: feed.local, timestamp: expiredTimestamp)
+            store.completeDeletion(with: deletionError)
+        })
+    }
+    
+    func test_validateCache_succeedsOnSuccessfulDeletionOfExpiredCache() {
+        let feed = uniqueCocktails()
+        let fixedCurrentDate = Date()
+        let expiredTimestamp = fixedCurrentDate.minusCocktailCacheMaxAge().adding(seconds: -1)
+        let (sut, store) = makeSUT(currentDate: { fixedCurrentDate })
+        
+        expect(sut, toCompleteWith: .success(()), when: {
+            store.completeRetrieval(with: feed.local, timestamp: expiredTimestamp)
+            store.completeDeletionSuccessfully()
+        })
+    }
+
+    
     func test_validateCache_doesNotDeleteInvalidCacheAfterSUTInstanceHasBeenDeallocated() {
         let store = FeedStoreSpy()
         var sut: LocalCocktailLoader? = LocalCocktailLoader(store: store, currentDate: Date.init)
