@@ -128,32 +128,4 @@ class LoadCocktailImageDataFromCacheUseCaseTests: XCTestCase {
     private func notFound() -> CocktailImageDataLoader.Result {
         return .failure(LocalCocktailImageDataLoader.LoadError.notFound)
     }
-
-    private class StoreSpy: CocktailImageDataStore {
-        enum Message: Equatable {
-            case retrieve(dataFor: URL)
-            case insert(data: Data, for: URL)
-        }
-
-        private(set) var receivedMessages = [Message]()
-        private var retrievalCompletions = [(CocktailImageDataStore.RetrievalResult) -> Void]()
-        
-        func insert(_ data: Data, for url: URL, completion: @escaping (CocktailImageDataStore.InsertionResult) -> Void) {
-            receivedMessages.append(.insert(data: data, for: url))
-        }
-
-        func retrieve(dataForURL url: URL, completion: @escaping (CocktailImageDataStore.RetrievalResult) -> Void) {
-            receivedMessages.append(.retrieve(dataFor: url))
-            retrievalCompletions.append(completion)
-        }
-        
-        func completeRetrieval(with error: Error, at index: Int = 0) {
-            retrievalCompletions[index](.failure(error))
-        }
-        
-        func completeRetrieval(with data: Data?, at index: Int = 0) {
-            retrievalCompletions[index](.success(data))
-        }
-        
-    }
 }
