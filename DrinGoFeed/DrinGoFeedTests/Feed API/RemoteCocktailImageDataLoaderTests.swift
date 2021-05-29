@@ -203,10 +203,6 @@ class RemoteCocktailImageDataLoaderTests: XCTestCase {
         
         wait(for: [exp], timeout: 1.0)
     }
-    
-    private func anyData() -> Data {
-        return Data("any data".utf8)
-    }
 
     private func failure(_ error: RemoteCocktailImageDataLoader.Error) -> CocktailImageDataLoader.Result {
         return .failure(error)
