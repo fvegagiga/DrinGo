@@ -4,7 +4,8 @@
 
 import Foundation
 
-public final class RemoteCocktailImageDataLoader {
+public final class RemoteCocktailImageDataLoader: CocktailImageDataLoader {
+    
     private let client: HTTPClient
     
     public init(client: HTTPClient) {
