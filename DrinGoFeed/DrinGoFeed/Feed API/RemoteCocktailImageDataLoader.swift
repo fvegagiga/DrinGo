@@ -40,7 +40,6 @@ public final class RemoteCocktailImageDataLoader: CocktailImageDataLoader {
         }
     }
     
-    @discardableResult
     public func loadImageData(from url: URL, completion: @escaping (CocktailImageDataLoader.Result) -> Void) -> CocktailImageDataLoaderTask {
         let task = HTTPClientTaskWrapper(completion)
         
