@@ -13,8 +13,24 @@ protocol CocktailImageDataStore {
 
 
 final class LocalCocktailImageDataLoader: CocktailImageDataLoader {
-    private struct Task: CocktailImageDataLoaderTask {
-        func cancel() {}
+    private final class Task: CocktailImageDataLoaderTask {
+        private var completion: ((CocktailImageDataLoader.Result) -> Void)?
+        
+        init(_ completion: @escaping (CocktailImageDataLoader.Result) -> Void) {
+            self.completion = completion
+        }
+        
+        func complete(with result: CocktailImageDataLoader.Result) {
+            completion?(result)
+        }
+        
+        func cancel() {
+            preventFurtherCompletions()
+        }
+        
+        private func preventFurtherCompletions() {
+            completion = nil
+        }
     }
     
     private let store: CocktailImageDataStore
@@ -29,13 +45,18 @@ final class LocalCocktailImageDataLoader: CocktailImageDataLoader {
     }
     
     func loadImageData(from url: URL, completion: @escaping (CocktailImageDataLoader.Result) -> Void) -> CocktailImageDataLoaderTask {
+        let task = Task(completion)
+
         store.retrieve(dataForURL: url) { result in
-            completion(result
-                .mapError { _ in Error.failed }
-                .flatMap { data in data.map { .success($0) } ?? .failure(Error.notFound) })
+            task.complete(with: result
+                            .mapError { _ in Error.failed }
+                            .flatMap { data in
+                                data.map { .success($0) } ?? .failure(Error.notFound)
+                            })
+
         }
 
-        return Task()
+        return task
     }
 }
 
@@ -83,7 +104,21 @@ class LocalCocktailImageDataLoaderTests: XCTestCase {
         })
     }
 
-    
+    func test_loadImageDataFromURL_doesNotDeliverResultAfterCancellingTask() {
+        let (sut, store) = makeSUT()
+        let foundData = anyData()
+        
+        var received = [CocktailImageDataLoader.Result]()
+        let task = sut.loadImageData(from: anyURL()) { received.append($0) }
+        task.cancel()
+        
+        store.complete(with: foundData)
+        store.complete(with: .none)
+        store.complete(with: anyNSError())
+        
+        XCTAssertTrue(received.isEmpty, "Expected no received results after cancelling task")
+    }
+
     // MARK: - Helpers
     
     private func makeSUT(currentDate: @escaping () -> Date = Date.init, file: StaticString = #file, line: UInt = #line) -> (sut: LocalCocktailImageDataLoader, store: StoreSpy) {
