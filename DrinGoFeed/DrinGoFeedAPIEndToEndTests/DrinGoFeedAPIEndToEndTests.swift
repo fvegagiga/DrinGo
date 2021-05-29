@@ -45,9 +45,7 @@ class DrinGoFeedAPIEndToEndTests: XCTestCase {
     
     private func getCocktailResult(file: StaticString = #filePath, line: UInt = #line) -> RemoteCocktailLoader.Result? {
         let testServerURL = URL(string: "https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=margarita")!
-        let client = URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
-        let loader = RemoteCocktailLoader(url: testServerURL, client: client)
-        trackForMemoryLeaks(client, file: file, line: line)
+        let loader = RemoteCocktailLoader(url: testServerURL, client: ephemeralClient())
         trackForMemoryLeaks(loader, file: file, line: line)
         
         let exp = expectation(description: "Wait for load completion")
@@ -64,9 +62,7 @@ class DrinGoFeedAPIEndToEndTests: XCTestCase {
     
     private func getCocktailImageDataResult(file: StaticString = #file, line: UInt = #line) -> CocktailImageDataLoader.Result? {
         let url = imageURL(at: 0)
-        let client = URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
-        let loader = RemoteCocktailImageDataLoader(client: client)
-        trackForMemoryLeaks(client, file: file, line: line)
+        let loader = RemoteCocktailImageDataLoader(client: ephemeralClient())
         trackForMemoryLeaks(loader, file: file, line: line)
         
         let exp = expectation(description: "Wait for load completion")
@@ -81,6 +77,11 @@ class DrinGoFeedAPIEndToEndTests: XCTestCase {
         return receivedResult
     }
 
+    private func ephemeralClient(file: StaticString = #file, line: UInt = #line) -> HTTPClient {
+        let client = URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
+        trackForMemoryLeaks(client, file: file, line: line)
+        return client
+    }
     
     private func expectedCocktail(at index: Int) -> CocktailItem {
         return CocktailItem(id: id(at: index),
