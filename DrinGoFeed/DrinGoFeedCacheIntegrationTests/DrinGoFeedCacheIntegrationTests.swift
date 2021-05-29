@@ -61,6 +61,18 @@ class DrinGoFeedCacheIntegrationTests: XCTestCase {
         expect(feedLoaderToPerformSave, toLoad: feed)
     }
     
+    func test_validateFeedCache_deletesFeedSavedInADistantPast() {
+        let feedLoaderToPerformSave = makeCocktailLoader(currentDate: .distantPast)
+        let feedLoaderToPerformValidation = makeCocktailLoader(currentDate: Date())
+        let feed = uniqueCocktails().models
+        
+        save(feed, with: feedLoaderToPerformSave)
+        validateCache(with: feedLoaderToPerformValidation)
+
+        expect(feedLoaderToPerformSave, toLoad: [])
+    }
+
+    
     // MARK: - LocalCocktailImageDataLoader Tests
     
     func test_loadImageData_deliversSavedDataOnASeparateInstance() {
@@ -94,11 +106,11 @@ class DrinGoFeedCacheIntegrationTests: XCTestCase {
 
     
     // MARK: - Helpers
-    
-    private func makeCocktailLoader(file: StaticString = #file, line: UInt = #line) -> LocalCocktailLoader {
+    private func makeCocktailLoader(currentDate: Date = Date(), file: StaticString = #file, line: UInt = #line) -> LocalCocktailLoader {
         let storeURL = testSpecificStoreURL()
         let store = CodableFeedStore(storeURL: storeURL)
-        let sut = LocalCocktailLoader(store: store, currentDate: Date.init)
+        let sut = LocalCocktailLoader(store: store, currentDate: { currentDate })
+
         trackForMemoryLeaks(store, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
         return sut
