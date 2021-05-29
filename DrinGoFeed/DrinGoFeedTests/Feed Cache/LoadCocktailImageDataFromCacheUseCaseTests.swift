@@ -64,7 +64,7 @@ class LoadCocktailImageDataFromCacheUseCaseTests: XCTestCase {
     }
 
     func test_loadImageDataFromURL_doesNotDeliverResultAfterSUTInstanceHasBeenDeallocated() {
-        let store = StoreSpy()
+        let store = CocktailImageDataStoreSpy()
         var sut: LocalCocktailImageDataLoader? = LocalCocktailImageDataLoader(store: store)
         
         var received = [CocktailImageDataLoader.Result]()
@@ -75,22 +75,11 @@ class LoadCocktailImageDataFromCacheUseCaseTests: XCTestCase {
         
         XCTAssertTrue(received.isEmpty, "Expected no received results after instance has been deallocated")
     }
-
-    func test_saveImageDataForURL_requestsImageDataInsertionForURL() {
-        let (sut, store) = makeSUT()
-        let url = anyURL()
-        let data = anyData()
-        
-        sut.save(data, for: url) { _ in }
-        
-        XCTAssertEqual(store.receivedMessages, [.insert(data: data, for: url)])
-    }
-
     
     // MARK: - Helpers
     
-    private func makeSUT(currentDate: @escaping () -> Date = Date.init, file: StaticString = #file, line: UInt = #line) -> (sut: LocalCocktailImageDataLoader, store: StoreSpy) {
-        let store = StoreSpy()
+    private func makeSUT(currentDate: @escaping () -> Date = Date.init, file: StaticString = #file, line: UInt = #line) -> (sut: LocalCocktailImageDataLoader, store: CocktailImageDataStoreSpy) {
+        let store = CocktailImageDataStoreSpy()
         let sut = LocalCocktailImageDataLoader(store: store)
         trackForMemoryLeaks(store, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)

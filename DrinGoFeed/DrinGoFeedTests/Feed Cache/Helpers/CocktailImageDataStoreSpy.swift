@@ -5,7 +5,7 @@
 import Foundation
 import DrinGoFeed
 
-final class StoreSpy: CocktailImageDataStore {
+final class CocktailImageDataStoreSpy: CocktailImageDataStore {
     enum Message: Equatable {
         case retrieve(dataFor: URL)
         case insert(data: Data, for: URL)
