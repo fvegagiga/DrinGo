@@ -76,7 +76,7 @@ class LoadCocktailImageDataFromRemoteUseCaseTests: XCTestCase {
         var sut: RemoteCocktailImageDataLoader? = RemoteCocktailImageDataLoader(client: client)
         
         var capturedResults = [CocktailImageDataLoader.Result]()
-        sut?.loadImageData(from: anyURL()) { capturedResults.append($0) }
+        let _ = sut?.loadImageData(from: anyURL()) { capturedResults.append($0) }
         
         sut = nil
         client.complete(withStatusCode: 200, data: anyData())
@@ -125,7 +125,7 @@ class LoadCocktailImageDataFromRemoteUseCaseTests: XCTestCase {
         let url = URL(string: "https://a-given-url.com")!
         let exp = expectation(description: "Wait for load completion")
         
-        sut.loadImageData(from: url) { receivedResult in
+        let _ = sut.loadImageData(from: url) { receivedResult in
             switch (receivedResult, expectedResult) {
             case let (.success(receivedData), .success(expectedData)):
                 XCTAssertEqual(receivedData, expectedData, file: file, line: line)

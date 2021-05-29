@@ -594,8 +594,8 @@
 				C6D87F2D264D035500749974 /* FeedStore.swift */,
 				C637318D264E51CB00C1B9FE /* LocalCocktailItem.swift */,
 				C638D77F264FCB3400C09917 /* CocktailCachePolicy.swift */,
-				C620D45726625E48008BEC8C /* LocalCocktailImageDataLoader.swift */,
 				C620D45926625EBA008BEC8C /* CocktailImageDataStore.swift */,
+				C620D45726625E48008BEC8C /* LocalCocktailImageDataLoader.swift */,
 			);
 			path = "Feed Cache";
 			sourceTree = "<group>";
