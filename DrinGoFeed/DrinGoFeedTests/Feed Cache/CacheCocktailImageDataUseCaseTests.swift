@@ -40,6 +40,19 @@ class CacheCocktailImageDataUseCaseTests: XCTestCase {
         })
     }
     
+    func test_saveImageDataFromURL_doesNotDeliverResultAfterSUTInstanceHasBeenDeallocated() {
+        let store = CocktailImageDataStoreSpy()
+        var sut: LocalCocktailImageDataLoader? = LocalCocktailImageDataLoader(store: store)
+        
+        var received = [LocalCocktailImageDataLoader.SaveResult]()
+        sut?.save(anyData(), for: anyURL()) { received.append($0) }
+        
+        sut = nil
+        store.completeInsertionSuccessfully()
+
+        XCTAssertTrue(received.isEmpty, "Expected no received results after instance has been deallocated")
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: LocalCocktailImageDataLoader, store: CocktailImageDataStoreSpy) {
