@@ -26,6 +26,7 @@
 		C61FA0EB265A710B0026D999 /* CocktailImagePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61FA0EA265A710B0026D999 /* CocktailImagePresenterTests.swift */; };
 		C61FA0ED265A7E380026D999 /* CocktailImagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61FA0EC265A7E380026D999 /* CocktailImagePresenter.swift */; };
 		C61FA0EF265A7ED60026D999 /* CocktailImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61FA0EE265A7ED60026D999 /* CocktailImageViewModel.swift */; };
+		C620D448266210D3008BEC8C /* CocktailImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6719FB32658D93500ACDF8A /* CocktailImageDataLoader.swift */; };
 		C637318C264E516E00C1B9FE /* RemoteCocktailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C637318B264E516E00C1B9FE /* RemoteCocktailItem.swift */; };
 		C637318E264E51CB00C1B9FE /* LocalCocktailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C637318D264E51CB00C1B9FE /* LocalCocktailItem.swift */; };
 		C637936126580556000118E4 /* CocktailFeedUIIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C637936026580556000118E4 /* CocktailFeedUIIntegrationTests.swift */; };
@@ -64,7 +65,6 @@
 		C6719FA72658D78200ACDF8A /* UIRefreshControl+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6719FA62658D78200ACDF8A /* UIRefreshControl+TestHelpers.swift */; };
 		C6719FA92658D7BA00ACDF8A /* UIButton+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6719FA82658D7BA00ACDF8A /* UIButton+TestHelpers.swift */; };
 		C6719FAB2658D80900ACDF8A /* UIControl+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6719FAA2658D80900ACDF8A /* UIControl+TestHelpers.swift */; };
-		C6719FB42658D93500ACDF8A /* CocktailImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6719FB32658D93500ACDF8A /* CocktailImageDataLoader.swift */; };
 		C6719FB62658D98C00ACDF8A /* CocktailFeedViewController+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6719FB52658D98C00ACDF8A /* CocktailFeedViewController+TestHelpers.swift */; };
 		C6719FB82658DA0400ACDF8A /* CocktailFeedCell+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6719FB72658DA0400ACDF8A /* CocktailFeedCell+TestHelpers.swift */; };
 		C6719FBA2658DA7000ACDF8A /* CocktailFeedUIIntegrationTests+LoaderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6719FB92658DA7000ACDF8A /* CocktailFeedUIIntegrationTests+LoaderSpy.swift */; };
@@ -377,6 +377,7 @@
 			children = (
 				C6504A5F263EBC9E00F4FCD1 /* CocktailItem.swift */,
 				C6504A61263EC6F500F4FCD1 /* CocktailLoader.swift */,
+				C6719FB32658D93500ACDF8A /* CocktailImageDataLoader.swift */,
 			);
 			path = "Feed Feature";
 			sourceTree = "<group>";
@@ -509,14 +510,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		C6719FB22658D92100ACDF8A /* Cocktail Image Loader */ = {
-			isa = PBXGroup;
-			children = (
-				C6719FB32658D93500ACDF8A /* CocktailImageDataLoader.swift */,
-			);
-			path = "Cocktail Image Loader";
-			sourceTree = "<group>";
-		};
 		C6719FC12658E39600ACDF8A /* Composers */ = {
 			isa = PBXGroup;
 			children = (
@@ -534,7 +527,6 @@
 			isa = PBXGroup;
 			children = (
 				C6835BC726578FF0000EFEF8 /* Info.plist */,
-				C6719FB22658D92100ACDF8A /* Cocktail Image Loader */,
 				C6719FAF2658D8F200ACDF8A /* Cocktail Feed UI */,
 			);
 			path = DrinGoFeediOS;
@@ -845,6 +837,7 @@
 				C637318C264E516E00C1B9FE /* RemoteCocktailItem.swift in Sources */,
 				C64DDA01263F14FA009D70AE /* RemoteCocktailLoader.swift in Sources */,
 				C61FA0ED265A7E380026D999 /* CocktailImagePresenter.swift in Sources */,
+				C620D448266210D3008BEC8C /* CocktailImageDataLoader.swift in Sources */,
 				C6504A62263EC6F500F4FCD1 /* CocktailLoader.swift in Sources */,
 				C61FA0EF265A7ED60026D999 /* CocktailImageViewModel.swift in Sources */,
 				C61FA0E6265A6A510026D999 /* FeedLoadingViewModel.swift in Sources */,
@@ -899,7 +892,6 @@
 				C6719FD8265962AD00ACDF8A /* UIImageView+Animations.swift in Sources */,
 				C61FA0C6265A2C300026D999 /* MainQueueDispatchDecorator.swift in Sources */,
 				C637936A2658130B000118E4 /* CocktailFeedViewController.swift in Sources */,
-				C6719FB42658D93500ACDF8A /* CocktailImageDataLoader.swift in Sources */,
 				C637936C265817FF000118E4 /* CocktailFeedCell.swift in Sources */,
 				C61FA0CC265A2D760026D999 /* CocktailFeedLoaderPresentationAdapter.swift in Sources */,
 				C61FA0CE265A2DBD0026D999 /* FeedViewAdapter.swift in Sources */,
