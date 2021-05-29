@@ -7,6 +7,18 @@ import DrinGoFeed
 
 class CodableCocktailImageDataStoreTests: XCTestCase {
     
+    override func setUp() {
+        super.setUp()
+        
+        setupEmptyStoreState()
+    }
+    
+    override func tearDown() {
+        super.tearDown()
+        
+        undoStoreSideEffects()
+    }
+    
     func test_retrieveImageData_deliversNotFoundWhenEmpty() {
         let sut = makeSUT()
         
@@ -137,4 +149,20 @@ class CodableCocktailImageDataStoreTests: XCTestCase {
         return FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
     }
 
+    private func setupEmptyStoreState() {
+        deleteStoreArtifacts()
+    }
+    
+    private func createCachesDirectory() {
+        try? FileManager.default.createDirectory(atPath: cachesDirectory().path, withIntermediateDirectories: true, attributes: nil)
+    }
+    
+    private func undoStoreSideEffects() {
+        deleteStoreArtifacts()
+    }
+    
+    private func deleteStoreArtifacts() {
+        try? FileManager.default.removeItem(at: testSpecificFilePath())
+        try? FileManager.default.removeItem(at: testSpecificNoMatchingFilePath())
+    }
 }
