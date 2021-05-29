@@ -12,11 +12,15 @@ class RemoteCocktailImageDataLoader {
         self.client = client
     }
     
+    public enum Error: Swift.Error {
+        case invalidData
+    }
+    
     func loadImageData(from url: URL, completion: @escaping (CocktailImageDataLoader.Result) -> Void) {
         client.get(from: url) { result in
             switch result {
+            case .success: completion(.failure(Error.invalidData))
             case let .failure(error): completion(.failure(error))
-            default: break
             }
         }
     }
@@ -51,11 +55,23 @@ class RemoteCocktailImageDataLoaderTests: XCTestCase {
 
     func test_loadImageDataFromURL_deliversErrorOnClientError() {
         let (sut, client) = makeSUT()
-        let clientError = anyNSError()
+        let clientError = NSError(domain: "Test", code: 0)
         
         expect(sut, toCompleteWith: .failure(clientError), when: {
             client.complete(with: clientError)
         })
+    }
+    
+    func test_loadImageDataFromURL_deliversInvalidDataErrorOnNon200HTTPResponse() {
+        let (sut, client) = makeSUT()
+        
+        let samples = [199, 201, 300, 400, 500]
+        
+        samples.enumerated().forEach { index, code in
+            expect(sut, toCompleteWith: failure(.invalidData), when: {
+                client.complete(withStatusCode: code, data: anyData(), at: index)
+            })
+        }
     }
 
     // MARK: - Helpers
@@ -77,9 +93,10 @@ class RemoteCocktailImageDataLoaderTests: XCTestCase {
             case let (.success(receivedData), .success(expectedData)):
                 XCTAssertEqual(receivedData, expectedData, file: file, line: line)
                 
-            case let (.failure(receivedError as NSError), .failure(expectedError as NSError)):
-                XCTAssertEqual(receivedError, expectedError, file: file, line: line)
-                
+            case let (.failure(receivedError as NSError?), .failure(expectedError as NSError?)):
+                XCTAssertEqual(receivedError?.domain, expectedError?.domain, file: file, line: line)
+                XCTAssertEqual(receivedError?.code, expectedError?.code, file: file, line: line)
+
             default:
                 XCTFail("Expected result \(expectedResult) got \(receivedResult) instead", file: file, line: line)
             }
@@ -92,6 +109,14 @@ class RemoteCocktailImageDataLoaderTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
     
+    private func anyData() -> Data {
+        return Data("any data".utf8)
+    }
+
+    private func failure(_ error: RemoteCocktailImageDataLoader.Error) -> CocktailImageDataLoader.Result {
+        return .failure(error)
+    }
+
     private class HTTPClientSpy: HTTPClient {
         private var messages = [(url: URL, completion: (HTTPClient.Result) -> Void)]()
         
@@ -105,6 +130,16 @@ class RemoteCocktailImageDataLoaderTests: XCTestCase {
         
         func complete(with error: Error, at index: Int = 0) {
             messages[index].completion(.failure(error))
+        }
+        
+        func complete(withStatusCode code: Int, data: Data, at index: Int = 0) {
+            let response = HTTPURLResponse(
+                url: requestedURLs[index],
+                statusCode: code,
+                httpVersion: nil,
+                headerFields: nil
+            )!
+            messages[index].completion(.success((data, response)))
         }
     }
 }
