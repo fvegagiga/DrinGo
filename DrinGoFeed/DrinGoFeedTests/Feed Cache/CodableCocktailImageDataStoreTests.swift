@@ -5,16 +5,6 @@
 import XCTest
 import DrinGoFeed
 
-extension CodableFeedStore: CocktailImageDataStore {
-    public func insert(_ data: Data, for url: URL, completion: @escaping (CocktailImageDataStore.InsertionResult) -> Void) {
-        
-    }
-    
-    public func retrieve(dataForURL url: URL, completion: @escaping (CocktailImageDataStore.RetrievalResult) -> Void) {
-        completion(.success(.none))
-    }
-}
-
 class CodableCocktailImageDataStoreTests: XCTestCase {
     
     func test_retrieveImageData_deliversNotFoundWhenEmpty() {
