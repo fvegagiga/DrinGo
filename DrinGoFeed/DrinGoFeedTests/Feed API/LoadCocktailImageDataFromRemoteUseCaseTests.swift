@@ -5,7 +5,7 @@
 import XCTest
 import DrinGoFeed
 
-class RemoteCocktailImageDataLoaderTests: XCTestCase {
+class LoadCocktailImageDataFromRemoteUseCaseTests: XCTestCase {
 
     func test_init_doesNotPerformAnyURLRequest() {
         let (_, client) = makeSUT()
