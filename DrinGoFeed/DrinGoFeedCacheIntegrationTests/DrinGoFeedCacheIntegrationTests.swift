@@ -19,6 +19,8 @@ class DrinGoFeedCacheIntegrationTests: XCTestCase {
         undoStoreSideEffects()
     }
     
+    // MARK: - LocalFeedLoader Tests
+    
     func test_load_deliversNoItemsOnEmptyCache() {
         let sut = makeCocktailLoader()
 
