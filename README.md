@@ -6,13 +6,15 @@ DrinGo is an iOS app to discover the best cocktails and drink recipes.
 
 
 
-### Story: Customer requests to random cocktail list
+### Story: Customer requests to see a random cocktail list
 
 ### Narrative #1
 
-> As an online customer
+```
+As an online customer
 I want the app to automatically load a random cocktail list
 So I can always enjoy a new cocktail
+```
 
 ### Scenarios (Acceptance criteria)
 
@@ -25,9 +27,11 @@ Given the customer has connectivity
 
 ### Narrative #2
 
-> As an offline customer
+```
+As an offline customer
 I want the app to show the latest saved version of my cocktail list
 So I can always enjoy some cocktails
+```
 
 ### Scenarios (Acceptance criteria)
 
@@ -70,6 +74,29 @@ Given the customer doesn’t have connectivity
 #### No connectivity - error course (sad path):
 1. System delivers connectivity error.
 
+---
+
+### Load Cocktail Image Data From Remote Use Case
+
+#### Data:
+- URL
+
+#### Primary course (happy path):
+1. Execute "Load Image Data" command with above data.
+2. System downloads data from the URL.
+3. System validates downloaded data.
+4. System delivers image data.
+
+#### Cancel course:
+1. System does not deliver image data nor error.
+
+#### Invalid data – error course (sad path):
+1. System delivers invalid data error.
+
+#### No connectivity – error course (sad path):
+1. System delivers connectivity error.
+
+---
 
 ### Load Cocktails From Cache Use Case
 
@@ -89,6 +116,28 @@ Given the customer doesn’t have connectivity
 #### Empty cache course (sad path):
 1. System delivers no feed items.
 
+---
+
+### Load Cocktail Image Data From Cache Use Case
+
+#### Data:
+- URL
+
+#### Primary course (happy path):
+1. Execute "Load Image Data" command with above data.
+2. System retrieves data from the cache.
+3. System delivers cached image data.
+
+#### Cancel course:
+1. System does not deliver image data nor error.
+
+#### Retrieval error course (sad path):
+1. System delivers error.
+
+#### Empty cache course (sad path):
+1. System delivers no image data.
+
+---
 
 ### Validate Feed From Cache Use Case
 
@@ -103,6 +152,7 @@ Given the customer doesn’t have connectivity
 #### Expired cache course (sad path):
 1. System deletes cache.
 
+---
 
 ### Cache Cocktails Use Case
 
@@ -123,7 +173,8 @@ Given the customer doesn’t have connectivity
 #### Saving error course ( sad path):
 1. System delivers error.
 
+---
 
-## App Architecture
+## Architecture
 
 ![Random Cocktail List Loading Feature](cocktail_list_feature_architecture.png)
