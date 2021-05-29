@@ -5,7 +5,7 @@
 import XCTest
 import DrinGoFeed
 
-class LocalCocktailImageDataLoaderTests: XCTestCase {
+class LoadCocktailImageDataFromCacheUseCaseTests: XCTestCase {
 
     func test_init_doesNotMessageStoreUponCreation() {
         let (_, store) = makeSUT()
