@@ -175,6 +175,21 @@ Given the customer doesn’t have connectivity
 
 ---
 
+### Cache Cocktail Image Data Use Case
+
+#### Data:
+- Image Data
+
+#### Primary course (happy path):
+1. Execute "Save Image Data" command with above data.
+2. System caches image data.
+3. System delivers success message.
+
+#### Saving error course (sad path):
+1. System delivers error.
+
+---
+
 ## Architecture
 
 ![Random Cocktail List Loading Feature](cocktail_list_feature_architecture.png)
