@@ -14,14 +14,17 @@ class CocktailImageDataLoaderWithFallbackComposite: CocktailImageDataLoader {
         self.fallback = fallback
     }
 
-    private class Task: CocktailImageDataLoaderTask {
+    private class TaskWrapper: CocktailImageDataLoaderTask {
+        var wrapped: CocktailImageDataLoaderTask?
+
         func cancel() {
-            
+            wrapped?.cancel()
         }
     }
     
     func loadImageData(from url: URL, completion: @escaping (CocktailImageDataLoader.Result) -> Void) -> CocktailImageDataLoaderTask {
-        _ = primary.loadImageData(from: url) { [weak self] result in
+        let task = TaskWrapper()
+        task.wrapped = primary.loadImageData(from: url) { [weak self] result in
             switch result {
             case .success:
                 break
@@ -29,10 +32,9 @@ class CocktailImageDataLoaderWithFallbackComposite: CocktailImageDataLoader {
             case .failure:
                 _ = self?.fallback.loadImageData(from: url) { _ in }
             }
-
         }
 
-        return Task()
+        return task
     }
 }
 
@@ -67,6 +69,18 @@ class CocktailImageDataLoaderWithFallbackCompositeTests: XCTestCase {
         XCTAssertEqual(fallbackLoader.loadedURLs, [url], "Expected to load URL from fallback loader")
     }
 
+    func test_cancelLoadImageData_cancelsPrimaryLoaderTask() {
+        let url = anyURL()
+        let (sut, primaryLoader, fallbackLoader) = makeSUT()
+
+        let task = sut.loadImageData(from: url) { _ in }
+        task.cancel()
+        
+        XCTAssertEqual(primaryLoader.cancelledURLs, [url], "Expected to cancel URL loading from primary loader")
+        XCTAssertTrue(fallbackLoader.cancelledURLs.isEmpty, "Expected no cancelled URLs in the fallback loader")
+    }
+
+    
     // MARK: - Helpers
     
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: CocktailImageDataLoader, primary: LoaderSpy, fallback: LoaderSpy) {
@@ -96,17 +110,22 @@ class CocktailImageDataLoaderWithFallbackCompositeTests: XCTestCase {
     private class LoaderSpy: CocktailImageDataLoader {
         private var messages = [(url: URL, completion: (CocktailImageDataLoader.Result) -> Void)]()
 
+        private(set) var cancelledURLs = [URL]()
+        
         var loadedURLs: [URL] {
             return messages.map { $0.url }
         }
 
         private struct Task: CocktailImageDataLoaderTask {
-            func cancel() {}
+            let callback: () -> Void
+            func cancel() { callback() }
         }
         
         func loadImageData(from url: URL, completion: @escaping (CocktailImageDataLoader.Result) -> Void) -> CocktailImageDataLoaderTask {
             messages.append((url, completion))
-            return Task()
+            return Task { [weak self] in
+                self?.cancelledURLs.append(url)
+            }
         }
         
         func complete(with error: Error, at index: Int = 0) {
