@@ -13,7 +13,6 @@
 		C6089E5D26636DED00EE1A7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6089E5C26636DED00EE1A7D /* Assets.xcassets */; };
 		C6089E6026636DED00EE1A7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6089E5E26636DED00EE1A7D /* LaunchScreen.storyboard */; };
 		C6089E6B26636DEE00EE1A7D /* DrinGoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6089E6A26636DEE00EE1A7D /* DrinGoAppTests.swift */; };
-		C6089E7626636DEE00EE1A7D /* DrinGoAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6089E7526636DEE00EE1A7D /* DrinGoAppUITests.swift */; };
 		C6089E8626636F7D00EE1A7D /* DrinGoFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6089E8426636F7D00EE1A7D /* DrinGoFeed.framework */; };
 		C6089E8726636F7D00EE1A7D /* DrinGoFeed.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C6089E8426636F7D00EE1A7D /* DrinGoFeed.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C6089E8826636F7D00EE1A7D /* DrinGoFeediOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6089E8526636F7D00EE1A7D /* DrinGoFeediOS.framework */; };
@@ -22,13 +21,6 @@
 
 /* Begin PBXContainerItemProxy section */
 		C6089E6726636DEE00EE1A7D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C6089E4826636DEC00EE1A7D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C6089E4F26636DEC00EE1A7D;
-			remoteInfo = DrinGoApp;
-		};
-		C6089E7226636DEE00EE1A7D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C6089E4826636DEC00EE1A7D /* Project object */;
 			proxyType = 1;
@@ -63,7 +55,6 @@
 		C6089E6626636DEE00EE1A7D /* DrinGoAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrinGoAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6089E6A26636DEE00EE1A7D /* DrinGoAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinGoAppTests.swift; sourceTree = "<group>"; };
 		C6089E6C26636DEE00EE1A7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C6089E7126636DEE00EE1A7D /* DrinGoAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrinGoAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6089E7526636DEE00EE1A7D /* DrinGoAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinGoAppUITests.swift; sourceTree = "<group>"; };
 		C6089E7726636DEE00EE1A7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6089E8426636F7D00EE1A7D /* DrinGoFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DrinGoFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,13 +72,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		C6089E6326636DEE00EE1A7D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C6089E6E26636DEE00EE1A7D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -113,7 +97,6 @@
 			children = (
 				C6089E5026636DEC00EE1A7D /* DrinGoApp.app */,
 				C6089E6626636DEE00EE1A7D /* DrinGoAppTests.xctest */,
-				C6089E7126636DEE00EE1A7D /* DrinGoAppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -197,24 +180,6 @@
 			productReference = C6089E6626636DEE00EE1A7D /* DrinGoAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		C6089E7026636DEE00EE1A7D /* DrinGoAppUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C6089E8026636DEE00EE1A7D /* Build configuration list for PBXNativeTarget "DrinGoAppUITests" */;
-			buildPhases = (
-				C6089E6D26636DEE00EE1A7D /* Sources */,
-				C6089E6E26636DEE00EE1A7D /* Frameworks */,
-				C6089E6F26636DEE00EE1A7D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C6089E7326636DEE00EE1A7D /* PBXTargetDependency */,
-			);
-			name = DrinGoAppUITests;
-			productName = DrinGoAppUITests;
-			productReference = C6089E7126636DEE00EE1A7D /* DrinGoAppUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -228,10 +193,6 @@
 						CreatedOnToolsVersion = 12.5;
 					};
 					C6089E6526636DEE00EE1A7D = {
-						CreatedOnToolsVersion = 12.5;
-						TestTargetID = C6089E4F26636DEC00EE1A7D;
-					};
-					C6089E7026636DEE00EE1A7D = {
 						CreatedOnToolsVersion = 12.5;
 						TestTargetID = C6089E4F26636DEC00EE1A7D;
 					};
@@ -252,7 +213,6 @@
 			targets = (
 				C6089E4F26636DEC00EE1A7D /* DrinGoApp */,
 				C6089E6526636DEE00EE1A7D /* DrinGoAppTests */,
-				C6089E7026636DEE00EE1A7D /* DrinGoAppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -269,13 +229,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		C6089E6426636DEE00EE1A7D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C6089E6F26636DEE00EE1A7D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -302,14 +255,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C6089E6D26636DEE00EE1A7D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C6089E7626636DEE00EE1A7D /* DrinGoAppUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -317,11 +262,6 @@
 			isa = PBXTargetDependency;
 			target = C6089E4F26636DEC00EE1A7D /* DrinGoApp */;
 			targetProxy = C6089E6726636DEE00EE1A7D /* PBXContainerItemProxy */;
-		};
-		C6089E7326636DEE00EE1A7D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C6089E4F26636DEC00EE1A7D /* DrinGoApp */;
-			targetProxy = C6089E7226636DEE00EE1A7D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -543,46 +483,6 @@
 			};
 			name = Release;
 		};
-		C6089E8126636DEE00EE1A7D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5MPC35WK7F;
-				INFOPLIST_FILE = DrinGoAppUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.fvg0902iosdev.DrinGoAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = DrinGoApp;
-			};
-			name = Debug;
-		};
-		C6089E8226636DEE00EE1A7D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5MPC35WK7F;
-				INFOPLIST_FILE = DrinGoAppUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.fvg0902iosdev.DrinGoAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = DrinGoApp;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -609,15 +509,6 @@
 			buildConfigurations = (
 				C6089E7E26636DEE00EE1A7D /* Debug */,
 				C6089E7F26636DEE00EE1A7D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C6089E8026636DEE00EE1A7D /* Build configuration list for PBXNativeTarget "DrinGoAppUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C6089E8126636DEE00EE1A7D /* Debug */,
-				C6089E8226636DEE00EE1A7D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
