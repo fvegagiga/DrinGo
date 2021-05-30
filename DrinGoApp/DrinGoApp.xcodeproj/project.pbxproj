@@ -16,6 +16,7 @@
 		C6089E8726636F7D00EE1A7D /* DrinGoFeed.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C6089E8426636F7D00EE1A7D /* DrinGoFeed.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C6089E8826636F7D00EE1A7D /* DrinGoFeediOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6089E8526636F7D00EE1A7D /* DrinGoFeediOS.framework */; };
 		C6089E8926636F7D00EE1A7D /* DrinGoFeediOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C6089E8526636F7D00EE1A7D /* DrinGoFeediOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C65BD04126637CAF0024F84D /* RemoteWithLocalFallbackCocktailLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65BD04026637CAF0024F84D /* RemoteWithLocalFallbackCocktailLoaderTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		C6089E6C26636DEE00EE1A7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6089E8426636F7D00EE1A7D /* DrinGoFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DrinGoFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6089E8526636F7D00EE1A7D /* DrinGoFeediOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DrinGoFeediOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C65BD04026637CAF0024F84D /* RemoteWithLocalFallbackCocktailLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteWithLocalFallbackCocktailLoaderTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				C6089E6C26636DEE00EE1A7D /* Info.plist */,
+				C65BD04026637CAF0024F84D /* RemoteWithLocalFallbackCocktailLoaderTests.swift */,
 			);
 			path = DrinGoAppTests;
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 					};
 					C6089E6526636DEE00EE1A7D = {
 						CreatedOnToolsVersion = 12.5;
+						LastSwiftMigration = 1250;
 						TestTargetID = C6089E4F26636DEC00EE1A7D;
 					};
 				};
@@ -236,6 +240,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C65BD04126637CAF0024F84D /* RemoteWithLocalFallbackCocktailLoaderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,6 +433,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5MPC35WK7F;
 				INFOPLIST_FILE = DrinGoAppTests/Info.plist;
@@ -439,6 +445,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fvg0902iosdev.DrinGoAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DrinGoApp.app/DrinGoApp";
@@ -450,6 +457,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5MPC35WK7F;
 				INFOPLIST_FILE = DrinGoAppTests/Info.plist;
