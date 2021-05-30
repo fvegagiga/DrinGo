@@ -7,13 +7,24 @@ import DrinGoFeed
 
 class CocktailLoaderWithFallbackComposite: CocktailLoader {
     private let primary: CocktailLoader
+    private let fallback: CocktailLoader
 
     init(primary: CocktailLoader, fallback: CocktailLoader) {
         self.primary = primary
+        self.fallback = fallback
     }
     
     func load(completion: @escaping (CocktailLoader.Result) -> Void) {
-        primary.load(completion: completion)
+        primary.load { [weak self] result in
+            switch result {
+            case .success:
+                completion(result)
+                
+            case .failure:
+                self?.fallback.load(completion: completion)
+            }
+        }
+
     }
 }
 
@@ -39,6 +50,28 @@ class CocktailLoaderWithFallbackCompositeTests: XCTestCase {
         wait(for: [exp], timeout: 1)
     }
 
+    func test_load_deliversFallbackFeedOnPrimaryLoaderFailure() {
+        let fallbackFeed = uniqueCocktail(id: 1)
+        let sut = makeSUT(primaryResult: .failure(anyNSError()), fallbackResult: .success(fallbackFeed))
+
+        let exp = expectation(description: "Wait for load completion")
+        
+        sut.load { result in
+            switch result {
+            case let .success(receivedFeed):
+                XCTAssertEqual(receivedFeed, fallbackFeed)
+
+            case .failure:
+                XCTFail("Expected successful load feed result, got \(result) instead")
+            }
+            
+            exp.fulfill()
+        }
+        
+        wait(for: [exp], timeout: 1.0)
+    }
+
+    
     // MARK: - Helpers
     
     private func makeSUT(primaryResult: CocktailLoader.Result, fallbackResult: CocktailLoader.Result, file: StaticString = #file, line: UInt = #line) -> CocktailLoader {
@@ -64,6 +97,10 @@ class CocktailLoaderWithFallbackCompositeTests: XCTestCase {
 
     func anyURL() -> URL {
         return URL(string: "http://any-url.com")!
+    }
+    
+    func anyNSError() -> NSError {
+        NSError(domain: "any error", code: 0)
     }
     
     private class LoaderStub: CocktailLoader {
