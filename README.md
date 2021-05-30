@@ -192,4 +192,4 @@ Given the customer doesn’t have connectivity
 
 ## Architecture
 
-![Random Cocktail List Loading Feature](cocktail_list_feature_architecture.png)
+![Random Cocktail List Loading Feature](DrinGo_architecture.png)
