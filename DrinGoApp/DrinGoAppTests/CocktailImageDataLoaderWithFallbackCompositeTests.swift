@@ -4,39 +4,7 @@
 
 import XCTest
 import DrinGoFeed
-
-class CocktailImageDataLoaderWithFallbackComposite: CocktailImageDataLoader {
-    private let primary: CocktailImageDataLoader
-    private let fallback: CocktailImageDataLoader
-    
-    init(primary: CocktailImageDataLoader, fallback: CocktailImageDataLoader) {
-        self.primary = primary
-        self.fallback = fallback
-    }
-
-    private class TaskWrapper: CocktailImageDataLoaderTask {
-        var wrapped: CocktailImageDataLoaderTask?
-
-        func cancel() {
-            wrapped?.cancel()
-        }
-    }
-    
-    func loadImageData(from url: URL, completion: @escaping (CocktailImageDataLoader.Result) -> Void) -> CocktailImageDataLoaderTask {
-        let task = TaskWrapper()
-        task.wrapped = primary.loadImageData(from: url) { [weak self] result in
-            switch result {
-            case .success:
-                completion(result)
-                
-            case .failure:
-                task.wrapped = self?.fallback.loadImageData(from: url, completion: completion)
-            }
-        }
-
-        return task
-    }
-}
+import DrinGoApp
 
 class CocktailImageDataLoaderWithFallbackCompositeTests: XCTestCase {
     
