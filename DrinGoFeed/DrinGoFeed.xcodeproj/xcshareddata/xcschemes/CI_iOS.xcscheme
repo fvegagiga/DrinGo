@@ -45,6 +45,13 @@
             BlueprintName = "DrinGoFeediOS"
             ReferencedContainer = "container:DrinGoFeed.xcodeproj">
          </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "C6089E4F26636DEC00EE1A7D"
+            BuildableName = "DrinGoApp.app"
+            BlueprintName = "DrinGoApp"
+            ReferencedContainer = "container:../DrinGoApp/DrinGoApp.xcodeproj">
+         </BuildableReference>
       </CodeCoverageTargets>
       <Testables>
          <TestableReference
@@ -89,6 +96,17 @@
                BuildableName = "DrinGoFeediOSTests.xctest"
                BlueprintName = "DrinGoFeediOSTests"
                ReferencedContainer = "container:DrinGoFeed.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            testExecutionOrdering = "random">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C6089E6526636DEE00EE1A7D"
+               BuildableName = "DrinGoAppTests.xctest"
+               BlueprintName = "DrinGoAppTests"
+               ReferencedContainer = "container:../DrinGoApp/DrinGoApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
