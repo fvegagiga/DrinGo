@@ -12,7 +12,6 @@
 		C6089E5B26636DEC00EE1A7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6089E5926636DEC00EE1A7D /* Main.storyboard */; };
 		C6089E5D26636DED00EE1A7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6089E5C26636DED00EE1A7D /* Assets.xcassets */; };
 		C6089E6026636DED00EE1A7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6089E5E26636DED00EE1A7D /* LaunchScreen.storyboard */; };
-		C6089E6B26636DEE00EE1A7D /* DrinGoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6089E6A26636DEE00EE1A7D /* DrinGoAppTests.swift */; };
 		C6089E8626636F7D00EE1A7D /* DrinGoFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6089E8426636F7D00EE1A7D /* DrinGoFeed.framework */; };
 		C6089E8726636F7D00EE1A7D /* DrinGoFeed.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C6089E8426636F7D00EE1A7D /* DrinGoFeed.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C6089E8826636F7D00EE1A7D /* DrinGoFeediOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6089E8526636F7D00EE1A7D /* DrinGoFeediOS.framework */; };
@@ -53,10 +52,7 @@
 		C6089E5F26636DED00EE1A7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C6089E6126636DED00EE1A7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6089E6626636DEE00EE1A7D /* DrinGoAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrinGoAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C6089E6A26636DEE00EE1A7D /* DrinGoAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinGoAppTests.swift; sourceTree = "<group>"; };
 		C6089E6C26636DEE00EE1A7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C6089E7526636DEE00EE1A7D /* DrinGoAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinGoAppUITests.swift; sourceTree = "<group>"; };
-		C6089E7726636DEE00EE1A7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6089E8426636F7D00EE1A7D /* DrinGoFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DrinGoFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6089E8526636F7D00EE1A7D /* DrinGoFeediOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DrinGoFeediOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -86,7 +82,6 @@
 			children = (
 				C6089E5226636DEC00EE1A7D /* DrinGoApp */,
 				C6089E6926636DEE00EE1A7D /* DrinGoAppTests */,
-				C6089E7426636DEE00EE1A7D /* DrinGoAppUITests */,
 				C6089E5126636DEC00EE1A7D /* Products */,
 				C6089E8326636F7D00EE1A7D /* Frameworks */,
 			);
@@ -117,19 +112,9 @@
 		C6089E6926636DEE00EE1A7D /* DrinGoAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				C6089E6A26636DEE00EE1A7D /* DrinGoAppTests.swift */,
 				C6089E6C26636DEE00EE1A7D /* Info.plist */,
 			);
 			path = DrinGoAppTests;
-			sourceTree = "<group>";
-		};
-		C6089E7426636DEE00EE1A7D /* DrinGoAppUITests */ = {
-			isa = PBXGroup;
-			children = (
-				C6089E7526636DEE00EE1A7D /* DrinGoAppUITests.swift */,
-				C6089E7726636DEE00EE1A7D /* Info.plist */,
-			);
-			path = DrinGoAppUITests;
 			sourceTree = "<group>";
 		};
 		C6089E8326636F7D00EE1A7D /* Frameworks */ = {
@@ -251,7 +236,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6089E6B26636DEE00EE1A7D /* DrinGoAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
