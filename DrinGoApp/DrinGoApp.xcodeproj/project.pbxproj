@@ -20,6 +20,7 @@
 		C65BD0432663918E0024F84D /* CocktailLoaderWithFallbackComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65BD0422663918E0024F84D /* CocktailLoaderWithFallbackComposite.swift */; };
 		C65BD045266392290024F84D /* CocktailImageDataLoaderWithFallbackCompositeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65BD044266392290024F84D /* CocktailImageDataLoaderWithFallbackCompositeTests.swift */; };
 		C65BD047266397CB0024F84D /* CocktailImageDataLoaderWithFallbackComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65BD046266397CB0024F84D /* CocktailImageDataLoaderWithFallbackComposite.swift */; };
+		C65BD04A266398890024F84D /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65BD049266398890024F84D /* XCTestCase+MemoryLeakTracking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		C65BD0422663918E0024F84D /* CocktailLoaderWithFallbackComposite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailLoaderWithFallbackComposite.swift; sourceTree = "<group>"; };
 		C65BD044266392290024F84D /* CocktailImageDataLoaderWithFallbackCompositeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailImageDataLoaderWithFallbackCompositeTests.swift; sourceTree = "<group>"; };
 		C65BD046266397CB0024F84D /* CocktailImageDataLoaderWithFallbackComposite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailImageDataLoaderWithFallbackComposite.swift; sourceTree = "<group>"; };
+		C65BD049266398890024F84D /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 		C6089E6926636DEE00EE1A7D /* DrinGoAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				C65BD048266398580024F84D /* Helpers */,
 				C6089E6C26636DEE00EE1A7D /* Info.plist */,
 				C65BD04026637CAF0024F84D /* CocktailLoaderWithFallbackCompositeTests.swift */,
 				C65BD044266392290024F84D /* CocktailImageDataLoaderWithFallbackCompositeTests.swift */,
@@ -136,6 +139,14 @@
 				C6089E8526636F7D00EE1A7D /* DrinGoFeediOS.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C65BD048266398580024F84D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C65BD049266398890024F84D /* XCTestCase+MemoryLeakTracking.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,6 +264,7 @@
 			files = (
 				C65BD045266392290024F84D /* CocktailImageDataLoaderWithFallbackCompositeTests.swift in Sources */,
 				C65BD04126637CAF0024F84D /* CocktailLoaderWithFallbackCompositeTests.swift in Sources */,
+				C65BD04A266398890024F84D /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
