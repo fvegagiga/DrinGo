@@ -4,29 +4,7 @@
 
 import XCTest
 import DrinGoFeed
-
-class CocktailLoaderWithFallbackComposite: CocktailLoader {
-    private let primary: CocktailLoader
-    private let fallback: CocktailLoader
-
-    init(primary: CocktailLoader, fallback: CocktailLoader) {
-        self.primary = primary
-        self.fallback = fallback
-    }
-    
-    func load(completion: @escaping (CocktailLoader.Result) -> Void) {
-        primary.load { [weak self] result in
-            switch result {
-            case .success:
-                completion(result)
-                
-            case .failure:
-                self?.fallback.load(completion: completion)
-            }
-        }
-
-    }
-}
+import DrinGoApp
 
 class CocktailLoaderWithFallbackCompositeTests: XCTestCase {
 

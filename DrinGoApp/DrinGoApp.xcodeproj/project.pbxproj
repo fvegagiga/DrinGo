@@ -17,6 +17,7 @@
 		C6089E8826636F7D00EE1A7D /* DrinGoFeediOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6089E8526636F7D00EE1A7D /* DrinGoFeediOS.framework */; };
 		C6089E8926636F7D00EE1A7D /* DrinGoFeediOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C6089E8526636F7D00EE1A7D /* DrinGoFeediOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C65BD04126637CAF0024F84D /* CocktailLoaderWithFallbackCompositeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65BD04026637CAF0024F84D /* CocktailLoaderWithFallbackCompositeTests.swift */; };
+		C65BD0432663918E0024F84D /* CocktailLoaderWithFallbackComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65BD0422663918E0024F84D /* CocktailLoaderWithFallbackComposite.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		C6089E8426636F7D00EE1A7D /* DrinGoFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DrinGoFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6089E8526636F7D00EE1A7D /* DrinGoFeediOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DrinGoFeediOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C65BD04026637CAF0024F84D /* CocktailLoaderWithFallbackCompositeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailLoaderWithFallbackCompositeTests.swift; sourceTree = "<group>"; };
+		C65BD0422663918E0024F84D /* CocktailLoaderWithFallbackComposite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailLoaderWithFallbackComposite.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 			children = (
 				C6089E5326636DEC00EE1A7D /* AppDelegate.swift */,
 				C6089E5526636DEC00EE1A7D /* SceneDelegate.swift */,
+				C65BD0422663918E0024F84D /* CocktailLoaderWithFallbackComposite.swift */,
 				C6089E5926636DEC00EE1A7D /* Main.storyboard */,
 				C6089E5C26636DED00EE1A7D /* Assets.xcassets */,
 				C6089E5E26636DED00EE1A7D /* LaunchScreen.storyboard */,
@@ -231,6 +234,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C65BD0432663918E0024F84D /* CocktailLoaderWithFallbackComposite.swift in Sources */,
 				C6089E5426636DEC00EE1A7D /* AppDelegate.swift in Sources */,
 				C6089E5626636DEC00EE1A7D /* SceneDelegate.swift in Sources */,
 			);
