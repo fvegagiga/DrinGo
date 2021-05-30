@@ -5,7 +5,7 @@
 import XCTest
 import DrinGoFeed
 
-class FeedLoaderWithFallbackComposite: CocktailLoader {
+class CocktailLoaderWithFallbackComposite: CocktailLoader {
     private let primary: CocktailLoader
 
     init(primary: CocktailLoader, fallback: CocktailLoader) {
@@ -17,14 +17,14 @@ class FeedLoaderWithFallbackComposite: CocktailLoader {
     }
 }
 
-class RemoteWithLocalFallbackCocktailLoaderTests: XCTestCase {
+class CocktailLoaderWithFallbackCompositeTests: XCTestCase {
 
     func test_load_deliversPrimaryFeedOnPrimaryLoaderSuccess() {
         let primaryFeed = uniqueCocktail(id: 0)
         let fallbackFeed = uniqueCocktail(id: 1)
         let primaryLoader = LoaderStub(result: .success(primaryFeed))
         let fallbackLoader = LoaderStub(result: .success(fallbackFeed))
-        let sut = FeedLoaderWithFallbackComposite(primary: primaryLoader, fallback: fallbackLoader)
+        let sut = CocktailLoaderWithFallbackComposite(primary: primaryLoader, fallback: fallbackLoader)
         
         let exp = expectation(description: "Wait for load completion")
         sut.load { result in
