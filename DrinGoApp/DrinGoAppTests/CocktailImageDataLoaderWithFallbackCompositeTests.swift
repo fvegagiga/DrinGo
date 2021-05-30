@@ -7,9 +7,11 @@ import DrinGoFeed
 
 class CocktailImageDataLoaderWithFallbackComposite: CocktailImageDataLoader {
     private let primary: CocktailImageDataLoader
+    private let fallback: CocktailImageDataLoader
     
     init(primary: CocktailImageDataLoader, fallback: CocktailImageDataLoader) {
         self.primary = primary
+        self.fallback = fallback
     }
 
     private class Task: CocktailImageDataLoaderTask {
@@ -19,7 +21,16 @@ class CocktailImageDataLoaderWithFallbackComposite: CocktailImageDataLoader {
     }
     
     func loadImageData(from url: URL, completion: @escaping (CocktailImageDataLoader.Result) -> Void) -> CocktailImageDataLoaderTask {
-        _ = primary.loadImageData(from: url) { _ in }
+        _ = primary.loadImageData(from: url) { [weak self] result in
+            switch result {
+            case .success:
+                break
+                
+            case .failure:
+                _ = self?.fallback.loadImageData(from: url) { _ in }
+            }
+
+        }
 
         return Task()
     }
@@ -44,6 +55,18 @@ class CocktailImageDataLoaderWithFallbackCompositeTests: XCTestCase {
         XCTAssertTrue(fallbackLoader.loadedURLs.isEmpty, "Expected no loaded URLs in the fallback loader")
     }
 
+    func test_loadImageData_loadsFromFallbackOnPrimaryLoaderFailure() {
+        let url = anyURL()
+        let (sut, primaryLoader, fallbackLoader) = makeSUT()
+
+        _ = sut.loadImageData(from: url) { _ in }
+        
+        primaryLoader.complete(with: anyNSError())
+        
+        XCTAssertEqual(primaryLoader.loadedURLs, [url], "Expected to load URL from primary loader")
+        XCTAssertEqual(fallbackLoader.loadedURLs, [url], "Expected to load URL from fallback loader")
+    }
+
     // MARK: - Helpers
     
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: CocktailImageDataLoader, primary: LoaderSpy, fallback: LoaderSpy) {
@@ -62,6 +85,9 @@ class CocktailImageDataLoaderWithFallbackCompositeTests: XCTestCase {
         }
     }
 
+    func anyNSError() -> NSError {
+        NSError(domain: "any error", code: 0)
+    }
     
     func anyURL() -> URL {
         return URL(string: "http://any-url.com")!
@@ -82,6 +108,9 @@ class CocktailImageDataLoaderWithFallbackCompositeTests: XCTestCase {
             messages.append((url, completion))
             return Task()
         }
+        
+        func complete(with error: Error, at index: Int = 0) {
+            messages[index].completion(.failure(error))
+        }
     }
-
 }
