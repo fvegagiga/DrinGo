@@ -123,18 +123,6 @@ class CocktailImageDataLoaderWithFallbackCompositeTests: XCTestCase {
         
         wait(for: [exp], timeout: 1.0)
     }
-
-    func anyNSError() -> NSError {
-        NSError(domain: "any error", code: 0)
-    }
-    
-    func anyURL() -> URL {
-        return URL(string: "http://any-url.com")!
-    }
-    
-    func anyData() -> Data {
-        return Data("any data".utf8)
-    }
     
     private class LoaderSpy: CocktailImageDataLoader {
         private var messages = [(url: URL, completion: (CocktailImageDataLoader.Result) -> Void)]()

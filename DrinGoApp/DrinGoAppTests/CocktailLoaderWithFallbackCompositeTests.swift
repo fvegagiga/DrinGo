@@ -65,14 +65,6 @@ class CocktailLoaderWithFallbackCompositeTests: XCTestCase {
     func uniqueCocktail(id: Int = 0) -> [CocktailItem] {
         return [CocktailItem(id: id, name: "any", description: "any", imageURL: anyURL(), ingredients: ["Ing1", "Ingr2"], quantity: ["Qt1", "Qt2"])]
     }
-
-    func anyURL() -> URL {
-        return URL(string: "http://any-url.com")!
-    }
-    
-    func anyNSError() -> NSError {
-        NSError(domain: "any error", code: 0)
-    }
     
     private class LoaderStub: CocktailLoader {
         private let result: CocktailLoader.Result
