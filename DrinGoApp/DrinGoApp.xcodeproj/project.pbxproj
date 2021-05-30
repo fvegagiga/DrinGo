@@ -15,6 +15,10 @@
 		C6089E6026636DED00EE1A7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6089E5E26636DED00EE1A7D /* LaunchScreen.storyboard */; };
 		C6089E6B26636DEE00EE1A7D /* DrinGoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6089E6A26636DEE00EE1A7D /* DrinGoAppTests.swift */; };
 		C6089E7626636DEE00EE1A7D /* DrinGoAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6089E7526636DEE00EE1A7D /* DrinGoAppUITests.swift */; };
+		C6089E8626636F7D00EE1A7D /* DrinGoFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6089E8426636F7D00EE1A7D /* DrinGoFeed.framework */; };
+		C6089E8726636F7D00EE1A7D /* DrinGoFeed.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C6089E8426636F7D00EE1A7D /* DrinGoFeed.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C6089E8826636F7D00EE1A7D /* DrinGoFeediOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6089E8526636F7D00EE1A7D /* DrinGoFeediOS.framework */; };
+		C6089E8926636F7D00EE1A7D /* DrinGoFeediOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C6089E8526636F7D00EE1A7D /* DrinGoFeediOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +38,21 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		C6089E8A26636F7D00EE1A7D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C6089E8726636F7D00EE1A7D /* DrinGoFeed.framework in Embed Frameworks */,
+				C6089E8926636F7D00EE1A7D /* DrinGoFeediOS.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		C6089E5026636DEC00EE1A7D /* DrinGoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrinGoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6089E5326636DEC00EE1A7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +68,8 @@
 		C6089E7126636DEE00EE1A7D /* DrinGoAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrinGoAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6089E7526636DEE00EE1A7D /* DrinGoAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinGoAppUITests.swift; sourceTree = "<group>"; };
 		C6089E7726636DEE00EE1A7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C6089E8426636F7D00EE1A7D /* DrinGoFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DrinGoFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6089E8526636F7D00EE1A7D /* DrinGoFeediOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DrinGoFeediOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +77,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6089E8626636F7D00EE1A7D /* DrinGoFeed.framework in Frameworks */,
+				C6089E8826636F7D00EE1A7D /* DrinGoFeediOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +106,7 @@
 				C6089E6926636DEE00EE1A7D /* DrinGoAppTests */,
 				C6089E7426636DEE00EE1A7D /* DrinGoAppUITests */,
 				C6089E5126636DEC00EE1A7D /* Products */,
+				C6089E8326636F7D00EE1A7D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,6 +152,15 @@
 			path = DrinGoAppUITests;
 			sourceTree = "<group>";
 		};
+		C6089E8326636F7D00EE1A7D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C6089E8426636F7D00EE1A7D /* DrinGoFeed.framework */,
+				C6089E8526636F7D00EE1A7D /* DrinGoFeediOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -138,6 +171,7 @@
 				C6089E4C26636DEC00EE1A7D /* Sources */,
 				C6089E4D26636DEC00EE1A7D /* Frameworks */,
 				C6089E4E26636DEC00EE1A7D /* Resources */,
+				C6089E8A26636F7D00EE1A7D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
