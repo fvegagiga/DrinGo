@@ -23,10 +23,10 @@ final class FeedLoaderCacheDecorator: CocktailLoader {
     
     func load(completion: @escaping (CocktailLoader.Result) -> Void) {
         decoratee.load { [weak self] result in
-            if let feed = try? result.get() {
+            completion(result.map { feed in
                 self?.cache.save(feed) { _ in }
-            }
-            completion(result)
+                return feed
+            })
         }
     }
 }
