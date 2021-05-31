@@ -5,13 +5,6 @@
 import XCTest
 import DrinGoFeed
 
-protocol CocktailCache {
-    typealias Result = Swift.Result<Void, Error>
-
-    func save(_ feed: [CocktailItem], completion: @escaping (Result) -> Void)
-}
-
-
 final class FeedLoaderCacheDecorator: CocktailLoader {
     private let decoratee: CocktailLoader
     private let cache: CocktailCache
