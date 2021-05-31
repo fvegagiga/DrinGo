@@ -5,7 +5,7 @@
 import XCTest
 import DrinGoFeed
 
-final class FeedLoaderCacheDecorator: CocktailLoader {
+final class CocktailLoaderCacheDecorator: CocktailLoader {
     private let decoratee: CocktailLoader
     private let cache: CocktailCache
     
@@ -63,7 +63,7 @@ class CocktailLoaderCacheDecoratorTests: XCTestCase, CocktailLoaderTestCase {
     
     private func makeSUT(loaderResult: CocktailLoader.Result, cache: CacheSpy = .init(), file: StaticString = #file, line: UInt = #line) -> CocktailLoader {
         let loader = CocktailLoaderStub(result: loaderResult)
-        let sut = FeedLoaderCacheDecorator(decoratee: loader, cache: cache)
+        let sut = CocktailLoaderCacheDecorator(decoratee: loader, cache: cache)
         trackForMemoryLeaks(loader, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
         return sut
