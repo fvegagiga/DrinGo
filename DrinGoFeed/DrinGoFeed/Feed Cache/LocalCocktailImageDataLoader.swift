@@ -12,7 +12,7 @@ public final class LocalCocktailImageDataLoader {
     }
 }
 
-extension LocalCocktailImageDataLoader {
+extension LocalCocktailImageDataLoader: CocktailImageDataCache {
     public typealias SaveResult = Result<Void, Swift.Error>
 
     public enum SaveError: Error {
