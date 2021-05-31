@@ -17,9 +17,15 @@ public final class CocktailImageDataLoaderCacheDecorator: CocktailImageDataLoade
     public func loadImageData(from url: URL, completion: @escaping (CocktailImageDataLoader.Result) -> Void) -> CocktailImageDataLoaderTask {
         return decoratee.loadImageData(from: url) { [weak self] result in
             completion(result.map { data in
-                self?.cache.save((try? result.get()) ?? Data(), for: url) { _ in }
+                self?.cache.saveIgnoringResult(data, for: url)
                 return data
             })
         }
+    }
+}
+
+private extension CocktailImageDataCache {
+    func saveIgnoringResult(_ data: Data, for url: URL) {
+        save(data, for: url) { _ in }
     }
 }
