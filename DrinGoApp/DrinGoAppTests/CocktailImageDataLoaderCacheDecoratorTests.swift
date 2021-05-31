@@ -6,12 +6,6 @@ import XCTest
 import DrinGoFeed
 import DrinGoApp
 
-protocol CocktailImageDataCache {
-    typealias Result = Swift.Result<Void, Error>
-
-    func save(_ data: Data, for url: URL, completion: @escaping (Result) -> Void)
-}
-
 class CocktailImageDataLoaderCacheDecorator: CocktailImageDataLoader {
     private let decoratee: CocktailImageDataLoader
     private let cache: CocktailImageDataCache
