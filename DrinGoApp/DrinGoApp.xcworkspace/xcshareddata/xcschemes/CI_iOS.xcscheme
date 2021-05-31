@@ -17,7 +17,7 @@
                BlueprintIdentifier = "C6504A44263EACA600F4FCD1"
                BuildableName = "DrinGoFeed.framework"
                BlueprintName = "DrinGoFeed"
-               ReferencedContainer = "container:DrinGoFeed.xcodeproj">
+               ReferencedContainer = "container:../DrinGoFeed/DrinGoFeed.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -36,21 +36,21 @@
             BlueprintIdentifier = "C6504A44263EACA600F4FCD1"
             BuildableName = "DrinGoFeed.framework"
             BlueprintName = "DrinGoFeed"
-            ReferencedContainer = "container:DrinGoFeed.xcodeproj">
+            ReferencedContainer = "container:../DrinGoFeed/DrinGoFeed.xcodeproj">
          </BuildableReference>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C6835BC326578FF0000EFEF8"
             BuildableName = "DrinGoFeediOS.framework"
             BlueprintName = "DrinGoFeediOS"
-            ReferencedContainer = "container:DrinGoFeed.xcodeproj">
+            ReferencedContainer = "container:../DrinGoFeed/DrinGoFeed.xcodeproj">
          </BuildableReference>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C6089E4F26636DEC00EE1A7D"
             BuildableName = "DrinGoApp.app"
             BlueprintName = "DrinGoApp"
-            ReferencedContainer = "container:../DrinGoApp/DrinGoApp.xcodeproj">
+            ReferencedContainer = "container:DrinGoApp.xcodeproj">
          </BuildableReference>
       </CodeCoverageTargets>
       <Testables>
@@ -62,7 +62,7 @@
                BlueprintIdentifier = "C6504A4D263EACA700F4FCD1"
                BuildableName = "DrinGoFeedTests.xctest"
                BlueprintName = "DrinGoFeedTests"
-               ReferencedContainer = "container:DrinGoFeed.xcodeproj">
+               ReferencedContainer = "container:../DrinGoFeed/DrinGoFeed.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -73,7 +73,7 @@
                BlueprintIdentifier = "C61E1AD32643C68F0051E30C"
                BuildableName = "DrinGoFeedAPIEndToEndTests.xctest"
                BlueprintName = "DrinGoFeedAPIEndToEndTests"
-               ReferencedContainer = "container:DrinGoFeed.xcodeproj">
+               ReferencedContainer = "container:../DrinGoFeed/DrinGoFeed.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -84,7 +84,7 @@
                BlueprintIdentifier = "C63CC9852651724F007EC72D"
                BuildableName = "DrinGoFeedCacheIntegrationTests.xctest"
                BlueprintName = "DrinGoFeedCacheIntegrationTests"
-               ReferencedContainer = "container:DrinGoFeed.xcodeproj">
+               ReferencedContainer = "container:../DrinGoFeed/DrinGoFeed.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -95,7 +95,7 @@
                BlueprintIdentifier = "C6835BCB26578FF0000EFEF8"
                BuildableName = "DrinGoFeediOSTests.xctest"
                BlueprintName = "DrinGoFeediOSTests"
-               ReferencedContainer = "container:DrinGoFeed.xcodeproj">
+               ReferencedContainer = "container:../DrinGoFeed/DrinGoFeed.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -106,7 +106,7 @@
                BlueprintIdentifier = "C6089E6526636DEE00EE1A7D"
                BuildableName = "DrinGoAppTests.xctest"
                BlueprintName = "DrinGoAppTests"
-               ReferencedContainer = "container:../DrinGoApp/DrinGoApp.xcodeproj">
+               ReferencedContainer = "container:DrinGoApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -134,7 +134,7 @@
             BlueprintIdentifier = "C6504A44263EACA600F4FCD1"
             BuildableName = "DrinGoFeed.framework"
             BlueprintName = "DrinGoFeed"
-            ReferencedContainer = "container:DrinGoFeed.xcodeproj">
+            ReferencedContainer = "container:../DrinGoFeed/DrinGoFeed.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
