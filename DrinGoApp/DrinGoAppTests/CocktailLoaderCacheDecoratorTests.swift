@@ -23,7 +23,9 @@ final class FeedLoaderCacheDecorator: CocktailLoader {
     
     func load(completion: @escaping (CocktailLoader.Result) -> Void) {
         decoratee.load { [weak self] result in
-            self?.cache.save((try? result.get()) ?? []) { _ in }
+            if let feed = try? result.get() {
+                self?.cache.save(feed) { _ in }
+            }
             completion(result)
         }
     }
@@ -55,6 +57,15 @@ class CocktailLoaderCacheDecoratorTests: XCTestCase, CocktailLoaderTestCase {
         XCTAssertEqual(cache.messages, [.save(feed)], "Expected to cache loaded feed on success")
     }
 
+    func test_load_doesNotCacheOnLoaderFailure() {
+        let cache = CacheSpy()
+        let sut = makeSUT(loaderResult: .failure(anyNSError()), cache: cache)
+
+        sut.load { _ in }
+
+        XCTAssertTrue(cache.messages.isEmpty, "Expected not to cache feed on load error")
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(loaderResult: CocktailLoader.Result, cache: CacheSpy = .init(), file: StaticString = #file, line: UInt = #line) -> CocktailLoader {
