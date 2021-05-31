@@ -32,8 +32,8 @@ class CocktailLoaderWithFallbackCompositeTests: XCTestCase {
     // MARK: - Helpers
     
     private func makeSUT(primaryResult: CocktailLoader.Result, fallbackResult: CocktailLoader.Result, file: StaticString = #file, line: UInt = #line) -> CocktailLoader {
-        let primaryLoader = LoaderStub(result: primaryResult)
-        let fallbackLoader = LoaderStub(result: fallbackResult)
+        let primaryLoader = CocktailLoaderStub(result: primaryResult)
+        let fallbackLoader = CocktailLoaderStub(result: fallbackResult)
         let sut = CocktailLoaderWithFallbackComposite(primary: primaryLoader, fallback: fallbackLoader)
         trackForMemoryLeaks(primaryLoader, file: file, line: line)
         trackForMemoryLeaks(fallbackLoader, file: file, line: line)
@@ -65,17 +65,4 @@ class CocktailLoaderWithFallbackCompositeTests: XCTestCase {
     func uniqueCocktail(id: Int = 0) -> [CocktailItem] {
         return [CocktailItem(id: id, name: "any", description: "any", imageURL: anyURL(), ingredients: ["Ing1", "Ingr2"], quantity: ["Qt1", "Qt2"])]
     }
-    
-    private class LoaderStub: CocktailLoader {
-        private let result: CocktailLoader.Result
-        
-        init(result: CocktailLoader.Result) {
-            self.result = result
-        }
-
-        func load(completion: @escaping (CocktailLoader.Result) -> Void) {
-            completion(result)
-        }
-    }
-
 }
