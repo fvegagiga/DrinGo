@@ -61,8 +61,4 @@ class CocktailLoaderWithFallbackCompositeTests: XCTestCase {
                 
         wait(for: [exp], timeout: 1.0)
     }
-
-    func uniqueCocktail(id: Int = 0) -> [CocktailItem] {
-        return [CocktailItem(id: id, name: "any", description: "any", imageURL: anyURL(), ingredients: ["Ing1", "Ingr2"], quantity: ["Qt1", "Qt2"])]
-    }
 }

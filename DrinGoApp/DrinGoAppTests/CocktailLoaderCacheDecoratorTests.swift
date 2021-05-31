@@ -57,8 +57,4 @@ class CocktailLoaderCacheDecoratorTests: XCTestCase {
                 
         wait(for: [exp], timeout: 1.0)
     }
-    
-    func uniqueCocktail(idx: Int = 0) -> [CocktailItem] {
-        return [CocktailItem(id: idx, name: "any", description: "any", imageURL: anyURL(), ingredients: ["Ing1", "Ingr2"], quantity: ["Qt1", "Qt2"])]
-    }
 }
