@@ -4,26 +4,7 @@
 
 import XCTest
 import DrinGoFeed
-
-final class CocktailLoaderCacheDecorator: CocktailLoader {
-    private let decoratee: CocktailLoader
-    private let cache: CocktailCache
-    
-    init(decoratee: CocktailLoader, cache: CocktailCache) {
-        self.decoratee = decoratee
-        self.cache = cache
-    }
-    
-    func load(completion: @escaping (CocktailLoader.Result) -> Void) {
-        decoratee.load { [weak self] result in
-            completion(result.map { feed in
-                self?.cache.save(feed) { _ in }
-                return feed
-            })
-        }
-    }
-}
-
+import DrinGoApp
 
 class CocktailLoaderCacheDecoratorTests: XCTestCase, CocktailLoaderTestCase {
 
