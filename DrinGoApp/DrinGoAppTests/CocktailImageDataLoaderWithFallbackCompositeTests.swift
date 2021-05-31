@@ -91,9 +91,9 @@ class CocktailImageDataLoaderWithFallbackCompositeTests: XCTestCase {
     
     // MARK: - Helpers
     
-    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: CocktailImageDataLoader, primary: LoaderSpy, fallback: LoaderSpy) {
-        let primaryLoader = LoaderSpy()
-        let fallbackLoader = LoaderSpy()
+    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: CocktailImageDataLoader, primary: CocktailImageDataLoaderSpy, fallback: CocktailImageDataLoaderSpy) {
+        let primaryLoader = CocktailImageDataLoaderSpy()
+        let fallbackLoader = CocktailImageDataLoaderSpy()
         let sut = CocktailImageDataLoaderWithFallbackComposite(primary: primaryLoader, fallback: fallbackLoader)
         trackForMemoryLeaks(primaryLoader, file: file, line: line)
         trackForMemoryLeaks(fallbackLoader, file: file, line: line)
@@ -122,35 +122,5 @@ class CocktailImageDataLoaderWithFallbackCompositeTests: XCTestCase {
         action()
         
         wait(for: [exp], timeout: 1.0)
-    }
-    
-    private class LoaderSpy: CocktailImageDataLoader {
-        private var messages = [(url: URL, completion: (CocktailImageDataLoader.Result) -> Void)]()
-
-        private(set) var cancelledURLs = [URL]()
-        
-        var loadedURLs: [URL] {
-            return messages.map { $0.url }
-        }
-
-        private struct Task: CocktailImageDataLoaderTask {
-            let callback: () -> Void
-            func cancel() { callback() }
-        }
-        
-        func loadImageData(from url: URL, completion: @escaping (CocktailImageDataLoader.Result) -> Void) -> CocktailImageDataLoaderTask {
-            messages.append((url, completion))
-            return Task { [weak self] in
-                self?.cancelledURLs.append(url)
-            }
-        }
-        
-        func complete(with error: Error, at index: Int = 0) {
-            messages[index].completion(.failure(error))
-        }
-        
-        func complete(with data: Data, at index: Int = 0) {
-            messages[index].completion(.success(data))
-        }
     }
 }
