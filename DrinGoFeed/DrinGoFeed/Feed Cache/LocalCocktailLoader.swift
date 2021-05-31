@@ -14,7 +14,7 @@ public final class LocalCocktailLoader {
     }
 }
 
-extension LocalCocktailLoader {
+extension LocalCocktailLoader: CocktailCache {
     public typealias SaveResult = Result<Void, Error>
     
     public func save(_ cocktails: [CocktailItem], completion: @escaping (SaveResult) -> Void) {
