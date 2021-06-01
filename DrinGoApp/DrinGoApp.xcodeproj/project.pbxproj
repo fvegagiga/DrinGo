@@ -49,6 +49,7 @@
 		C66406612666046900F1355C /* CocktailFeedUIIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406602666046900F1355C /* CocktailFeedUIIntegrationTests.swift */; };
 		C66406632666067500F1355C /* CocktailFeedAcceptanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406622666067500F1355C /* CocktailFeedAcceptanceTests.swift */; };
 		C66406652666154E00F1355C /* HTTPClientStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406642666154E00F1355C /* HTTPClientStub.swift */; };
+		C6640667266615A400F1355C /* InMemoryFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6640666266615A400F1355C /* InMemoryFeedStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +122,7 @@
 		C66406602666046900F1355C /* CocktailFeedUIIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailFeedUIIntegrationTests.swift; sourceTree = "<group>"; };
 		C66406622666067500F1355C /* CocktailFeedAcceptanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailFeedAcceptanceTests.swift; sourceTree = "<group>"; };
 		C66406642666154E00F1355C /* HTTPClientStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientStub.swift; sourceTree = "<group>"; };
+		C6640666266615A400F1355C /* InMemoryFeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryFeedStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +231,7 @@
 				C63DFAD7266508E200C29543 /* CocktailImageDataLoaderSpy.swift */,
 				C63DFAD926650A6D00C29543 /* XCTestCase+CocktailImageDataLoader.swift */,
 				C66406642666154E00F1355C /* HTTPClientStub.swift */,
+				C6640666266615A400F1355C /* InMemoryFeedStore.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				C664065D2666044500F1355C /* CocktailFeedUIIntegrationTests+LoaderSpy.swift in Sources */,
 				C63DFAD02664E61800C29543 /* XCTestCase+CocktailLoader.swift in Sources */,
 				C66406632666067500F1355C /* CocktailFeedAcceptanceTests.swift in Sources */,
+				C6640667266615A400F1355C /* InMemoryFeedStore.swift in Sources */,
 				C66406572666044500F1355C /* CocktailFeedUIIntegrationTests+Localization.swift in Sources */,
 				C63DFAD8266508E200C29543 /* CocktailImageDataLoaderSpy.swift in Sources */,
 				C66406612666046900F1355C /* CocktailFeedUIIntegrationTests.swift in Sources */,
