@@ -4,6 +4,7 @@
 
 import XCTest
 import UIKit
+import DrinGoApp
 import DrinGoFeed
 import DrinGoFeediOS
 

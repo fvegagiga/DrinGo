@@ -3,6 +3,7 @@
 //
 
 import DrinGoFeed
+import DrinGoFeediOS
 
 final class CocktailFeedLoaderPresentationAdapter: FeedViewControllerDelegate {
     private let feedLoader: CocktailLoader

@@ -5,16 +5,16 @@
 import UIKit
 import DrinGoFeed
 
-protocol FeedImageCellControllerDelegate {
+public protocol FeedImageCellControllerDelegate {
     func didRequestImage()
     func didCancelImageRequest()
 }
 
-final class CocktailFeedCellController: FeedImageView {
+public final class CocktailFeedCellController: FeedImageView {
     private let delegate: FeedImageCellControllerDelegate
     private var cell: CocktailFeedCell?
 
-    init(delegate: FeedImageCellControllerDelegate) {
+    public init(delegate: FeedImageCellControllerDelegate) {
         self.delegate = delegate
     }
     
@@ -33,7 +33,7 @@ final class CocktailFeedCellController: FeedImageView {
         delegate.didCancelImageRequest()
     }
     
-    func display(_ viewModel: CocktailImageViewModel<UIImage>) {
+    public func display(_ viewModel: CocktailImageViewModel<UIImage>) {
         cell?.titleLabel.text = viewModel.title
         cell?.descriptionLabel.text = viewModel.description
         cell?.cocktailImageView.setImageAnimated(viewModel.image)

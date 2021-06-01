@@ -4,6 +4,7 @@
 
 import UIKit
 import DrinGoFeed
+import DrinGoFeediOS
 
 public final class CocktailUIComposer {
     private init() {}

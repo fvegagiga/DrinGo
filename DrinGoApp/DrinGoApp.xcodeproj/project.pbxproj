@@ -31,6 +31,22 @@
 		C65BD04A266398890024F84D /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65BD049266398890024F84D /* XCTestCase+MemoryLeakTracking.swift */; };
 		C65BD04C266399050024F84D /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65BD04B266399050024F84D /* SharedTestHelpers.swift */; };
 		C6640641266601AD00F1355C /* SceneDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6640640266601AD00F1355C /* SceneDelegateTests.swift */; };
+		C66406482666040F00F1355C /* WeakRefVirtualProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406422666040E00F1355C /* WeakRefVirtualProxy.swift */; };
+		C66406492666040F00F1355C /* MainQueueDispatchDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406452666040F00F1355C /* MainQueueDispatchDecorator.swift */; };
+		C664064A2666040F00F1355C /* CocktailImageDataLoaderPresentationAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406432666040F00F1355C /* CocktailImageDataLoaderPresentationAdapter.swift */; };
+		C664064B2666040F00F1355C /* CocktailFeedLoaderPresentationAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406462666040F00F1355C /* CocktailFeedLoaderPresentationAdapter.swift */; };
+		C664064C2666040F00F1355C /* CocktailUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406442666040F00F1355C /* CocktailUIComposer.swift */; };
+		C664064D2666040F00F1355C /* FeedViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406472666040F00F1355C /* FeedViewAdapter.swift */; };
+		C66406572666044500F1355C /* CocktailFeedUIIntegrationTests+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406522666044500F1355C /* CocktailFeedUIIntegrationTests+Localization.swift */; };
+		C66406582666044500F1355C /* UIButton+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406552666044500F1355C /* UIButton+TestHelpers.swift */; };
+		C66406592666044500F1355C /* CocktailFeedUIIntegrationTests+Assertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C664064F2666044400F1355C /* CocktailFeedUIIntegrationTests+Assertions.swift */; };
+		C664065A2666044500F1355C /* CocktailFeedCell+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406562666044500F1355C /* CocktailFeedCell+TestHelpers.swift */; };
+		C664065B2666044500F1355C /* UIImage+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406542666044500F1355C /* UIImage+TestHelpers.swift */; };
+		C664065C2666044500F1355C /* UIControl+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406512666044500F1355C /* UIControl+TestHelpers.swift */; };
+		C664065D2666044500F1355C /* CocktailFeedUIIntegrationTests+LoaderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C664064E2666044400F1355C /* CocktailFeedUIIntegrationTests+LoaderSpy.swift */; };
+		C664065E2666044500F1355C /* UIRefreshControl+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406532666044500F1355C /* UIRefreshControl+TestHelpers.swift */; };
+		C664065F2666044500F1355C /* CocktailFeedViewController+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406502666044400F1355C /* CocktailFeedViewController+TestHelpers.swift */; };
+		C66406612666046900F1355C /* CocktailFeedUIIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406602666046900F1355C /* CocktailFeedUIIntegrationTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +101,22 @@
 		C65BD049266398890024F84D /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 		C65BD04B266399050024F84D /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
 		C6640640266601AD00F1355C /* SceneDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegateTests.swift; sourceTree = "<group>"; };
+		C66406422666040E00F1355C /* WeakRefVirtualProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakRefVirtualProxy.swift; sourceTree = "<group>"; };
+		C66406432666040F00F1355C /* CocktailImageDataLoaderPresentationAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailImageDataLoaderPresentationAdapter.swift; sourceTree = "<group>"; };
+		C66406442666040F00F1355C /* CocktailUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailUIComposer.swift; sourceTree = "<group>"; };
+		C66406452666040F00F1355C /* MainQueueDispatchDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainQueueDispatchDecorator.swift; sourceTree = "<group>"; };
+		C66406462666040F00F1355C /* CocktailFeedLoaderPresentationAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailFeedLoaderPresentationAdapter.swift; sourceTree = "<group>"; };
+		C66406472666040F00F1355C /* FeedViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewAdapter.swift; sourceTree = "<group>"; };
+		C664064E2666044400F1355C /* CocktailFeedUIIntegrationTests+LoaderSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CocktailFeedUIIntegrationTests+LoaderSpy.swift"; sourceTree = "<group>"; };
+		C664064F2666044400F1355C /* CocktailFeedUIIntegrationTests+Assertions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CocktailFeedUIIntegrationTests+Assertions.swift"; sourceTree = "<group>"; };
+		C66406502666044400F1355C /* CocktailFeedViewController+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CocktailFeedViewController+TestHelpers.swift"; sourceTree = "<group>"; };
+		C66406512666044500F1355C /* UIControl+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+TestHelpers.swift"; sourceTree = "<group>"; };
+		C66406522666044500F1355C /* CocktailFeedUIIntegrationTests+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CocktailFeedUIIntegrationTests+Localization.swift"; sourceTree = "<group>"; };
+		C66406532666044500F1355C /* UIRefreshControl+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIRefreshControl+TestHelpers.swift"; sourceTree = "<group>"; };
+		C66406542666044500F1355C /* UIImage+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+TestHelpers.swift"; sourceTree = "<group>"; };
+		C66406552666044500F1355C /* UIButton+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+TestHelpers.swift"; sourceTree = "<group>"; };
+		C66406562666044500F1355C /* CocktailFeedCell+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CocktailFeedCell+TestHelpers.swift"; sourceTree = "<group>"; };
+		C66406602666046900F1355C /* CocktailFeedUIIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailFeedUIIntegrationTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +163,12 @@
 			children = (
 				C6089E5326636DEC00EE1A7D /* AppDelegate.swift */,
 				C6089E5526636DEC00EE1A7D /* SceneDelegate.swift */,
+				C66406442666040F00F1355C /* CocktailUIComposer.swift */,
+				C66406452666040F00F1355C /* MainQueueDispatchDecorator.swift */,
+				C66406422666040E00F1355C /* WeakRefVirtualProxy.swift */,
+				C66406432666040F00F1355C /* CocktailImageDataLoaderPresentationAdapter.swift */,
+				C66406462666040F00F1355C /* CocktailFeedLoaderPresentationAdapter.swift */,
+				C66406472666040F00F1355C /* FeedViewAdapter.swift */,
 				C65BD0422663918E0024F84D /* CocktailLoaderWithFallbackComposite.swift */,
 				C65BD046266397CB0024F84D /* CocktailImageDataLoaderWithFallbackComposite.swift */,
 				C63DFAD32664FEBC00C29543 /* CocktailLoaderCacheDecorator.swift */,
@@ -148,11 +186,12 @@
 			children = (
 				C65BD048266398580024F84D /* Helpers */,
 				C6089E6C26636DEE00EE1A7D /* Info.plist */,
+				C6640640266601AD00F1355C /* SceneDelegateTests.swift */,
+				C66406602666046900F1355C /* CocktailFeedUIIntegrationTests.swift */,
 				C65BD04026637CAF0024F84D /* CocktailLoaderWithFallbackCompositeTests.swift */,
 				C65BD044266392290024F84D /* CocktailImageDataLoaderWithFallbackCompositeTests.swift */,
 				C63DFACB2664E32B00C29543 /* CocktailLoaderCacheDecoratorTests.swift */,
 				C63DFAD52664FF6000C29543 /* CocktailImageDataLoaderCacheDecoratorTests.swift */,
-				C6640640266601AD00F1355C /* SceneDelegateTests.swift */,
 			);
 			path = DrinGoAppTests;
 			sourceTree = "<group>";
@@ -169,6 +208,15 @@
 		C65BD048266398580024F84D /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				C66406542666044500F1355C /* UIImage+TestHelpers.swift */,
+				C66406532666044500F1355C /* UIRefreshControl+TestHelpers.swift */,
+				C66406552666044500F1355C /* UIButton+TestHelpers.swift */,
+				C66406512666044500F1355C /* UIControl+TestHelpers.swift */,
+				C66406502666044400F1355C /* CocktailFeedViewController+TestHelpers.swift */,
+				C66406562666044500F1355C /* CocktailFeedCell+TestHelpers.swift */,
+				C664064E2666044400F1355C /* CocktailFeedUIIntegrationTests+LoaderSpy.swift */,
+				C664064F2666044400F1355C /* CocktailFeedUIIntegrationTests+Assertions.swift */,
+				C66406522666044500F1355C /* CocktailFeedUIIntegrationTests+Localization.swift */,
 				C65BD049266398890024F84D /* XCTestCase+MemoryLeakTracking.swift */,
 				C65BD04B266399050024F84D /* SharedTestHelpers.swift */,
 				C63DFACD2664E4AE00C29543 /* CocktailLoaderStub.swift */,
@@ -281,11 +329,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C664064B2666040F00F1355C /* CocktailFeedLoaderPresentationAdapter.swift in Sources */,
+				C66406492666040F00F1355C /* MainQueueDispatchDecorator.swift in Sources */,
 				C63DFAD42664FEBC00C29543 /* CocktailLoaderCacheDecorator.swift in Sources */,
+				C664064C2666040F00F1355C /* CocktailUIComposer.swift in Sources */,
+				C664064D2666040F00F1355C /* FeedViewAdapter.swift in Sources */,
 				C65BD0432663918E0024F84D /* CocktailLoaderWithFallbackComposite.swift in Sources */,
+				C664064A2666040F00F1355C /* CocktailImageDataLoaderPresentationAdapter.swift in Sources */,
 				C6089E5426636DEC00EE1A7D /* AppDelegate.swift in Sources */,
 				C65BD047266397CB0024F84D /* CocktailImageDataLoaderWithFallbackComposite.swift in Sources */,
 				C6089E5626636DEC00EE1A7D /* SceneDelegate.swift in Sources */,
+				C66406482666040F00F1355C /* WeakRefVirtualProxy.swift in Sources */,
 				C63DFADE26650E8700C29543 /* CocktailImageDataLoaderCacheDecorator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,14 +351,24 @@
 				C63DFACE2664E4AE00C29543 /* CocktailLoaderStub.swift in Sources */,
 				C65BD04C266399050024F84D /* SharedTestHelpers.swift in Sources */,
 				C65BD045266392290024F84D /* CocktailImageDataLoaderWithFallbackCompositeTests.swift in Sources */,
+				C664065B2666044500F1355C /* UIImage+TestHelpers.swift in Sources */,
+				C664065C2666044500F1355C /* UIControl+TestHelpers.swift in Sources */,
 				C63DFAD62664FF6000C29543 /* CocktailImageDataLoaderCacheDecoratorTests.swift in Sources */,
 				C6640641266601AD00F1355C /* SceneDelegateTests.swift in Sources */,
 				C65BD04126637CAF0024F84D /* CocktailLoaderWithFallbackCompositeTests.swift in Sources */,
+				C664065D2666044500F1355C /* CocktailFeedUIIntegrationTests+LoaderSpy.swift in Sources */,
 				C63DFAD02664E61800C29543 /* XCTestCase+CocktailLoader.swift in Sources */,
+				C66406572666044500F1355C /* CocktailFeedUIIntegrationTests+Localization.swift in Sources */,
 				C63DFAD8266508E200C29543 /* CocktailImageDataLoaderSpy.swift in Sources */,
+				C66406612666046900F1355C /* CocktailFeedUIIntegrationTests.swift in Sources */,
+				C664065A2666044500F1355C /* CocktailFeedCell+TestHelpers.swift in Sources */,
+				C66406592666044500F1355C /* CocktailFeedUIIntegrationTests+Assertions.swift in Sources */,
+				C664065E2666044500F1355C /* UIRefreshControl+TestHelpers.swift in Sources */,
 				C65BD04A266398890024F84D /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 				C63DFACC2664E32B00C29543 /* CocktailLoaderCacheDecoratorTests.swift in Sources */,
 				C63DFADA26650A6D00C29543 /* XCTestCase+CocktailImageDataLoader.swift in Sources */,
+				C664065F2666044500F1355C /* CocktailFeedViewController+TestHelpers.swift in Sources */,
+				C66406582666044500F1355C /* UIButton+TestHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

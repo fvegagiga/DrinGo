@@ -5,19 +5,19 @@
 import UIKit
 import DrinGoFeed
 
-protocol FeedViewControllerDelegate {
+public protocol FeedViewControllerDelegate {
     func didRequestFeedRefresh()
 }
 
 public final class CocktailFeedViewController: UITableViewController, UITableViewDataSourcePrefetching, FeedLoadingView, FeedErrorView {
     
-    var delegate: FeedViewControllerDelegate?
-    
     @IBOutlet private(set) public var errorView: ErrorView?
     
-    var tableModel = [CocktailFeedCellController]() {
+    private var tableModel = [CocktailFeedCellController]() {
         didSet { tableView.reloadData() }
     }
+    
+    public var delegate: FeedViewControllerDelegate?
 
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +27,10 @@ public final class CocktailFeedViewController: UITableViewController, UITableVie
     
     @IBAction private func refresh() {
         delegate?.didRequestFeedRefresh()
+    }
+    
+    public func display(_ cellControllers: [CocktailFeedCellController]) {
+        tableModel = cellControllers
     }
     
     public func display(_ viewModel: FeedLoadingViewModel) {

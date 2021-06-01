@@ -4,6 +4,7 @@
 
 import UIKit
 import DrinGoFeed
+import DrinGoFeediOS
 
 final class WeakRefVirtualProxy<T: AnyObject> {
     private weak var object: T?

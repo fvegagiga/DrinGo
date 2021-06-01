@@ -3,6 +3,7 @@
 //
 
 import DrinGoFeed
+import DrinGoFeediOS
 
 final class CocktailImageDataLoaderPresentationAdapter<View: FeedImageView, Image>: FeedImageCellControllerDelegate where View.Image == Image {
     private let model: CocktailItem
