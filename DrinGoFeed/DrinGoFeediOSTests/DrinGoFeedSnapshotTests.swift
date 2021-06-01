@@ -32,6 +32,14 @@ class DrinGoFeedSnapshotTests: XCTestCase {
         record(snapshot: sut.snapshot(), named: "FEED_WITH_ERROR_MESSAGE")
     }
 
+    func test_feedWithFailedImageLoading() {
+        let sut = makeSUT()
+
+        sut.display(feedWithFailedImageLoading())
+
+        record(snapshot: sut.snapshot(), named: "FEED_WITH_FAILED_IMAGE_LOADING")
+    }
+
     
     // MARK: - Helpers
 
@@ -54,6 +62,13 @@ class DrinGoFeedSnapshotTests: XCTestCase {
         ]
     }
 
+    private func feedWithFailedImageLoading() -> [ImageStub] {
+        return [
+            ImageStub(title: "A Cocktail", description: "The first cocktail", image: nil),
+            ImageStub(title: "Another Cocktail", description: "The second cocktail", image: nil)
+        ]
+    }
+    
     private func record(snapshot: UIImage, named name: String, file: StaticString = #file, line: UInt = #line) {
         guard let snapshotData = snapshot.pngData() else {
             XCTFail("Failed to generate PNG data representation from snapshot", file: file, line: line)
