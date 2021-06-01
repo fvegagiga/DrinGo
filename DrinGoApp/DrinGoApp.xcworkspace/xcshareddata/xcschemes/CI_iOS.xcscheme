@@ -92,17 +92,6 @@
             testExecutionOrdering = "random">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C6835BCB26578FF0000EFEF8"
-               BuildableName = "DrinGoFeediOSTests.xctest"
-               BlueprintName = "DrinGoFeediOSTests"
-               ReferencedContainer = "container:../DrinGoFeed/DrinGoFeed.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO"
-            testExecutionOrdering = "random">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "C6089E6526636DEE00EE1A7D"
                BuildableName = "DrinGoAppTests.xctest"
                BlueprintName = "DrinGoAppTests"

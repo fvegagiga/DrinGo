@@ -34,7 +34,6 @@
 		C637318E264E51CB00C1B9FE /* LocalCocktailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C637318D264E51CB00C1B9FE /* LocalCocktailItem.swift */; };
 		C63793632658081F000118E4 /* DrinGoFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6504A45263EACA600F4FCD1 /* DrinGoFeed.framework */; platformFilter = ios; };
 		C63793642658081F000118E4 /* DrinGoFeed.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C6504A45263EACA600F4FCD1 /* DrinGoFeed.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C637936826580A67000118E4 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A01C2226427C530071A344 /* XCTestCase+MemoryLeakTracking.swift */; };
 		C637936A2658130B000118E4 /* CocktailFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63793692658130B000118E4 /* CocktailFeedViewController.swift */; };
 		C637936C265817FF000118E4 /* CocktailFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C637936B265817FF000118E4 /* CocktailFeedCell.swift */; };
 		C637936E26582553000118E4 /* UIView+Shimmering.swift in Sources */ = {isa = PBXBuildFile; fileRef = C637936D26582553000118E4 /* UIView+Shimmering.swift */; };
@@ -71,7 +70,6 @@
 		C6719FD42659529D00ACDF8A /* CocktailFeed.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6719FD32659529D00ACDF8A /* CocktailFeed.xcassets */; };
 		C6719FD62659626600ACDF8A /* UITableView+Dequeueing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6719FD52659626600ACDF8A /* UITableView+Dequeueing.swift */; };
 		C6719FD8265962AD00ACDF8A /* UIImageView+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6719FD7265962AD00ACDF8A /* UIImageView+Animations.swift */; };
-		C6835BCD26578FF0000EFEF8 /* DrinGoFeediOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6835BC426578FF0000EFEF8 /* DrinGoFeediOS.framework */; };
 		C6A01C2326427C530071A344 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A01C2226427C530071A344 /* XCTestCase+MemoryLeakTracking.swift */; };
 		C6D87F2C264D02AC00749974 /* LocalCocktailLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D87F2B264D02AC00749974 /* LocalCocktailLoader.swift */; };
 		C6D87F2E264D035500749974 /* FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D87F2D264D035500749974 /* FeedStore.swift */; };
@@ -112,13 +110,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = C6504A44263EACA600F4FCD1;
 			remoteInfo = DrinGoFeed;
-		};
-		C6835BCE26578FF0000EFEF8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C6504A3C263EACA600F4FCD1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C6835BC326578FF0000EFEF8;
-			remoteInfo = DrinGoFeediOS;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -203,8 +194,6 @@
 		C6719FE226596C8700ACDF8A /* CocktailFeedLocalizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailFeedLocalizationTests.swift; sourceTree = "<group>"; };
 		C6835BC426578FF0000EFEF8 /* DrinGoFeediOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DrinGoFeediOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6835BC726578FF0000EFEF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C6835BCC26578FF0000EFEF8 /* DrinGoFeediOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrinGoFeediOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C6835BD326578FF0000EFEF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6A01C2226427C530071A344 /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 		C6D87F2B264D02AC00749974 /* LocalCocktailLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCocktailLoader.swift; sourceTree = "<group>"; };
 		C6D87F2D264D035500749974 /* FeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStore.swift; sourceTree = "<group>"; };
@@ -253,14 +242,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C63793632658081F000118E4 /* DrinGoFeed.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C6835BC926578FF0000EFEF8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C6835BCD26578FF0000EFEF8 /* DrinGoFeediOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,7 +404,6 @@
 				C61E1AD52643C68F0051E30C /* DrinGoFeedAPIEndToEndTests */,
 				C63CC9872651724F007EC72D /* DrinGoFeedCacheIntegrationTests */,
 				C6835BC526578FF0000EFEF8 /* DrinGoFeediOS */,
-				C6835BD026578FF0000EFEF8 /* DrinGoFeediOSTests */,
 				C6504A46263EACA600F4FCD1 /* Products */,
 				C63793622658081E000118E4 /* Frameworks */,
 			);
@@ -437,7 +417,6 @@
 				C61E1AD42643C68F0051E30C /* DrinGoFeedAPIEndToEndTests.xctest */,
 				C63CC9862651724F007EC72D /* DrinGoFeedCacheIntegrationTests.xctest */,
 				C6835BC426578FF0000EFEF8 /* DrinGoFeediOS.framework */,
-				C6835BCC26578FF0000EFEF8 /* DrinGoFeediOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -513,14 +492,6 @@
 				C6719FAF2658D8F200ACDF8A /* Cocktail Feed UI */,
 			);
 			path = DrinGoFeediOS;
-			sourceTree = "<group>";
-		};
-		C6835BD026578FF0000EFEF8 /* DrinGoFeediOSTests */ = {
-			isa = PBXGroup;
-			children = (
-				C6835BD326578FF0000EFEF8 /* Info.plist */,
-			);
-			path = DrinGoFeediOSTests;
 			sourceTree = "<group>";
 		};
 		C6A01C2126427C370071A344 /* Helpers */ = {
@@ -669,24 +640,6 @@
 			productReference = C6835BC426578FF0000EFEF8 /* DrinGoFeediOS.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		C6835BCB26578FF0000EFEF8 /* DrinGoFeediOSTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C6835BD826578FF0000EFEF8 /* Build configuration list for PBXNativeTarget "DrinGoFeediOSTests" */;
-			buildPhases = (
-				C6835BC826578FF0000EFEF8 /* Sources */,
-				C6835BC926578FF0000EFEF8 /* Frameworks */,
-				C6835BCA26578FF0000EFEF8 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C6835BCF26578FF0000EFEF8 /* PBXTargetDependency */,
-			);
-			name = DrinGoFeediOSTests;
-			productName = DrinGoFeediOSTests;
-			productReference = C6835BCC26578FF0000EFEF8 /* DrinGoFeediOSTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -713,10 +666,6 @@
 						CreatedOnToolsVersion = 12.5;
 						LastSwiftMigration = 1250;
 					};
-					C6835BCB26578FF0000EFEF8 = {
-						CreatedOnToolsVersion = 12.5;
-						LastSwiftMigration = 1250;
-					};
 				};
 			};
 			buildConfigurationList = C6504A3F263EACA600F4FCD1 /* Build configuration list for PBXProject "DrinGoFeed" */;
@@ -738,7 +687,6 @@
 				C61E1AD32643C68F0051E30C /* DrinGoFeedAPIEndToEndTests */,
 				C63CC9852651724F007EC72D /* DrinGoFeedCacheIntegrationTests */,
 				C6835BC326578FF0000EFEF8 /* DrinGoFeediOS */,
-				C6835BCB26578FF0000EFEF8 /* DrinGoFeediOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -779,13 +727,6 @@
 			files = (
 				C6719FD2265951EE00ACDF8A /* CocktailFeed.storyboard in Resources */,
 				C6719FD42659529D00ACDF8A /* CocktailFeed.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C6835BCA26578FF0000EFEF8 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -892,14 +833,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C6835BC826578FF0000EFEF8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C637936826580A67000118E4 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -923,11 +856,6 @@
 			isa = PBXTargetDependency;
 			target = C6504A44263EACA600F4FCD1 /* DrinGoFeed */;
 			targetProxy = C6504A50263EACA700F4FCD1 /* PBXContainerItemProxy */;
-		};
-		C6835BCF26578FF0000EFEF8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C6835BC326578FF0000EFEF8 /* DrinGoFeediOS */;
-			targetProxy = C6835BCE26578FF0000EFEF8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1292,52 +1220,6 @@
 			};
 			name = Release;
 		};
-		C6835BD926578FF0000EFEF8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5MPC35WK7F;
-				INFOPLIST_FILE = DrinGoFeediOSTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.fvg0902iosdev.DrinGoFeediOSTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		C6835BDA26578FF0000EFEF8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5MPC35WK7F;
-				INFOPLIST_FILE = DrinGoFeediOSTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.fvg0902iosdev.DrinGoFeediOSTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1391,15 +1273,6 @@
 			buildConfigurations = (
 				C6835BD626578FF0000EFEF8 /* Debug */,
 				C6835BD726578FF0000EFEF8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C6835BD826578FF0000EFEF8 /* Build configuration list for PBXNativeTarget "DrinGoFeediOSTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C6835BD926578FF0000EFEF8 /* Debug */,
-				C6835BDA26578FF0000EFEF8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
