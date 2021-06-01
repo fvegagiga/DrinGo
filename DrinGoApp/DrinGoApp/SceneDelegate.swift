@@ -19,6 +19,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         return CodableFeedStore(storeURL: localStoreURL)
     }()
 
+    private lazy var localCocktailLoader: LocalCocktailLoader = {
+        LocalCocktailLoader(store: store, currentDate: Date.init)
+    }()
+
+    
     convenience init(httpClient: HTTPClient, store: FeedStore & CocktailImageDataStore) {
         self.init()
         self.httpClient = httpClient
@@ -39,7 +44,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let remoteCocktailLoader = RemoteCocktailLoader(url: url, client: remoteClient)
         let remoteCocktailImageLoader = RemoteCocktailImageDataLoader(client: remoteClient)
         
-        let localCocktailLoader = LocalCocktailLoader(store: store, currentDate: Date.init)
         let localImageLoader = LocalCocktailImageDataLoader(store: store)
         
         let cocktailViewController = CocktailUIComposer.feedComposedWith(
@@ -56,5 +60,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             ))
         
         window?.rootViewController = UINavigationController(rootViewController: cocktailViewController)
+    }
+    
+    func sceneWillResignActive(_ scene: UIScene) {
+        localCocktailLoader.validateCache { _ in }
     }
 }
