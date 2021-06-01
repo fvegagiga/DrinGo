@@ -78,6 +78,7 @@
 		C6DA3E0926667DD700A3A325 /* UIImage+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DA3E0826667DD700A3A325 /* UIImage+TestHelpers.swift */; };
 		C6DA3E0B26667F0F00A3A325 /* UITableView+HeaderSizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DA3E0A26667F0F00A3A325 /* UITableView+HeaderSizing.swift */; };
 		C6DA3E0D266685BD00A3A325 /* UIViewController+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DA3E0C266685BD00A3A325 /* UIViewController+Snapshot.swift */; };
+		C6DA3E0F2666865400A3A325 /* XCTestCase+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DA3E0E2666865400A3A325 /* XCTestCase+Snapshot.swift */; };
 		C6DE4C4A266267680071D471 /* CocktailImageDataStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DE4C49266267680071D471 /* CocktailImageDataStoreSpy.swift */; };
 		C6DE4C4C266267F30071D471 /* CacheCocktailImageDataUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DE4C4B266267F30071D471 /* CacheCocktailImageDataUseCaseTests.swift */; };
 		C6DEC1AD2662A4230008D8C3 /* CodableFeedStore+CocktailImageDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DEC1AC2662A4230008D8C3 /* CodableFeedStore+CocktailImageDataStore.swift */; };
@@ -215,6 +216,7 @@
 		C6DA3E0826667DD700A3A325 /* UIImage+TestHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+TestHelpers.swift"; sourceTree = "<group>"; };
 		C6DA3E0A26667F0F00A3A325 /* UITableView+HeaderSizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+HeaderSizing.swift"; sourceTree = "<group>"; };
 		C6DA3E0C266685BD00A3A325 /* UIViewController+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Snapshot.swift"; sourceTree = "<group>"; };
+		C6DA3E0E2666865400A3A325 /* XCTestCase+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Snapshot.swift"; sourceTree = "<group>"; };
 		C6DE4C49266267680071D471 /* CocktailImageDataStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailImageDataStoreSpy.swift; sourceTree = "<group>"; };
 		C6DE4C4B266267F30071D471 /* CacheCocktailImageDataUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheCocktailImageDataUseCaseTests.swift; sourceTree = "<group>"; };
 		C6DEC1AC2662A4230008D8C3 /* CodableFeedStore+CocktailImageDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CodableFeedStore+CocktailImageDataStore.swift"; sourceTree = "<group>"; };
@@ -561,6 +563,7 @@
 			children = (
 				C6DA3E0826667DD700A3A325 /* UIImage+TestHelpers.swift */,
 				C6DA3E0C266685BD00A3A325 /* UIViewController+Snapshot.swift */,
+				C6DA3E0E2666865400A3A325 /* XCTestCase+Snapshot.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -917,6 +920,7 @@
 			files = (
 				C6DA3DFF2666789300A3A325 /* DrinGoFeedSnapshotTests.swift in Sources */,
 				C6DA3E0D266685BD00A3A325 /* UIViewController+Snapshot.swift in Sources */,
+				C6DA3E0F2666865400A3A325 /* XCTestCase+Snapshot.swift in Sources */,
 				C6DA3E0926667DD700A3A325 /* UIImage+TestHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
