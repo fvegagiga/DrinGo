@@ -48,6 +48,7 @@
 		C664065F2666044500F1355C /* CocktailFeedViewController+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406502666044400F1355C /* CocktailFeedViewController+TestHelpers.swift */; };
 		C66406612666046900F1355C /* CocktailFeedUIIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406602666046900F1355C /* CocktailFeedUIIntegrationTests.swift */; };
 		C66406632666067500F1355C /* CocktailFeedAcceptanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406622666067500F1355C /* CocktailFeedAcceptanceTests.swift */; };
+		C66406652666154E00F1355C /* HTTPClientStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406642666154E00F1355C /* HTTPClientStub.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +120,7 @@
 		C66406562666044500F1355C /* CocktailFeedCell+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CocktailFeedCell+TestHelpers.swift"; sourceTree = "<group>"; };
 		C66406602666046900F1355C /* CocktailFeedUIIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailFeedUIIntegrationTests.swift; sourceTree = "<group>"; };
 		C66406622666067500F1355C /* CocktailFeedAcceptanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailFeedAcceptanceTests.swift; sourceTree = "<group>"; };
+		C66406642666154E00F1355C /* HTTPClientStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientStub.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +228,7 @@
 				C63DFACF2664E61800C29543 /* XCTestCase+CocktailLoader.swift */,
 				C63DFAD7266508E200C29543 /* CocktailImageDataLoaderSpy.swift */,
 				C63DFAD926650A6D00C29543 /* XCTestCase+CocktailImageDataLoader.swift */,
+				C66406642666154E00F1355C /* HTTPClientStub.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				C63DFAD8266508E200C29543 /* CocktailImageDataLoaderSpy.swift in Sources */,
 				C66406612666046900F1355C /* CocktailFeedUIIntegrationTests.swift in Sources */,
 				C664065A2666044500F1355C /* CocktailFeedCell+TestHelpers.swift in Sources */,
+				C66406652666154E00F1355C /* HTTPClientStub.swift in Sources */,
 				C66406592666044500F1355C /* CocktailFeedUIIntegrationTests+Assertions.swift in Sources */,
 				C664065E2666044500F1355C /* UIRefreshControl+TestHelpers.swift in Sources */,
 				C65BD04A266398890024F84D /* XCTestCase+MemoryLeakTracking.swift in Sources */,
