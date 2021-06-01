@@ -4,6 +4,7 @@
 
 import XCTest
 import DrinGoFeediOS
+@testable import DrinGoFeed
 
 class DrinGoFeedSnapshotTests: XCTestCase {
 
@@ -14,6 +15,15 @@ class DrinGoFeedSnapshotTests: XCTestCase {
 
         record(snapshot: sut.snapshot(), named: "EMPTY_FEED")
     }
+    
+    func test_feedWithContent() {
+        let sut = makeSUT()
+        
+        sut.display(feedWithContent())
+
+        record(snapshot: sut.snapshot(), named: "FEED_WITH_CONTENT")
+    }
+
     
     // MARK: - Helpers
 
@@ -29,6 +39,13 @@ class DrinGoFeedSnapshotTests: XCTestCase {
         return []
     }
     
+    private func feedWithContent() -> [ImageStub] {
+        return [
+            ImageStub(title: "A Cocktail", description: "The first cocktail recipe", image: UIImage.make(withColor: .red)),
+            ImageStub(title: "Another Cocktail", description: "The second cocktail recipe with more text to test the multiline description label", image: UIImage.make(withColor: .green))
+        ]
+    }
+
     private func record(snapshot: UIImage, named name: String, file: StaticString = #file, line: UInt = #line) {
         guard let snapshotData = snapshot.pngData() else {
             XCTFail("Failed to generate PNG data representation from snapshot", file: file, line: line)
@@ -60,4 +77,36 @@ extension UIViewController {
             view.layer.render(in: action.cgContext)
         }
     }
+}
+
+private extension CocktailFeedViewController {
+    func display(_ stubs: [ImageStub]) {
+        let cells: [CocktailFeedCellController] = stubs.map { stub in
+            let cellController = CocktailFeedCellController(delegate: stub)
+            stub.controller = cellController
+            return cellController
+        }
+        
+        display(cells)
+    }
+}
+
+private class ImageStub: FeedImageCellControllerDelegate {
+    let viewModel: CocktailImageViewModel<UIImage>
+    weak var controller: CocktailFeedCellController?
+
+    init(title: String, description: String, image: UIImage?) {
+        viewModel = CocktailImageViewModel(
+            title: title,
+            description: description,
+            image: image,
+            isLoading: false,
+            shouldRetry: image == nil)
+    }
+    
+    func didRequestImage() {
+        controller?.display(viewModel)
+    }
+    
+    func didCancelImageRequest() {}
 }

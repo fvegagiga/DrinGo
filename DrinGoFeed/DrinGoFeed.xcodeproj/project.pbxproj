@@ -75,6 +75,7 @@
 		C6D87F2E264D035500749974 /* FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D87F2D264D035500749974 /* FeedStore.swift */; };
 		C6DA3DFF2666789300A3A325 /* DrinGoFeedSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DA3DFE2666789300A3A325 /* DrinGoFeedSnapshotTests.swift */; };
 		C6DA3E012666789300A3A325 /* DrinGoFeediOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6835BC426578FF0000EFEF8 /* DrinGoFeediOS.framework */; };
+		C6DA3E0926667DD700A3A325 /* UIImage+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DA3E0826667DD700A3A325 /* UIImage+TestHelpers.swift */; };
 		C6DE4C4A266267680071D471 /* CocktailImageDataStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DE4C49266267680071D471 /* CocktailImageDataStoreSpy.swift */; };
 		C6DE4C4C266267F30071D471 /* CacheCocktailImageDataUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DE4C4B266267F30071D471 /* CacheCocktailImageDataUseCaseTests.swift */; };
 		C6DEC1AD2662A4230008D8C3 /* CodableFeedStore+CocktailImageDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DEC1AC2662A4230008D8C3 /* CodableFeedStore+CocktailImageDataStore.swift */; };
@@ -209,6 +210,7 @@
 		C6DA3DFC2666789300A3A325 /* DrinGoFeediOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrinGoFeediOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6DA3DFE2666789300A3A325 /* DrinGoFeedSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinGoFeedSnapshotTests.swift; sourceTree = "<group>"; };
 		C6DA3E002666789300A3A325 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C6DA3E0826667DD700A3A325 /* UIImage+TestHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+TestHelpers.swift"; sourceTree = "<group>"; };
 		C6DE4C49266267680071D471 /* CocktailImageDataStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailImageDataStoreSpy.swift; sourceTree = "<group>"; };
 		C6DE4C4B266267F30071D471 /* CacheCocktailImageDataUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheCocktailImageDataUseCaseTests.swift; sourceTree = "<group>"; };
 		C6DEC1AC2662A4230008D8C3 /* CodableFeedStore+CocktailImageDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CodableFeedStore+CocktailImageDataStore.swift"; sourceTree = "<group>"; };
@@ -542,10 +544,19 @@
 		C6DA3DFD2666789300A3A325 /* DrinGoFeediOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				C6DA3E0726667DC200A3A325 /* Helpers */,
 				C6DA3E002666789300A3A325 /* Info.plist */,
 				C6DA3DFE2666789300A3A325 /* DrinGoFeedSnapshotTests.swift */,
 			);
 			path = DrinGoFeediOSTests;
+			sourceTree = "<group>";
+		};
+		C6DA3E0726667DC200A3A325 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C6DA3E0826667DD700A3A325 /* UIImage+TestHelpers.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		C6E30159264155DC009DC1D5 /* Feed API */ = {
@@ -898,6 +909,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6DA3DFF2666789300A3A325 /* DrinGoFeedSnapshotTests.swift in Sources */,
+				C6DA3E0926667DD700A3A325 /* UIImage+TestHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
