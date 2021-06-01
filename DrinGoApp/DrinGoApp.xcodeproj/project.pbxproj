@@ -30,6 +30,7 @@
 		C65BD047266397CB0024F84D /* CocktailImageDataLoaderWithFallbackComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65BD046266397CB0024F84D /* CocktailImageDataLoaderWithFallbackComposite.swift */; };
 		C65BD04A266398890024F84D /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65BD049266398890024F84D /* XCTestCase+MemoryLeakTracking.swift */; };
 		C65BD04C266399050024F84D /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65BD04B266399050024F84D /* SharedTestHelpers.swift */; };
+		C6640641266601AD00F1355C /* SceneDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6640640266601AD00F1355C /* SceneDelegateTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		C65BD046266397CB0024F84D /* CocktailImageDataLoaderWithFallbackComposite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailImageDataLoaderWithFallbackComposite.swift; sourceTree = "<group>"; };
 		C65BD049266398890024F84D /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 		C65BD04B266399050024F84D /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
+		C6640640266601AD00F1355C /* SceneDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegateTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 				C65BD044266392290024F84D /* CocktailImageDataLoaderWithFallbackCompositeTests.swift */,
 				C63DFACB2664E32B00C29543 /* CocktailLoaderCacheDecoratorTests.swift */,
 				C63DFAD52664FF6000C29543 /* CocktailImageDataLoaderCacheDecoratorTests.swift */,
+				C6640640266601AD00F1355C /* SceneDelegateTests.swift */,
 			);
 			path = DrinGoAppTests;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				C65BD04C266399050024F84D /* SharedTestHelpers.swift in Sources */,
 				C65BD045266392290024F84D /* CocktailImageDataLoaderWithFallbackCompositeTests.swift in Sources */,
 				C63DFAD62664FF6000C29543 /* CocktailImageDataLoaderCacheDecoratorTests.swift in Sources */,
+				C6640641266601AD00F1355C /* SceneDelegateTests.swift in Sources */,
 				C65BD04126637CAF0024F84D /* CocktailLoaderWithFallbackCompositeTests.swift in Sources */,
 				C63DFAD02664E61800C29543 /* XCTestCase+CocktailLoader.swift in Sources */,
 				C63DFAD8266508E200C29543 /* CocktailImageDataLoaderSpy.swift in Sources */,
