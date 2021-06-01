@@ -9,15 +9,14 @@ import DrinGoFeediOS
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
-    let localStoreURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!.appendingPathComponent("cocktail.store")
     
     private lazy var httpClient: HTTPClient = {
         URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
     }()
     
     private lazy var store: FeedStore & CocktailImageDataStore = {
-        CodableFeedStore(storeURL: localStoreURL)
+        let localStoreURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!.appendingPathComponent("cocktail.store")
+        return CodableFeedStore(storeURL: localStoreURL)
     }()
 
     convenience init(httpClient: HTTPClient, store: FeedStore & CocktailImageDataStore) {
