@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C607A760266751D700E40922 /* UIView+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C607A75F266751D700E40922 /* UIView+TestHelpers.swift */; };
 		C6089E5426636DEC00EE1A7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6089E5326636DEC00EE1A7D /* AppDelegate.swift */; };
 		C6089E5626636DEC00EE1A7D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6089E5526636DEC00EE1A7D /* SceneDelegate.swift */; };
 		C6089E5B26636DEC00EE1A7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6089E5926636DEC00EE1A7D /* Main.storyboard */; };
@@ -78,6 +79,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C607A75F266751D700E40922 /* UIView+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+TestHelpers.swift"; sourceTree = "<group>"; };
 		C6089E5026636DEC00EE1A7D /* DrinGoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrinGoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6089E5326636DEC00EE1A7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6089E5526636DEC00EE1A7D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 		C65BD048266398580024F84D /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				C607A75F266751D700E40922 /* UIView+TestHelpers.swift */,
 				C66406542666044500F1355C /* UIImage+TestHelpers.swift */,
 				C66406532666044500F1355C /* UIRefreshControl+TestHelpers.swift */,
 				C66406552666044500F1355C /* UIButton+TestHelpers.swift */,
@@ -375,6 +378,7 @@
 				C664065A2666044500F1355C /* CocktailFeedCell+TestHelpers.swift in Sources */,
 				C66406652666154E00F1355C /* HTTPClientStub.swift in Sources */,
 				C66406592666044500F1355C /* CocktailFeedUIIntegrationTests+Assertions.swift in Sources */,
+				C607A760266751D700E40922 /* UIView+TestHelpers.swift in Sources */,
 				C664065E2666044500F1355C /* UIRefreshControl+TestHelpers.swift in Sources */,
 				C65BD04A266398890024F84D /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 				C63DFACC2664E32B00C29543 /* CocktailLoaderCacheDecoratorTests.swift in Sources */,

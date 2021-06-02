@@ -10,8 +10,10 @@ public protocol FeedViewControllerDelegate {
 }
 
 public final class CocktailFeedViewController: UITableViewController, UITableViewDataSourcePrefetching, FeedLoadingView, FeedErrorView {
-    
+
     @IBOutlet private(set) public var errorView: ErrorView?
+    
+    private var loadingControllers = [IndexPath: CocktailFeedCellController]()
     
     private var tableModel = [CocktailFeedCellController]() {
         didSet { tableView.reloadData() }
@@ -36,6 +38,7 @@ public final class CocktailFeedViewController: UITableViewController, UITableVie
     }
     
     public func display(_ cellControllers: [CocktailFeedCellController]) {
+        loadingControllers = [:]
         tableModel = cellControllers
     }
     
@@ -70,10 +73,13 @@ public final class CocktailFeedViewController: UITableViewController, UITableVie
     }
     
     private func cellController(forRowAt indexPath: IndexPath) -> CocktailFeedCellController {
-        return tableModel[indexPath.row]
+        let controller = tableModel[indexPath.row]
+        loadingControllers[indexPath] = controller
+        return controller
     }
     
     private func cancelCellControllerLoad(forRowAt indexPath: IndexPath) {
-        cellController(forRowAt: indexPath).cancelLoad()
+        loadingControllers[indexPath]?.cancelLoad()
+        loadingControllers[indexPath] = nil
     }
 }
