@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Combine
 import DrinGoFeed
 import DrinGoFeediOS
 
@@ -39,26 +40,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func configureWindow() {
         
-        let url = URL(string: "https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php")!
-        
-        let remoteClient = httpClient
-        let remoteCocktailLoader = RemoteCocktailLoader(url: url, client: remoteClient)
-        let remoteCocktailImageLoader = RemoteCocktailImageDataLoader(client: remoteClient)
+        let remoteCocktailImageLoader = RemoteCocktailImageDataLoader(client: httpClient)
         
         let localImageLoader = LocalCocktailImageDataLoader(store: store)
         
         let cocktailViewController = CocktailUIComposer.feedComposedWith(
-            feedLoader: CocktailLoaderWithFallbackComposite(
-                primary: CocktailLoaderCacheDecorator(
-                    decoratee: remoteCocktailLoader,
-                    cache: localCocktailLoader),
-                fallback: localCocktailLoader),
+            feedLoader: makeRemoteCocktailLoaderWithLocalFallback,
             imageLoader: CocktailImageDataLoaderWithFallbackComposite(
                 primary: localImageLoader,
                 fallback: CocktailImageDataLoaderCacheDecorator(
                     decoratee: remoteCocktailImageLoader,
                     cache: localImageLoader)
-            ))
+                )
+            )
         
         window?.rootViewController = UINavigationController(rootViewController: cocktailViewController)
         
@@ -67,5 +61,100 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func sceneWillResignActive(_ scene: UIScene) {
         localCocktailLoader.validateCache { _ in }
+    }
+    
+    private func makeRemoteCocktailLoaderWithLocalFallback() -> RemoteCocktailLoader.Publisher {
+        let url = URL(string: "https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php")!
+        
+        let remoteCocktailLoader = RemoteCocktailLoader(url: url, client: httpClient)
+        
+        return remoteCocktailLoader
+            .loadPublisher()
+            .caching(to: localCocktailLoader)
+            .fallback(to: localCocktailLoader.loadPublisher)
+            
+    }
+}
+
+public extension CocktailLoader {
+    typealias Publisher = AnyPublisher<[CocktailItem], Swift.Error>
+    
+    func loadPublisher() -> Publisher {
+        return Deferred {
+            Future(self.load)
+        }
+        .eraseToAnyPublisher()
+    }
+}
+
+extension Publisher where Output == [CocktailItem] {
+    func caching(to cache: CocktailCache) -> AnyPublisher<Output, Failure> {
+        handleEvents(receiveOutput: cache.saveIgnoringResult).eraseToAnyPublisher()
+    }
+}
+
+private extension CocktailCache {
+    func saveIgnoringResult(_ feed: [CocktailItem]) {
+        save(feed) { _ in }
+    }
+}
+
+extension Publisher {
+    func fallback(to fallbackPublisher: @escaping () -> AnyPublisher<Output, Failure>) -> AnyPublisher<Output, Failure> {
+        self.catch { _ in fallbackPublisher() }.eraseToAnyPublisher()
+    }
+}
+
+extension Publisher {
+    func dispatchOnMainQueue() -> AnyPublisher<Output, Failure> {
+        receive(on: DispatchQueue.inmediateWhenOnMainQueueScheduler).eraseToAnyPublisher()
+    }
+}
+
+extension DispatchQueue {
+    static var inmediateWhenOnMainQueueScheduler: InmediateWhenOnMainQueueScheduler {
+        InmediateWhenOnMainQueueScheduler.shared
+    }
+    
+    struct InmediateWhenOnMainQueueScheduler: Scheduler {
+        typealias SchedulerTimeType = DispatchQueue.SchedulerTimeType
+        typealias SchedulerOptions = DispatchQueue.SchedulerOptions
+        
+        var now: Self.SchedulerTimeType {
+            DispatchQueue.main.now
+        }
+
+        var minimumTolerance: Self.SchedulerTimeType.Stride {
+            DispatchQueue.main.minimumTolerance
+        }
+
+        static let shared = Self()
+        
+        private static let key = DispatchSpecificKey<UInt8>()
+        private static let value = UInt8.max
+        
+        private init() {
+            DispatchQueue.main.setSpecific(key: Self.key, value: Self.value)
+        }
+        
+        private func isMainQueue() -> Bool {
+            DispatchQueue.getSpecific(key: Self.key) == Self.value
+        }
+        
+        func schedule(options: Self.SchedulerOptions?, _ action: @escaping () -> Void) {
+            guard isMainQueue() else {
+                return DispatchQueue.main.schedule(options: options, action)
+            }
+            
+            action()
+        }
+
+        func schedule(after date: Self.SchedulerTimeType, tolerance: Self.SchedulerTimeType.Stride, options: Self.SchedulerOptions?, _ action: @escaping () -> Void) {
+            DispatchQueue.main.schedule(after: date, tolerance: tolerance, options: options, action)
+        }
+
+        func schedule(after date: Self.SchedulerTimeType, interval: Self.SchedulerTimeType.Stride, tolerance: Self.SchedulerTimeType.Stride, options: Self.SchedulerOptions?, _ action: @escaping () -> Void) -> Cancellable {
+            DispatchQueue.main.schedule(after: date, interval: interval, tolerance: tolerance, options: options, action)
+        }
     }
 }

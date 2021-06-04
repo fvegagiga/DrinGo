@@ -2,28 +2,31 @@
 // Copyright @ 2021 Fernando Vega. All rights reserved.
 //
 
+import Combine
 import DrinGoFeed
 import DrinGoFeediOS
 
 final class CocktailFeedLoaderPresentationAdapter: FeedViewControllerDelegate {
-    private let feedLoader: CocktailLoader
+    private let feedLoader: () -> CocktailLoader.Publisher
+    private var cancellable: Cancellable?
     var presenter: CocktailFeedPresenter?
     
-    init(feedLoader: CocktailLoader) {
+    init(feedLoader: @escaping () -> CocktailLoader.Publisher) {
         self.feedLoader = feedLoader
     }
 
     func didRequestFeedRefresh() {
         presenter?.didStartLoadingFeed()
         
-        feedLoader.load { [weak self] result in
-            switch result {
-            case let .success(feed):
-                self?.presenter?.didFinishLoadingFeed(with: feed)
-                
+        cancellable = feedLoader().sink(receiveCompletion: { [weak self] completion in
+            switch completion {
+            case .finished: break
             case let .failure(error):
                 self?.presenter?.didFinishLoadingFeed(with: error)
             }
-        }
+            
+        }, receiveValue: { [weak self] cocktails in
+            self?.presenter?.didFinishLoadingFeed(with: cocktails)
+        })
     }
 }

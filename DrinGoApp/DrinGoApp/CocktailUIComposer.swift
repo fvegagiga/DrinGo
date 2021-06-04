@@ -3,14 +3,17 @@
 //
 
 import UIKit
+import Combine
 import DrinGoFeed
 import DrinGoFeediOS
 
 public final class CocktailUIComposer {
     private init() {}
     
-    public static func feedComposedWith(feedLoader: CocktailLoader, imageLoader: CocktailImageDataLoader) -> CocktailFeedViewController {
-        let presentationAdapter = CocktailFeedLoaderPresentationAdapter(feedLoader: MainQueueDispatchDecorator(decoratee: feedLoader))
+    public static func feedComposedWith(feedLoader: @escaping () -> CocktailLoader.Publisher,
+                                        imageLoader: CocktailImageDataLoader) -> CocktailFeedViewController {
+        
+        let presentationAdapter = CocktailFeedLoaderPresentationAdapter(feedLoader: { feedLoader().dispatchOnMainQueue() })
         let cocktailFeedController = makeWith(delegate: presentationAdapter, title: CocktailFeedPresenter.title)
         
         presentationAdapter.presenter = CocktailFeedPresenter(

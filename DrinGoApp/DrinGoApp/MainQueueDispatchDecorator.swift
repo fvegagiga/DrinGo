@@ -21,15 +21,6 @@ final class MainQueueDispatchDecorator<T> {
     }
 }
 
-extension MainQueueDispatchDecorator: CocktailLoader where T == CocktailLoader {
-
-    func load(completion: @escaping (CocktailLoader.Result) -> Void) {
-        decoratee.load { [weak self] result in
-            self?.dispatch { completion(result) }
-        }
-    }
-}
-
 extension MainQueueDispatchDecorator: CocktailImageDataLoader where T == CocktailImageDataLoader {
     
     func loadImageData(from url: URL, completion: @escaping (CocktailImageDataLoader.Result) -> Void) -> CocktailImageDataLoaderTask {

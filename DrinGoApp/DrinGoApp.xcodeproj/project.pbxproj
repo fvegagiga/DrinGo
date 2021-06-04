@@ -16,16 +16,12 @@
 		C6089E8726636F7D00EE1A7D /* DrinGoFeed.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C6089E8426636F7D00EE1A7D /* DrinGoFeed.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C6089E8826636F7D00EE1A7D /* DrinGoFeediOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6089E8526636F7D00EE1A7D /* DrinGoFeediOS.framework */; };
 		C6089E8926636F7D00EE1A7D /* DrinGoFeediOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C6089E8526636F7D00EE1A7D /* DrinGoFeediOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C63DFACC2664E32B00C29543 /* CocktailLoaderCacheDecoratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63DFACB2664E32B00C29543 /* CocktailLoaderCacheDecoratorTests.swift */; };
 		C63DFACE2664E4AE00C29543 /* CocktailLoaderStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63DFACD2664E4AE00C29543 /* CocktailLoaderStub.swift */; };
 		C63DFAD02664E61800C29543 /* XCTestCase+CocktailLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63DFACF2664E61800C29543 /* XCTestCase+CocktailLoader.swift */; };
-		C63DFAD42664FEBC00C29543 /* CocktailLoaderCacheDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63DFAD32664FEBC00C29543 /* CocktailLoaderCacheDecorator.swift */; };
 		C63DFAD62664FF6000C29543 /* CocktailImageDataLoaderCacheDecoratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63DFAD52664FF6000C29543 /* CocktailImageDataLoaderCacheDecoratorTests.swift */; };
 		C63DFAD8266508E200C29543 /* CocktailImageDataLoaderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63DFAD7266508E200C29543 /* CocktailImageDataLoaderSpy.swift */; };
 		C63DFADA26650A6D00C29543 /* XCTestCase+CocktailImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63DFAD926650A6D00C29543 /* XCTestCase+CocktailImageDataLoader.swift */; };
 		C63DFADE26650E8700C29543 /* CocktailImageDataLoaderCacheDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63DFADD26650E8700C29543 /* CocktailImageDataLoaderCacheDecorator.swift */; };
-		C65BD04126637CAF0024F84D /* CocktailLoaderWithFallbackCompositeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65BD04026637CAF0024F84D /* CocktailLoaderWithFallbackCompositeTests.swift */; };
-		C65BD0432663918E0024F84D /* CocktailLoaderWithFallbackComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65BD0422663918E0024F84D /* CocktailLoaderWithFallbackComposite.swift */; };
 		C65BD045266392290024F84D /* CocktailImageDataLoaderWithFallbackCompositeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65BD044266392290024F84D /* CocktailImageDataLoaderWithFallbackCompositeTests.swift */; };
 		C65BD047266397CB0024F84D /* CocktailImageDataLoaderWithFallbackComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65BD046266397CB0024F84D /* CocktailImageDataLoaderWithFallbackComposite.swift */; };
 		C65BD04A266398890024F84D /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65BD049266398890024F84D /* XCTestCase+MemoryLeakTracking.swift */; };
@@ -89,16 +85,12 @@
 		C6089E6C26636DEE00EE1A7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6089E8426636F7D00EE1A7D /* DrinGoFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DrinGoFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6089E8526636F7D00EE1A7D /* DrinGoFeediOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DrinGoFeediOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C63DFACB2664E32B00C29543 /* CocktailLoaderCacheDecoratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailLoaderCacheDecoratorTests.swift; sourceTree = "<group>"; };
 		C63DFACD2664E4AE00C29543 /* CocktailLoaderStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailLoaderStub.swift; sourceTree = "<group>"; };
 		C63DFACF2664E61800C29543 /* XCTestCase+CocktailLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+CocktailLoader.swift"; sourceTree = "<group>"; };
-		C63DFAD32664FEBC00C29543 /* CocktailLoaderCacheDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailLoaderCacheDecorator.swift; sourceTree = "<group>"; };
 		C63DFAD52664FF6000C29543 /* CocktailImageDataLoaderCacheDecoratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailImageDataLoaderCacheDecoratorTests.swift; sourceTree = "<group>"; };
 		C63DFAD7266508E200C29543 /* CocktailImageDataLoaderSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailImageDataLoaderSpy.swift; sourceTree = "<group>"; };
 		C63DFAD926650A6D00C29543 /* XCTestCase+CocktailImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+CocktailImageDataLoader.swift"; sourceTree = "<group>"; };
 		C63DFADD26650E8700C29543 /* CocktailImageDataLoaderCacheDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailImageDataLoaderCacheDecorator.swift; sourceTree = "<group>"; };
-		C65BD04026637CAF0024F84D /* CocktailLoaderWithFallbackCompositeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailLoaderWithFallbackCompositeTests.swift; sourceTree = "<group>"; };
-		C65BD0422663918E0024F84D /* CocktailLoaderWithFallbackComposite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailLoaderWithFallbackComposite.swift; sourceTree = "<group>"; };
 		C65BD044266392290024F84D /* CocktailImageDataLoaderWithFallbackCompositeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailImageDataLoaderWithFallbackCompositeTests.swift; sourceTree = "<group>"; };
 		C65BD046266397CB0024F84D /* CocktailImageDataLoaderWithFallbackComposite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailImageDataLoaderWithFallbackComposite.swift; sourceTree = "<group>"; };
 		C65BD049266398890024F84D /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
@@ -175,9 +167,7 @@
 				C66406432666040F00F1355C /* CocktailImageDataLoaderPresentationAdapter.swift */,
 				C66406462666040F00F1355C /* CocktailFeedLoaderPresentationAdapter.swift */,
 				C66406472666040F00F1355C /* FeedViewAdapter.swift */,
-				C65BD0422663918E0024F84D /* CocktailLoaderWithFallbackComposite.swift */,
 				C65BD046266397CB0024F84D /* CocktailImageDataLoaderWithFallbackComposite.swift */,
-				C63DFAD32664FEBC00C29543 /* CocktailLoaderCacheDecorator.swift */,
 				C63DFADD26650E8700C29543 /* CocktailImageDataLoaderCacheDecorator.swift */,
 				C6089E5C26636DED00EE1A7D /* Assets.xcassets */,
 				C6089E5E26636DED00EE1A7D /* LaunchScreen.storyboard */,
@@ -193,9 +183,7 @@
 				C6089E6C26636DEE00EE1A7D /* Info.plist */,
 				C6640640266601AD00F1355C /* SceneDelegateTests.swift */,
 				C66406602666046900F1355C /* CocktailFeedUIIntegrationTests.swift */,
-				C65BD04026637CAF0024F84D /* CocktailLoaderWithFallbackCompositeTests.swift */,
 				C65BD044266392290024F84D /* CocktailImageDataLoaderWithFallbackCompositeTests.swift */,
-				C63DFACB2664E32B00C29543 /* CocktailLoaderCacheDecoratorTests.swift */,
 				C63DFAD52664FF6000C29543 /* CocktailImageDataLoaderCacheDecoratorTests.swift */,
 				C66406622666067500F1355C /* CocktailFeedAcceptanceTests.swift */,
 			);
@@ -339,10 +327,8 @@
 			files = (
 				C664064B2666040F00F1355C /* CocktailFeedLoaderPresentationAdapter.swift in Sources */,
 				C66406492666040F00F1355C /* MainQueueDispatchDecorator.swift in Sources */,
-				C63DFAD42664FEBC00C29543 /* CocktailLoaderCacheDecorator.swift in Sources */,
 				C664064C2666040F00F1355C /* CocktailUIComposer.swift in Sources */,
 				C664064D2666040F00F1355C /* FeedViewAdapter.swift in Sources */,
-				C65BD0432663918E0024F84D /* CocktailLoaderWithFallbackComposite.swift in Sources */,
 				C664064A2666040F00F1355C /* CocktailImageDataLoaderPresentationAdapter.swift in Sources */,
 				C6089E5426636DEC00EE1A7D /* AppDelegate.swift in Sources */,
 				C65BD047266397CB0024F84D /* CocktailImageDataLoaderWithFallbackComposite.swift in Sources */,
@@ -363,7 +349,6 @@
 				C664065C2666044500F1355C /* UIControl+TestHelpers.swift in Sources */,
 				C63DFAD62664FF6000C29543 /* CocktailImageDataLoaderCacheDecoratorTests.swift in Sources */,
 				C6640641266601AD00F1355C /* SceneDelegateTests.swift in Sources */,
-				C65BD04126637CAF0024F84D /* CocktailLoaderWithFallbackCompositeTests.swift in Sources */,
 				C664065D2666044500F1355C /* CocktailFeedUIIntegrationTests+LoaderSpy.swift in Sources */,
 				C63DFAD02664E61800C29543 /* XCTestCase+CocktailLoader.swift in Sources */,
 				C66406632666067500F1355C /* CocktailFeedAcceptanceTests.swift in Sources */,
@@ -377,7 +362,6 @@
 				C607A760266751D700E40922 /* UIView+TestHelpers.swift in Sources */,
 				C664065E2666044500F1355C /* UIRefreshControl+TestHelpers.swift in Sources */,
 				C65BD04A266398890024F84D /* XCTestCase+MemoryLeakTracking.swift in Sources */,
-				C63DFACC2664E32B00C29543 /* CocktailLoaderCacheDecoratorTests.swift in Sources */,
 				C63DFADA26650A6D00C29543 /* XCTestCase+CocktailImageDataLoader.swift in Sources */,
 				C664065F2666044500F1355C /* CocktailFeedViewController+TestHelpers.swift in Sources */,
 				C66406582666044500F1355C /* UIButton+TestHelpers.swift in Sources */,
