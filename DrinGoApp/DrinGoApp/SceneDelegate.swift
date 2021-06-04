@@ -41,18 +41,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func configureWindow() {
         
         let remoteCocktailImageLoader = RemoteCocktailImageDataLoader(client: httpClient)
-        
         let localImageLoader = LocalCocktailImageDataLoader(store: store)
         
         let cocktailViewController = CocktailUIComposer.feedComposedWith(
             feedLoader: makeRemoteCocktailLoaderWithLocalFallback,
-            imageLoader: CocktailImageDataLoaderWithFallbackComposite(
-                primary: localImageLoader,
-                fallback: CocktailImageDataLoaderCacheDecorator(
-                    decoratee: remoteCocktailImageLoader,
-                    cache: localImageLoader)
-                )
-            )
+            imageLoader: makeLocalImageDataLoaderWithRemoteFallback)
         
         window?.rootViewController = UINavigationController(rootViewController: cocktailViewController)
         
@@ -63,7 +56,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         localCocktailLoader.validateCache { _ in }
     }
     
-    private func makeRemoteCocktailLoaderWithLocalFallback() -> RemoteCocktailLoader.Publisher {
+    private func makeRemoteCocktailLoaderWithLocalFallback() -> CocktailLoader.Publisher {
         let url = URL(string: "https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php")!
         
         let remoteCocktailLoader = RemoteCocktailLoader(url: url, client: httpClient)
@@ -72,12 +65,58 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             .loadPublisher()
             .caching(to: localCocktailLoader)
             .fallback(to: localCocktailLoader.loadPublisher)
-            
+    }
+    
+    private func makeLocalImageDataLoaderWithRemoteFallback(url: URL) -> CocktailImageDataLoader.Publisher {
+        let remoteCocktailImageLoader = RemoteCocktailImageDataLoader(client: httpClient)
+        let localImageLoader = LocalCocktailImageDataLoader(store: store)
+        
+        return localImageLoader
+            .loadImageDataPublisher(from: url)
+            .fallback(to: {
+                        remoteCocktailImageLoader
+                        .loadImageDataPublisher(from: url)
+                        .caching(to: localImageLoader, using: url)
+            })
     }
 }
 
+// MARK: - CocktailImageDataLoader
+
+public extension CocktailImageDataLoader {
+    typealias Publisher = AnyPublisher<Data, Error>
+    
+    func loadImageDataPublisher(from url: URL) -> Publisher {
+        var task: CocktailImageDataLoaderTask?
+        
+        return Deferred {
+            Future { completion in
+                task = self.loadImageData(from: url, completion: completion)
+            }
+        }
+        .handleEvents(receiveCancel: { task?.cancel() })
+        .eraseToAnyPublisher()
+    }
+}
+
+extension Publisher where Output == Data {
+    func caching(to cache: CocktailImageDataCache, using url: URL) -> AnyPublisher<Output, Failure> {
+        handleEvents(receiveOutput: { data in
+            cache.saveIgnoringResult(data, for: url)
+        }).eraseToAnyPublisher()
+    }
+}
+
+private extension CocktailImageDataCache {
+    func saveIgnoringResult(_ data: Data, for url: URL) {
+        save(data, for: url) { _ in }
+    }
+}
+
+// MARK: - CocktailLoader
+
 public extension CocktailLoader {
-    typealias Publisher = AnyPublisher<[CocktailItem], Swift.Error>
+    typealias Publisher = AnyPublisher<[CocktailItem], Error>
     
     func loadPublisher() -> Publisher {
         return Deferred {

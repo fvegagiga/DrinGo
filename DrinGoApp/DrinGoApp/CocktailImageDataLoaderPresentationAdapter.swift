@@ -2,17 +2,19 @@
 // Copyright @ 2021 Fernando Vega. All rights reserved.
 //
 
+import Foundation
+import Combine
 import DrinGoFeed
 import DrinGoFeediOS
 
 final class CocktailImageDataLoaderPresentationAdapter<View: FeedImageView, Image>: FeedImageCellControllerDelegate where View.Image == Image {
     private let model: CocktailItem
-    private let imageLoader: CocktailImageDataLoader
-    private var task: CocktailImageDataLoaderTask?
+    private let imageLoader: (URL) -> CocktailImageDataLoader.Publisher
+    private var cancellable: Cancellable?
     
     var presenter: CocktailImagePresenter<View, Image>?
     
-    init(model: CocktailItem, imageLoader: CocktailImageDataLoader) {
+    init(model: CocktailItem, imageLoader: @escaping (URL) -> CocktailImageDataLoader.Publisher) {
         self.model = model
         self.imageLoader = imageLoader
     }
@@ -21,18 +23,20 @@ final class CocktailImageDataLoaderPresentationAdapter<View: FeedImageView, Imag
         presenter?.didStartLoadingImageData(for: model)
         
         let model = self.model
-        task = imageLoader.loadImageData(from: model.imageURL) { [weak self] result in
-            switch result {
-            case let .success(data):
-                self?.presenter?.didFinishLoadingImageData(with: data, for: model)
-                
+        
+        cancellable = imageLoader(model.imageURL).sink(receiveCompletion: { [weak self] completion in
+            switch completion {
+            case .finished: break
             case let .failure(error):
                 self?.presenter?.didFinishLoadingImageData(with: error, for: model)
             }
-        }
+            
+        }, receiveValue: { [weak self] data in
+            self?.presenter?.didFinishLoadingImageData(with: data, for: model)
+        })
     }
     
     func didCancelImageRequest() {
-        task?.cancel()
+        cancellable?.cancel()
     }
 }

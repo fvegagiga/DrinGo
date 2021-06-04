@@ -8,9 +8,9 @@ import DrinGoFeediOS
 
 final class FeedViewAdapter: FeedView {
     private weak var controller: CocktailFeedViewController?
-    private let imageLoader: CocktailImageDataLoader
-    
-    init(controller: CocktailFeedViewController, imageLoader: CocktailImageDataLoader) {
+    private let imageLoader: (URL) -> CocktailImageDataLoader.Publisher
+
+    init(controller: CocktailFeedViewController, imageLoader: @escaping (URL) -> CocktailImageDataLoader.Publisher) {
         self.controller = controller
         self.imageLoader = imageLoader
     }
