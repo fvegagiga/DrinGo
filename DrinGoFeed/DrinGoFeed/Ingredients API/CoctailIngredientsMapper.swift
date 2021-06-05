@@ -4,7 +4,7 @@
 
 import Foundation
 
-final class CocktailIngredientsMapper {
+public final class CocktailIngredientsMapper {
     private struct Root: Decodable {
         private let drinks: [Item]
         
@@ -45,7 +45,7 @@ final class CocktailIngredientsMapper {
         }
     }
     
-    static func map(_ data: Data, _ response: HTTPURLResponse) throws -> [CocktailIngredient] {
+    public static func map(_ data: Data, from response: HTTPURLResponse) throws -> [CocktailIngredient] {
         guard isOK(response),
               let root = try? JSONDecoder().decode(Root.self, from: data) else {
             throw RemoteCocktailIngredientsLoader.Error.invalidData
