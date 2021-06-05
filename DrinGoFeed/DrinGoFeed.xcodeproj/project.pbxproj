@@ -332,7 +332,6 @@
 		C620D44B26624678008BEC8C /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				C620D44C2662468B008BEC8C /* HTTPClientSpy.swift */,
 				C620D453266250ED008BEC8C /* URLProtocolStub.swift */,
 			);
 			path = Helpers;
@@ -352,6 +351,46 @@
 				C63673EB266B682B00C669C9 /* CocktailIngredient.swift */,
 			);
 			path = "Ingredients Feature";
+			sourceTree = "<group>";
+		};
+		C63673ED266B8AC100C669C9 /* Shared API */ = {
+			isa = PBXGroup;
+			children = (
+				C6E3015526412F4B009DC1D5 /* HTTPClient.swift */,
+			);
+			path = "Shared API";
+			sourceTree = "<group>";
+		};
+		C63673EE266B8AE400C669C9 /* Shared API Infra */ = {
+			isa = PBXGroup;
+			children = (
+				C63CB1852642FBA300EC6EB4 /* URLSessionHTTPClient.swift */,
+			);
+			path = "Shared API Infra";
+			sourceTree = "<group>";
+		};
+		C63673EF266B8B1F00C669C9 /* Shared API */ = {
+			isa = PBXGroup;
+			children = (
+				C63673F0266B8B2800C669C9 /* Helpers */,
+			);
+			path = "Shared API";
+			sourceTree = "<group>";
+		};
+		C63673F0266B8B2800C669C9 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C620D44C2662468B008BEC8C /* HTTPClientSpy.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		C63673F1266B8B3000C669C9 /* Shared API Infra */ = {
+			isa = PBXGroup;
+			children = (
+				C6E3015A264192B0009DC1D5 /* URLSessionHTTPClientTests.swift */,
+			);
+			path = "Shared API Infra";
 			sourceTree = "<group>";
 		};
 		C63793622658081E000118E4 /* Frameworks */ = {
@@ -436,8 +475,6 @@
 				C637318B264E516E00C1B9FE /* RemoteCocktailItem.swift */,
 				C63673E6266B5E8900C669C9 /* RemoteCocktailIngredientsLoader.swift */,
 				C63673E8266B5F4000C669C9 /* CoctailIngredientsMapper.swift */,
-				C6E3015526412F4B009DC1D5 /* HTTPClient.swift */,
-				C63CB1852642FBA300EC6EB4 /* URLSessionHTTPClient.swift */,
 				C620D44E2662474F008BEC8C /* RemoteCocktailImageDataLoader.swift */,
 			);
 			path = "Feed API";
@@ -474,6 +511,8 @@
 			isa = PBXGroup;
 			children = (
 				C6504A49263EACA600F4FCD1 /* Info.plist */,
+				C63673ED266B8AC100C669C9 /* Shared API */,
+				C63673EE266B8AE400C669C9 /* Shared API Infra */,
 				C63673EA266B67F400C669C9 /* Ingredients Feature */,
 				C6D87F2A264D029C00749974 /* Feed Cache */,
 				C64DD9FC263F065D009D70AE /* Feed Feature */,
@@ -489,6 +528,8 @@
 				C6504A55263EACA700F4FCD1 /* Info.plist */,
 				C6A01C2126427C370071A344 /* Helpers */,
 				C6414DC4264C1D260066DC59 /* Feed Cache */,
+				C63673EF266B8B1F00C669C9 /* Shared API */,
+				C63673F1266B8B3000C669C9 /* Shared API Infra */,
 				C6E30159264155DC009DC1D5 /* Feed API */,
 				C61FA0D6265A62EE0026D999 /* Feed Presentation */,
 			);
@@ -593,7 +634,6 @@
 				C620D44B26624678008BEC8C /* Helpers */,
 				C64DD9FD263F06FB009D70AE /* LoadCocktailsFromRemoteUseCaseTests.swift */,
 				C63673E4266B5DDC00C669C9 /* LoadCocktailIngredientsFromRemoteUseCaseTests.swift */,
-				C6E3015A264192B0009DC1D5 /* URLSessionHTTPClientTests.swift */,
 				C620D449266213DB008BEC8C /* LoadCocktailImageDataFromRemoteUseCaseTests.swift */,
 			);
 			path = "Feed API";
