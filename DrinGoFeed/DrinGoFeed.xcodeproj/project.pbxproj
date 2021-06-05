@@ -393,6 +393,23 @@
 			path = "Shared API Infra";
 			sourceTree = "<group>";
 		};
+		C63673F2266B8BA000C669C9 /* Ingredients API */ = {
+			isa = PBXGroup;
+			children = (
+				C63673E6266B5E8900C669C9 /* RemoteCocktailIngredientsLoader.swift */,
+				C63673E8266B5F4000C669C9 /* CoctailIngredientsMapper.swift */,
+			);
+			path = "Ingredients API";
+			sourceTree = "<group>";
+		};
+		C63673F3266B8BCF00C669C9 /* Ingredients API */ = {
+			isa = PBXGroup;
+			children = (
+				C63673E4266B5DDC00C669C9 /* LoadCocktailIngredientsFromRemoteUseCaseTests.swift */,
+			);
+			path = "Ingredients API";
+			sourceTree = "<group>";
+		};
 		C63793622658081E000118E4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -473,8 +490,6 @@
 				C64DDA00263F14FA009D70AE /* RemoteCocktailLoader.swift */,
 				C6E3015726412FE7009DC1D5 /* CocktailItemMapper.swift */,
 				C637318B264E516E00C1B9FE /* RemoteCocktailItem.swift */,
-				C63673E6266B5E8900C669C9 /* RemoteCocktailIngredientsLoader.swift */,
-				C63673E8266B5F4000C669C9 /* CoctailIngredientsMapper.swift */,
 				C620D44E2662474F008BEC8C /* RemoteCocktailImageDataLoader.swift */,
 			);
 			path = "Feed API";
@@ -514,6 +529,7 @@
 				C63673ED266B8AC100C669C9 /* Shared API */,
 				C63673EE266B8AE400C669C9 /* Shared API Infra */,
 				C63673EA266B67F400C669C9 /* Ingredients Feature */,
+				C63673F2266B8BA000C669C9 /* Ingredients API */,
 				C6D87F2A264D029C00749974 /* Feed Cache */,
 				C64DD9FC263F065D009D70AE /* Feed Feature */,
 				C64DD9FF263F1339009D70AE /* Feed API */,
@@ -530,6 +546,7 @@
 				C6414DC4264C1D260066DC59 /* Feed Cache */,
 				C63673EF266B8B1F00C669C9 /* Shared API */,
 				C63673F1266B8B3000C669C9 /* Shared API Infra */,
+				C63673F3266B8BCF00C669C9 /* Ingredients API */,
 				C6E30159264155DC009DC1D5 /* Feed API */,
 				C61FA0D6265A62EE0026D999 /* Feed Presentation */,
 			);
@@ -633,7 +650,6 @@
 			children = (
 				C620D44B26624678008BEC8C /* Helpers */,
 				C64DD9FD263F06FB009D70AE /* LoadCocktailsFromRemoteUseCaseTests.swift */,
-				C63673E4266B5DDC00C669C9 /* LoadCocktailIngredientsFromRemoteUseCaseTests.swift */,
 				C620D449266213DB008BEC8C /* LoadCocktailImageDataFromRemoteUseCaseTests.swift */,
 			);
 			path = "Feed API";
