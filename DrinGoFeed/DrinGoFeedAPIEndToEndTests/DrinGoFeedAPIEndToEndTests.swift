@@ -43,9 +43,9 @@ class DrinGoFeedAPIEndToEndTests: XCTestCase {
     
     // MARK: - Helpers
     
-    private func getCocktailResult(file: StaticString = #filePath, line: UInt = #line) -> RemoteCocktailLoader.Result? {
+    private func getCocktailResult(file: StaticString = #filePath, line: UInt = #line) -> CocktailLoader.Result? {
         let testServerURL = URL(string: "https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=margarita")!
-        let loader = RemoteCocktailLoader(url: testServerURL, client: ephemeralClient())
+        let loader = RemoteLoader(url: testServerURL, client: ephemeralClient(), mapper: CocktailItemMapper.map)
         trackForMemoryLeaks(loader, file: file, line: line)
         
         let exp = expectation(description: "Wait for load completion")

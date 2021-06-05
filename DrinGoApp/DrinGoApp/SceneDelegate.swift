@@ -24,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         LocalCocktailLoader(store: store, currentDate: Date.init)
     }()
     
-    private var remoteCocktailLoader: RemoteCocktailLoader?
+    private var remoteCocktailLoader: RemoteLoader<[CocktailItem]>?
 
     
     convenience init(httpClient: HTTPClient, store: FeedStore & CocktailImageDataStore) {
@@ -58,7 +58,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private func makeRemoteCocktailLoaderWithLocalFallback() -> CocktailLoader.Publisher {
         let url = URL(string: "https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php")!
         
-        remoteCocktailLoader = RemoteCocktailLoader(url: url, client: httpClient)
+        remoteCocktailLoader = RemoteLoader(url: url, client: httpClient, mapper: CocktailItemMapper.map)
         
         return remoteCocktailLoader!
             .loadPublisher()
@@ -81,3 +81,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 }
 
 extension RemoteLoader: CocktailLoader where Resource == [CocktailItem] {}
+
+
+public typealias RemoteCocktailIngredientsLoader = RemoteLoader<[CocktailIngredient]>
+
+public extension RemoteCocktailIngredientsLoader {
+    convenience init(url: URL, client: HTTPClient) {
+        self.init(url: url, client: client, mapper: CocktailIngredientsMapper.map)
+    }
+}

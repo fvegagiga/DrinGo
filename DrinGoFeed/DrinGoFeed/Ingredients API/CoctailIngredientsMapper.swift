@@ -45,10 +45,14 @@ public final class CocktailIngredientsMapper {
         }
     }
     
+    public enum Error: Swift.Error {
+        case invalidData
+    }
+    
     public static func map(_ data: Data, from response: HTTPURLResponse) throws -> [CocktailIngredient] {
         guard isOK(response),
               let root = try? JSONDecoder().decode(Root.self, from: data) else {
-            throw RemoteCocktailIngredientsLoader.Error.invalidData
+            throw Error.invalidData
         }
         
         return root.ingredients

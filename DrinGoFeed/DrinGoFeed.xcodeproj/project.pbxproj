@@ -31,7 +31,6 @@
 		C620D45826625E48008BEC8C /* LocalCocktailImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C620D45726625E48008BEC8C /* LocalCocktailImageDataLoader.swift */; };
 		C620D45A26625EBA008BEC8C /* CocktailImageDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C620D45926625EBA008BEC8C /* CocktailImageDataStore.swift */; };
 		C63673E5266B5DDC00C669C9 /* CocktailIngredientsMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63673E4266B5DDC00C669C9 /* CocktailIngredientsMapperTests.swift */; };
-		C63673E7266B5E8900C669C9 /* RemoteCocktailIngredientsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63673E6266B5E8900C669C9 /* RemoteCocktailIngredientsLoader.swift */; };
 		C63673E9266B5F4000C669C9 /* CoctailIngredientsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63673E8266B5F4000C669C9 /* CoctailIngredientsMapper.swift */; };
 		C63673EC266B682B00C669C9 /* CocktailIngredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63673EB266B682B00C669C9 /* CocktailIngredient.swift */; };
 		C63673F5266B93A800C669C9 /* RemoteLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63673F4266B93A800C669C9 /* RemoteLoaderTests.swift */; };
@@ -64,7 +63,6 @@
 		C6414DC6264C1D880066DC59 /* CacheFeedUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6414DC5264C1D880066DC59 /* CacheFeedUseCaseTests.swift */; };
 		C64DC4E526629B9500D51703 /* CodableCocktailImageDataStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64DC4E426629B9500D51703 /* CodableCocktailImageDataStoreTests.swift */; };
 		C64DD9FE263F06FB009D70AE /* CocktailItemMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64DD9FD263F06FB009D70AE /* CocktailItemMapperTests.swift */; };
-		C64DDA01263F14FA009D70AE /* RemoteCocktailLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64DDA00263F14FA009D70AE /* RemoteCocktailLoader.swift */; };
 		C6504A4F263EACA700F4FCD1 /* DrinGoFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6504A45263EACA600F4FCD1 /* DrinGoFeed.framework */; };
 		C6504A60263EBC9E00F4FCD1 /* CocktailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6504A5F263EBC9E00F4FCD1 /* CocktailItem.swift */; };
 		C6504A62263EC6F500F4FCD1 /* CocktailLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6504A61263EC6F500F4FCD1 /* CocktailLoader.swift */; };
@@ -170,7 +168,6 @@
 		C620D45726625E48008BEC8C /* LocalCocktailImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCocktailImageDataLoader.swift; sourceTree = "<group>"; };
 		C620D45926625EBA008BEC8C /* CocktailImageDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailImageDataStore.swift; sourceTree = "<group>"; };
 		C63673E4266B5DDC00C669C9 /* CocktailIngredientsMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailIngredientsMapperTests.swift; sourceTree = "<group>"; };
-		C63673E6266B5E8900C669C9 /* RemoteCocktailIngredientsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCocktailIngredientsLoader.swift; sourceTree = "<group>"; };
 		C63673E8266B5F4000C669C9 /* CoctailIngredientsMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoctailIngredientsMapper.swift; sourceTree = "<group>"; };
 		C63673EB266B682B00C669C9 /* CocktailIngredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailIngredient.swift; sourceTree = "<group>"; };
 		C63673F4266B93A800C669C9 /* RemoteLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteLoaderTests.swift; sourceTree = "<group>"; };
@@ -199,7 +196,6 @@
 		C6414DC5264C1D880066DC59 /* CacheFeedUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheFeedUseCaseTests.swift; sourceTree = "<group>"; };
 		C64DC4E426629B9500D51703 /* CodableCocktailImageDataStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableCocktailImageDataStoreTests.swift; sourceTree = "<group>"; };
 		C64DD9FD263F06FB009D70AE /* CocktailItemMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailItemMapperTests.swift; sourceTree = "<group>"; };
-		C64DDA00263F14FA009D70AE /* RemoteCocktailLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCocktailLoader.swift; sourceTree = "<group>"; };
 		C6504A45263EACA600F4FCD1 /* DrinGoFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DrinGoFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6504A49263EACA600F4FCD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6504A4E263EACA700F4FCD1 /* DrinGoFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrinGoFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -400,7 +396,6 @@
 		C63673F2266B8BA000C669C9 /* Ingredients API */ = {
 			isa = PBXGroup;
 			children = (
-				C63673E6266B5E8900C669C9 /* RemoteCocktailIngredientsLoader.swift */,
 				C63673E8266B5F4000C669C9 /* CoctailIngredientsMapper.swift */,
 			);
 			path = "Ingredients API";
@@ -491,7 +486,6 @@
 			isa = PBXGroup;
 			children = (
 				C620D45026624E8E008BEC8C /* Helpers */,
-				C64DDA00263F14FA009D70AE /* RemoteCocktailLoader.swift */,
 				C6E3015726412FE7009DC1D5 /* CocktailItemMapper.swift */,
 				C620D44E2662474F008BEC8C /* RemoteCocktailImageDataLoader.swift */,
 			);
@@ -920,7 +914,6 @@
 				C637318E264E51CB00C1B9FE /* LocalCocktailItem.swift in Sources */,
 				C638D780264FCB3400C09917 /* CocktailCachePolicy.swift in Sources */,
 				C6E3015826412FE7009DC1D5 /* CocktailItemMapper.swift in Sources */,
-				C64DDA01263F14FA009D70AE /* RemoteCocktailLoader.swift in Sources */,
 				C61FA0ED265A7E380026D999 /* CocktailImagePresenter.swift in Sources */,
 				C63DFAD22664FDA800C29543 /* CocktailCache.swift in Sources */,
 				C620D448266210D3008BEC8C /* CocktailImageDataLoader.swift in Sources */,
@@ -935,7 +928,6 @@
 				C6D87F2C264D02AC00749974 /* LocalCocktailLoader.swift in Sources */,
 				C63673EC266B682B00C669C9 /* CocktailIngredient.swift in Sources */,
 				C638A16D2650F5CB001C9371 /* CodableFeedStore.swift in Sources */,
-				C63673E7266B5E8900C669C9 /* RemoteCocktailIngredientsLoader.swift in Sources */,
 				C63673F7266B941500C669C9 /* RemoteLoader.swift in Sources */,
 				C620D45826625E48008BEC8C /* LocalCocktailImageDataLoader.swift in Sources */,
 				C63673E9266B5F4000C669C9 /* CoctailIngredientsMapper.swift in Sources */,
