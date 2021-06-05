@@ -5,40 +5,35 @@
 import XCTest
 import DrinGoFeed
 
-class LoadCocktailsFromRemoteUseCaseTests: XCTestCase {
+class CocktailItemMapperTests: XCTestCase {
     
-    func test_load_deliversErrorOnNon200HTTPResponse() {
-        let (sut, client) = makeSUT()
-        
+    func test_map_throwsErrorOnNon200HTTPResponse()  throws {
+        let json = makeItemsJson([])
         let samples = [199, 201, 300, 400, 500]
-        samples.enumerated().forEach { index, code in
-            expect(sut, toCompleteWith: failure(.invalidData), when: {
-                let json = makeItemsJson([])
-                client.complete(withStatusCode: code, data: json, at: index)
-            })
+        
+        try samples.forEach { code in
+            XCTAssertThrowsError(
+                try CocktailItemMapper.map(json, from: HTTPURLResponse(statusCode: code))
+            )
         }
     }
-    
-    func test_load_deliversErrorOn200HTTPResponseWithInvalidJSON() {
-        let (sut, client) = makeSUT()
-        
-        expect(sut, toCompleteWith: failure(.invalidData), when: {
-            let invalidJSON = Data("invalid json".utf8)
-            client.complete(withStatusCode: 200, data: invalidJSON)
-        })
-    }
-    
-    func test_load_deliversNoItemsOn200HTTPResponseWithEmptyJSONList() {
-        let (sut, client) = makeSUT()
 
-        expect(sut, toCompleteWith: .success([]), when: {
-            let emptyListJSON = makeItemsJson([])
-            client.complete(withStatusCode: 200, data: emptyListJSON)
-        })
+    func test_map_throwsErrorOn200HTTPResponseWithInvalidJSON() {
+        let invalidJSON = Data("invalid json".utf8)
+        
+        XCTAssertThrowsError(
+            try CocktailItemMapper.map(invalidJSON, from: HTTPURLResponse(statusCode: 200))
+        )
     }
     
-    func test_load_deliversItemsOn200HTTPResponseWithJSONItems() {
-        let (sut, client) = makeSUT()
+    func test_map_deliversNoItemsOn200HTTPResponseWithEmptyJSONList() throws {
+        let emptyListJSON = makeItemsJson([])
+        let result = try CocktailItemMapper.map(emptyListJSON, from: HTTPURLResponse(statusCode: 200))
+
+        XCTAssertEqual(result, [])
+    }
+    
+    func test_map_deliversItemsOn200HTTPResponseWithJSONItems() throws {
         
         let item1 = makeCocktailItem(id: 0,
                                  name: "any cocktail name",
@@ -70,28 +65,14 @@ class LoadCocktailsFromRemoteUseCaseTests: XCTestCase {
                                  quantity4: nil,
                                  quantity5: nil)
         
-        let items = [item1.model, item2.model]
+        let json = makeItemsJson([item1.json, item2.json])
         
-        expect(sut, toCompleteWith: .success(items), when: {
-            let json = makeItemsJson([item1.json, item2.json])
-            client.complete(withStatusCode: 200, data: json)
-        })
+        let result = try CocktailItemMapper.map(json, from: HTTPURLResponse(statusCode: 200))
+
+        XCTAssertEqual(result, [item1.model, item2.model])
     }
     
     // MARK: - Helpers
-    
-    private func makeSUT(url: URL = URL(string: "https://a-url.com")!, file: StaticString = #filePath, line: UInt = #line) -> (sut: RemoteCocktailLoader, client: HTTPClientSpy) {
-        let client = HTTPClientSpy()
-        let sut = RemoteCocktailLoader(url: url, client: client)
-        trackForMemoryLeaks(sut, file: file, line: line)
-        trackForMemoryLeaks(client, file: file, line: line)
-        
-        return (sut, client)
-    }
-    
-    private func failure(_ error: RemoteCocktailLoader.Error) -> RemoteCocktailLoader.Result {
-        return .failure(error)
-    }
     
     private func makeCocktailItem(id: Int,
                                   name: String,
@@ -162,5 +143,11 @@ class LoadCocktailsFromRemoteUseCaseTests: XCTestCase {
         action()
         
         wait(for: [exp], timeout: 1.0)
+    }
+}
+
+private extension HTTPURLResponse {
+    convenience init(statusCode: Int) {
+        self.init(url: anyURL(), statusCode: statusCode, httpVersion: nil, headerFields: nil)!
     }
 }
