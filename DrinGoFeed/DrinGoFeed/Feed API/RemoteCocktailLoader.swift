@@ -36,31 +36,9 @@ public final class RemoteCocktailLoader: CocktailLoader {
     private static func map(_ data: Data, from response: HTTPURLResponse) -> Result {
         do {
             let cocktails = try CocktailItemMapper.map(data, response)
-            return .success(cocktails.toModels())
+            return .success(cocktails)
         } catch {
             return .failure(error)
-        }
-    }
-}
-
-private extension Array where Element == RemoteCocktailItem {
-    func toModels() -> [CocktailItem] {
-        return compactMap {
-            guard let id = Int($0.idDrink) else { return nil }
-            return CocktailItem(id: id,
-                                name: $0.strDrink,
-                                description: $0.strInstructions,
-                                imageURL: URL(string: $0.strDrinkThumb)!,
-                                ingredients: [$0.strIngredient1,
-                                              $0.strIngredient2,
-                                              $0.strIngredient3,
-                                              $0.strIngredient4,
-                                              $0.strIngredient5].compactMap({$0}),
-                                quantity: [$0.strMeasure1,
-                                           $0.strMeasure2,
-                                           $0.strMeasure3,
-                                           $0.strMeasure4,
-                                           $0.strMeasure5].compactMap({$0}))
         }
     }
 }
