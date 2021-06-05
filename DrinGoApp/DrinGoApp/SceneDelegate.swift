@@ -79,3 +79,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             })
     }
 }
+
+extension RemoteLoader: CocktailLoader where Resource == [CocktailItem] {}
