@@ -117,11 +117,6 @@ class CocktailItemMapperTests: XCTestCase {
         return (item, json)
     }
     
-    private func makeItemsJson(_ items: [[String: Any?]]) -> Data {
-        let json = ["drinks": items]
-        return try! JSONSerialization.data(withJSONObject: json)
-    }
-    
     private func expect(_ sut: RemoteCocktailLoader, toCompleteWith expectedResult: RemoteCocktailLoader.Result, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
         let exp = expectation(description: "Wait for load completion")
         
@@ -143,11 +138,5 @@ class CocktailItemMapperTests: XCTestCase {
         action()
         
         wait(for: [exp], timeout: 1.0)
-    }
-}
-
-private extension HTTPURLResponse {
-    convenience init(statusCode: Int) {
-        self.init(url: anyURL(), statusCode: statusCode, httpVersion: nil, headerFields: nil)!
     }
 }

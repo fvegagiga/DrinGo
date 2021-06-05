@@ -16,3 +16,14 @@ func anyNSError() -> NSError {
 func anyData() -> Data {
     Data("any data".utf8)
 }
+
+func makeItemsJson(_ items: [[String: Any?]]) -> Data {
+    let json = ["drinks": items]
+    return try! JSONSerialization.data(withJSONObject: json)
+}
+
+extension HTTPURLResponse {
+    convenience init(statusCode: Int) {
+        self.init(url: anyURL(), statusCode: statusCode, httpVersion: nil, headerFields: nil)!
+    }
+}
