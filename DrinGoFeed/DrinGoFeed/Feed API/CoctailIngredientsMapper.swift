@@ -10,11 +10,15 @@ final class CocktailIngredientsMapper {
     }
     
     static func map(_ data: Data, _ response: HTTPURLResponse) throws -> [RemoteCocktailItem] {
-        guard response.isOK,
+        guard isOK(response),
               let root = try? JSONDecoder().decode(Root.self, from: data) else {
             throw RemoteCocktailIngredientsLoader.Error.invalidData
         }
         
         return root.drinks
+    }
+    
+    private static func isOK(_ response: HTTPURLResponse) -> Bool {
+        (200...299).contains(response.statusCode)
     }
 }
