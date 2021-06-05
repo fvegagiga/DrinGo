@@ -23,6 +23,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private lazy var localCocktailLoader: LocalCocktailLoader = {
         LocalCocktailLoader(store: store, currentDate: Date.init)
     }()
+    
+    private var remoteCocktailLoader: RemoteCocktailLoader?
 
     
     convenience init(httpClient: HTTPClient, store: FeedStore & CocktailImageDataStore) {
@@ -56,9 +58,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private func makeRemoteCocktailLoaderWithLocalFallback() -> CocktailLoader.Publisher {
         let url = URL(string: "https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php")!
         
-        let remoteCocktailLoader = RemoteCocktailLoader(url: url, client: httpClient)
+        remoteCocktailLoader = RemoteCocktailLoader(url: url, client: httpClient)
         
-        return remoteCocktailLoader
+        return remoteCocktailLoader!
             .loadPublisher()
             .caching(to: localCocktailLoader)
             .fallback(to: localCocktailLoader.loadPublisher)
