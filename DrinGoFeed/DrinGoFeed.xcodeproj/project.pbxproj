@@ -34,6 +34,8 @@
 		C63673E7266B5E8900C669C9 /* RemoteCocktailIngredientsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63673E6266B5E8900C669C9 /* RemoteCocktailIngredientsLoader.swift */; };
 		C63673E9266B5F4000C669C9 /* CoctailIngredientsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63673E8266B5F4000C669C9 /* CoctailIngredientsMapper.swift */; };
 		C63673EC266B682B00C669C9 /* CocktailIngredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63673EB266B682B00C669C9 /* CocktailIngredient.swift */; };
+		C63673F5266B93A800C669C9 /* RemoteLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63673F4266B93A800C669C9 /* RemoteLoaderTests.swift */; };
+		C63673F7266B941500C669C9 /* RemoteLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63673F6266B941500C669C9 /* RemoteLoader.swift */; };
 		C637318E264E51CB00C1B9FE /* LocalCocktailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C637318D264E51CB00C1B9FE /* LocalCocktailItem.swift */; };
 		C63793632658081F000118E4 /* DrinGoFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6504A45263EACA600F4FCD1 /* DrinGoFeed.framework */; platformFilter = ios; };
 		C63793642658081F000118E4 /* DrinGoFeed.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C6504A45263EACA600F4FCD1 /* DrinGoFeed.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -171,6 +173,8 @@
 		C63673E6266B5E8900C669C9 /* RemoteCocktailIngredientsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCocktailIngredientsLoader.swift; sourceTree = "<group>"; };
 		C63673E8266B5F4000C669C9 /* CoctailIngredientsMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoctailIngredientsMapper.swift; sourceTree = "<group>"; };
 		C63673EB266B682B00C669C9 /* CocktailIngredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailIngredient.swift; sourceTree = "<group>"; };
+		C63673F4266B93A800C669C9 /* RemoteLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteLoaderTests.swift; sourceTree = "<group>"; };
+		C63673F6266B941500C669C9 /* RemoteLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteLoader.swift; sourceTree = "<group>"; };
 		C637318D264E51CB00C1B9FE /* LocalCocktailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCocktailItem.swift; sourceTree = "<group>"; };
 		C63793692658130B000118E4 /* CocktailFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailFeedViewController.swift; sourceTree = "<group>"; };
 		C637936B265817FF000118E4 /* CocktailFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailFeedCell.swift; sourceTree = "<group>"; };
@@ -355,6 +359,7 @@
 			isa = PBXGroup;
 			children = (
 				C6E3015526412F4B009DC1D5 /* HTTPClient.swift */,
+				C63673F6266B941500C669C9 /* RemoteLoader.swift */,
 			);
 			path = "Shared API";
 			sourceTree = "<group>";
@@ -371,6 +376,7 @@
 			isa = PBXGroup;
 			children = (
 				C63673F0266B8B2800C669C9 /* Helpers */,
+				C63673F4266B93A800C669C9 /* RemoteLoaderTests.swift */,
 			);
 			path = "Shared API";
 			sourceTree = "<group>";
@@ -930,6 +936,7 @@
 				C63673EC266B682B00C669C9 /* CocktailIngredient.swift in Sources */,
 				C638A16D2650F5CB001C9371 /* CodableFeedStore.swift in Sources */,
 				C63673E7266B5E8900C669C9 /* RemoteCocktailIngredientsLoader.swift in Sources */,
+				C63673F7266B941500C669C9 /* RemoteLoader.swift in Sources */,
 				C620D45826625E48008BEC8C /* LocalCocktailImageDataLoader.swift in Sources */,
 				C63673E9266B5F4000C669C9 /* CoctailIngredientsMapper.swift in Sources */,
 				C6DEC1AD2662A4230008D8C3 /* CodableFeedStore+CocktailImageDataStore.swift in Sources */,
@@ -967,6 +974,7 @@
 				C638A17426510A33001C9371 /* XCTestCase+FailableRetrieveFeedStoreSpecs.swift in Sources */,
 				C6559AD9264ED63E003569B1 /* LoadFeedFromCacheUseCaseTests.swift in Sources */,
 				C638A16F26510602001C9371 /* FeedStoreSpecs.swift in Sources */,
+				C63673F5266B93A800C669C9 /* RemoteLoaderTests.swift in Sources */,
 				C620D44A266213DB008BEC8C /* LoadCocktailImageDataFromRemoteUseCaseTests.swift in Sources */,
 				C6A01C2326427C530071A344 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 				C6DE4C4A266267680071D471 /* CocktailImageDataStoreSpy.swift in Sources */,
