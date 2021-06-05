@@ -82,43 +82,14 @@ class LoadCocktailIngredientsFromRemoteUseCaseTests: XCTestCase {
     func test_load_deliversItemsOn2xxHTTPResponseWithJSONItems() {
         let (sut, client) = makeSUT()
         
-        let item1 = makeCocktailItem(id: 0,
-                                 name: "any cocktail name",
-                                 description: "any cocktail description",
-                                 imageURL: URL(string: "https://a-url.com")!,
-                                 ingredient1: "Kahlua",
-                                 ingredient2: "Sambuca",
-                                 ingredient3: "Blue Curacao",
-                                 ingredient4: "Baileys irish cream",
-                                 ingredient5: nil,
-                                 quantity1: "1 oz ",
-                                 quantity2: "1 oz ",
-                                 quantity3: "1 oz ",
-                                 quantity4: "1 oz ",
-                                 quantity5: nil)
-        
-        let item2 = makeCocktailItem(id: 1,
-                                 name: "any second cocktail name",
-                                 description: "any second cocktail description",
-                                 imageURL: URL(string: "https://another-url.com")!,
-                                 ingredient1: "Kahlua",
-                                 ingredient2: "Sambuca",
-                                 ingredient3: nil,
-                                 ingredient4: nil,
-                                 ingredient5: nil,
-                                 quantity1: "1 oz ",
-                                 quantity2: "1 oz ",
-                                 quantity3: nil,
-                                 quantity4: nil,
-                                 quantity5: nil)
-        
-        let items = [item1.model, item2.model]
+        let items = makeCocktailIngredients(["Kahlua", "Sambuca", "Blue Curacao", "Baileys irish cream", nil],
+                                           measures: ["1/2 oz ", "1 oz ", "3 oz ", "2 oz ", nil])
         
         let samples = [200, 201, 250, 280, 299]
 
         samples.enumerated().forEach { index, code in
-            expect(sut, toCompleteWith: .success(items), when: {
-                let json = makeItemsJson([item1.json, item2.json])
+            expect(sut, toCompleteWith: .success(items.model), when: {
+                let json = makeItemsJson([items.json])
                 client.complete(withStatusCode: code, data: json, at: index)
             })
         }
@@ -154,47 +125,27 @@ class LoadCocktailIngredientsFromRemoteUseCaseTests: XCTestCase {
         return .failure(error)
     }
     
-    private func makeCocktailItem(id: Int,
-                                  name: String,
-                                  description: String,
-                                  imageURL: URL,
-                                  ingredient1: String?,
-                                  ingredient2: String?,
-                                  ingredient3: String?,
-                                  ingredient4: String?,
-                                  ingredient5: String?,
-                                  quantity1: String?,
-                                  quantity2: String?,
-                                  quantity3: String?,
-                                  quantity4: String?,
-                                  quantity5: String?)
-    -> (model: CocktailItem, json: [String: Any?]) {
+    private func makeCocktailIngredients(_ ingredients: [String?], measures: [String?]) -> (model: [CocktailIngredient], json: [String: Any?]) {
         
-        let item = CocktailItem(id: id,
-                                name: name,
-                                description: description,
-                                imageURL: imageURL,
-                                ingredients: [ingredient1, ingredient2, ingredient3, ingredient4, ingredient5].compactMap { $0 },
-                                quantity: [quantity1, quantity2, quantity3, quantity4, quantity5].compactMap { $0 })
+        let items: [CocktailIngredient] = zip(ingredients, measures).compactMap {
+            guard let name = $0.0 else { return nil }
+            return CocktailIngredient(name: name, measure: $0.1 ?? "")
+        }
         
         let json: [String: Any?] = [
-            "idDrink": String(id),
-            "strDrink": name,
-            "strInstructions": description,
-            "strDrinkThumb": imageURL.absoluteString,
-            "strIngredient1": ingredient1,
-            "strIngredient2": ingredient2,
-            "strIngredient3": ingredient3,
-            "strIngredient4": ingredient4,
-            "strIngredient5": ingredient5,
-            "strMeasure1": quantity1,
-            "strMeasure2": quantity2,
-            "strMeasure3": quantity3,
-            "strMeasure4": quantity4,
-            "strMeasure5": quantity5
+            "strIngredient1": ingredients[0],
+            "strIngredient2": ingredients[1],
+            "strIngredient3": ingredients[2],
+            "strIngredient4": ingredients[3],
+            "strIngredient5": ingredients[4],
+            "strMeasure1": measures[0],
+            "strMeasure2": measures[1],
+            "strMeasure3": measures[2],
+            "strMeasure4": measures[3],
+            "strMeasure5": measures[4]
         ]
         
-        return (item, json)
+        return (items, json)
     }
     
     private func makeItemsJson(_ items: [[String: Any?]]) -> Data {
