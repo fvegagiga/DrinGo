@@ -3,32 +3,35 @@
 //
 
 import Foundation
+import Combine
 import DrinGoFeed
 import DrinGoFeediOS
 
 extension CocktailFeedUIIntegrationTests {
     
-    class LoaderSpy: CocktailLoader, CocktailImageDataLoader {
+    class LoaderSpy: CocktailImageDataLoader {
         
         // MARK: - FeedLoader
         
-        private var feedRequests = [(CocktailLoader.Result) -> Void]()
+        private var feedRequests = [PassthroughSubject<[CocktailItem], Error>]()
         
         var loadFeedCallCount: Int {
             return feedRequests.count
         }
         
-        func load(completion: @escaping (CocktailLoader.Result) -> Void) {
-            feedRequests.append(completion)
+        func loadPublisher() -> AnyPublisher<[CocktailItem], Error> {
+            let publisher = PassthroughSubject<[CocktailItem], Error>()
+            feedRequests.append(publisher)
+            return publisher.eraseToAnyPublisher()
         }
         
         func completeFeedLoading(with feed: [CocktailItem] = [], at index: Int = 0) {
-            feedRequests[index](.success(feed))
+            feedRequests[index].send(feed)
         }
         
         func completeFeedLoadingWithError(at index: Int = 0) {
             let error = NSError(domain: "an error", code: 0)
-            feedRequests[index](.failure(error))
+            feedRequests[index].send(completion: .failure(error))
         }
         
         // MARK: - FeedImageDataLoader

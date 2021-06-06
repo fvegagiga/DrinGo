@@ -56,7 +56,7 @@ private extension CocktailImageDataCache {
 
 // MARK: - CocktailLoader
 
-public extension CocktailLoader {
+public extension LocalCocktailLoader {
     typealias Publisher = AnyPublisher<[CocktailItem], Error>
     
     func loadPublisher() -> Publisher {

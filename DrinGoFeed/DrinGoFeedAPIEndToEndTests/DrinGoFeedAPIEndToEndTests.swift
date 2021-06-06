@@ -43,13 +43,13 @@ class DrinGoFeedAPIEndToEndTests: XCTestCase {
     
     // MARK: - Helpers
     
-    private func getCocktailResult(file: StaticString = #filePath, line: UInt = #line) -> CocktailLoader.Result? {
+    private func getCocktailResult(file: StaticString = #filePath, line: UInt = #line) -> Swift.Result<[CocktailItem], Error>? {
         let testServerURL = URL(string: "https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=margarita")!
         let client = ephemeralClient()
 
         let exp = expectation(description: "Wait for load completion")
         
-        var receivedResult: CocktailLoader.Result?
+        var receivedResult: Swift.Result<[CocktailItem], Error>?
         client.get(from: testServerURL) { result in
             receivedResult = result.flatMap { (data, response) in
                 do {

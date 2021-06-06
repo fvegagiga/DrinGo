@@ -7,11 +7,11 @@ import DrinGoFeed
 import DrinGoFeediOS
 
 final class CocktailFeedLoaderPresentationAdapter: FeedViewControllerDelegate {
-    private let feedLoader: () -> CocktailLoader.Publisher
+    private let feedLoader: () -> AnyPublisher<[CocktailItem], Error>
     private var cancellable: Cancellable?
     var presenter: CocktailFeedPresenter?
     
-    init(feedLoader: @escaping () -> CocktailLoader.Publisher) {
+    init(feedLoader: @escaping () -> AnyPublisher<[CocktailItem], Error>) {
         self.feedLoader = feedLoader
     }
 

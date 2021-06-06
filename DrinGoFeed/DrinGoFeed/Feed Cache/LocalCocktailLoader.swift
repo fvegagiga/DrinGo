@@ -39,8 +39,8 @@ extension LocalCocktailLoader: CocktailCache {
     }
 }
 
-extension LocalCocktailLoader: CocktailLoader {
-    public typealias LoadResult = CocktailLoader.Result
+extension LocalCocktailLoader {
+    public typealias LoadResult = Swift.Result<[CocktailItem], Error>
     
     public func load(completion: @escaping (LoadResult) -> Void) {
         store.retrieve { [weak self] result in

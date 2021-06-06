@@ -10,7 +10,7 @@ import DrinGoFeediOS
 public final class CocktailUIComposer {
     private init() {}
     
-    public static func feedComposedWith(feedLoader: @escaping () -> CocktailLoader.Publisher,
+    public static func feedComposedWith(feedLoader: @escaping () -> AnyPublisher<[CocktailItem], Error>,
                                         imageLoader: @escaping (URL) -> CocktailImageDataLoader.Publisher) -> CocktailFeedViewController {
         
         let presentationAdapter = CocktailFeedLoaderPresentationAdapter(feedLoader: { feedLoader().dispatchOnMainQueue() })

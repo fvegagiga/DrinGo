@@ -5,14 +5,14 @@
 import Foundation
 import DrinGoFeed
 
-class CocktailLoaderStub: CocktailLoader {
-    private let result: CocktailLoader.Result
+class CocktailLoaderStub {
+    private let result: Swift.Result<[CocktailItem], Error>
     
-    init(result: CocktailLoader.Result) {
+    init(result: Swift.Result<[CocktailItem], Error>) {
         self.result = result
     }
 
-    func load(completion: @escaping (CocktailLoader.Result) -> Void) {
+    func load(completion: @escaping (Swift.Result<[CocktailItem], Error>) -> Void) {
         completion(result)
     }
 }

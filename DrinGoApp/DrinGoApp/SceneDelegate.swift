@@ -52,7 +52,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         localCocktailLoader.validateCache { _ in }
     }
     
-    private func makeRemoteCocktailLoaderWithLocalFallback() -> CocktailLoader.Publisher {
+    private func makeRemoteCocktailLoaderWithLocalFallback() -> AnyPublisher<[CocktailItem], Error> {
         let url = URL(string: "https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php")!
         
         return httpClient

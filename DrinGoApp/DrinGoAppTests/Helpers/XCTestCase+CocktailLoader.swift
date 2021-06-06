@@ -6,7 +6,7 @@ import DrinGoFeed
 protocol CocktailLoaderTestCase: XCTestCase {}
 
 extension CocktailLoaderTestCase {
-    func expect(_ sut: CocktailLoader, toCompleteWith expectedResult: CocktailLoader.Result, file: StaticString = #file, line: UInt = #line) {
+    func expect(_ sut: LocalCocktailLoader, toCompleteWith expectedResult: Swift.Result<[CocktailItem], Error>, file: StaticString = #file, line: UInt = #line) {
         let exp = expectation(description: "Wait for load completion")
         
         sut.load { receivedResult in
