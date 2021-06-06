@@ -45,14 +45,19 @@ class DrinGoFeedAPIEndToEndTests: XCTestCase {
     
     private func getCocktailResult(file: StaticString = #filePath, line: UInt = #line) -> CocktailLoader.Result? {
         let testServerURL = URL(string: "https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=margarita")!
-        let loader = RemoteLoader(url: testServerURL, client: ephemeralClient(), mapper: CocktailItemMapper.map)
-        trackForMemoryLeaks(loader, file: file, line: line)
-        
+        let client = ephemeralClient()
+
         let exp = expectation(description: "Wait for load completion")
         
         var receivedResult: CocktailLoader.Result?
-        loader.load { result in
-            receivedResult = result
+        client.get(from: testServerURL) { result in
+            receivedResult = result.flatMap { (data, response) in
+                do {
+                    return .success(try CocktailItemMapper.map(data, from: response))
+                } catch {
+                    return .failure(error)
+                }
+            }
             exp.fulfill()
         }
         wait(for: [exp], timeout: 5.0)
