@@ -52,11 +52,15 @@ public final class CocktailItemMapper {
     }
     
     public static func map(_ data: Data, from response: HTTPURLResponse) throws -> [CocktailItem] {
-        guard response.isOK,
+        guard isOK(response),
               let root = try? JSONDecoder().decode(Root.self, from: data) else {
             throw Error.invalidData
         }
         
         return root.items
+    }
+    
+    private static func isOK(_ response: HTTPURLResponse) -> Bool {
+        response.statusCode == 200
     }
 }
