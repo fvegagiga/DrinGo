@@ -63,15 +63,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func makeLocalImageDataLoaderWithRemoteFallback(url: URL) -> CocktailImageDataLoader.Publisher {
-        let remoteCocktailImageLoader = RemoteCocktailImageDataLoader(client: httpClient)
         let localImageLoader = LocalCocktailImageDataLoader(store: store)
         
         return localImageLoader
             .loadImageDataPublisher(from: url)
-            .fallback(to: {
-                        remoteCocktailImageLoader
-                        .loadImageDataPublisher(from: url)
-                        .caching(to: localImageLoader, using: url)
+            .fallback(to: { [httpClient] in
+                httpClient
+                    .getPublisher(url: url)
+                    .tryMap(ImageDataMapper.map)
+                    .caching(to: localImageLoader, using: url)
             })
     }
 }

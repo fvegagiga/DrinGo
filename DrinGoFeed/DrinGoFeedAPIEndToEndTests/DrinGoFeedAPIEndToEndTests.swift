@@ -66,18 +66,23 @@ class DrinGoFeedAPIEndToEndTests: XCTestCase {
     }
     
     private func getCocktailImageDataResult(file: StaticString = #file, line: UInt = #line) -> CocktailImageDataLoader.Result? {
+        let client = ephemeralClient()
         let url = imageURL(at: 0)
-        let loader = RemoteCocktailImageDataLoader(client: ephemeralClient())
-        trackForMemoryLeaks(loader, file: file, line: line)
-        
         let exp = expectation(description: "Wait for load completion")
         
         var receivedResult: CocktailImageDataLoader.Result?
-        _ = loader.loadImageData(from: url) { result in
-            receivedResult = result
+        client.get(from: url) { result in
+            receivedResult = result.flatMap { (data, response) in
+                do {
+                    return .success(try ImageDataMapper.map(data, from: response))
+                } catch {
+                    return .failure(error)
+                }
+            }
+            
             exp.fulfill()
         }
-        wait(for: [exp], timeout: 5.0)
+        wait(for: [exp], timeout: 10.0)
         
         return receivedResult
     }
