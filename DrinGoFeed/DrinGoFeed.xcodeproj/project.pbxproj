@@ -360,6 +360,7 @@
 			isa = PBXGroup;
 			children = (
 				C63673F0266B8B2800C669C9 /* Helpers */,
+				C620D449266213DB008BEC8C /* ImageDataMapperTests.swift */,
 			);
 			path = "Shared API";
 			sourceTree = "<group>";
@@ -641,7 +642,6 @@
 			children = (
 				C620D44B26624678008BEC8C /* Helpers */,
 				C64DD9FD263F06FB009D70AE /* CocktailItemMapperTests.swift */,
-				C620D449266213DB008BEC8C /* ImageDataMapperTests.swift */,
 			);
 			path = "Feed API";
 			sourceTree = "<group>";
