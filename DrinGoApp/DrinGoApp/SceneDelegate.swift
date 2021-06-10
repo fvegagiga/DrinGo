@@ -23,6 +23,29 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private lazy var localCocktailLoader: LocalCocktailLoader = {
         LocalCocktailLoader(store: store, currentDate: Date.init)
     }()
+
+    private var customImageCachePath: String {
+        "DrinGo/images/"
+    }
+    
+    private func cachesDirectory() -> URL {
+        FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
+    }
+    
+    private func createCachesDirectory() {
+        let customCachePath = cachesDirectory().appendingPathComponent("DrinGo/images/").path
+        try? FileManager.default.createDirectory(atPath: customCachePath, withIntermediateDirectories: true, attributes: nil)
+    }
+    
+    private func getCacheDirectoryFilePath(for remoteUrl: URL) -> URL {
+        let fileName = remoteUrl.lastPathComponent
+        createCachesDirectory()
+        
+        
+        return cachesDirectory()
+            .appendingPathComponent("DrinGo/images/")
+            .appendingPathComponent("\(fileName)")
+    }
     
     convenience init(httpClient: HTTPClient, store: FeedStore & CocktailImageDataStore) {
         self.init()
@@ -64,14 +87,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private func makeLocalImageDataLoaderWithRemoteFallback(url: URL) -> CocktailImageDataLoader.Publisher {
         let localImageLoader = LocalCocktailImageDataLoader(store: store)
+        let localFilePath = getCacheDirectoryFilePath(for: url)
         
         return localImageLoader
-            .loadImageDataPublisher(from: url)
+            .loadImageDataPublisher(from: localFilePath)
             .fallback(to: { [httpClient] in
                 httpClient
                     .getPublisher(url: url)
                     .tryMap(ImageDataMapper.map)
-                    .caching(to: localImageLoader, using: url)
+                    .caching(to: localImageLoader, using: localFilePath)
             })
     }
 }
