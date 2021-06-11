@@ -13,7 +13,7 @@ public final class CocktailUIComposer {
     public static func feedComposedWith(feedLoader: @escaping () -> AnyPublisher<[CocktailItem], Error>,
                                         imageLoader: @escaping (URL) -> CocktailImageDataLoader.Publisher) -> CocktailFeedViewController {
         
-        let presentationAdapter = CocktailFeedLoaderPresentationAdapter(feedLoader: { feedLoader().dispatchOnMainQueue() })
+        let presentationAdapter = LoadResourcePresentationAdapter<[CocktailItem], FeedViewAdapter>(loader: { feedLoader().dispatchOnMainQueue() })
         let cocktailFeedController = makeWith(delegate: presentationAdapter, title: CocktailFeedPresenter.title)
         
         presentationAdapter.presenter = LoadResoucePresenter(
