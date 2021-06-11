@@ -42,7 +42,7 @@ class CocktailFeedPresenterTests: XCTestCase {
         sut.didFinishLoadingFeed(with: anyNSError())
         
         XCTAssertEqual(view.messages, [
-            .display(errorMessage: localized("COCKTAIL_LIST_VIEW_CONNECTION_ERROR")),
+            .display(errorMessage: localized("GENERIC_CONNECTION_ERROR")),
             .display(isLoading: false)
         ])
     }

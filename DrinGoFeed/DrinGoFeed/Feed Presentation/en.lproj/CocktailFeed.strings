@@ -1,2 +1,2 @@
 "COCKTAIL_LIST_VIEW_TITLE" = "DrinGo";
-"COCKTAIL_LIST_VIEW_CONNECTION_ERROR" = "Couldn't connect to server";
+"GENERIC_CONNECTION_ERROR" = "Couldn't connect to server";
