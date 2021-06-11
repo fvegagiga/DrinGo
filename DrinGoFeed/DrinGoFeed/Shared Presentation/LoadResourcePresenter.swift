@@ -6,14 +6,7 @@ public final class LoadResoucePresenter {
     private let feedView: FeedView
     private let loadingView: FeedLoadingView
     private let errorView: FeedErrorView
-    
-    public static var title: String {
-        return NSLocalizedString("COCKTAIL_LIST_VIEW_TITLE",
-            tableName: "CocktailFeed",
-            bundle: Bundle(for: CocktailFeedPresenter.self),
-            comment: "Title for the feed view")
-    }
-    
+        
     public var feedLoadError: String {
         return NSLocalizedString("COCKTAIL_LIST_VIEW_CONNECTION_ERROR",
             tableName: "CocktailFeed",
@@ -21,7 +14,6 @@ public final class LoadResoucePresenter {
             comment: "Error message displayed when we can't load the image feed from the server")
     }
 
-    
     public init(feedView: FeedView, loadingView: FeedLoadingView, errorView: FeedErrorView) {
         self.feedView = feedView
         self.loadingView = loadingView
