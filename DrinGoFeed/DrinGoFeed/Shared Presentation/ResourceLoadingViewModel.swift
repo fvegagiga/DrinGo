@@ -2,6 +2,6 @@
 // Copyright @ 2021 Fernando Vega. All rights reserved.
 //
 
-public struct FeedLoadingViewModel {
+public struct ResourceLoadingViewModel {
     public let isLoading: Bool
 }

@@ -15,7 +15,7 @@
 		C61FA0E1265A68560026D999 /* CocktailFeedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61FA0E0265A68560026D999 /* CocktailFeedPresenter.swift */; };
 		C61FA0E2265A69C50026D999 /* CocktailFeed.strings in Resources */ = {isa = PBXBuildFile; fileRef = C61FA0DD265A67680026D999 /* CocktailFeed.strings */; };
 		C61FA0E4265A6A190026D999 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61FA0E3265A6A190026D999 /* FeedViewModel.swift */; };
-		C61FA0E6265A6A510026D999 /* FeedLoadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61FA0E5265A6A510026D999 /* FeedLoadingViewModel.swift */; };
+		C61FA0E6265A6A510026D999 /* ResourceLoadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61FA0E5265A6A510026D999 /* ResourceLoadingViewModel.swift */; };
 		C61FA0E8265A6A5D0026D999 /* FeedErrorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61FA0E7265A6A5D0026D999 /* FeedErrorViewModel.swift */; };
 		C61FA0E9265A6FA30026D999 /* CocktailFeedLocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6719FE226596C8700ACDF8A /* CocktailFeedLocalizationTests.swift */; };
 		C61FA0EB265A710B0026D999 /* CocktailImagePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61FA0EA265A710B0026D999 /* CocktailImagePresenterTests.swift */; };
@@ -92,6 +92,7 @@
 		C6FEFBCF2673AB2C00585391 /* SharedLocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FEFBCE2673AB2C00585391 /* SharedLocalizationTests.swift */; };
 		C6FEFBD02673ABEA00585391 /* Shared.strings in Resources */ = {isa = PBXBuildFile; fileRef = C6FEFBD22673ABEA00585391 /* Shared.strings */; };
 		C6FEFBD52673B05900585391 /* SharedLocalizationTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FEFBD42673B05900585391 /* SharedLocalizationTestHelpers.swift */; };
+		C6FEFBD72673B52600585391 /* ResourceLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FEFBD62673B52600585391 /* ResourceLoadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,7 +158,7 @@
 		C61FA0DE265A676D0026D999 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/CocktailFeed.strings; sourceTree = "<group>"; };
 		C61FA0E0265A68560026D999 /* CocktailFeedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailFeedPresenter.swift; sourceTree = "<group>"; };
 		C61FA0E3265A6A190026D999 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
-		C61FA0E5265A6A510026D999 /* FeedLoadingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoadingViewModel.swift; sourceTree = "<group>"; };
+		C61FA0E5265A6A510026D999 /* ResourceLoadingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceLoadingViewModel.swift; sourceTree = "<group>"; };
 		C61FA0E7265A6A5D0026D999 /* FeedErrorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedErrorViewModel.swift; sourceTree = "<group>"; };
 		C61FA0EA265A710B0026D999 /* CocktailImagePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailImagePresenterTests.swift; sourceTree = "<group>"; };
 		C61FA0EC265A7E380026D999 /* CocktailImagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailImagePresenter.swift; sourceTree = "<group>"; };
@@ -236,6 +237,7 @@
 		C6FEFBD12673ABEA00585391 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Shared.strings; sourceTree = "<group>"; };
 		C6FEFBD32673ABEF00585391 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Shared.strings; sourceTree = "<group>"; };
 		C6FEFBD42673B05900585391 /* SharedLocalizationTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedLocalizationTestHelpers.swift; sourceTree = "<group>"; };
+		C6FEFBD62673B52600585391 /* ResourceLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceLoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -325,7 +327,6 @@
 			children = (
 				C61FA0E0265A68560026D999 /* CocktailFeedPresenter.swift */,
 				C61FA0E3265A6A190026D999 /* FeedViewModel.swift */,
-				C61FA0E5265A6A510026D999 /* FeedLoadingViewModel.swift */,
 				C61FA0E7265A6A5D0026D999 /* FeedErrorViewModel.swift */,
 				C61FA0EC265A7E380026D999 /* CocktailImagePresenter.swift */,
 				C61FA0EE265A7ED60026D999 /* CocktailImageViewModel.swift */,
@@ -673,6 +674,8 @@
 			isa = PBXGroup;
 			children = (
 				C6FEFBCA267371A100585391 /* LoadResourcePresenter.swift */,
+				C6FEFBD62673B52600585391 /* ResourceLoadingView.swift */,
+				C61FA0E5265A6A510026D999 /* ResourceLoadingViewModel.swift */,
 				C6FEFBD22673ABEA00585391 /* Shared.strings */,
 			);
 			path = "Shared Presentation";
@@ -945,11 +948,12 @@
 				C63DFAD22664FDA800C29543 /* CocktailCache.swift in Sources */,
 				C620D448266210D3008BEC8C /* CocktailImageDataLoader.swift in Sources */,
 				C61FA0EF265A7ED60026D999 /* CocktailImageViewModel.swift in Sources */,
-				C61FA0E6265A6A510026D999 /* FeedLoadingViewModel.swift in Sources */,
+				C61FA0E6265A6A510026D999 /* ResourceLoadingViewModel.swift in Sources */,
 				C63DFADC26650DDB00C29543 /* CoctailImageDataCache.swift in Sources */,
 				C620D45A26625EBA008BEC8C /* CocktailImageDataStore.swift in Sources */,
 				C61FA0E1265A68560026D999 /* CocktailFeedPresenter.swift in Sources */,
 				C6EE54D7266DF140001BD5F5 /* ImageDataMapper.swift in Sources */,
+				C6FEFBD72673B52600585391 /* ResourceLoadingView.swift in Sources */,
 				C620D44F2662474F008BEC8C /* RemoteCocktailImageDataLoader.swift in Sources */,
 				C6D87F2E264D035500749974 /* FeedStore.swift in Sources */,
 				C6D87F2C264D02AC00749974 /* LocalCocktailLoader.swift in Sources */,
