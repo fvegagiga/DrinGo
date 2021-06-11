@@ -5,7 +5,7 @@
 import XCTest
 import DrinGoFeed
 
-class CodableCocktailImageDataStoreTests: XCTestCase {
+class FileSystemCocktailImageDataStoreTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
