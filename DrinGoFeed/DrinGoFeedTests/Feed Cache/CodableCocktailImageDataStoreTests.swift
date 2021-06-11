@@ -22,7 +22,7 @@ class CodableCocktailImageDataStoreTests: XCTestCase {
     func test_retrieveImageData_deliversNotFoundWhenEmpty() {
         let sut = makeSUT()
         
-        expect(sut, toCompleteRetrievalWith: notFound(), for: anyURL())
+        expect(sut, toCompleteRetrievalWith: notFound(), for: testSpecificNoMatchingFilePath())
     }
     
     func test_retrieveImageData_deliversNotFoundWhenStoredDataURLDoesNotMatch() {
@@ -135,7 +135,6 @@ class CodableCocktailImageDataStoreTests: XCTestCase {
     private func localImage(url: URL) -> LocalCocktailItem {
         return LocalCocktailItem(id: 0, name: "name", description: "description", imageURL: url, ingredients: ["ing1"], quantity: ["qt1"])
     }
-
 
     private func testSpecificFilePath() -> URL {
         return cachesDirectory().appendingPathComponent("\(type(of: self)).png")
