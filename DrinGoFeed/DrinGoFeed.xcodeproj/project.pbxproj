@@ -87,6 +87,8 @@
 		C6E3015B264192B0009DC1D5 /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E3015A264192B0009DC1D5 /* URLSessionHTTPClientTests.swift */; };
 		C6E440F1264438B00082B92F /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A01C2226427C530071A344 /* XCTestCase+MemoryLeakTracking.swift */; };
 		C6EE54D7266DF140001BD5F5 /* ImageDataMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EE54D6266DF140001BD5F5 /* ImageDataMapper.swift */; };
+		C6FEFBC8267370D400585391 /* LoadResourcePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FEFBC7267370D400585391 /* LoadResourcePresenterTests.swift */; };
+		C6FEFBCB267371A100585391 /* LoadResourcePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FEFBCA267371A100585391 /* LoadResourcePresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -225,6 +227,8 @@
 		C6E3015726412FE7009DC1D5 /* CocktailItemMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailItemMapper.swift; sourceTree = "<group>"; };
 		C6E3015A264192B0009DC1D5 /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
 		C6EE54D6266DF140001BD5F5 /* ImageDataMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataMapper.swift; sourceTree = "<group>"; };
+		C6FEFBC7267370D400585391 /* LoadResourcePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadResourcePresenterTests.swift; sourceTree = "<group>"; };
+		C6FEFBCA267371A100585391 /* LoadResourcePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadResourcePresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -512,6 +516,7 @@
 				C6504A49263EACA600F4FCD1 /* Info.plist */,
 				C63673ED266B8AC100C669C9 /* Shared API */,
 				C63673EE266B8AE400C669C9 /* Shared API Infra */,
+				C6FEFBC92673717E00585391 /* Shared Presentation */,
 				C63673EA266B67F400C669C9 /* Ingredients Feature */,
 				C63673F2266B8BA000C669C9 /* Ingredients API */,
 				C6D87F2A264D029C00749974 /* Feed Cache */,
@@ -527,6 +532,7 @@
 			children = (
 				C6504A55263EACA700F4FCD1 /* Info.plist */,
 				C6A01C2126427C370071A344 /* Helpers */,
+				C6FEFBC62673709E00585391 /* Shared Presentation */,
 				C6414DC4264C1D260066DC59 /* Feed Cache */,
 				C63673EF266B8B1F00C669C9 /* Shared API */,
 				C63673F1266B8B3000C669C9 /* Shared API Infra */,
@@ -644,6 +650,22 @@
 				C64DD9FD263F06FB009D70AE /* CocktailItemMapperTests.swift */,
 			);
 			path = "Feed API";
+			sourceTree = "<group>";
+		};
+		C6FEFBC62673709E00585391 /* Shared Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				C6FEFBC7267370D400585391 /* LoadResourcePresenterTests.swift */,
+			);
+			path = "Shared Presentation";
+			sourceTree = "<group>";
+		};
+		C6FEFBC92673717E00585391 /* Shared Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				C6FEFBCA267371A100585391 /* LoadResourcePresenter.swift */,
+			);
+			path = "Shared Presentation";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -922,6 +944,7 @@
 				C6D87F2C264D02AC00749974 /* LocalCocktailLoader.swift in Sources */,
 				C6D96419266DF69700753E2F /* HTTPURLResponse+StatusCode.swift in Sources */,
 				C63673EC266B682B00C669C9 /* CocktailIngredient.swift in Sources */,
+				C6FEFBCB267371A100585391 /* LoadResourcePresenter.swift in Sources */,
 				C638A16D2650F5CB001C9371 /* CodableFeedStore.swift in Sources */,
 				C620D45826625E48008BEC8C /* LocalCocktailImageDataLoader.swift in Sources */,
 				C63673E9266B5F4000C669C9 /* CoctailIngredientsMapper.swift in Sources */,
@@ -949,6 +972,7 @@
 				C6E3015B264192B0009DC1D5 /* URLSessionHTTPClientTests.swift in Sources */,
 				C63673E5266B5DDC00C669C9 /* CocktailIngredientsMapperTests.swift in Sources */,
 				C64DC4E526629B9500D51703 /* CodableCocktailImageDataStoreTests.swift in Sources */,
+				C6FEFBC8267370D400585391 /* LoadResourcePresenterTests.swift in Sources */,
 				C6559ADC264ED74E003569B1 /* FeedStoreSpy.swift in Sources */,
 				C638D77E264FB51200C09917 /* SharedTestHelpers.swift in Sources */,
 				C620D44D2662468B008BEC8C /* HTTPClientSpy.swift in Sources */,
