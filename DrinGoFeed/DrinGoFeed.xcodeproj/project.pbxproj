@@ -91,6 +91,7 @@
 		C6FEFBCB267371A100585391 /* LoadResourcePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FEFBCA267371A100585391 /* LoadResourcePresenter.swift */; };
 		C6FEFBCF2673AB2C00585391 /* SharedLocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FEFBCE2673AB2C00585391 /* SharedLocalizationTests.swift */; };
 		C6FEFBD02673ABEA00585391 /* Shared.strings in Resources */ = {isa = PBXBuildFile; fileRef = C6FEFBD22673ABEA00585391 /* Shared.strings */; };
+		C6FEFBD52673B05900585391 /* SharedLocalizationTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FEFBD42673B05900585391 /* SharedLocalizationTestHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -234,6 +235,7 @@
 		C6FEFBCE2673AB2C00585391 /* SharedLocalizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedLocalizationTests.swift; sourceTree = "<group>"; };
 		C6FEFBD12673ABEA00585391 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Shared.strings; sourceTree = "<group>"; };
 		C6FEFBD32673ABEF00585391 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Shared.strings; sourceTree = "<group>"; };
+		C6FEFBD42673B05900585391 /* SharedLocalizationTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedLocalizationTestHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -602,6 +604,7 @@
 			children = (
 				C6A01C2226427C530071A344 /* XCTestCase+MemoryLeakTracking.swift */,
 				C638D77D264FB51200C09917 /* SharedTestHelpers.swift */,
+				C6FEFBD42673B05900585391 /* SharedLocalizationTestHelpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -986,6 +989,7 @@
 				C638D77E264FB51200C09917 /* SharedTestHelpers.swift in Sources */,
 				C620D44D2662468B008BEC8C /* HTTPClientSpy.swift in Sources */,
 				C61FA0D8265A632A0026D999 /* CocktailFeedPresenterTests.swift in Sources */,
+				C6FEFBD52673B05900585391 /* SharedLocalizationTestHelpers.swift in Sources */,
 				C61FA0EB265A710B0026D999 /* CocktailImagePresenterTests.swift in Sources */,
 				C6414DC6264C1D880066DC59 /* CacheFeedUseCaseTests.swift in Sources */,
 				C638A17826510BD9001C9371 /* XCTestCase+FailableDeleteFeedStoreSpecs.swift in Sources */,
