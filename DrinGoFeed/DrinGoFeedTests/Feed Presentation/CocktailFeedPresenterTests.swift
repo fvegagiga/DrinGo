@@ -7,6 +7,18 @@ import DrinGoFeed
 
 class CocktailFeedPresenterTests: XCTestCase {
 
+    func test_title_isLocalized() {
+        XCTAssertEqual(CocktailFeedPresenter.title, localized("COCKTAIL_LIST_VIEW_TITLE"))
+    }
+    
+    func test_map_createViewModel() {
+        let feed = uniqueCocktails().models
+        
+        let viewModel = CocktailFeedPresenter.map(feed)
+        
+        XCTAssertEqual(viewModel.feed, feed)
+    }
+    
     func test_init_doesNotSendMessagesToView() {
         let (_, view) = makeSUT()
 
@@ -45,10 +57,6 @@ class CocktailFeedPresenterTests: XCTestCase {
             .display(errorMessage: localized("GENERIC_CONNECTION_ERROR", table: "Shared")),
             .display(isLoading: false)
         ])
-    }
-    
-    func test_title_isLocalized() {
-        XCTAssertEqual(CocktailFeedPresenter.title, localized("COCKTAIL_LIST_VIEW_TITLE"))
     }
     
     // MARK: - Helpers
