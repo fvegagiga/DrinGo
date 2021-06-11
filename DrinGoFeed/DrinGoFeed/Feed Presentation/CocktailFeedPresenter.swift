@@ -29,9 +29,9 @@ public final class CocktailFeedPresenter {
             comment: "Title for the feed view")
     }
     
-    public var feedLoadError: String {
+    private var feedLoadError: String {
         return NSLocalizedString("GENERIC_CONNECTION_ERROR",
-            tableName: "CocktailFeed",
+            tableName: "Shared",
             bundle: Bundle(for: CocktailFeedPresenter.self),
             comment: "Error message displayed when we can't load the image feed from the server")
     }
