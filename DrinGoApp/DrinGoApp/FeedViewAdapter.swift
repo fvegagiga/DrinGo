@@ -6,7 +6,7 @@ import UIKit
 import DrinGoFeed
 import DrinGoFeediOS
 
-final class FeedViewAdapter: FeedView {
+final class FeedViewAdapter: ResourceView {
     private weak var controller: CocktailFeedViewController?
     private let imageLoader: (URL) -> CocktailImageDataLoader.Publisher
 

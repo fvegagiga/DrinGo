@@ -16,13 +16,13 @@ public final class CocktailUIComposer {
         let presentationAdapter = CocktailFeedLoaderPresentationAdapter(feedLoader: { feedLoader().dispatchOnMainQueue() })
         let cocktailFeedController = makeWith(delegate: presentationAdapter, title: CocktailFeedPresenter.title)
         
-        presentationAdapter.presenter = CocktailFeedPresenter(
-            feedView: FeedViewAdapter(
+        presentationAdapter.presenter = LoadResoucePresenter(
+            resourceView: FeedViewAdapter(
                 controller: cocktailFeedController,
                 imageLoader: { imageLoader($0).dispatchOnMainQueue() }),
             loadingView: WeakRefVirtualProxy(cocktailFeedController),
-            errorView: WeakRefVirtualProxy(cocktailFeedController)
-        )
+            errorView: WeakRefVirtualProxy(cocktailFeedController),
+            mapper: CocktailFeedPresenter.map)
 
         return cocktailFeedController
     }
