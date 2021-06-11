@@ -138,7 +138,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="cocktailImageContainer" destination="4YO-iv-4hZ" id="F8Y-G7-rqO"/>
+                                    <outlet property="cocktailImageContainer" destination="Xjb-eK-FU7" id="amr-GP-FKM"/>
                                     <outlet property="cocktailImageRetryButton" destination="4YO-iv-4hZ" id="f5M-9F-jaW"/>
                                     <outlet property="cocktailImageView" destination="rVC-4E-QkO" id="bTT-kX-3KS"/>
                                     <outlet property="descriptionLabel" destination="WvI-BH-JNV" id="7GA-lt-q9a"/>
