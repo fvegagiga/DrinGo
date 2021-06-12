@@ -12,11 +12,16 @@ class IngredientsPresenterTests: XCTestCase {
     }
     
     func test_map_createViewModel() {
-        let feed = uniqueCocktails().models
+        let ingredients = [
+            CocktailIngredient(name: "a name", measure: "a measure"),
+            CocktailIngredient(name: "another name", measure: "another measure")
+        ]
         
-        let viewModel = CocktailFeedPresenter.map(feed)
+        let viewModel = IngredientsPresenter.map(ingredients)
         
-        XCTAssertEqual(viewModel.feed, feed)
+        XCTAssertEqual(viewModel.ingredients, [
+                        IngredientViewModel(ingredient: "a name", measure: "a measure"),
+                        IngredientViewModel(ingredient: "another name", measure: "another measure")])
     }
     
     // MARK: - Helpers

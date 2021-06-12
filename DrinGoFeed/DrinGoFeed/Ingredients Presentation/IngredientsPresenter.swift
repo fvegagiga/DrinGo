@@ -4,12 +4,32 @@
 
 import Foundation
 
+public struct IngrediensViewModel {
+    public let ingredients: [IngredientViewModel]
+}
+
+public struct IngredientViewModel: Equatable {
+    public let ingredient: String
+    public let measure: String
+    
+    public init(ingredient: String, measure: String) {
+        self.ingredient = ingredient
+        self.measure = measure
+    }
+}
+
 public final class IngredientsPresenter {
     
     public static var title: String {
-        return NSLocalizedString("INGREDIENTS_VIEW_TITLE",
+        NSLocalizedString("INGREDIENTS_VIEW_TITLE",
             tableName: "Ingredients",
             bundle: Bundle(for: Self.self),
             comment: "Title for the ingredients view")
+    }
+    
+    public static func map(_ ingredients: [CocktailIngredient]) -> IngrediensViewModel {
+        IngrediensViewModel(ingredients: ingredients.map { ingredient in
+            IngredientViewModel(ingredient: ingredient.name, measure: ingredient.measure)
+        })
     }
 }
