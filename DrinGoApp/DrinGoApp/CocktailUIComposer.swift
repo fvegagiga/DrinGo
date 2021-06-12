@@ -10,10 +10,12 @@ import DrinGoFeediOS
 public final class CocktailUIComposer {
     private init() {}
     
+    private typealias CocktailPresentationAdapter = LoadResourcePresentationAdapter<[CocktailItem], FeedViewAdapter>
+    
     public static func feedComposedWith(feedLoader: @escaping () -> AnyPublisher<[CocktailItem], Error>,
                                         imageLoader: @escaping (URL) -> CocktailImageDataLoader.Publisher) -> CocktailFeedViewController {
         
-        let presentationAdapter = LoadResourcePresentationAdapter<[CocktailItem], FeedViewAdapter>(loader: { feedLoader().dispatchOnMainQueue() })
+        let presentationAdapter = CocktailPresentationAdapter(loader: { feedLoader().dispatchOnMainQueue() })
         let cocktailFeedController = makeWith(delegate: presentationAdapter, title: CocktailFeedPresenter.title)
         
         presentationAdapter.presenter = LoadResoucePresenter(

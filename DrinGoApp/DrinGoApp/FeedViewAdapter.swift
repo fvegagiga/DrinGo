@@ -10,6 +10,8 @@ final class FeedViewAdapter: ResourceView {
     private weak var controller: CocktailFeedViewController?
     private let imageLoader: (URL) -> CocktailImageDataLoader.Publisher
 
+    private typealias ImageDataPresentationAdapter = LoadResourcePresentationAdapter<Data, WeakRefVirtualProxy<CocktailFeedCellController>>
+    
     init(controller: CocktailFeedViewController, imageLoader: @escaping (URL) -> CocktailImageDataLoader.Publisher) {
         self.controller = controller
         self.imageLoader = imageLoader
@@ -17,7 +19,7 @@ final class FeedViewAdapter: ResourceView {
     
     func display(_ viewModel: FeedViewModel) {
         controller?.display(viewModel.feed.map { model in
-            let adapter = LoadResourcePresentationAdapter<Data, WeakRefVirtualProxy<CocktailFeedCellController>>(loader: { [imageLoader] in
+            let adapter = ImageDataPresentationAdapter(loader: { [imageLoader] in
                 imageLoader(model.imageURL)
             })
             
