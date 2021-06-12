@@ -10,16 +10,24 @@ public protocol FeedImageCellControllerDelegate {
     func didCancelImageRequest()
 }
 
-public final class CocktailFeedCellController: FeedImageView {
+public final class CocktailFeedCellController: FeedImageView, ResourceView, ResourceLoadingView, ResourceErrorView {
+    
+    public typealias ResourceViewModel = UIImage
+    
+    private let viewModel: CocktailImageViewModel<UIImage>
     private let delegate: FeedImageCellControllerDelegate
     private var cell: CocktailFeedCell?
 
-    public init(delegate: FeedImageCellControllerDelegate) {
+    public init(viewModel: CocktailImageViewModel<UIImage>, delegate: FeedImageCellControllerDelegate) {
+        self.viewModel = viewModel
         self.delegate = delegate
     }
     
     func view(in tableView: UITableView) -> UITableViewCell {
         cell = tableView.dequeueReusableCell()
+        cell?.titleLabel.text = viewModel.title
+        cell?.descriptionLabel.text = viewModel.description
+        cell?.onRetry = delegate.didRequestImage
         delegate.didRequestImage()
         return cell!
     }
@@ -33,13 +41,18 @@ public final class CocktailFeedCellController: FeedImageView {
         delegate.didCancelImageRequest()
     }
     
-    public func display(_ viewModel: CocktailImageViewModel<UIImage>) {
-        cell?.titleLabel.text = viewModel.title
-        cell?.descriptionLabel.text = viewModel.description
-        cell?.cocktailImageView.setImageAnimated(viewModel.image)
+    public func display(_ viewModel: CocktailImageViewModel<UIImage>) {}
+    
+    public func display(_ viewModel: UIImage) {
+        cell?.cocktailImageView.setImageAnimated(viewModel)
+    }
+    
+    public func display(_ viewModel: ResourceLoadingViewModel) {
         cell?.cocktailImageContainer.isShimmering = viewModel.isLoading
-        cell?.cocktailImageRetryButton.isHidden = !viewModel.shouldRetry
-        cell?.onRetry = delegate.didRequestImage
+    }
+    
+    public func display(_ viewModel: ResourceErrorViewModel) {
+        cell?.cocktailImageRetryButton.isHidden = viewModel.message == nil
     }
     
     private func releaseCellForReuse() {
