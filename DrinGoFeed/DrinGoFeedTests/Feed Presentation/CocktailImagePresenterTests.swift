@@ -7,6 +7,15 @@ import DrinGoFeed
 
 class CocktailImagePresenterTests: XCTestCase {
 
+    func test_map_createsViewModel() {
+        let cocktail = uniqueCocktail()
+        
+        let viewModel = CocktailImagePresenter<ViewSpy, AnyImage>.map(cocktail)
+        
+        XCTAssertEqual(viewModel.title, cocktail.name)
+        XCTAssertEqual(viewModel.description, cocktail.description)
+    }
+    
     func test_init_doesNotSendMessagesToView() {
         let (_, view) = makeSUT()
         

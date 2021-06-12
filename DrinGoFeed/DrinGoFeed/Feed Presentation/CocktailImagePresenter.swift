@@ -43,4 +43,12 @@ public final class CocktailImagePresenter<View: FeedImageView, Image> where View
                                             isLoading: false,
                                             shouldRetry: true))
     }
+    
+    public static func map(_ cocktail: CocktailItem) -> CocktailImageViewModel<Image> {
+        CocktailImageViewModel(title: cocktail.name,
+                               description: cocktail.description,
+                               image: nil,
+                               isLoading: false,
+                               shouldRetry: false)
+    }
 }
