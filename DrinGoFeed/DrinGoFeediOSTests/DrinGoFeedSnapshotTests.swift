@@ -79,7 +79,7 @@ class DrinGoFeedSnapshotTests: XCTestCase {
 private extension CocktailFeedViewController {
     func display(_ stubs: [ImageStub]) {
         let cells: [CocktailFeedCellController] = stubs.map { stub in
-            let cellController = CocktailFeedCellController(delegate: stub)
+            let cellController = CocktailFeedCellController(viewModel: stub.viewModel, delegate: stub)
             stub.controller = cellController
             return cellController
         }
@@ -89,20 +89,26 @@ private extension CocktailFeedViewController {
 }
 
 private class ImageStub: FeedImageCellControllerDelegate {
-    let viewModel: CocktailImageViewModel<UIImage>
+    let viewModel: CocktailImageViewModel
+    let image: UIImage?
     weak var controller: CocktailFeedCellController?
 
     init(title: String, description: String, image: UIImage?) {
-        viewModel = CocktailImageViewModel(
+        self.viewModel = CocktailImageViewModel(
             title: title,
-            description: description,
-            image: image,
-            isLoading: false,
-            shouldRetry: image == nil)
+            description: description)
+        self.image = image
     }
     
     func didRequestImage() {
-        controller?.display(viewModel)
+        controller?.display(ResourceLoadingViewModel(isLoading: false))
+        
+        if let image = image {
+            controller?.display(image)
+            controller?.display(ResourceErrorViewModel(message: .none))
+        } else {
+            controller?.display(ResourceErrorViewModel(message: "any"))
+        }
     }
     
     func didCancelImageRequest() {}

@@ -24,7 +24,6 @@
 		C65BD04C266399050024F84D /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65BD04B266399050024F84D /* SharedTestHelpers.swift */; };
 		C6640641266601AD00F1355C /* SceneDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6640640266601AD00F1355C /* SceneDelegateTests.swift */; };
 		C66406482666040F00F1355C /* WeakRefVirtualProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406422666040E00F1355C /* WeakRefVirtualProxy.swift */; };
-		C664064A2666040F00F1355C /* CocktailImageDataLoaderPresentationAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406432666040F00F1355C /* CocktailImageDataLoaderPresentationAdapter.swift */; };
 		C664064B2666040F00F1355C /* LoadResourcePresentationAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406462666040F00F1355C /* LoadResourcePresentationAdapter.swift */; };
 		C664064C2666040F00F1355C /* CocktailUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406442666040F00F1355C /* CocktailUIComposer.swift */; };
 		C664064D2666040F00F1355C /* FeedViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406472666040F00F1355C /* FeedViewAdapter.swift */; };
@@ -89,7 +88,6 @@
 		C65BD04B266399050024F84D /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
 		C6640640266601AD00F1355C /* SceneDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegateTests.swift; sourceTree = "<group>"; };
 		C66406422666040E00F1355C /* WeakRefVirtualProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakRefVirtualProxy.swift; sourceTree = "<group>"; };
-		C66406432666040F00F1355C /* CocktailImageDataLoaderPresentationAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailImageDataLoaderPresentationAdapter.swift; sourceTree = "<group>"; };
 		C66406442666040F00F1355C /* CocktailUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailUIComposer.swift; sourceTree = "<group>"; };
 		C66406462666040F00F1355C /* LoadResourcePresentationAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadResourcePresentationAdapter.swift; sourceTree = "<group>"; };
 		C66406472666040F00F1355C /* FeedViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewAdapter.swift; sourceTree = "<group>"; };
@@ -156,7 +154,6 @@
 				C68065E5266A278A0022A14B /* CombineHelpers.swift */,
 				C66406442666040F00F1355C /* CocktailUIComposer.swift */,
 				C66406422666040E00F1355C /* WeakRefVirtualProxy.swift */,
-				C66406432666040F00F1355C /* CocktailImageDataLoaderPresentationAdapter.swift */,
 				C66406462666040F00F1355C /* LoadResourcePresentationAdapter.swift */,
 				C66406472666040F00F1355C /* FeedViewAdapter.swift */,
 				C6089E5C26636DED00EE1A7D /* Assets.xcassets */,
@@ -316,7 +313,6 @@
 				C664064B2666040F00F1355C /* LoadResourcePresentationAdapter.swift in Sources */,
 				C664064C2666040F00F1355C /* CocktailUIComposer.swift in Sources */,
 				C664064D2666040F00F1355C /* FeedViewAdapter.swift in Sources */,
-				C664064A2666040F00F1355C /* CocktailImageDataLoaderPresentationAdapter.swift in Sources */,
 				C6089E5426636DEC00EE1A7D /* AppDelegate.swift in Sources */,
 				C6089E5626636DEC00EE1A7D /* SceneDelegate.swift in Sources */,
 				C66406482666040F00F1355C /* WeakRefVirtualProxy.swift in Sources */,

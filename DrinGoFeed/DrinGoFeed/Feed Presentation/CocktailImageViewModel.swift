@@ -4,10 +4,7 @@
 
 import Foundation
 
-public struct CocktailImageViewModel<Image> {
+public struct CocktailImageViewModel {
     public let title: String
     public let description: String
-    public let image: Image?
-    public let isLoading: Bool
-    public let shouldRetry: Bool
 }

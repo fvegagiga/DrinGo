@@ -22,7 +22,7 @@ final class FeedViewAdapter: ResourceView {
             })
             
             let view = CocktailFeedCellController(
-                viewModel: CocktailImagePresenter<CocktailFeedCellController, UIImage>.map(model),
+                viewModel: CocktailImagePresenter.map(model),
                 delegate: adapter)
             
             adapter.presenter = LoadResoucePresenter(resourceView: WeakRefVirtualProxy(view),
