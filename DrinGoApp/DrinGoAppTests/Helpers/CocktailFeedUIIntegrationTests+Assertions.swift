@@ -8,7 +8,7 @@ import DrinGoFeediOS
 
 extension CocktailFeedUIIntegrationTests {
     
-    func assertThat(_ sut: CocktailFeedViewController, isRendering feed: [CocktailItem], file: StaticString = #file, line: UInt = #line) {
+    func assertThat(_ sut: ListViewController, isRendering feed: [CocktailItem], file: StaticString = #file, line: UInt = #line) {
         sut.view.enforceLayoutCycle()
 
         guard sut.numberOfRenderedFeedImageViews() == feed.count else {
@@ -22,7 +22,7 @@ extension CocktailFeedUIIntegrationTests {
         executeRunLoopToCleanUpReferences()
     }
     
-    func assertThat(_ sut: CocktailFeedViewController, hasViewConfiguredFor image: CocktailItem, at index: Int, file: StaticString = #file, line: UInt = #line) {
+    func assertThat(_ sut: ListViewController, hasViewConfiguredFor image: CocktailItem, at index: Int, file: StaticString = #file, line: UInt = #line) {
         let view = sut.coktailFeedView(at: index)
         
         guard let cell = view as? CocktailFeedCell else {

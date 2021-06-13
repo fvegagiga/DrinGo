@@ -35,7 +35,7 @@
 		C637318E264E51CB00C1B9FE /* LocalCocktailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C637318D264E51CB00C1B9FE /* LocalCocktailItem.swift */; };
 		C63793632658081F000118E4 /* DrinGoFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6504A45263EACA600F4FCD1 /* DrinGoFeed.framework */; platformFilter = ios; };
 		C63793642658081F000118E4 /* DrinGoFeed.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C6504A45263EACA600F4FCD1 /* DrinGoFeed.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C637936A2658130B000118E4 /* CocktailFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63793692658130B000118E4 /* CocktailFeedViewController.swift */; };
+		C637936A2658130B000118E4 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63793692658130B000118E4 /* ListViewController.swift */; };
 		C637936C265817FF000118E4 /* CocktailFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C637936B265817FF000118E4 /* CocktailFeedCell.swift */; };
 		C637936E26582553000118E4 /* UIView+Shimmering.swift in Sources */ = {isa = PBXBuildFile; fileRef = C637936D26582553000118E4 /* UIView+Shimmering.swift */; };
 		C638A16D2650F5CB001C9371 /* CodableFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C638A16C2650F5CB001C9371 /* CodableFeedStore.swift */; };
@@ -179,7 +179,7 @@
 		C63673E8266B5F4000C669C9 /* CoctailIngredientsMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoctailIngredientsMapper.swift; sourceTree = "<group>"; };
 		C63673EB266B682B00C669C9 /* CocktailIngredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailIngredient.swift; sourceTree = "<group>"; };
 		C637318D264E51CB00C1B9FE /* LocalCocktailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCocktailItem.swift; sourceTree = "<group>"; };
-		C63793692658130B000118E4 /* CocktailFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailFeedViewController.swift; sourceTree = "<group>"; };
+		C63793692658130B000118E4 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		C637936B265817FF000118E4 /* CocktailFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailFeedCell.swift; sourceTree = "<group>"; };
 		C637936D26582553000118E4 /* UIView+Shimmering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shimmering.swift"; sourceTree = "<group>"; };
 		C638A16C2650F5CB001C9371 /* CodableFeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableFeedStore.swift; sourceTree = "<group>"; };
@@ -603,7 +603,7 @@
 		C6719FB02658D8FE00ACDF8A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C63793692658130B000118E4 /* CocktailFeedViewController.swift */,
+				C63793692658130B000118E4 /* ListViewController.swift */,
 				C6719FBF2658DEC300ACDF8A /* CocktailFeedCellController.swift */,
 			);
 			path = Controllers;
@@ -1055,7 +1055,7 @@
 				C6719FD62659626600ACDF8A /* UITableView+Dequeueing.swift in Sources */,
 				C6719FC02658DEC300ACDF8A /* CocktailFeedCellController.swift in Sources */,
 				C6719FD8265962AD00ACDF8A /* UIImageView+Animations.swift in Sources */,
-				C637936A2658130B000118E4 /* CocktailFeedViewController.swift in Sources */,
+				C637936A2658130B000118E4 /* ListViewController.swift in Sources */,
 				C637936C265817FF000118E4 /* CocktailFeedCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

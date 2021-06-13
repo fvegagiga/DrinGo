@@ -13,7 +13,7 @@ public final class CocktailUIComposer {
     private typealias CocktailPresentationAdapter = LoadResourcePresentationAdapter<[CocktailItem], FeedViewAdapter>
     
     public static func feedComposedWith(feedLoader: @escaping () -> AnyPublisher<[CocktailItem], Error>,
-                                        imageLoader: @escaping (URL) -> CocktailImageDataLoader.Publisher) -> CocktailFeedViewController {
+                                        imageLoader: @escaping (URL) -> CocktailImageDataLoader.Publisher) -> ListViewController {
         
         let presentationAdapter = CocktailPresentationAdapter(loader: { feedLoader().dispatchOnMainQueue() })
         let cocktailFeedController = makeWith(delegate: presentationAdapter, title: CocktailFeedPresenter.title)
@@ -29,10 +29,10 @@ public final class CocktailUIComposer {
         return cocktailFeedController
     }
 
-    private static func makeWith(delegate: FeedViewControllerDelegate, title: String) -> CocktailFeedViewController {
-        let bundle = Bundle(for: CocktailFeedViewController.self)
+    private static func makeWith(delegate: FeedViewControllerDelegate, title: String) -> ListViewController {
+        let bundle = Bundle(for: ListViewController.self)
         let storyboard = UIStoryboard(name: "CocktailFeed", bundle: bundle)
-        let cocktailFeedController = storyboard.instantiateInitialViewController() as! CocktailFeedViewController
+        let cocktailFeedController = storyboard.instantiateInitialViewController() as! ListViewController
         cocktailFeedController.delegate = delegate
         cocktailFeedController.title = title
         return cocktailFeedController

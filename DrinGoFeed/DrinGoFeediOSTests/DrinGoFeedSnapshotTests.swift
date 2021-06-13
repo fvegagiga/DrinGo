@@ -47,10 +47,10 @@ class DrinGoFeedSnapshotTests: XCTestCase {
     
     // MARK: - Helpers
 
-    private func makeSUT() -> CocktailFeedViewController {
-        let bundle = Bundle(for: CocktailFeedViewController.self)
+    private func makeSUT() -> ListViewController {
+        let bundle = Bundle(for: ListViewController.self)
         let storyboard = UIStoryboard(name: "CocktailFeed", bundle: bundle)
-        let controller = storyboard.instantiateInitialViewController() as! CocktailFeedViewController
+        let controller = storyboard.instantiateInitialViewController() as! ListViewController
         controller.loadViewIfNeeded()
         controller.tableView.showsVerticalScrollIndicator = false
         controller.tableView.showsHorizontalScrollIndicator = false
@@ -76,7 +76,7 @@ class DrinGoFeedSnapshotTests: XCTestCase {
     }
 }
 
-private extension CocktailFeedViewController {
+private extension ListViewController {
     func display(_ stubs: [ImageStub]) {
         let cells: [CocktailFeedCellController] = stubs.map { stub in
             let cellController = CocktailFeedCellController(viewModel: stub.viewModel, delegate: stub)

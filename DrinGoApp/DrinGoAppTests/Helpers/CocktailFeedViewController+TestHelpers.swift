@@ -5,7 +5,7 @@
 import UIKit
 import DrinGoFeediOS
 
-extension CocktailFeedViewController {
+extension ListViewController {
     @discardableResult
     func simulateFeedImageViewVisible(at index: Int) -> CocktailFeedCell? {
         return coktailFeedView(at: index) as? CocktailFeedCell

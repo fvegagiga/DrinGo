@@ -7,12 +7,12 @@ import DrinGoFeed
 import DrinGoFeediOS
 
 final class FeedViewAdapter: ResourceView {
-    private weak var controller: CocktailFeedViewController?
+    private weak var controller: ListViewController?
     private let imageLoader: (URL) -> CocktailImageDataLoader.Publisher
 
     private typealias ImageDataPresentationAdapter = LoadResourcePresentationAdapter<Data, WeakRefVirtualProxy<CocktailFeedCellController>>
     
-    init(controller: CocktailFeedViewController, imageLoader: @escaping (URL) -> CocktailImageDataLoader.Publisher) {
+    init(controller: ListViewController, imageLoader: @escaping (URL) -> CocktailImageDataLoader.Publisher) {
         self.controller = controller
         self.imageLoader = imageLoader
     }
