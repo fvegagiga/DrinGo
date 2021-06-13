@@ -16,7 +16,8 @@ public final class CocktailUIComposer {
                                         imageLoader: @escaping (URL) -> CocktailImageDataLoader.Publisher) -> ListViewController {
         
         let presentationAdapter = CocktailPresentationAdapter(loader: { feedLoader().dispatchOnMainQueue() })
-        let cocktailFeedController = makeWith(delegate: presentationAdapter, title: CocktailFeedPresenter.title)
+        let cocktailFeedController = makeWith(title: CocktailFeedPresenter.title)
+        cocktailFeedController.onRefresh = presentationAdapter.loadResource
         
         presentationAdapter.presenter = LoadResoucePresenter(
             resourceView: FeedViewAdapter(
@@ -29,11 +30,10 @@ public final class CocktailUIComposer {
         return cocktailFeedController
     }
 
-    private static func makeWith(delegate: FeedViewControllerDelegate, title: String) -> ListViewController {
+    private static func makeWith(title: String) -> ListViewController {
         let bundle = Bundle(for: ListViewController.self)
         let storyboard = UIStoryboard(name: "CocktailFeed", bundle: bundle)
         let cocktailFeedController = storyboard.instantiateInitialViewController() as! ListViewController
-        cocktailFeedController.delegate = delegate
         cocktailFeedController.title = title
         return cocktailFeedController
     }
