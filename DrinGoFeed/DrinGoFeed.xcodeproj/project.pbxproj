@@ -315,10 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				C637936D26582553000118E4 /* UIView+Shimmering.swift */,
-				C6719FD52659626600ACDF8A /* UITableView+Dequeueing.swift */,
 				C6719FD7265962AD00ACDF8A /* UIImageView+Animations.swift */,
-				C61FA0D4265A5A800026D999 /* UIRefreshControl+Helpers.swift */,
-				C6DA3E0A26667F0F00A3A325 /* UITableView+HeaderSizing.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -591,6 +588,42 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		C655D99226765D6C0012A19E /* Shared UI */ = {
+			isa = PBXGroup;
+			children = (
+				C655D99326765D910012A19E /* Controllers */,
+				C655D99426765DB40012A19E /* Views */,
+			);
+			path = "Shared UI";
+			sourceTree = "<group>";
+		};
+		C655D99326765D910012A19E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C63793692658130B000118E4 /* ListViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		C655D99426765DB40012A19E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C655D99526765DCF0012A19E /* Helpers */,
+				C61FA0CF265A569D0026D999 /* ErrorView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C655D99526765DCF0012A19E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C61FA0D4265A5A800026D999 /* UIRefreshControl+Helpers.swift */,
+				C6719FD52659626600ACDF8A /* UITableView+Dequeueing.swift */,
+				C6DA3E0A26667F0F00A3A325 /* UITableView+HeaderSizing.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		C6719FAF2658D8F200ACDF8A /* Cocktail Feed UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -603,7 +636,6 @@
 		C6719FB02658D8FE00ACDF8A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C63793692658130B000118E4 /* ListViewController.swift */,
 				C6719FBF2658DEC300ACDF8A /* CocktailFeedCellController.swift */,
 			);
 			path = Controllers;
@@ -614,7 +646,6 @@
 			children = (
 				C61FA0D1265A59E60026D999 /* Helpers */,
 				C637936B265817FF000118E4 /* CocktailFeedCell.swift */,
-				C61FA0CF265A569D0026D999 /* ErrorView.swift */,
 				C6719FD1265951EE00ACDF8A /* CocktailFeed.storyboard */,
 				C6719FD32659529D00ACDF8A /* CocktailFeed.xcassets */,
 			);
@@ -625,6 +656,7 @@
 			isa = PBXGroup;
 			children = (
 				C6835BC726578FF0000EFEF8 /* Info.plist */,
+				C655D99226765D6C0012A19E /* Shared UI */,
 				C6719FAF2658D8F200ACDF8A /* Cocktail Feed UI */,
 			);
 			path = DrinGoFeediOS;
