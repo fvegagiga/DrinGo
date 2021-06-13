@@ -77,6 +77,12 @@
 		C655D9B2267664A40012A19E /* FEED_WITH_CONTENT_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = C655D9AE267664A40012A19E /* FEED_WITH_CONTENT_dark.png */; };
 		C655D9B3267664A40012A19E /* FEED_WITH_CONTENT_light.png in Resources */ = {isa = PBXBuildFile; fileRef = C655D9AF267664A40012A19E /* FEED_WITH_CONTENT_light.png */; };
 		C655D9B4267664A40012A19E /* FEED_WITH_FAILED_IMAGE_LOADING_light.png in Resources */ = {isa = PBXBuildFile; fileRef = C655D9B0267664A40012A19E /* FEED_WITH_FAILED_IMAGE_LOADING_light.png */; };
+		C6700B6A2676667800320C9E /* IngredientsSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6700B692676667800320C9E /* IngredientsSnapshotTests.swift */; };
+		C6700B6E2676683100320C9E /* IngredientCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6700B6D2676683100320C9E /* IngredientCellController.swift */; };
+		C6700B732676694D00320C9E /* Ingredients.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6700B722676694D00320C9E /* Ingredients.storyboard */; };
+		C6700B7726766A0F00320C9E /* INGREDIENTS_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = C6700B7526766A0F00320C9E /* INGREDIENTS_dark.png */; };
+		C6700B7826766A0F00320C9E /* INGREDIENTS_light.png in Resources */ = {isa = PBXBuildFile; fileRef = C6700B7626766A0F00320C9E /* INGREDIENTS_light.png */; };
+		C6700B7A26766AD000320C9E /* IngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6700B7926766AD000320C9E /* IngredientCell.swift */; };
 		C6719FC02658DEC300ACDF8A /* CocktailFeedCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6719FBF2658DEC300ACDF8A /* CocktailFeedCellController.swift */; };
 		C6719FD2265951EE00ACDF8A /* CocktailFeed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6719FD1265951EE00ACDF8A /* CocktailFeed.storyboard */; };
 		C6719FD42659529D00ACDF8A /* CocktailFeed.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6719FD32659529D00ACDF8A /* CocktailFeed.xcassets */; };
@@ -232,6 +238,12 @@
 		C655D9AE267664A40012A19E /* FEED_WITH_CONTENT_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FEED_WITH_CONTENT_dark.png; sourceTree = "<group>"; };
 		C655D9AF267664A40012A19E /* FEED_WITH_CONTENT_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FEED_WITH_CONTENT_light.png; sourceTree = "<group>"; };
 		C655D9B0267664A40012A19E /* FEED_WITH_FAILED_IMAGE_LOADING_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FEED_WITH_FAILED_IMAGE_LOADING_light.png; sourceTree = "<group>"; };
+		C6700B692676667800320C9E /* IngredientsSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsSnapshotTests.swift; sourceTree = "<group>"; };
+		C6700B6D2676683100320C9E /* IngredientCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientCellController.swift; sourceTree = "<group>"; };
+		C6700B722676694D00320C9E /* Ingredients.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Ingredients.storyboard; path = "DrinGoFeediOS/Ingredients UI/views/Ingredients.storyboard"; sourceTree = SOURCE_ROOT; };
+		C6700B7526766A0F00320C9E /* INGREDIENTS_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = INGREDIENTS_dark.png; sourceTree = "<group>"; };
+		C6700B7626766A0F00320C9E /* INGREDIENTS_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = INGREDIENTS_light.png; sourceTree = "<group>"; };
+		C6700B7926766AD000320C9E /* IngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientCell.swift; sourceTree = "<group>"; };
 		C6719FB32658D93500ACDF8A /* CocktailImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailImageDataLoader.swift; sourceTree = "<group>"; };
 		C6719FBF2658DEC300ACDF8A /* CocktailFeedCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailFeedCellController.swift; sourceTree = "<group>"; };
 		C6719FD1265951EE00ACDF8A /* CocktailFeed.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CocktailFeed.storyboard; sourceTree = "<group>"; };
@@ -682,6 +694,50 @@
 			path = snapshots;
 			sourceTree = "<group>";
 		};
+		C6700B682676664800320C9E /* Ingredients UI */ = {
+			isa = PBXGroup;
+			children = (
+				C6700B7426766A0F00320C9E /* snapshots */,
+				C6700B692676667800320C9E /* IngredientsSnapshotTests.swift */,
+			);
+			path = "Ingredients UI";
+			sourceTree = "<group>";
+		};
+		C6700B6B2676680300320C9E /* Ingredients UI */ = {
+			isa = PBXGroup;
+			children = (
+				C6700B6C2676681900320C9E /* Controllers */,
+				C6700B6F267668D000320C9E /* views */,
+			);
+			path = "Ingredients UI";
+			sourceTree = "<group>";
+		};
+		C6700B6C2676681900320C9E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C6700B6D2676683100320C9E /* IngredientCellController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		C6700B6F267668D000320C9E /* views */ = {
+			isa = PBXGroup;
+			children = (
+				C6700B722676694D00320C9E /* Ingredients.storyboard */,
+				C6700B7926766AD000320C9E /* IngredientCell.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		C6700B7426766A0F00320C9E /* snapshots */ = {
+			isa = PBXGroup;
+			children = (
+				C6700B7526766A0F00320C9E /* INGREDIENTS_dark.png */,
+				C6700B7626766A0F00320C9E /* INGREDIENTS_light.png */,
+			);
+			path = snapshots;
+			sourceTree = "<group>";
+		};
 		C6719FAF2658D8F200ACDF8A /* Cocktail Feed UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -716,6 +772,7 @@
 				C6835BC726578FF0000EFEF8 /* Info.plist */,
 				C655D99226765D6C0012A19E /* Shared UI */,
 				C6719FAF2658D8F200ACDF8A /* Cocktail Feed UI */,
+				C6700B6B2676680300320C9E /* Ingredients UI */,
 			);
 			path = DrinGoFeediOS;
 			sourceTree = "<group>";
@@ -758,6 +815,7 @@
 				C6DA3E0726667DC200A3A325 /* Helpers */,
 				C655D99626765E3D0012A19E /* Shared UI */,
 				C655D99726765E4F0012A19E /* Cocktail Feed UI */,
+				C6700B682676664800320C9E /* Ingredients UI */,
 				C6DA3E002666789300A3A325 /* Info.plist */,
 			);
 			path = DrinGoFeediOSTests;
@@ -1027,6 +1085,7 @@
 			files = (
 				C6719FD2265951EE00ACDF8A /* CocktailFeed.storyboard in Resources */,
 				C6719FD42659529D00ACDF8A /* CocktailFeed.xcassets in Resources */,
+				C6700B732676694D00320C9E /* Ingredients.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1041,7 +1100,9 @@
 				C655D9B4267664A40012A19E /* FEED_WITH_FAILED_IMAGE_LOADING_light.png in Resources */,
 				C655D9A126765E940012A19E /* LIST_WITH_ERROR_MESSAGE_dark.png in Resources */,
 				C655D9A726765E940012A19E /* LIST_WITH_ERROR_MESSAGE_light.png in Resources */,
+				C6700B7826766A0F00320C9E /* INGREDIENTS_light.png in Resources */,
 				C655D9B1267664A40012A19E /* FEED_WITH_FAILED_IMAGE_LOADING_dark.png in Resources */,
+				C6700B7726766A0F00320C9E /* INGREDIENTS_dark.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1153,6 +1214,8 @@
 				C61FA0D5265A5A800026D999 /* UIRefreshControl+Helpers.swift in Sources */,
 				C6719FD62659626600ACDF8A /* UITableView+Dequeueing.swift in Sources */,
 				C6719FC02658DEC300ACDF8A /* CocktailFeedCellController.swift in Sources */,
+				C6700B7A26766AD000320C9E /* IngredientCell.swift in Sources */,
+				C6700B6E2676683100320C9E /* IngredientCellController.swift in Sources */,
 				C6719FD8265962AD00ACDF8A /* UIImageView+Animations.swift in Sources */,
 				C637936A2658130B000118E4 /* ListViewController.swift in Sources */,
 				C637936C265817FF000118E4 /* CocktailFeedCell.swift in Sources */,
@@ -1165,6 +1228,7 @@
 			files = (
 				C6DA3DFF2666789300A3A325 /* DrinGoFeedSnapshotTests.swift in Sources */,
 				C6DA3E0D266685BD00A3A325 /* UIViewController+Snapshot.swift in Sources */,
+				C6700B6A2676667800320C9E /* IngredientsSnapshotTests.swift in Sources */,
 				C655D9AA267661AB0012A19E /* ListSnapshotTests.swift in Sources */,
 				C6DA3E0F2666865400A3A325 /* XCTestCase+Snapshot.swift in Sources */,
 				C6DA3E0926667DD700A3A325 /* UIImage+TestHelpers.swift in Sources */,
