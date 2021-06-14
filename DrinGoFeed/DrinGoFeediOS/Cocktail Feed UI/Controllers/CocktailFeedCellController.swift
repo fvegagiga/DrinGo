@@ -10,7 +10,7 @@ public protocol FeedImageCellControllerDelegate {
     func didCancelImageRequest()
 }
 
-public final class CocktailFeedCellController: CellController, ResourceView, ResourceLoadingView, ResourceErrorView {
+public final class CocktailFeedCellController: NSObject {
     
     public typealias ResourceViewModel = UIImage
     
@@ -22,8 +22,15 @@ public final class CocktailFeedCellController: CellController, ResourceView, Res
         self.viewModel = viewModel
         self.delegate = delegate
     }
+}
+
+extension CocktailFeedCellController: CellController {
     
-    public func view(in tableView: UITableView) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        1
+    }
+    
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         cell = tableView.dequeueReusableCell()
         cell?.titleLabel.text = viewModel.title
         cell?.descriptionLabel.text = viewModel.description
@@ -32,15 +39,29 @@ public final class CocktailFeedCellController: CellController, ResourceView, Res
         return cell!
     }
     
-    public func preload() {
+    public func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cancelLoad()
+    }
+    
+    public func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         delegate.didRequestImage()
     }
+    
+    public func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
+        cancelLoad()
+    }
         
-    public func cancelLoad() {
+    private func cancelLoad() {
         releaseCellForReuse()
         delegate.didCancelImageRequest()
     }
     
+    private func releaseCellForReuse() {
+        cell = nil
+    }
+}
+
+extension CocktailFeedCellController: ResourceView, ResourceLoadingView, ResourceErrorView {
     public func display(_ viewModel: UIImage) {
         cell?.cocktailImageView.setImageAnimated(viewModel)
     }
@@ -51,9 +72,5 @@ public final class CocktailFeedCellController: CellController, ResourceView, Res
     
     public func display(_ viewModel: ResourceErrorViewModel) {
         cell?.cocktailImageRetryButton.isHidden = viewModel.message == nil
-    }
-    
-    private func releaseCellForReuse() {
-        cell = nil
     }
 }
