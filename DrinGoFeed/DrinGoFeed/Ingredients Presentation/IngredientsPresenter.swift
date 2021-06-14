@@ -4,7 +4,7 @@
 
 import Foundation
 
-public struct IngrediensViewModel {
+public struct IngredientsViewModel {
     public let ingredients: [IngredientViewModel]
 }
 
@@ -27,8 +27,8 @@ public final class IngredientsPresenter {
             comment: "Title for the ingredients view")
     }
     
-    public static func map(_ ingredients: [CocktailIngredient]) -> IngrediensViewModel {
-        IngrediensViewModel(ingredients: ingredients.map { ingredient in
+    public static func map(_ ingredients: [CocktailIngredient]) -> IngredientsViewModel {
+        IngredientsViewModel(ingredients: ingredients.map { ingredient in
             IngredientViewModel(ingredient: ingredient.name, measure: ingredient.measure)
         })
     }
