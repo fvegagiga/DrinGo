@@ -15,6 +15,7 @@ class IngredientsSnapshotTests: XCTestCase {
 
         assert(snapshot: sut.snapshot(for: .iPhone8(style: .light)), named: "INGREDIENTS_light")
         assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark)), named: "INGREDIENTS_dark")
+        assert(snapshot: sut.snapshot(for: .iPhone8(style: .light, contentSize: .extraExtraExtraLarge)), named: "INGREDIENTS_light_extraExtraExtraLarge")
     }
     
     // MARK: - Helpers
