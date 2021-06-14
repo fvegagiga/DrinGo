@@ -7,6 +7,10 @@ import XCTest
 import DrinGoFeed
 
 extension CocktailFeedUIIntegrationTests {
+
+    private class DummyView: ResourceView {
+        func display(_ viewModel: Any) {}
+    }
     
     var loadError: String {
         LoadResoucePresenter<Any, DummyView>.loadError
@@ -16,7 +20,7 @@ extension CocktailFeedUIIntegrationTests {
         CocktailFeedPresenter.title
     }
     
-    private class DummyView: ResourceView {
-        func display(_ viewModel: Any) {}
+    var ingredientsTitle: String {
+        IngredientsPresenter.title
     }
 }

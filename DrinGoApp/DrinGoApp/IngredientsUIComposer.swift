@@ -17,7 +17,7 @@ public final class IngredientsUIComposer {
     ) -> ListViewController {
         
         let presentationAdapter = CocktailPresentationAdapter(loader: ingredientsLoader)
-        let cocktailFeedController = makeWith(title: CocktailFeedPresenter.title)
+        let cocktailFeedController = makeWith(title: IngredientsPresenter.title)
         cocktailFeedController.onRefresh = presentationAdapter.loadResource
         
         presentationAdapter.presenter = LoadResoucePresenter(

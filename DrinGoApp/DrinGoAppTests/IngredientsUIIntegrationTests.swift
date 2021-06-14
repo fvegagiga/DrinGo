@@ -10,12 +10,12 @@ import DrinGoFeediOS
 
 class IngredientsUIIntegrationTests: CocktailFeedUIIntegrationTests {
 
-    override func test_feedView_hasTitle() {
+    func test_ingredientsView_hasTitle() {
         let (sut, _) = makeSUT()
         
         sut.loadViewIfNeeded()
         
-        XCTAssertEqual(sut.title, cocktailListTitle)
+        XCTAssertEqual(sut.title, ingredientsTitle)
     }
     
     override func test_loadFeedActions_requestFeedFromLoader() {
