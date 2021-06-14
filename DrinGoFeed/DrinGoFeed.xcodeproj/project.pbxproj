@@ -726,8 +726,8 @@
 		C6700B6F267668D000320C9E /* views */ = {
 			isa = PBXGroup;
 			children = (
-				C6700B722676694D00320C9E /* Ingredients.storyboard */,
 				C6700B7926766AD000320C9E /* IngredientCell.swift */,
+				C6700B722676694D00320C9E /* Ingredients.storyboard */,
 			);
 			path = views;
 			sourceTree = "<group>";
