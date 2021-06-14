@@ -8,7 +8,7 @@ public struct IngredientsViewModel {
     public let ingredients: [IngredientViewModel]
 }
 
-public struct IngredientViewModel: Equatable {
+public struct IngredientViewModel: Hashable {
     public let ingredient: String
     public let measure: String
     

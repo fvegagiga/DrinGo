@@ -10,32 +10,43 @@ import DrinGoFeediOS
 public final class IngredientsUIComposer {
     private init() {}
     
-    private typealias CocktailPresentationAdapter = LoadResourcePresentationAdapter<[CocktailItem], CocktailFeedViewAdapter>
+    private typealias IngredientsPresentationAdapter = LoadResourcePresentationAdapter<[CocktailIngredient], IngredientsViewAdapter>
     
     public static func ingredientsComposedWith(
-        ingredientsLoader: @escaping () -> AnyPublisher<[CocktailItem], Error>
+        ingredientsLoader: @escaping () -> AnyPublisher<[CocktailIngredient], Error>
     ) -> ListViewController {
+        let presentationAdapter = IngredientsPresentationAdapter(loader: ingredientsLoader)
         
-        let presentationAdapter = CocktailPresentationAdapter(loader: ingredientsLoader)
-        let cocktailFeedController = makeWith(title: IngredientsPresenter.title)
-        cocktailFeedController.onRefresh = presentationAdapter.loadResource
+        let ingredientsController = makeIngredientsViewController(title: IngredientsPresenter.title)
+        ingredientsController.onRefresh = presentationAdapter.loadResource
         
         presentationAdapter.presenter = LoadResoucePresenter(
-            resourceView: CocktailFeedViewAdapter(
-                controller: cocktailFeedController,
-                imageLoader: { _ in Empty<Data, Error>().eraseToAnyPublisher() }),
-            loadingView: WeakRefVirtualProxy(cocktailFeedController),
-            errorView: WeakRefVirtualProxy(cocktailFeedController),
-            mapper: CocktailFeedPresenter.map)
-
-        return cocktailFeedController
+            resourceView: IngredientsViewAdapter(controller: ingredientsController),
+            loadingView: WeakRefVirtualProxy(ingredientsController),
+            errorView: WeakRefVirtualProxy(ingredientsController),
+            mapper: IngredientsPresenter.map)
+        return ingredientsController
     }
 
-    private static func makeWith(title: String) -> ListViewController {
+    private static func makeIngredientsViewController(title: String) -> ListViewController {
         let bundle = Bundle(for: ListViewController.self)
-        let storyboard = UIStoryboard(name: "CocktailFeed", bundle: bundle)
-        let cocktailFeedController = storyboard.instantiateInitialViewController() as! ListViewController
-        cocktailFeedController.title = title
-        return cocktailFeedController
+        let storyboard = UIStoryboard(name: "Ingredients", bundle: bundle)
+        let controller = storyboard.instantiateInitialViewController() as! ListViewController
+        controller.title = title
+        return controller
+    }
+}
+
+final class IngredientsViewAdapter: ResourceView {
+    private weak var controller: ListViewController?
+    
+    init(controller: ListViewController) {
+        self.controller = controller
+    }
+    
+    func display(_ viewModel: IngredientsViewModel) {
+        controller?.display(viewModel.ingredients.map { viewModel in
+            CellController(id: viewModel, IngredientCellController(model: viewModel))
+        })
     }
 }

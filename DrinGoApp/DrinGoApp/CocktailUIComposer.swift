@@ -16,18 +16,17 @@ public final class CocktailUIComposer {
         feedLoader: @escaping () -> AnyPublisher<[CocktailItem], Error>,
         imageLoader: @escaping (URL) -> CocktailImageDataLoader.Publisher
     ) -> ListViewController {
-        
         let presentationAdapter = CocktailPresentationAdapter(loader: feedLoader)
+        
         let cocktailFeedController = makeWith(title: CocktailFeedPresenter.title)
         cocktailFeedController.onRefresh = presentationAdapter.loadResource
         
-        presentationAdapter.presenter = LoadResoucePresenter(
-            resourceView: CocktailFeedViewAdapter(
-                controller: cocktailFeedController,
-                imageLoader: imageLoader),
-            loadingView: WeakRefVirtualProxy(cocktailFeedController),
-            errorView: WeakRefVirtualProxy(cocktailFeedController),
-            mapper: CocktailFeedPresenter.map)
+        presentationAdapter.presenter = LoadResoucePresenter(resourceView: CocktailFeedViewAdapter(
+                                                                controller: cocktailFeedController,
+                                                                imageLoader: imageLoader),
+                                                             loadingView: WeakRefVirtualProxy(cocktailFeedController),
+                                                             errorView: WeakRefVirtualProxy(cocktailFeedController),
+                                                             mapper: CocktailFeedPresenter.map)
 
         return cocktailFeedController
     }

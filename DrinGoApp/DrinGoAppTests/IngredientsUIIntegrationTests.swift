@@ -50,50 +50,47 @@ class IngredientsUIIntegrationTests: CocktailFeedUIIntegrationTests {
         XCTAssertFalse(sut.isShowingLoadingIndicator, "Expected no loading indicator once user initiated loading completes with error")
     }
     
-    override func test_loadFeedCompletion_rendersSuccessfullyLoadedFeed() {
-        let image0 = makeImage(id: 0, title: "a title", description: "a description")
-        let image1 = makeImage(id: 1, title: "another title", description: "another description")
-        let image2 = makeImage(id: 2, title: "other title", description: "other description")
-        let image3 = makeImage(id: 3, title: "some title", description: "some description")
+    func test_loadIngredientsCompletion_rendersSuccessfullyLoadedIngredients() {
+        let ingredient0 = makeIngredient(id: 0, name: "an ingredient", measure: "a measure")
+        let ingredient1 = makeIngredient(id: 1, name: "another ingredient", measure: "another measure")
         let (sut, loader) = makeSUT()
 
         sut.loadViewIfNeeded()
-        assertThat(sut, isRendering: [])
+        assertThat(sut, isRendering: [CocktailIngredient]())
 
-        loader.completeIngredientsLoading(with: [image0], at: 0)
-        assertThat(sut, isRendering: [image0])
+        loader.completeIngredientsLoading(with: [ingredient0], at: 0)
+        assertThat(sut, isRendering: [ingredient0])
 
         sut.simulateUserInitiatedReload()
-        loader.completeIngredientsLoading(with: [image0, image1, image2, image3], at: 1)
-        assertThat(sut, isRendering: [image0, image1, image2, image3])
+        loader.completeIngredientsLoading(with: [ingredient0, ingredient1], at: 1)
+        assertThat(sut, isRendering: [ingredient0, ingredient1])
     }
     
-    override func test_loadFeedCompletion_rendersSuccessfullyLoadedEmptyFeedAfterNonEmptyFeed() {
-        let image0 = makeImage(id: 0)
-        let image1 = makeImage(id: 1)
+    func test_loadIngredientsCompletion_rendersSuccessfullyLoadedEmptyIngredientsAfterNonEmptyIngredients() {
+        let ingredient = makeIngredient()
         let (sut, loader) = makeSUT()
         
         sut.loadViewIfNeeded()
-        loader.completeIngredientsLoading(with: [image0, image1], at: 0)
-        assertThat(sut, isRendering: [image0, image1])
+        loader.completeIngredientsLoading(with: [ingredient], at: 0)
+        assertThat(sut, isRendering: [ingredient])
 
         sut.simulateUserInitiatedReload()
         loader.completeIngredientsLoading(with: [], at: 1)
-        assertThat(sut, isRendering: [])
+        assertThat(sut, isRendering: [CocktailIngredient]())
     }
 
 
-    override func test_loadFeedCompletion_doesNotAlterCurrentRenderingStateOnError() {
-        let image0 = makeImage()
+    func test_loadIngredientCompletion_doesNotAlterCurrentRenderingStateOnError() {
+        let ingredient = makeIngredient()
         let (sut, loader) = makeSUT()
         
         sut.loadViewIfNeeded()
-        loader.completeIngredientsLoading(with: [image0], at: 0)
-        assertThat(sut, isRendering: [image0])
+        loader.completeIngredientsLoading(with: [ingredient], at: 0)
+        assertThat(sut, isRendering: [ingredient])
         
         sut.simulateUserInitiatedReload()
         loader.completeIngredientsLoadingWithError(at: 1)
-        assertThat(sut, isRendering: [image0])
+        assertThat(sut, isRendering: [ingredient])
     }
     
     override func test_loadFeedCompletion_dispatchesFromBackgroundToMainThread() {
@@ -144,26 +141,35 @@ class IngredientsUIIntegrationTests: CocktailFeedUIIntegrationTests {
         return (sut, loader)
     }
     
-    private func makeImage(id: Int = 0, title: String = "a title", description: String = "a description", imageURL: URL = URL(string: "http://any-url.com")!) -> CocktailItem {
-        return CocktailItem(id: id, name: title, description: description, imageURL: imageURL, ingredients: ["Ing1", "Ingr2"], quantity: ["Qt1", "Qt2"])
+    private func makeIngredient(id: Int = 0, name: String = "any ingredient", measure: String = "any measure") -> CocktailIngredient {
+        return CocktailIngredient(name: name, measure: measure)
+    }
+    
+    func assertThat(_ sut: ListViewController, isRendering ingredients: [CocktailIngredient], file: StaticString = #file, line: UInt = #line) {
+        XCTAssertEqual(sut.numberOfRenderedIngredients(), ingredients.count, "ingredients count", file: file, line: line)
+        
+        ingredients.enumerated().forEach { index, ingredient in
+            XCTAssertEqual(sut.ingredientName(at: index), ingredient.name, "ingredient name at \(index)", file: file, line: line)
+            XCTAssertEqual(sut.ingredientMeasure(at: index), ingredient.measure, "ingredient name at \(index)", file: file, line: line)
+        }
     }
 
     private class LoaderSpy {
         
-        private var requests = [PassthroughSubject<[CocktailItem], Error>]()
+        private var requests = [PassthroughSubject<[CocktailIngredient], Error>]()
         
         var loadIngredientsCallCount: Int {
             return requests.count
         }
         
-        func loadPublisher() -> AnyPublisher<[CocktailItem], Error> {
-            let publisher = PassthroughSubject<[CocktailItem], Error>()
+        func loadPublisher() -> AnyPublisher<[CocktailIngredient], Error> {
+            let publisher = PassthroughSubject<[CocktailIngredient], Error>()
             requests.append(publisher)
             return publisher.eraseToAnyPublisher()
         }
         
-        func completeIngredientsLoading(with feed: [CocktailItem] = [], at index: Int = 0) {
-            requests[index].send(feed)
+        func completeIngredientsLoading(with ingredients: [CocktailIngredient] = [], at index: Int = 0) {
+            requests[index].send(ingredients)
         }
         
         func completeIngredientsLoadingWithError(at index: Int = 0) {
