@@ -31,7 +31,7 @@ class IngredientsSnapshotTests: XCTestCase {
     }
     
     private func ingredients() -> [CellController] {
-        ingredientsControllers().map { CellController($0) }
+        ingredientsControllers().map { CellController(id: UUID(), $0) }
     }
     
     private func ingredientsControllers() -> [IngredientCellController] {

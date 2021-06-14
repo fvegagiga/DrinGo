@@ -6,6 +6,12 @@ import UIKit
 import DrinGoFeediOS
 
 extension ListViewController {
+    override public func loadViewIfNeeded() {
+        super.loadViewIfNeeded()
+        
+        tableView.frame = CGRect(x: 0, y: 0, width: 1, height: 1)
+    }
+    
     @discardableResult
     func simulateFeedImageViewVisible(at index: Int) -> CocktailFeedCell? {
         return coktailFeedView(at: index) as? CocktailFeedCell
@@ -57,7 +63,7 @@ extension ListViewController {
     }
     
     func numberOfRenderedFeedImageViews() -> Int {
-        return tableView.numberOfRows(inSection: feedImagesSection)
+        tableView.numberOfSections == 0 ? 0 : tableView.numberOfRows(inSection: feedImagesSection)
     }
     
     func coktailFeedView(at row: Int) -> UITableViewCell? {

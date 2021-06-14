@@ -68,8 +68,8 @@ class CocktailFeedUIIntegrationTests: XCTestCase {
     }
     
     func test_loadFeedCompletion_rendersSuccessfullyLoadedEmptyFeedAfterNonEmptyFeed() {
-        let image0 = makeImage()
-        let image1 = makeImage()
+        let image0 = makeImage(id: 0)
+        let image1 = makeImage(id: 1)
         let (sut, loader) = makeSUT()
         
         sut.loadViewIfNeeded()
@@ -139,8 +139,8 @@ class CocktailFeedUIIntegrationTests: XCTestCase {
     }
 
     func test_feedImageView_cancelsImageLoadingWhenNotVisibleAnymore() {
-        let image0 = makeImage(imageURL: URL(string: "http://url-0.com")!)
-        let image1 = makeImage(imageURL: URL(string: "http://url-1.com")!)
+        let image0 = makeImage(id: 0, imageURL: URL(string: "http://url-0.com")!)
+        let image1 = makeImage(id: 1, imageURL: URL(string: "http://url-1.com")!)
         let (sut, loader) = makeSUT()
         
         sut.loadViewIfNeeded()
@@ -158,7 +158,7 @@ class CocktailFeedUIIntegrationTests: XCTestCase {
         let (sut, loader) = makeSUT()
         
         sut.loadViewIfNeeded()
-        loader.completeFeedLoading(with: [makeImage(), makeImage()])
+        loader.completeFeedLoading(with: [makeImage(id: 0), makeImage(id: 1)])
         
         let view0 = sut.simulateFeedImageViewVisible(at: 0)
         let view1 = sut.simulateFeedImageViewVisible(at: 1)
@@ -183,7 +183,7 @@ class CocktailFeedUIIntegrationTests: XCTestCase {
         let (sut, loader) = makeSUT()
         
         sut.loadViewIfNeeded()
-        loader.completeFeedLoading(with: [makeImage(), makeImage()])
+        loader.completeFeedLoading(with: [makeImage(id: 0), makeImage(id: 1)])
         
         let view0 = sut.simulateFeedImageViewVisible(at: 0)
         let view1 = sut.simulateFeedImageViewVisible(at: 1)
@@ -205,7 +205,7 @@ class CocktailFeedUIIntegrationTests: XCTestCase {
         let (sut, loader) = makeSUT()
         
         sut.loadViewIfNeeded()
-        loader.completeFeedLoading(with: [makeImage(), makeImage()])
+        loader.completeFeedLoading(with: [makeImage(id: 0), makeImage(id: 1)])
         
         let view0 = sut.simulateFeedImageViewVisible(at: 0)
         let view1 = sut.simulateFeedImageViewVisible(at: 1)
