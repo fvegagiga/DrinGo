@@ -34,7 +34,9 @@ extension CocktailFeedCellController: UITableViewDataSource, UITableViewDelegate
         cell = tableView.dequeueReusableCell()
         cell?.titleLabel.text = viewModel.title
         cell?.descriptionLabel.text = viewModel.description
-        cell?.onRetry = delegate.didRequestImage
+        cell?.onRetry = { [weak self] in
+            self?.delegate.didRequestImage()
+        }
         delegate.didRequestImage()
         return cell!
     }
