@@ -34,19 +34,19 @@ class IngredientsUIIntegrationTests: CocktailFeedUIIntegrationTests {
         XCTAssertEqual(loader.loadIngredientsCallCount, 3, "Expected yet another loading request once user initiates another reload")
     }
 
-    override func test_loadingFeedIndicator_isVisibleWhileLoadingFeed() {
+    func test_loadingIngredientsIndicator_isVisibleWhileLoadingIngredients() {
         let (sut, loader) = makeSUT()
         
         sut.loadViewIfNeeded()
         XCTAssertTrue(sut.isShowingLoadingIndicator, "Expected loading indicator once view is loaded")
         
-        loader.completeFeedLoading(at: 0)
+        loader.completeIngredientsLoading(at: 0)
         XCTAssertFalse(sut.isShowingLoadingIndicator, "Expected no loading indicator once loading completes successfully")
         
         sut.simulateUserInitiatedReload()
         XCTAssertTrue(sut.isShowingLoadingIndicator, "Expected loading indicator once user initiates a reload")
         
-        loader.completeFeedLoadingWithError(at: 1)
+        loader.completeIngredientsLoadingWithError(at: 1)
         XCTAssertFalse(sut.isShowingLoadingIndicator, "Expected no loading indicator once user initiated loading completes with error")
     }
     
@@ -60,11 +60,11 @@ class IngredientsUIIntegrationTests: CocktailFeedUIIntegrationTests {
         sut.loadViewIfNeeded()
         assertThat(sut, isRendering: [])
 
-        loader.completeFeedLoading(with: [image0], at: 0)
+        loader.completeIngredientsLoading(with: [image0], at: 0)
         assertThat(sut, isRendering: [image0])
 
         sut.simulateUserInitiatedReload()
-        loader.completeFeedLoading(with: [image0, image1, image2, image3], at: 1)
+        loader.completeIngredientsLoading(with: [image0, image1, image2, image3], at: 1)
         assertThat(sut, isRendering: [image0, image1, image2, image3])
     }
     
@@ -74,11 +74,11 @@ class IngredientsUIIntegrationTests: CocktailFeedUIIntegrationTests {
         let (sut, loader) = makeSUT()
         
         sut.loadViewIfNeeded()
-        loader.completeFeedLoading(with: [image0, image1], at: 0)
+        loader.completeIngredientsLoading(with: [image0, image1], at: 0)
         assertThat(sut, isRendering: [image0, image1])
 
         sut.simulateUserInitiatedReload()
-        loader.completeFeedLoading(with: [], at: 1)
+        loader.completeIngredientsLoading(with: [], at: 1)
         assertThat(sut, isRendering: [])
     }
 
@@ -88,11 +88,11 @@ class IngredientsUIIntegrationTests: CocktailFeedUIIntegrationTests {
         let (sut, loader) = makeSUT()
         
         sut.loadViewIfNeeded()
-        loader.completeFeedLoading(with: [image0], at: 0)
+        loader.completeIngredientsLoading(with: [image0], at: 0)
         assertThat(sut, isRendering: [image0])
         
         sut.simulateUserInitiatedReload()
-        loader.completeFeedLoadingWithError(at: 1)
+        loader.completeIngredientsLoadingWithError(at: 1)
         assertThat(sut, isRendering: [image0])
     }
     
@@ -102,7 +102,7 @@ class IngredientsUIIntegrationTests: CocktailFeedUIIntegrationTests {
 
         let exp = expectation(description: "Wait for background queue")
         DispatchQueue.global().async {
-            loader.completeFeedLoading(at: 0)
+            loader.completeIngredientsLoading(at: 0)
             exp.fulfill()
         }
         wait(for: [exp], timeout: 1.0)
@@ -114,7 +114,7 @@ class IngredientsUIIntegrationTests: CocktailFeedUIIntegrationTests {
         sut.loadViewIfNeeded()
         XCTAssertEqual(sut.errorMessage, nil)
         
-        loader.completeFeedLoadingWithError(at: 0)
+        loader.completeIngredientsLoadingWithError(at: 0)
         XCTAssertEqual(sut.errorMessage, loadError)
         
         sut.simulateUserInitiatedReload()
@@ -127,7 +127,7 @@ class IngredientsUIIntegrationTests: CocktailFeedUIIntegrationTests {
         sut.loadViewIfNeeded()
         XCTAssertEqual(sut.errorMessage, nil)
         
-        loader.completeFeedLoadingWithError(at: 0)
+        loader.completeIngredientsLoadingWithError(at: 0)
         XCTAssertEqual(sut.errorMessage, loadError)
         
         sut.simulateErrorViewTap()
@@ -162,11 +162,11 @@ class IngredientsUIIntegrationTests: CocktailFeedUIIntegrationTests {
             return publisher.eraseToAnyPublisher()
         }
         
-        func completeFeedLoading(with feed: [CocktailItem] = [], at index: Int = 0) {
+        func completeIngredientsLoading(with feed: [CocktailItem] = [], at index: Int = 0) {
             requests[index].send(feed)
         }
         
-        func completeFeedLoadingWithError(at index: Int = 0) {
+        func completeIngredientsLoadingWithError(at index: Int = 0) {
             let error = NSError(domain: "an error", code: 0)
             requests[index].send(completion: .failure(error))
         }
