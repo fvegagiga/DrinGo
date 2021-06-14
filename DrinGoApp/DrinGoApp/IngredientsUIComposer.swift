@@ -7,24 +7,23 @@ import Combine
 import DrinGoFeed
 import DrinGoFeediOS
 
-public final class CocktailUIComposer {
+public final class IngredientsUIComposer {
     private init() {}
     
     private typealias CocktailPresentationAdapter = LoadResourcePresentationAdapter<[CocktailItem], FeedViewAdapter>
     
-    public static func feedComposedWith(
-        feedLoader: @escaping () -> AnyPublisher<[CocktailItem], Error>,
-        imageLoader: @escaping (URL) -> CocktailImageDataLoader.Publisher
+    public static func ingredientsComposedWith(
+        ingredientsLoader: @escaping () -> AnyPublisher<[CocktailItem], Error>
     ) -> ListViewController {
         
-        let presentationAdapter = CocktailPresentationAdapter(loader: feedLoader)
+        let presentationAdapter = CocktailPresentationAdapter(loader: ingredientsLoader)
         let cocktailFeedController = makeWith(title: CocktailFeedPresenter.title)
         cocktailFeedController.onRefresh = presentationAdapter.loadResource
         
         presentationAdapter.presenter = LoadResoucePresenter(
             resourceView: FeedViewAdapter(
                 controller: cocktailFeedController,
-                imageLoader: imageLoader),
+                imageLoader: { _ in Empty<Data, Error>().eraseToAnyPublisher() }),
             loadingView: WeakRefVirtualProxy(cocktailFeedController),
             errorView: WeakRefVirtualProxy(cocktailFeedController),
             mapper: CocktailFeedPresenter.map)

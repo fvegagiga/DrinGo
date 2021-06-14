@@ -40,6 +40,8 @@
 		C66406632666067500F1355C /* CocktailFeedAcceptanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406622666067500F1355C /* CocktailFeedAcceptanceTests.swift */; };
 		C66406652666154E00F1355C /* HTTPClientStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406642666154E00F1355C /* HTTPClientStub.swift */; };
 		C6640667266615A400F1355C /* InMemoryFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6640666266615A400F1355C /* InMemoryFeedStore.swift */; };
+		C67EC6832677BD1B0075C7C2 /* IngredientsUIIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67EC6822677BD1B0075C7C2 /* IngredientsUIIntegrationTests.swift */; };
+		C67EC6852677BE200075C7C2 /* IngredientsUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67EC6842677BE200075C7C2 /* IngredientsUIComposer.swift */; };
 		C68065E6266A278A0022A14B /* CombineHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68065E5266A278A0022A14B /* CombineHelpers.swift */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +106,8 @@
 		C66406622666067500F1355C /* CocktailFeedAcceptanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailFeedAcceptanceTests.swift; sourceTree = "<group>"; };
 		C66406642666154E00F1355C /* HTTPClientStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientStub.swift; sourceTree = "<group>"; };
 		C6640666266615A400F1355C /* InMemoryFeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryFeedStore.swift; sourceTree = "<group>"; };
+		C67EC6822677BD1B0075C7C2 /* IngredientsUIIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsUIIntegrationTests.swift; sourceTree = "<group>"; };
+		C67EC6842677BE200075C7C2 /* IngredientsUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsUIComposer.swift; sourceTree = "<group>"; };
 		C68065E5266A278A0022A14B /* CombineHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -153,6 +157,7 @@
 				C6089E5526636DEC00EE1A7D /* SceneDelegate.swift */,
 				C68065E5266A278A0022A14B /* CombineHelpers.swift */,
 				C66406442666040F00F1355C /* CocktailUIComposer.swift */,
+				C67EC6842677BE200075C7C2 /* IngredientsUIComposer.swift */,
 				C66406422666040E00F1355C /* WeakRefVirtualProxy.swift */,
 				C66406462666040F00F1355C /* LoadResourcePresentationAdapter.swift */,
 				C66406472666040F00F1355C /* FeedViewAdapter.swift */,
@@ -171,6 +176,7 @@
 				C6640640266601AD00F1355C /* SceneDelegateTests.swift */,
 				C66406622666067500F1355C /* CocktailFeedAcceptanceTests.swift */,
 				C66406602666046900F1355C /* CocktailFeedUIIntegrationTests.swift */,
+				C67EC6822677BD1B0075C7C2 /* IngredientsUIIntegrationTests.swift */,
 			);
 			path = DrinGoAppTests;
 			sourceTree = "<group>";
@@ -310,6 +316,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C67EC6852677BE200075C7C2 /* IngredientsUIComposer.swift in Sources */,
 				C664064B2666040F00F1355C /* LoadResourcePresentationAdapter.swift in Sources */,
 				C664064C2666040F00F1355C /* CocktailUIComposer.swift in Sources */,
 				C664064D2666040F00F1355C /* FeedViewAdapter.swift in Sources */,
@@ -332,6 +339,7 @@
 				C664065D2666044500F1355C /* CocktailFeedUIIntegrationTests+LoaderSpy.swift in Sources */,
 				C63DFAD02664E61800C29543 /* XCTestCase+CocktailLoader.swift in Sources */,
 				C66406632666067500F1355C /* CocktailFeedAcceptanceTests.swift in Sources */,
+				C67EC6832677BD1B0075C7C2 /* IngredientsUIIntegrationTests.swift in Sources */,
 				C6640667266615A400F1355C /* InMemoryFeedStore.swift in Sources */,
 				C66406572666044500F1355C /* CocktailFeedUIIntegrationTests+Localization.swift in Sources */,
 				C63DFAD8266508E200C29543 /* CocktailImageDataLoaderSpy.swift in Sources */,
