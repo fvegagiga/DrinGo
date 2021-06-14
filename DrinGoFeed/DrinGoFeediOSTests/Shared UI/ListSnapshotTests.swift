@@ -38,7 +38,7 @@ class ListSnapshotTests: XCTestCase {
         return controller
     }
     
-    private func emptyList() -> [CocktailFeedCellController] {
+    private func emptyList() -> [CellController] {
         return []
     }
 }

@@ -24,7 +24,7 @@ public final class CocktailFeedCellController: NSObject {
     }
 }
 
-extension CocktailFeedCellController: CellController {
+extension CocktailFeedCellController: UITableViewDataSource, UITableViewDelegate, UITableViewDataSourcePrefetching {
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         1

@@ -5,7 +5,7 @@
 import UIKit
 import DrinGoFeed
 
-public class IngredientCellController: NSObject, CellController {
+public class IngredientCellController: NSObject, UITableViewDataSource {
     private let model: IngredientViewModel
     
     public init (model: IngredientViewModel) {
@@ -21,7 +21,5 @@ public class IngredientCellController: NSObject, CellController {
         cell.nameLabel.text = model.ingredient
         cell.measureLabel.text = model.measure
         return cell
-    }
-    
-    public func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {}
+    }    
 }

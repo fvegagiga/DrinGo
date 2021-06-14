@@ -88,6 +88,7 @@
 		C6719FD42659529D00ACDF8A /* CocktailFeed.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6719FD32659529D00ACDF8A /* CocktailFeed.xcassets */; };
 		C6719FD62659626600ACDF8A /* UITableView+Dequeueing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6719FD52659626600ACDF8A /* UITableView+Dequeueing.swift */; };
 		C6719FD8265962AD00ACDF8A /* UIImageView+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6719FD7265962AD00ACDF8A /* UIImageView+Animations.swift */; };
+		C67EC679267738B70075C7C2 /* CellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67EC678267738B70075C7C2 /* CellController.swift */; };
 		C6A01C2326427C530071A344 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A01C2226427C530071A344 /* XCTestCase+MemoryLeakTracking.swift */; };
 		C6D87F2C264D02AC00749974 /* LocalCocktailLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D87F2B264D02AC00749974 /* LocalCocktailLoader.swift */; };
 		C6D87F2E264D035500749974 /* FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D87F2D264D035500749974 /* FeedStore.swift */; };
@@ -251,6 +252,7 @@
 		C6719FD52659626600ACDF8A /* UITableView+Dequeueing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Dequeueing.swift"; sourceTree = "<group>"; };
 		C6719FD7265962AD00ACDF8A /* UIImageView+Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Animations.swift"; sourceTree = "<group>"; };
 		C6719FE226596C8700ACDF8A /* CocktailFeedLocalizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailFeedLocalizationTests.swift; sourceTree = "<group>"; };
+		C67EC678267738B70075C7C2 /* CellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellController.swift; sourceTree = "<group>"; };
 		C6835BC426578FF0000EFEF8 /* DrinGoFeediOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DrinGoFeediOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6835BC726578FF0000EFEF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6A01C2226427C530071A344 /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
@@ -631,6 +633,7 @@
 			isa = PBXGroup;
 			children = (
 				C63793692658130B000118E4 /* ListViewController.swift */,
+				C67EC678267738B70075C7C2 /* CellController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1211,6 +1214,7 @@
 				C6DA3E0B26667F0F00A3A325 /* UITableView+HeaderSizing.swift in Sources */,
 				C637936E26582553000118E4 /* UIView+Shimmering.swift in Sources */,
 				C61FA0D0265A569D0026D999 /* ErrorView.swift in Sources */,
+				C67EC679267738B70075C7C2 /* CellController.swift in Sources */,
 				C61FA0D5265A5A800026D999 /* UIRefreshControl+Helpers.swift in Sources */,
 				C6719FD62659626600ACDF8A /* UITableView+Dequeueing.swift in Sources */,
 				C6719FC02658DEC300ACDF8A /* CocktailFeedCellController.swift in Sources */,

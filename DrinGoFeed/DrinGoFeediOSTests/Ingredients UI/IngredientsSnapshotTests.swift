@@ -30,6 +30,10 @@ class IngredientsSnapshotTests: XCTestCase {
     }
     
     private func ingredients() -> [CellController] {
+        ingredientsControllers().map { CellController($0) }
+    }
+    
+    private func ingredientsControllers() -> [IngredientCellController] {
         return [
             IngredientCellController(
                 model: IngredientViewModel(
