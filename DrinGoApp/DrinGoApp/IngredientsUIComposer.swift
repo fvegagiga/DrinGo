@@ -10,7 +10,7 @@ import DrinGoFeediOS
 public final class IngredientsUIComposer {
     private init() {}
     
-    private typealias CocktailPresentationAdapter = LoadResourcePresentationAdapter<[CocktailItem], FeedViewAdapter>
+    private typealias CocktailPresentationAdapter = LoadResourcePresentationAdapter<[CocktailItem], CocktailFeedViewAdapter>
     
     public static func ingredientsComposedWith(
         ingredientsLoader: @escaping () -> AnyPublisher<[CocktailItem], Error>
@@ -21,7 +21,7 @@ public final class IngredientsUIComposer {
         cocktailFeedController.onRefresh = presentationAdapter.loadResource
         
         presentationAdapter.presenter = LoadResoucePresenter(
-            resourceView: FeedViewAdapter(
+            resourceView: CocktailFeedViewAdapter(
                 controller: cocktailFeedController,
                 imageLoader: { _ in Empty<Data, Error>().eraseToAnyPublisher() }),
             loadingView: WeakRefVirtualProxy(cocktailFeedController),

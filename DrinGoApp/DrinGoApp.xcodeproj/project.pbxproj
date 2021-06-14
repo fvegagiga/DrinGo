@@ -26,7 +26,7 @@
 		C66406482666040F00F1355C /* WeakRefVirtualProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406422666040E00F1355C /* WeakRefVirtualProxy.swift */; };
 		C664064B2666040F00F1355C /* LoadResourcePresentationAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406462666040F00F1355C /* LoadResourcePresentationAdapter.swift */; };
 		C664064C2666040F00F1355C /* CocktailUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406442666040F00F1355C /* CocktailUIComposer.swift */; };
-		C664064D2666040F00F1355C /* FeedViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406472666040F00F1355C /* FeedViewAdapter.swift */; };
+		C664064D2666040F00F1355C /* CocktailFeedViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406472666040F00F1355C /* CocktailFeedViewAdapter.swift */; };
 		C66406572666044500F1355C /* CocktailFeedUIIntegrationTests+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406522666044500F1355C /* CocktailFeedUIIntegrationTests+Localization.swift */; };
 		C66406582666044500F1355C /* UIButton+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406552666044500F1355C /* UIButton+TestHelpers.swift */; };
 		C66406592666044500F1355C /* CocktailFeedUIIntegrationTests+Assertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C664064F2666044400F1355C /* CocktailFeedUIIntegrationTests+Assertions.swift */; };
@@ -92,7 +92,7 @@
 		C66406422666040E00F1355C /* WeakRefVirtualProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakRefVirtualProxy.swift; sourceTree = "<group>"; };
 		C66406442666040F00F1355C /* CocktailUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailUIComposer.swift; sourceTree = "<group>"; };
 		C66406462666040F00F1355C /* LoadResourcePresentationAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadResourcePresentationAdapter.swift; sourceTree = "<group>"; };
-		C66406472666040F00F1355C /* FeedViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewAdapter.swift; sourceTree = "<group>"; };
+		C66406472666040F00F1355C /* CocktailFeedViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailFeedViewAdapter.swift; sourceTree = "<group>"; };
 		C664064E2666044400F1355C /* CocktailFeedUIIntegrationTests+LoaderSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CocktailFeedUIIntegrationTests+LoaderSpy.swift"; sourceTree = "<group>"; };
 		C664064F2666044400F1355C /* CocktailFeedUIIntegrationTests+Assertions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CocktailFeedUIIntegrationTests+Assertions.swift"; sourceTree = "<group>"; };
 		C66406502666044400F1355C /* CocktailFeedViewController+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CocktailFeedViewController+TestHelpers.swift"; sourceTree = "<group>"; };
@@ -160,7 +160,7 @@
 				C67EC6842677BE200075C7C2 /* IngredientsUIComposer.swift */,
 				C66406422666040E00F1355C /* WeakRefVirtualProxy.swift */,
 				C66406462666040F00F1355C /* LoadResourcePresentationAdapter.swift */,
-				C66406472666040F00F1355C /* FeedViewAdapter.swift */,
+				C66406472666040F00F1355C /* CocktailFeedViewAdapter.swift */,
 				C6089E5C26636DED00EE1A7D /* Assets.xcassets */,
 				C6089E5E26636DED00EE1A7D /* LaunchScreen.storyboard */,
 				C6089E6126636DED00EE1A7D /* Info.plist */,
@@ -319,7 +319,7 @@
 				C67EC6852677BE200075C7C2 /* IngredientsUIComposer.swift in Sources */,
 				C664064B2666040F00F1355C /* LoadResourcePresentationAdapter.swift in Sources */,
 				C664064C2666040F00F1355C /* CocktailUIComposer.swift in Sources */,
-				C664064D2666040F00F1355C /* FeedViewAdapter.swift in Sources */,
+				C664064D2666040F00F1355C /* CocktailFeedViewAdapter.swift in Sources */,
 				C6089E5426636DEC00EE1A7D /* AppDelegate.swift in Sources */,
 				C6089E5626636DEC00EE1A7D /* SceneDelegate.swift in Sources */,
 				C66406482666040F00F1355C /* WeakRefVirtualProxy.swift in Sources */,
