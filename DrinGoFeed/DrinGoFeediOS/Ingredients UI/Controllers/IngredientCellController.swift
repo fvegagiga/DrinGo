@@ -18,14 +18,4 @@ public class IngredientCellController: CellController {
         cell.measureLabel.text = model.measure
         return cell
     }
-    
-    public func preload() {
-        
-    }
-    
-    public func cancelLoad() {
-        
-    }
-    
-    
 }
