@@ -27,17 +27,26 @@ extension ListViewController {
     var errorMessage: String? {
         return errorView.message
     }
+    
+    func numberOfRows(in section: Int) -> Int {
+        tableView.numberOfSections > section ? tableView.numberOfRows(inSection: section) : 0
+    }
+    
+    func cell(row: Int, section: Int) -> UITableViewCell? {
+        guard numberOfRows(in: section) > row else {
+            return nil
+        }
+        let ds = tableView.dataSource
+        let index = IndexPath(row: row, section: section)
+        return ds?.tableView(tableView, cellForRowAt: index)
+    }
 }
 
 // MARK: - Ingredients View Controller
 
 extension ListViewController {
     func numberOfRenderedIngredients() -> Int {
-        tableView.numberOfSections == 0 ? 0 : tableView.numberOfRows(inSection: ingredientsSection)
-    }
-    
-    private var ingredientsSection: Int {
-        return 0
+        numberOfRows(in: ingredientsSection)
     }
     
     func ingredientName(at row: Int) -> String? {
@@ -49,13 +58,10 @@ extension ListViewController {
     }
     
     private func ingredientView(at row: Int) -> IngredientCell? {
-        guard numberOfRenderedIngredients() > row else {
-            return nil
-        }
-        let ds = tableView.dataSource
-        let index = IndexPath(row: row, section: ingredientsSection)
-        return ds?.tableView(tableView, cellForRowAt: index) as? IngredientCell
+        cell(row: row, section: ingredientsSection) as? IngredientCell
     }
+    
+    private var ingredientsSection: Int { 0 }
 }
 
 // MARK: - Cocktail Feed View Controller
@@ -102,19 +108,12 @@ extension ListViewController {
     }
     
     func numberOfRenderedFeedImageViews() -> Int {
-        tableView.numberOfSections == 0 ? 0 : tableView.numberOfRows(inSection: feedImagesSection)
+        numberOfRows(in: feedImagesSection)
     }
     
     func coktailFeedView(at row: Int) -> UITableViewCell? {
-        guard numberOfRenderedFeedImageViews() > row else {
-            return nil
-        }
-        let ds = tableView.dataSource
-        let index = IndexPath(row: row, section: feedImagesSection)
-        return ds?.tableView(tableView, cellForRowAt: index)
+        cell(row: row, section: feedImagesSection) as? CocktailFeedCell
     }
 
-    private var feedImagesSection: Int {
-        return 0
-    }
+    private var feedImagesSection: Int { 0 }
 }

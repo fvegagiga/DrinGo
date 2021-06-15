@@ -34,7 +34,7 @@
 		C664065C2666044500F1355C /* UIControl+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406512666044500F1355C /* UIControl+TestHelpers.swift */; };
 		C664065D2666044500F1355C /* CocktailFeedUIIntegrationTests+LoaderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C664064E2666044400F1355C /* CocktailFeedUIIntegrationTests+LoaderSpy.swift */; };
 		C664065E2666044500F1355C /* UIRefreshControl+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406532666044500F1355C /* UIRefreshControl+TestHelpers.swift */; };
-		C664065F2666044500F1355C /* CocktailFeedViewController+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406502666044400F1355C /* CocktailFeedViewController+TestHelpers.swift */; };
+		C664065F2666044500F1355C /* ListViewController+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406502666044400F1355C /* ListViewController+TestHelpers.swift */; };
 		C66406612666046900F1355C /* CocktailFeedUIIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406602666046900F1355C /* CocktailFeedUIIntegrationTests.swift */; };
 		C66406632666067500F1355C /* CocktailFeedAcceptanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406622666067500F1355C /* CocktailFeedAcceptanceTests.swift */; };
 		C66406652666154E00F1355C /* HTTPClientStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66406642666154E00F1355C /* HTTPClientStub.swift */; };
@@ -94,7 +94,7 @@
 		C66406472666040F00F1355C /* CocktailFeedViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailFeedViewAdapter.swift; sourceTree = "<group>"; };
 		C664064E2666044400F1355C /* CocktailFeedUIIntegrationTests+LoaderSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CocktailFeedUIIntegrationTests+LoaderSpy.swift"; sourceTree = "<group>"; };
 		C664064F2666044400F1355C /* CocktailFeedUIIntegrationTests+Assertions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CocktailFeedUIIntegrationTests+Assertions.swift"; sourceTree = "<group>"; };
-		C66406502666044400F1355C /* CocktailFeedViewController+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CocktailFeedViewController+TestHelpers.swift"; sourceTree = "<group>"; };
+		C66406502666044400F1355C /* ListViewController+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListViewController+TestHelpers.swift"; sourceTree = "<group>"; };
 		C66406512666044500F1355C /* UIControl+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+TestHelpers.swift"; sourceTree = "<group>"; };
 		C66406532666044500F1355C /* UIRefreshControl+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIRefreshControl+TestHelpers.swift"; sourceTree = "<group>"; };
 		C66406542666044500F1355C /* UIImage+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+TestHelpers.swift"; sourceTree = "<group>"; };
@@ -196,7 +196,7 @@
 				C66406532666044500F1355C /* UIRefreshControl+TestHelpers.swift */,
 				C66406552666044500F1355C /* UIButton+TestHelpers.swift */,
 				C66406512666044500F1355C /* UIControl+TestHelpers.swift */,
-				C66406502666044400F1355C /* CocktailFeedViewController+TestHelpers.swift */,
+				C66406502666044400F1355C /* ListViewController+TestHelpers.swift */,
 				C66406562666044500F1355C /* CocktailFeedCell+TestHelpers.swift */,
 				C664064E2666044400F1355C /* CocktailFeedUIIntegrationTests+LoaderSpy.swift */,
 				C664064F2666044400F1355C /* CocktailFeedUIIntegrationTests+Assertions.swift */,
@@ -347,7 +347,7 @@
 				C664065E2666044500F1355C /* UIRefreshControl+TestHelpers.swift in Sources */,
 				C65BD04A266398890024F84D /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 				C63DFADA26650A6D00C29543 /* XCTestCase+CocktailImageDataLoader.swift in Sources */,
-				C664065F2666044500F1355C /* CocktailFeedViewController+TestHelpers.swift in Sources */,
+				C664065F2666044500F1355C /* ListViewController+TestHelpers.swift in Sources */,
 				C66406582666044500F1355C /* UIButton+TestHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
