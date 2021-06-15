@@ -24,6 +24,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         LocalCocktailLoader(store: store, currentDate: Date.init)
     }()
     
+    private lazy var baseURL = URL(string: "https://www.thecocktaildb.com/api/json/v2/9973533")!
+    
     private lazy var navigationController = UINavigationController(
         rootViewController: CocktailUIComposer.feedComposedWith(
             feedLoader: makeRemoteCocktailLoaderWithLocalFallback,
@@ -77,10 +79,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func showIngredients(for cocktail: CocktailItem) {
-        let url = URL(string: "https://www.thecocktaildb.com/api/json/v2/9973533/lookup.php?i=\(cocktail.id)")!
-        
+        let url = IngredientsEndopoint.get(cocktail.id).url(baseURL: baseURL)
         let ingredients = IngredientsUIComposer.ingredientsComposedWith(ingredientsLoader: makeRemoteIngredientsLoader(url: url))
-        
         navigationController.pushViewController(ingredients, animated: true)
     }
     
@@ -94,7 +94,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func makeRemoteCocktailLoaderWithLocalFallback() -> AnyPublisher<[CocktailItem], Error> {
-        let url = URL(string: "https://www.thecocktaildb.com/api/json/v2/9973533/popular.php")!
+        let url = CocktailFeedEndpoint.get.url(baseURL: baseURL)
         
         return httpClient
             .getPublisher(url: url)
