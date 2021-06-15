@@ -9,12 +9,14 @@ import DrinGoFeediOS
 final class CocktailFeedViewAdapter: ResourceView {
     private weak var controller: ListViewController?
     private let imageLoader: (URL) -> CocktailImageDataLoader.Publisher
+    private let selection: (CocktailItem) -> Void
 
     private typealias ImageDataPresentationAdapter = LoadResourcePresentationAdapter<Data, WeakRefVirtualProxy<CocktailFeedCellController>>
     
-    init(controller: ListViewController, imageLoader: @escaping (URL) -> CocktailImageDataLoader.Publisher) {
+    init(controller: ListViewController, imageLoader: @escaping (URL) -> CocktailImageDataLoader.Publisher, selection: @escaping (CocktailItem) -> Void) {
         self.controller = controller
         self.imageLoader = imageLoader
+        self.selection = selection
     }
     
     func display(_ viewModel: FeedViewModel) {
@@ -25,7 +27,10 @@ final class CocktailFeedViewAdapter: ResourceView {
             
             let view = CocktailFeedCellController(
                 viewModel: CocktailImagePresenter.map(model),
-                delegate: adapter)
+                delegate: adapter,
+                selection: { [selection] in
+                    selection(model)
+                })
             
             adapter.presenter = LoadResoucePresenter(resourceView: WeakRefVirtualProxy(view),
                                                      loadingView: WeakRefVirtualProxy(view),

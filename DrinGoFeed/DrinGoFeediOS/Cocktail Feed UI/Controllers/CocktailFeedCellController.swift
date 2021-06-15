@@ -16,11 +16,13 @@ public final class CocktailFeedCellController: NSObject {
     
     private let viewModel: CocktailImageViewModel
     private let delegate: FeedImageCellControllerDelegate
+    private let selection: () -> Void
     private var cell: CocktailFeedCell?
 
-    public init(viewModel: CocktailImageViewModel, delegate: FeedImageCellControllerDelegate) {
+    public init(viewModel: CocktailImageViewModel, delegate: FeedImageCellControllerDelegate, selection: @escaping () -> Void) {
         self.viewModel = viewModel
         self.delegate = delegate
+        self.selection = selection
     }
 }
 
@@ -39,6 +41,10 @@ extension CocktailFeedCellController: UITableViewDataSource, UITableViewDelegate
         }
         delegate.didRequestImage()
         return cell!
+    }
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selection()
     }
     
     public func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {

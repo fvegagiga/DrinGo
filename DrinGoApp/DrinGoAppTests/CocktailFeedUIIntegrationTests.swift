@@ -18,6 +18,22 @@ class CocktailFeedUIIntegrationTests: XCTestCase {
         XCTAssertEqual(sut.title, cocktailListTitle)
     }
     
+    func test_cocktailSelection_notifiesHandler() {
+        let image0 = makeImage(id: 0)
+        let image1 = makeImage(id: 1)
+        var selectedCocktails = [CocktailItem]()
+        let (sut, loader) = makeSUT(selection: { selectedCocktails.append($0) })
+        
+        sut.loadViewIfNeeded()
+        loader.completeFeedLoading(with: [image0, image1], at: 0)
+
+        sut.simulateTapOnCocktailItem(at: 0)
+        XCTAssertEqual(selectedCocktails, [image0])
+
+        sut.simulateTapOnCocktailItem(at: 1)
+        XCTAssertEqual(selectedCocktails, [image0, image1])
+    }
+    
     func test_loadFeedActions_requestFeedFromLoader() {
         let (sut, loader) = makeSUT()
         
@@ -337,9 +353,15 @@ class CocktailFeedUIIntegrationTests: XCTestCase {
     
     // MARK: - Helpers
 
-    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: ListViewController, loader: LoaderSpy) {
+    private func makeSUT(selection: @escaping (CocktailItem) -> Void = { _ in },
+                         file: StaticString = #file,
+                         line: UInt = #line
+    ) -> (sut: ListViewController, loader: LoaderSpy) {
         let loader = LoaderSpy()
-        let sut = CocktailUIComposer.feedComposedWith(feedLoader: loader.loadPublisher, imageLoader: loader.loadImageDataPublisher)
+        let sut = CocktailUIComposer.feedComposedWith(
+            feedLoader: loader.loadPublisher,
+            imageLoader: loader.loadImageDataPublisher,
+            selection: selection)
         trackForMemoryLeaks(loader, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
         return (sut, loader)

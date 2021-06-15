@@ -14,20 +14,24 @@ public final class CocktailUIComposer {
     
     public static func feedComposedWith(
         feedLoader: @escaping () -> AnyPublisher<[CocktailItem], Error>,
-        imageLoader: @escaping (URL) -> CocktailImageDataLoader.Publisher
+        imageLoader: @escaping (URL) -> CocktailImageDataLoader.Publisher,
+        selection: @escaping (CocktailItem) -> Void = { _ in }
     ) -> ListViewController {
+        
         let presentationAdapter = CocktailPresentationAdapter(loader: feedLoader)
         
         let cocktailFeedController = makeWith(title: CocktailFeedPresenter.title)
         cocktailFeedController.onRefresh = presentationAdapter.loadResource
         
-        presentationAdapter.presenter = LoadResoucePresenter(resourceView: CocktailFeedViewAdapter(
-                                                                controller: cocktailFeedController,
-                                                                imageLoader: imageLoader),
-                                                             loadingView: WeakRefVirtualProxy(cocktailFeedController),
-                                                             errorView: WeakRefVirtualProxy(cocktailFeedController),
-                                                             mapper: CocktailFeedPresenter.map)
-
+        presentationAdapter.presenter = LoadResoucePresenter(
+            resourceView: CocktailFeedViewAdapter(
+                controller: cocktailFeedController,
+                imageLoader: imageLoader,
+                selection: selection),
+            loadingView: WeakRefVirtualProxy(cocktailFeedController),
+            errorView: WeakRefVirtualProxy(cocktailFeedController),
+            mapper: CocktailFeedPresenter.map)
+        
         return cocktailFeedController
     }
 
