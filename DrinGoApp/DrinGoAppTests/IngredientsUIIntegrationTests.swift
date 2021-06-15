@@ -93,7 +93,7 @@ class IngredientsUIIntegrationTests: CocktailFeedUIIntegrationTests {
         assertThat(sut, isRendering: [ingredient])
     }
     
-    override func test_loadFeedCompletion_dispatchesFromBackgroundToMainThread() {
+    func test_loadIngredientsCompletion_dispatchesFromBackgroundToMainThread() {
         let (sut, loader) = makeSUT()
         sut.loadViewIfNeeded()
 
