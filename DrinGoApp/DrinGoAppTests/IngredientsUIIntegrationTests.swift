@@ -9,7 +9,7 @@ import DrinGoApp
 import DrinGoFeed
 import DrinGoFeediOS
 
-class IngredientsUIIntegrationTests: CocktailFeedUIIntegrationTests {
+class IngredientsUIIntegrationTests: XCTestCase {
 
     func test_ingredientsView_hasTitle() {
         let (sut, _) = makeSUT()
@@ -105,7 +105,7 @@ class IngredientsUIIntegrationTests: CocktailFeedUIIntegrationTests {
         wait(for: [exp], timeout: 1.0)
     }
     
-    override func test_loadFeedCompletion_rendersErrorMessageOnErrorUntilNextReload() {
+    func test_loadIngredientsCompletion_rendersErrorMessageOnErrorUntilNextReload() {
         let (sut, loader) = makeSUT()
         
         sut.loadViewIfNeeded()
@@ -118,7 +118,7 @@ class IngredientsUIIntegrationTests: CocktailFeedUIIntegrationTests {
         XCTAssertEqual(sut.errorMessage, nil)
     }
     
-    override func test_tapOnErrorView_hidesErrorMessage() {
+    func test_tapOnErrorView_hidesErrorMessage() {
         let (sut, loader) = makeSUT()
         
         sut.loadViewIfNeeded()
