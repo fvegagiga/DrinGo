@@ -23,6 +23,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private lazy var localCocktailLoader: LocalCocktailLoader = {
         LocalCocktailLoader(store: store, currentDate: Date.init)
     }()
+    
+    private lazy var navigationController = UINavigationController(
+        rootViewController: CocktailUIComposer.feedComposedWith(
+            feedLoader: makeRemoteCocktailLoaderWithLocalFallback,
+            imageLoader: makeLocalImageDataLoaderWithRemoteFallback,
+            selection: showIngredients))
 
     private var customImageCachePath: String {
         "DrinGo/images/"
@@ -61,12 +67,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func configureWindow() {
-
-        let cocktailViewController = CocktailUIComposer.feedComposedWith(
-            feedLoader: makeRemoteCocktailLoaderWithLocalFallback,
-            imageLoader: makeLocalImageDataLoaderWithRemoteFallback)
-        
-        window?.rootViewController = UINavigationController(rootViewController: cocktailViewController)
+        window?.rootViewController = navigationController
         
         window?.makeKeyAndVisible()
     }
@@ -75,8 +76,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         localCocktailLoader.validateCache { _ in }
     }
     
+    private func showIngredients(for cocktail: CocktailItem) {
+        let url = URL(string: "https://www.thecocktaildb.com/api/json/v2/9973533/lookup.php?i=\(cocktail.id)")!
+        
+        let ingredients = IngredientsUIComposer.ingredientsComposedWith(ingredientsLoader: makeRemoteIngredientsLoader(url: url))
+        
+        navigationController.pushViewController(ingredients, animated: true)
+    }
+    
+    private func makeRemoteIngredientsLoader(url: URL) -> () -> AnyPublisher<[CocktailIngredient], Error> {
+        return { [httpClient] in
+            return httpClient
+                .getPublisher(url: url)
+                .tryMap(CocktailIngredientsMapper.map)
+                .eraseToAnyPublisher()
+        }
+    }
+    
     private func makeRemoteCocktailLoaderWithLocalFallback() -> AnyPublisher<[CocktailItem], Error> {
-        let url = URL(string: "https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php")!
+        let url = URL(string: "https://www.thecocktaildb.com/api/json/v2/9973533/popular.php")!
         
         return httpClient
             .getPublisher(url: url)

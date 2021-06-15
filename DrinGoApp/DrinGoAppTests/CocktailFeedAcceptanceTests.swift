@@ -52,6 +52,11 @@ class CocktailFeedAcceptanceTests: XCTestCase {
         XCTAssertNotNil(store.feedCache, "Expected to keep non-expired cache")
     }
 
+    func tests_onCocktailFeedSelection_displaysIngredients() {
+        let ingredients = showIngredientsForFirstCocktail()
+        
+        XCTAssertEqual(ingredients.numberOfRenderedIngredients(), 4)
+    }
 
     // MARK: - Helpers
 
@@ -71,6 +76,16 @@ class CocktailFeedAcceptanceTests: XCTestCase {
         let sut = SceneDelegate(httpClient: HTTPClientStub.offline, store: store)
         sut.sceneWillResignActive(UIApplication.shared.connectedScenes.first!)
     }
+    
+    private func showIngredientsForFirstCocktail() -> ListViewController {
+        let cocktails = launch(httpClient: .online(response), store: .empty)
+        
+        cocktails.simulateTapOnCocktailItem(at: 0)
+        RunLoop.current.run(until: Date())
+        
+        let nav = cocktails.navigationController
+        return nav?.topViewController as! ListViewController
+    }
 
     private func response(for url: URL) -> (Data, HTTPURLResponse) {
         let response = HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil)!
@@ -78,12 +93,18 @@ class CocktailFeedAcceptanceTests: XCTestCase {
     }
     
     private func makeData(for url: URL) -> Data {
-        switch url.absoluteString {
-        case "http://image.com":
+        switch url.path {
+        case "/image-1", "/image-2":
             return makeImageData()
             
-        default:
+        case "/api/json/v2/9973533/popular.php":
             return makeCocktailData()
+            
+        case "/api/json/v2/9973533/lookup.php":
+            return makeIngredientsData()
+            
+        default:
+            return Data()
         }
     }
     
@@ -93,8 +114,25 @@ class CocktailFeedAcceptanceTests: XCTestCase {
     
     private func makeCocktailData() -> Data {
         return try! JSONSerialization.data(withJSONObject: ["drinks": [
-            ["idDrink": "0", "strDrink": "drink name", "strInstructions": "drink description", "strDrinkThumb": "http://image.com", "strIngredient1": "ing1", "strMeasure1": "qt1"],
-            ["idDrink": "1", "strDrink": "drink name", "strInstructions": "drink description", "strDrinkThumb": "http://image.com", "strIngredient1": "ing1", "strMeasure1": "qt1"]
+            ["idDrink": "0", "strDrink": "drink name", "strInstructions": "drink description", "strDrinkThumb": "https://www.thecocktaildb.com/image-1", "strIngredient1": "ing1", "strMeasure1": "qt1"],
+            ["idDrink": "1", "strDrink": "drink name", "strInstructions": "drink description", "strDrinkThumb": "https://www.thecocktaildb.com/image-2", "strIngredient1": "ing1", "strMeasure1": "qt1"]
         ]])
+    }
+    
+    private func makeIngredientsData() -> Data {
+        return try! JSONSerialization.data(withJSONObject: ["drinks": [
+            [            "strIngredient1": "ingredients1",
+                         "strIngredient2": "ingredients2",
+                         "strIngredient3": "ingredients3",
+                         "strIngredient4": "ingredients4",
+                         "strIngredient5": nil,
+                         "strMeasure1": "measure1",
+                         "strMeasure2": "measure2",
+                         "strMeasure3": "measure3",
+                         "strMeasure4": nil,
+                         "strMeasure5": nil
+            ],
+        ]])
+
     }
 }
