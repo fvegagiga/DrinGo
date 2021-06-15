@@ -20,3 +20,19 @@ func anyData() -> Data {
 func uniqueCocktail(id: Int = 0) -> [CocktailItem] {
     return [CocktailItem(id: id, name: "any", description: "any", imageURL: anyURL(), ingredients: ["Ing1", "Ingr2"], quantity: ["Qt1", "Qt2"])]
 }
+
+private class DummyView: ResourceView {
+    func display(_ viewModel: Any) {}
+}
+
+var loadError: String {
+    LoadResoucePresenter<Any, DummyView>.loadError
+}
+
+var cocktailListTitle: String {
+    CocktailFeedPresenter.title
+}
+
+var ingredientsTitle: String {
+    IngredientsPresenter.title
+}
