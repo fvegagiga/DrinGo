@@ -40,15 +40,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
     }
     
-    private func createCachesDirectory() {
+    private func createCachesDirectoryIfNeeded() {
         let customCachePath = cachesDirectory().appendingPathComponent("DrinGo/images/").path
         try? FileManager.default.createDirectory(atPath: customCachePath, withIntermediateDirectories: true, attributes: nil)
     }
     
     private func getCacheDirectoryFilePath(for remoteUrl: URL) -> URL {
         let fileName = remoteUrl.lastPathComponent
-        createCachesDirectory()
-        
+        createCachesDirectoryIfNeeded()
         
         return cachesDirectory()
             .appendingPathComponent("DrinGo/images/")
