@@ -32,26 +32,28 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             imageLoader: makeLocalImageDataLoaderWithRemoteFallback,
             selection: showIngredients))
 
-    private var customImageCachePath: String {
-        "DrinGo/images/"
-    }
+    private var customImageCachePath: String { "DrinGo/images/"}
     
     private func cachesDirectory() -> URL {
         FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
     }
     
-    private func createCachesDirectoryIfNeeded() {
-        let customCachePath = cachesDirectory().appendingPathComponent("DrinGo/images/").path
-        try? FileManager.default.createDirectory(atPath: customCachePath, withIntermediateDirectories: true, attributes: nil)
+    private func createCachesDirectoryIfNeeded() throws {
+        let customCachePath = cachesDirectory().appendingPathComponent(customImageCachePath).path
+        try FileManager.default.createDirectory(atPath: customCachePath, withIntermediateDirectories: true, attributes: nil)
     }
     
     private func getCacheDirectoryFilePath(for remoteUrl: URL) -> URL {
-        let fileName = remoteUrl.lastPathComponent
-        createCachesDirectoryIfNeeded()
+        do {
+            try createCachesDirectoryIfNeeded()
+        } catch {
+            assertionFailure("Failed to create cache directory with error: \(error.localizedDescription)")
+        }
         
+        let fileName = remoteUrl.lastPathComponent
         return cachesDirectory()
-            .appendingPathComponent("DrinGo/images/")
-            .appendingPathComponent("\(fileName)")
+            .appendingPathComponent(customImageCachePath)
+            .appendingPathComponent(fileName)
     }
     
     convenience init(httpClient: HTTPClient, store: FeedStore & CocktailImageDataStore) {
