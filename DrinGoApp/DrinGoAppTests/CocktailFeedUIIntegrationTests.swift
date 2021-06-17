@@ -19,8 +19,8 @@ class CocktailFeedUIIntegrationTests: XCTestCase {
     }
     
     func test_cocktailSelection_notifiesHandler() {
-        let image0 = makeImage(id: 0)
-        let image1 = makeImage(id: 1)
+        let image0 = makeCocktailItem(id: 0)
+        let image1 = makeCocktailItem(id: 1)
         var selectedCocktails = [CocktailItem]()
         let (sut, loader) = makeSUT(selection: { selectedCocktails.append($0) })
         
@@ -43,8 +43,13 @@ class CocktailFeedUIIntegrationTests: XCTestCase {
         XCTAssertEqual(loader.loadFeedCallCount, 1, "Expected a loading request once view is loaded")
 
         sut.simulateUserInitiatedReload()
-        XCTAssertEqual(loader.loadFeedCallCount, 2, "Expected another loading request once user initiates a reload")
+        XCTAssertEqual(loader.loadFeedCallCount, 1, "Expected no request until previous completes")
         
+        loader.completeFeedLoading(at: 0)
+        sut.simulateUserInitiatedReload()
+        XCTAssertEqual(loader.loadFeedCallCount, 2, "Expected another loading request once user initiates a reload")
+
+        loader.completeFeedLoading(at: 1)
         sut.simulateUserInitiatedReload()
         XCTAssertEqual(loader.loadFeedCallCount, 3, "Expected yet another loading request once user initiates another reload")
     }
@@ -66,10 +71,10 @@ class CocktailFeedUIIntegrationTests: XCTestCase {
     }
     
     func test_loadFeedCompletion_rendersSuccessfullyLoadedFeed() {
-        let image0 = makeImage(id: 0, title: "a title", description: "a description")
-        let image1 = makeImage(id: 1, title: "another title", description: "another description")
-        let image2 = makeImage(id: 2, title: "other title", description: "other description")
-        let image3 = makeImage(id: 3, title: "some title", description: "some description")
+        let image0 = makeCocktailItem(id: 0, title: "a title", description: "a description")
+        let image1 = makeCocktailItem(id: 1, title: "another title", description: "another description")
+        let image2 = makeCocktailItem(id: 2, title: "other title", description: "other description")
+        let image3 = makeCocktailItem(id: 3, title: "some title", description: "some description")
         let (sut, loader) = makeSUT()
 
         sut.loadViewIfNeeded()
@@ -84,8 +89,8 @@ class CocktailFeedUIIntegrationTests: XCTestCase {
     }
     
     func test_loadFeedCompletion_rendersSuccessfullyLoadedEmptyFeedAfterNonEmptyFeed() {
-        let image0 = makeImage(id: 0)
-        let image1 = makeImage(id: 1)
+        let image0 = makeCocktailItem(id: 0)
+        let image1 = makeCocktailItem(id: 1)
         let (sut, loader) = makeSUT()
         
         sut.loadViewIfNeeded()
@@ -99,7 +104,7 @@ class CocktailFeedUIIntegrationTests: XCTestCase {
 
 
     func test_loadFeedCompletion_doesNotAlterCurrentRenderingStateOnError() {
-        let image0 = makeImage()
+        let image0 = makeCocktailItem()
         let (sut, loader) = makeSUT()
         
         sut.loadViewIfNeeded()
@@ -152,8 +157,8 @@ class CocktailFeedUIIntegrationTests: XCTestCase {
     // MARK: - Image View Tests
     
     func test_feedImageView_loadsImageURLWhenVisible() {
-        let image0 = makeImage(imageURL: URL(string: "http://url-0.com")!)
-        let image1 = makeImage(imageURL: URL(string: "http://url-1.com")!)
+        let image0 = makeCocktailItem(imageURL: URL(string: "http://url-0.com")!)
+        let image1 = makeCocktailItem(imageURL: URL(string: "http://url-1.com")!)
         let (sut, loader) = makeSUT()
         
         sut.loadViewIfNeeded()
@@ -169,8 +174,8 @@ class CocktailFeedUIIntegrationTests: XCTestCase {
     }
 
     func test_feedImageView_cancelsImageLoadingWhenNotVisibleAnymore() {
-        let image0 = makeImage(id: 0, imageURL: URL(string: "http://url-0.com")!)
-        let image1 = makeImage(id: 1, imageURL: URL(string: "http://url-1.com")!)
+        let image0 = makeCocktailItem(id: 0, imageURL: URL(string: "http://url-0.com")!)
+        let image1 = makeCocktailItem(id: 1, imageURL: URL(string: "http://url-1.com")!)
         let (sut, loader) = makeSUT()
         
         sut.loadViewIfNeeded()
@@ -188,7 +193,7 @@ class CocktailFeedUIIntegrationTests: XCTestCase {
         let (sut, loader) = makeSUT()
         
         sut.loadViewIfNeeded()
-        loader.completeFeedLoading(with: [makeImage(id: 0), makeImage(id: 1)])
+        loader.completeFeedLoading(with: [makeCocktailItem(id: 0), makeCocktailItem(id: 1)])
         
         let view0 = sut.simulateFeedImageViewVisible(at: 0)
         let view1 = sut.simulateFeedImageViewVisible(at: 1)
@@ -213,7 +218,7 @@ class CocktailFeedUIIntegrationTests: XCTestCase {
         let (sut, loader) = makeSUT()
         
         sut.loadViewIfNeeded()
-        loader.completeFeedLoading(with: [makeImage(id: 0), makeImage(id: 1)])
+        loader.completeFeedLoading(with: [makeCocktailItem(id: 0), makeCocktailItem(id: 1)])
         
         let view0 = sut.simulateFeedImageViewVisible(at: 0)
         let view1 = sut.simulateFeedImageViewVisible(at: 1)
@@ -235,7 +240,7 @@ class CocktailFeedUIIntegrationTests: XCTestCase {
         let (sut, loader) = makeSUT()
         
         sut.loadViewIfNeeded()
-        loader.completeFeedLoading(with: [makeImage(id: 0), makeImage(id: 1)])
+        loader.completeFeedLoading(with: [makeCocktailItem(id: 0), makeCocktailItem(id: 1)])
         
         let view0 = sut.simulateFeedImageViewVisible(at: 0)
         let view1 = sut.simulateFeedImageViewVisible(at: 1)
@@ -260,7 +265,7 @@ class CocktailFeedUIIntegrationTests: XCTestCase {
         let (sut, loader) = makeSUT()
         
         sut.loadViewIfNeeded()
-        loader.completeFeedLoading(with: [makeImage()])
+        loader.completeFeedLoading(with: [makeCocktailItem()])
         
         let view = sut.simulateFeedImageViewVisible(at: 0)
         XCTAssertEqual(view?.isShowingRetryAction, false, "Expected no retry action while loading image")
@@ -271,8 +276,8 @@ class CocktailFeedUIIntegrationTests: XCTestCase {
     }
 
     func test_feedImageViewRetryAction_retriesImageLoad() {
-        let image0 = makeImage(imageURL: URL(string: "http://url-0.com")!)
-        let image1 = makeImage(imageURL: URL(string: "http://url-1.com")!)
+        let image0 = makeCocktailItem(imageURL: URL(string: "http://url-0.com")!)
+        let image1 = makeCocktailItem(imageURL: URL(string: "http://url-1.com")!)
         let (sut, loader) = makeSUT()
         
         sut.loadViewIfNeeded()
@@ -294,8 +299,8 @@ class CocktailFeedUIIntegrationTests: XCTestCase {
     }
 
     func test_feedImageView_preloadsImageURLWhenNearVisible() {
-        let image0 = makeImage(imageURL: URL(string: "http://url-0.com")!)
-        let image1 = makeImage(imageURL: URL(string: "http://url-1.com")!)
+        let image0 = makeCocktailItem(imageURL: URL(string: "http://url-0.com")!)
+        let image1 = makeCocktailItem(imageURL: URL(string: "http://url-1.com")!)
         let (sut, loader) = makeSUT()
         
         sut.loadViewIfNeeded()
@@ -310,8 +315,8 @@ class CocktailFeedUIIntegrationTests: XCTestCase {
     }
 
     func test_feedImageView_cancelsImageURLPreloadingWhenNotNearVisibleAnymore() {
-        let image0 = makeImage(imageURL: URL(string: "http://url-0.com")!)
-        let image1 = makeImage(imageURL: URL(string: "http://url-1.com")!)
+        let image0 = makeCocktailItem(imageURL: URL(string: "http://url-0.com")!)
+        let image1 = makeCocktailItem(imageURL: URL(string: "http://url-1.com")!)
         let (sut, loader) = makeSUT()
         
         sut.loadViewIfNeeded()
@@ -328,7 +333,7 @@ class CocktailFeedUIIntegrationTests: XCTestCase {
     func test_feedImageView_doesNotRenderLoadedImageWhenNotVisibleAnymore() {
         let (sut, loader) = makeSUT()
         sut.loadViewIfNeeded()
-        loader.completeFeedLoading(with: [makeImage()])
+        loader.completeFeedLoading(with: [makeCocktailItem()])
 
         let view = sut.simulateFeedImageViewNotVisible(at: 0)
         loader.completeImageLoading(with: anyImageData())
@@ -340,7 +345,7 @@ class CocktailFeedUIIntegrationTests: XCTestCase {
         let (sut, loader) = makeSUT()
         
         sut.loadViewIfNeeded()
-        loader.completeFeedLoading(with: [makeImage()])
+        loader.completeFeedLoading(with: [makeCocktailItem()])
         _ = sut.simulateFeedImageViewVisible(at: 0)
         
         let exp = expectation(description: "Wait for background queue")
@@ -349,6 +354,27 @@ class CocktailFeedUIIntegrationTests: XCTestCase {
             exp.fulfill()
         }
         wait(for: [exp], timeout: 1.0)
+    }
+    
+    func test_feedImageView_doesNotLoadImageAgainUntilPreviousRequestcompletes() {
+        let image0 = makeCocktailItem()
+        let (sut, loader) = makeSUT()
+        sut.loadViewIfNeeded()
+        loader.completeFeedLoading(with: [image0])
+        
+        sut.simulateFeedImageViewVisible(at: 0)
+        XCTAssertEqual(loader.loadedImageURLs, [image0.imageURL], "Expected first request when near visible")
+
+        sut.simulateFeedImageViewVisible(at: 0)
+        XCTAssertEqual(loader.loadedImageURLs, [image0.imageURL], "Expected no request until previous completes")
+
+        loader.completeImageLoading(at: 0)
+        sut.simulateFeedImageViewVisible(at: 0)
+        XCTAssertEqual(loader.loadedImageURLs, [image0.imageURL, image0.imageURL], "Expected second request when visible after previous complete")
+        
+        sut.simulateFeedImageViewNotVisible(at: 0)
+        sut.simulateFeedImageViewVisible(at: 0)
+        XCTAssertEqual(loader.loadedImageURLs, [image0.imageURL, image0.imageURL, image0.imageURL], "Expected third request when visible after canceling previous complete")
     }
     
     // MARK: - Helpers
@@ -367,7 +393,7 @@ class CocktailFeedUIIntegrationTests: XCTestCase {
         return (sut, loader)
     }
     
-    private func makeImage(id: Int = 0, title: String = "a title", description: String = "a description", imageURL: URL = URL(string: "http://any-url.com")!) -> CocktailItem {
+    private func makeCocktailItem(id: Int = 0, title: String = "a title", description: String = "a description", imageURL: URL = URL(string: "http://any-url.com")!) -> CocktailItem {
         return CocktailItem(id: id, name: title, description: description, imageURL: imageURL, ingredients: ["Ing1", "Ingr2"], quantity: ["Qt1", "Qt2"])
     }
     

@@ -28,8 +28,13 @@ class IngredientsUIIntegrationTests: XCTestCase {
         XCTAssertEqual(loader.loadIngredientsCallCount, 1, "Expected a loading request once view is loaded")
 
         sut.simulateUserInitiatedReload()
+        XCTAssertEqual(loader.loadIngredientsCallCount, 1, "Expected no request until previous completes")
+
+        loader.completeIngredientsLoading(at: 0)
+        sut.simulateUserInitiatedReload()
         XCTAssertEqual(loader.loadIngredientsCallCount, 2, "Expected another loading request once user initiates a reload")
         
+        loader.completeIngredientsLoading(at: 1)
         sut.simulateUserInitiatedReload()
         XCTAssertEqual(loader.loadIngredientsCallCount, 3, "Expected yet another loading request once user initiates another reload")
     }
@@ -191,11 +196,11 @@ class IngredientsUIIntegrationTests: XCTestCase {
         
         func completeIngredientsLoading(with ingredients: [CocktailIngredient] = [], at index: Int = 0) {
             requests[index].send(ingredients)
+            requests[index].send(completion: .finished)
         }
         
         func completeIngredientsLoadingWithError(at index: Int = 0) {
-            let error = NSError(domain: "an error", code: 0)
-            requests[index].send(completion: .failure(error))
+            requests[index].send(completion: .failure(anyNSError()))
         }
     }
 }
