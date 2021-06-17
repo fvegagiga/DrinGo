@@ -20,7 +20,7 @@ final class CocktailFeedViewAdapter: ResourceView {
     }
     
     func display(_ viewModel: FeedViewModel) {
-        controller?.display(viewModel.feed.map { model in
+        let controllers: [CellController] = viewModel.feed.map { model in
             let adapter = ImageDataPresentationAdapter(loader: { [imageLoader] in
                 imageLoader(model.imageURL)
             })
@@ -37,7 +37,9 @@ final class CocktailFeedViewAdapter: ResourceView {
                                                      errorView: WeakRefVirtualProxy(view),
                                                      mapper: UIImage.tryMake)
             return CellController(id: model, view)
-        })
+        }
+        
+        controller?.display(controllers)
     }
 }
 
