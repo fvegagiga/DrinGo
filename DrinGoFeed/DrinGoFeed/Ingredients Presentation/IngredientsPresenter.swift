@@ -4,20 +4,6 @@
 
 import Foundation
 
-public struct IngredientsViewModel {
-    public let ingredients: [IngredientViewModel]
-}
-
-public struct IngredientViewModel: Hashable {
-    public let ingredient: String
-    public let measure: String
-    
-    public init(ingredient: String, measure: String) {
-        self.ingredient = ingredient
-        self.measure = measure
-    }
-}
-
 public final class IngredientsPresenter {
     
     public static var title: String {
