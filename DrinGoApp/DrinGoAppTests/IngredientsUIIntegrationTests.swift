@@ -16,7 +16,7 @@ class IngredientsUIIntegrationTests: XCTestCase {
         
         sut.loadViewIfNeeded()
         
-        XCTAssertEqual(sut.title, ingredientsTitle)
+        XCTAssertEqual(sut.title?.contains(ingredientsTitle), true)
     }
     
     func test_loadIngredientsActions_requestIngredientsFromLoader() {
@@ -146,7 +146,7 @@ class IngredientsUIIntegrationTests: XCTestCase {
                     .handleEvents(receiveCancel: {
                         cancelCallCount += 1
                     }).eraseToAnyPublisher()
-            })
+            }, name: "any")
             sut?.loadViewIfNeeded()
         }
         
@@ -161,7 +161,7 @@ class IngredientsUIIntegrationTests: XCTestCase {
 
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: ListViewController, loader: LoaderSpy) {
         let loader = LoaderSpy()
-        let sut = IngredientsUIComposer.ingredientsComposedWith(ingredientsLoader: loader.loadPublisher)
+        let sut = IngredientsUIComposer.ingredientsComposedWith(ingredientsLoader: loader.loadPublisher, name: "any")
         trackForMemoryLeaks(loader, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
         return (sut, loader)

@@ -129,7 +129,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private func showIngredients(for cocktail: CocktailItem) {
         let url = IngredientsEndopoint.get(cocktail.id).url(baseURL: baseURL)
-        let ingredients = IngredientsUIComposer.ingredientsComposedWith(ingredientsLoader: makeRemoteIngredientsLoader(url: url))
+        let ingredients = IngredientsUIComposer.ingredientsComposedWith(ingredientsLoader: makeRemoteIngredientsLoader(url: url), name: cocktail.name)
         navigationController.pushViewController(ingredients, animated: true)
     }
 }

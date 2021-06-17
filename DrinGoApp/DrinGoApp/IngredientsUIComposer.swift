@@ -13,11 +13,13 @@ public final class IngredientsUIComposer {
     private typealias IngredientsPresentationAdapter = LoadResourcePresentationAdapter<[CocktailIngredient], IngredientsViewAdapter>
     
     public static func ingredientsComposedWith(
-        ingredientsLoader: @escaping () -> AnyPublisher<[CocktailIngredient], Error>
+        ingredientsLoader: @escaping () -> AnyPublisher<[CocktailIngredient], Error>,
+        name: String
     ) -> ListViewController {
         let presentationAdapter = IngredientsPresentationAdapter(loader: ingredientsLoader)
+        let title = "\(IngredientsPresenter.title): \(name)"
         
-        let ingredientsController = makeIngredientsViewController(title: IngredientsPresenter.title)
+        let ingredientsController = makeIngredientsViewController(title: title)
         ingredientsController.onRefresh = presentationAdapter.loadResource
         
         presentationAdapter.presenter = LoadResoucePresenter(
