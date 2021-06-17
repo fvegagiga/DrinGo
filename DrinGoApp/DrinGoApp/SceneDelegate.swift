@@ -56,6 +56,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             .appendingPathComponent(fileName)
     }
     
+    // Mark: - SceneDelegate
+    
     convenience init(httpClient: HTTPClient, store: FeedStore & CocktailImageDataStore) {
         self.init()
         self.httpClient = httpClient
@@ -79,30 +81,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         localCocktailLoader.validateCache { _ in }
     }
     
-    private func showIngredients(for cocktail: CocktailItem) {
-        let url = IngredientsEndopoint.get(cocktail.id).url(baseURL: baseURL)
-        let ingredients = IngredientsUIComposer.ingredientsComposedWith(ingredientsLoader: makeRemoteIngredientsLoader(url: url))
-        navigationController.pushViewController(ingredients, animated: true)
-    }
-    
-    private func makeRemoteIngredientsLoader(url: URL) -> () -> AnyPublisher<[CocktailIngredient], Error> {
-        return { [httpClient] in
-            return httpClient
-                .getPublisher(url: url)
-                .tryMap(CocktailIngredientsMapper.map)
-                .eraseToAnyPublisher()
-        }
-    }
+    // MARK: - Cocktail Loader
     
     private func makeRemoteCocktailLoaderWithLocalFallback() -> AnyPublisher<[CocktailItem], Error> {
+        return makeRemoteCocktailFeedLoader()
+            .caching(to: localCocktailLoader)
+            .fallback(to: localCocktailLoader.loadPublisher)
+    }
+    
+    private func makeRemoteCocktailFeedLoader() -> AnyPublisher<[CocktailItem], Error> {
         let url = CocktailFeedEndpoint.get.url(baseURL: baseURL)
         
         return httpClient
             .getPublisher(url: url)
             .tryMap(CocktailItemMapper.map)
-            .caching(to: localCocktailLoader)
-            .fallback(to: localCocktailLoader.loadPublisher)
+            .eraseToAnyPublisher()
     }
+
+    // MARK: - Image Data Loader
     
     private func makeLocalImageDataLoaderWithRemoteFallback(url: URL) -> CocktailImageDataLoader.Publisher {
         let localImageLoader = LocalCocktailImageDataLoader(store: store)
@@ -116,5 +112,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     .tryMap(ImageDataMapper.map)
                     .caching(to: localImageLoader, using: localFilePath)
             })
+    }
+    
+    // MARK: - Ingredients Loader
+    
+    private func makeRemoteIngredientsLoader(url: URL) -> () -> AnyPublisher<[CocktailIngredient], Error> {
+        return { [httpClient] in
+            return httpClient
+                .getPublisher(url: url)
+                .tryMap(CocktailIngredientsMapper.map)
+                .eraseToAnyPublisher()
+        }
+    }
+    
+    // MARK: - Navigation
+    
+    private func showIngredients(for cocktail: CocktailItem) {
+        let url = IngredientsEndopoint.get(cocktail.id).url(baseURL: baseURL)
+        let ingredients = IngredientsUIComposer.ingredientsComposedWith(ingredientsLoader: makeRemoteIngredientsLoader(url: url))
+        navigationController.pushViewController(ingredients, animated: true)
     }
 }
