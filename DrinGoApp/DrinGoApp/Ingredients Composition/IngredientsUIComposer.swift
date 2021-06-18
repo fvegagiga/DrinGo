@@ -16,7 +16,9 @@ public final class IngredientsUIComposer {
         ingredientsLoader: @escaping () -> AnyPublisher<[CocktailIngredient], Error>,
         name: String
     ) -> ListViewController {
+        
         let presentationAdapter = IngredientsPresentationAdapter(loader: ingredientsLoader)
+        
         let title = "\(IngredientsPresenter.title): \(name)"
         
         let ingredientsController = makeIngredientsViewController(title: title)
@@ -36,19 +38,5 @@ public final class IngredientsUIComposer {
         let controller = storyboard.instantiateInitialViewController() as! ListViewController
         controller.title = title
         return controller
-    }
-}
-
-final class IngredientsViewAdapter: ResourceView {
-    private weak var controller: ListViewController?
-    
-    init(controller: ListViewController) {
-        self.controller = controller
-    }
-    
-    func display(_ viewModel: IngredientsViewModel) {
-        controller?.display(viewModel.ingredients.map { viewModel in
-            CellController(id: viewModel, IngredientCellController(model: viewModel))
-        })
     }
 }

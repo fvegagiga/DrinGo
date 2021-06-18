@@ -42,6 +42,7 @@
 		C67EC6832677BD1B0075C7C2 /* IngredientsUIIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67EC6822677BD1B0075C7C2 /* IngredientsUIIntegrationTests.swift */; };
 		C67EC6852677BE200075C7C2 /* IngredientsUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67EC6842677BE200075C7C2 /* IngredientsUIComposer.swift */; };
 		C68065E6266A278A0022A14B /* CombineHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68065E5266A278A0022A14B /* CombineHelpers.swift */; };
+		C684350A267C93D100B1D992 /* IngredientsViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6843509267C93D100B1D992 /* IngredientsViewAdapter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,7 @@
 		C67EC6822677BD1B0075C7C2 /* IngredientsUIIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsUIIntegrationTests.swift; sourceTree = "<group>"; };
 		C67EC6842677BE200075C7C2 /* IngredientsUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsUIComposer.swift; sourceTree = "<group>"; };
 		C68065E5266A278A0022A14B /* CombineHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineHelpers.swift; sourceTree = "<group>"; };
+		C6843509267C93D100B1D992 /* IngredientsViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsViewAdapter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,11 +156,10 @@
 				C6089E5326636DEC00EE1A7D /* AppDelegate.swift */,
 				C6089E5526636DEC00EE1A7D /* SceneDelegate.swift */,
 				C68065E5266A278A0022A14B /* CombineHelpers.swift */,
-				C66406442666040F00F1355C /* CocktailUIComposer.swift */,
-				C67EC6842677BE200075C7C2 /* IngredientsUIComposer.swift */,
 				C66406422666040E00F1355C /* WeakRefVirtualProxy.swift */,
-				C66406462666040F00F1355C /* LoadResourcePresentationAdapter.swift */,
-				C66406472666040F00F1355C /* CocktailFeedViewAdapter.swift */,
+				C684350B267C942200B1D992 /* Shared Composition */,
+				C6843507267C939600B1D992 /* Cocktail Feed Composition */,
+				C6843508267C93B700B1D992 /* Ingredients Composition */,
 				C6089E5C26636DED00EE1A7D /* Assets.xcassets */,
 				C6089E5E26636DED00EE1A7D /* LaunchScreen.storyboard */,
 				C6089E6126636DED00EE1A7D /* Info.plist */,
@@ -210,6 +211,32 @@
 				C6640666266615A400F1355C /* InMemoryFeedStore.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		C6843507267C939600B1D992 /* Cocktail Feed Composition */ = {
+			isa = PBXGroup;
+			children = (
+				C66406442666040F00F1355C /* CocktailUIComposer.swift */,
+				C66406472666040F00F1355C /* CocktailFeedViewAdapter.swift */,
+			);
+			path = "Cocktail Feed Composition";
+			sourceTree = "<group>";
+		};
+		C6843508267C93B700B1D992 /* Ingredients Composition */ = {
+			isa = PBXGroup;
+			children = (
+				C67EC6842677BE200075C7C2 /* IngredientsUIComposer.swift */,
+				C6843509267C93D100B1D992 /* IngredientsViewAdapter.swift */,
+			);
+			path = "Ingredients Composition";
+			sourceTree = "<group>";
+		};
+		C684350B267C942200B1D992 /* Shared Composition */ = {
+			isa = PBXGroup;
+			children = (
+				C66406462666040F00F1355C /* LoadResourcePresentationAdapter.swift */,
+			);
+			path = "Shared Composition";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,6 +344,7 @@
 				C664064B2666040F00F1355C /* LoadResourcePresentationAdapter.swift in Sources */,
 				C664064C2666040F00F1355C /* CocktailUIComposer.swift in Sources */,
 				C664064D2666040F00F1355C /* CocktailFeedViewAdapter.swift in Sources */,
+				C684350A267C93D100B1D992 /* IngredientsViewAdapter.swift in Sources */,
 				C6089E5426636DEC00EE1A7D /* AppDelegate.swift in Sources */,
 				C6089E5626636DEC00EE1A7D /* SceneDelegate.swift in Sources */,
 				C66406482666040F00F1355C /* WeakRefVirtualProxy.swift in Sources */,
