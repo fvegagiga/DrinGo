@@ -97,9 +97,7 @@ class DrinGoFeedAPIEndToEndTests: XCTestCase {
         return CocktailItem(id: id(at: index),
                             name: name(at: index),
                             description: description(at: index),
-                            imageURL: imageURL(at: index),
-                            ingredients: ingredients(at: index),
-                            quantity: quantity(at: index))
+                            imageURL: imageURL(at: index))
     }
     
     private func id(at index: Int) -> Int {

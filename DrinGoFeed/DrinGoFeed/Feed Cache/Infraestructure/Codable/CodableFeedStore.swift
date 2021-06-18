@@ -19,20 +19,16 @@ public class CodableFeedStore: FeedStore {
         private let name: String
         private let description: String
         private let imageURL: URL
-        private let ingredients: [String]
-        private let quantity: [String]
         
         init(_ cocktail: LocalCocktailItem) {
             self.id = cocktail.id
             self.name = cocktail.name
             self.description = cocktail.description
             self.imageURL = cocktail.imageURL
-            self.ingredients = cocktail.ingredients
-            self.quantity = cocktail.quantity
         }
         
         var local: LocalCocktailItem {
-            LocalCocktailItem(id: id, name: name, description: description, imageURL: imageURL, ingredients: ingredients, quantity: quantity)
+            LocalCocktailItem(id: id, name: name, description: description, imageURL: imageURL)
         }
     }
     

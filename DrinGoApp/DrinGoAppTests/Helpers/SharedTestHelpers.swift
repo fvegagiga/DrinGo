@@ -18,7 +18,7 @@ func anyData() -> Data {
 }
 
 func uniqueCocktail(id: Int = 0) -> [CocktailItem] {
-    return [CocktailItem(id: id, name: "any", description: "any", imageURL: anyURL(), ingredients: ["Ing1", "Ingr2"], quantity: ["Qt1", "Qt2"])]
+    return [CocktailItem(id: id, name: "any", description: "any", imageURL: anyURL())]
 }
 
 private class DummyView: ResourceView {

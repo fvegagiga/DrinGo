@@ -394,7 +394,7 @@ class CocktailFeedUIIntegrationTests: XCTestCase {
     }
     
     private func makeCocktailItem(id: Int = 0, title: String = "a title", description: String = "a description", imageURL: URL = URL(string: "http://any-url.com")!) -> CocktailItem {
-        return CocktailItem(id: id, name: title, description: description, imageURL: imageURL, ingredients: ["Ing1", "Ingr2"], quantity: ["Qt1", "Qt2"])
+        return CocktailItem(id: id, name: title, description: description, imageURL: imageURL)
     }
     
     private func anyImageData() -> Data {

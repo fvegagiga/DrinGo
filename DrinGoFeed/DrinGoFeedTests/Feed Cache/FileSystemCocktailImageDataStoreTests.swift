@@ -133,7 +133,7 @@ class FileSystemCocktailImageDataStoreTests: XCTestCase {
 
     
     private func localImage(url: URL) -> LocalCocktailItem {
-        return LocalCocktailItem(id: 0, name: "name", description: "description", imageURL: url, ingredients: ["ing1"], quantity: ["qt1"])
+        return LocalCocktailItem(id: 0, name: "name", description: "description", imageURL: url)
     }
 
     private func testSpecificFilePath() -> URL {

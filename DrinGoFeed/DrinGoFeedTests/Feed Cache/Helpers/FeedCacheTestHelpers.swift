@@ -6,12 +6,12 @@ import Foundation
 import DrinGoFeed
 
 func uniqueCocktail(idx: Int = 0) -> CocktailItem {
-    return CocktailItem(id: idx, name: "any", description: "any", imageURL: anyURL(), ingredients: ["Ing1", "Ingr2"], quantity: ["Qt1", "Qt2"])
+    return CocktailItem(id: idx, name: "any", description: "any", imageURL: anyURL())
 }
 
 func uniqueCocktails() -> (models: [CocktailItem], local: [LocalCocktailItem]) {
     let models = [uniqueCocktail(idx: 0), uniqueCocktail(idx: 1)]
-    let localItems = models.map { LocalCocktailItem(id: $0.id, name: $0.name, description: $0.description, imageURL: $0.imageURL, ingredients: $0.ingredients, quantity: $0.quantity) }
+    let localItems = models.map { LocalCocktailItem(id: $0.id, name: $0.name, description: $0.description, imageURL: $0.imageURL) }
     return (models, localItems)
 }
 
