@@ -13,8 +13,4 @@ class IngredientsLocalizationTests: XCTestCase {
         
         assertLocalizedKeyAndValuesExists(in: bundle, table)
     }
-    
-    private class DummyView: ResourceView {
-        func display(_ viewModel: Any) {}
-    }
 }
