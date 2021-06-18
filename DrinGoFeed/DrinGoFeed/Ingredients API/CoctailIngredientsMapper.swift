@@ -49,7 +49,7 @@ public final class CocktailIngredientsMapper {
                             item.strMeasure8]
             
             let items: [CocktailIngredient] = zip(ingredients, measures).compactMap {
-                guard let name = $0.0 else { return nil }
+                guard let name = $0.0, !name.isEmpty else { return nil }
                 return CocktailIngredient(name: name, measure: $0.1 ?? "")
             }
             
