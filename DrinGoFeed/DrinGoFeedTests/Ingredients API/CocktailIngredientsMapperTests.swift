@@ -42,8 +42,8 @@ class CocktailIngredientsMapperTests: XCTestCase {
     }
     
     func test_map_deliversItemsOn2xxHTTPResponseWithJSONItems() throws {
-        let items = makeCocktailIngredients(["Kahlua", "Sambuca", "Blue Curacao", "Baileys irish cream", nil],
-                                           measures: ["1/2 oz ", "1 oz ", "3 oz ", "2 oz ", nil])
+        let items = makeCocktailIngredients(["Kahlua", "Sambuca", "Blue Curacao", "Baileys irish cream", nil, nil, nil, nil],
+                                           measures: ["1/2 oz ", "1 oz ", "3 oz ", "2 oz ", nil, nil, nil, nil])
         
         let samples = [200, 201, 250, 280, 299]
         let json = makeItemsJson([items.json])
@@ -70,11 +70,17 @@ class CocktailIngredientsMapperTests: XCTestCase {
             "strIngredient3": ingredients[2],
             "strIngredient4": ingredients[3],
             "strIngredient5": ingredients[4],
+            "strIngredient6": ingredients[5],
+            "strIngredient7": ingredients[6],
+            "strIngredient8": ingredients[7],
             "strMeasure1": measures[0],
             "strMeasure2": measures[1],
             "strMeasure3": measures[2],
             "strMeasure4": measures[3],
-            "strMeasure5": measures[4]
+            "strMeasure5": measures[4],
+            "strMeasure6": measures[5],
+            "strMeasure7": measures[6],
+            "strMeasure8": measures[7]
         ]
         
         return (items, json)

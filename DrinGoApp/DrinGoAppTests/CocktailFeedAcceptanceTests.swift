@@ -126,11 +126,17 @@ class CocktailFeedAcceptanceTests: XCTestCase {
                          "strIngredient3": "ingredients3",
                          "strIngredient4": "ingredients4",
                          "strIngredient5": nil,
+                         "strIngredient6": nil,
+                         "strIngredient7": nil,
+                         "strIngredient8": nil,
                          "strMeasure1": "measure1",
                          "strMeasure2": "measure2",
                          "strMeasure3": "measure3",
                          "strMeasure4": nil,
-                         "strMeasure5": nil
+                         "strMeasure5": nil,
+                         "strMeasure6": nil,
+                         "strMeasure7": nil,
+                         "strMeasure8": nil
             ],
         ]])
 
