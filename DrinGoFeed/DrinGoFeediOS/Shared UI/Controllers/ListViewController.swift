@@ -5,7 +5,7 @@
 import UIKit
 import DrinGoFeed
 
-public final class ListViewController: UITableViewController, UITableViewDataSourcePrefetching, ResourceLoadingView, ResourceErrorView {
+public final class ListViewController: UITableViewController, UITableViewDataSourcePrefetching {
 
     private(set) public var errorView = ErrorView()
     
@@ -61,14 +61,6 @@ public final class ListViewController: UITableViewController, UITableViewDataSou
         }
         dataSource.apply(snapshot)
     }
-    
-    public func display(_ viewModel: ResourceLoadingViewModel) {
-        refreshControl?.update(isRefreshing: viewModel.isLoading)
-    }
-    
-    public func display(_ viewModel: ResourceErrorViewModel) {
-        errorView.message = viewModel.message
-    }
 
     public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let dl = cellController(at: indexPath)?.delegate
@@ -96,5 +88,21 @@ public final class ListViewController: UITableViewController, UITableViewDataSou
     
     private func cellController(at indexPath: IndexPath) -> CellController? {
         dataSource.itemIdentifier(for: indexPath)
+    }
+}
+
+// MARK: - ResourceLoadingView
+
+extension ListViewController: ResourceLoadingView {
+    public func display(_ viewModel: ResourceLoadingViewModel) {
+        refreshControl?.update(isRefreshing: viewModel.isLoading)
+    }
+}
+
+// MARK: - ResourceErrorView
+
+extension ListViewController: ResourceErrorView {
+    public func display(_ viewModel: ResourceErrorViewModel) {
+        errorView.message = viewModel.message
     }
 }
