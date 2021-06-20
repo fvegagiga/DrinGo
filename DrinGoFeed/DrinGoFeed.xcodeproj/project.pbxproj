@@ -24,7 +24,6 @@
 		C620D448266210D3008BEC8C /* ImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6719FB32658D93500ACDF8A /* ImageDataLoader.swift */; };
 		C620D44A266213DB008BEC8C /* ImageDataMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C620D449266213DB008BEC8C /* ImageDataMapperTests.swift */; };
 		C620D44D2662468B008BEC8C /* HTTPClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C620D44C2662468B008BEC8C /* HTTPClientSpy.swift */; };
-		C620D44F2662474F008BEC8C /* RemoteCocktailImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C620D44E2662474F008BEC8C /* RemoteCocktailImageDataLoader.swift */; };
 		C620D454266250ED008BEC8C /* URLProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = C620D453266250ED008BEC8C /* URLProtocolStub.swift */; };
 		C620D456266254C6008BEC8C /* LoadCocktailImageDataFromCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C620D455266254C6008BEC8C /* LoadCocktailImageDataFromCacheUseCaseTests.swift */; };
 		C620D45826625E48008BEC8C /* LocalCocktailImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C620D45726625E48008BEC8C /* LocalCocktailImageDataLoader.swift */; };
@@ -196,7 +195,6 @@
 		C61FA0EE265A7ED60026D999 /* CocktailImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailImageViewModel.swift; sourceTree = "<group>"; };
 		C620D449266213DB008BEC8C /* ImageDataMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataMapperTests.swift; sourceTree = "<group>"; };
 		C620D44C2662468B008BEC8C /* HTTPClientSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientSpy.swift; sourceTree = "<group>"; };
-		C620D44E2662474F008BEC8C /* RemoteCocktailImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCocktailImageDataLoader.swift; sourceTree = "<group>"; };
 		C620D453266250ED008BEC8C /* URLProtocolStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolStub.swift; sourceTree = "<group>"; };
 		C620D455266254C6008BEC8C /* LoadCocktailImageDataFromCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadCocktailImageDataFromCacheUseCaseTests.swift; sourceTree = "<group>"; };
 		C620D45726625E48008BEC8C /* LocalCocktailImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCocktailImageDataLoader.swift; sourceTree = "<group>"; };
@@ -556,7 +554,6 @@
 			children = (
 				C6D96417266DF69700753E2F /* Helpers */,
 				C6E3015726412FE7009DC1D5 /* CocktailItemMapper.swift */,
-				C620D44E2662474F008BEC8C /* RemoteCocktailImageDataLoader.swift */,
 				C63D3C4A2678BF3300632406 /* CocktailFeedEndpoint.swift */,
 			);
 			path = "Feed API";
@@ -1184,7 +1181,6 @@
 				C61FA0E1265A68560026D999 /* CocktailFeedPresenter.swift in Sources */,
 				C6EE54D7266DF140001BD5F5 /* ImageDataMapper.swift in Sources */,
 				C6FEFBD72673B52600585391 /* ResourceLoadingView.swift in Sources */,
-				C620D44F2662474F008BEC8C /* RemoteCocktailImageDataLoader.swift in Sources */,
 				C6D87F2E264D035500749974 /* FeedStore.swift in Sources */,
 				C6D87F2C264D02AC00749974 /* LocalCocktailLoader.swift in Sources */,
 				C6D96419266DF69700753E2F /* HTTPURLResponse+StatusCode.swift in Sources */,
