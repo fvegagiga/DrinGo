@@ -28,22 +28,22 @@ extension LocalCocktailImageDataLoader: CocktailImageDataCache {
     }
 }
 
-extension LocalCocktailImageDataLoader: CocktailImageDataLoader {
-    public typealias LoadResult = CocktailImageDataLoader.Result
+extension LocalCocktailImageDataLoader: ImageDataLoader {
+    public typealias LoadResult = ImageDataLoader.Result
     
     public enum LoadError: Error {
         case failed
         case notFound
     }
     
-    private final class LoadImageDataTask: CocktailImageDataLoaderTask {
-        private var completion: ((CocktailImageDataLoader.Result) -> Void)?
+    private final class LoadImageDataTask: ImageDataLoaderTask {
+        private var completion: ((ImageDataLoader.Result) -> Void)?
         
-        init(_ completion: @escaping (CocktailImageDataLoader.Result) -> Void) {
+        init(_ completion: @escaping (ImageDataLoader.Result) -> Void) {
             self.completion = completion
         }
         
-        func complete(with result: CocktailImageDataLoader.Result) {
+        func complete(with result: ImageDataLoader.Result) {
             completion?(result)
         }
         
@@ -56,7 +56,7 @@ extension LocalCocktailImageDataLoader: CocktailImageDataLoader {
         }
     }
     
-    public func loadImageData(from url: URL, completion: @escaping (CocktailImageDataLoader.Result) -> Void) -> CocktailImageDataLoaderTask {
+    public func loadImageData(from url: URL, completion: @escaping (ImageDataLoader.Result) -> Void) -> ImageDataLoaderTask {
         let task = LoadImageDataTask(completion)
 
         store.retrieve(dataForURL: url) { [weak self] result in

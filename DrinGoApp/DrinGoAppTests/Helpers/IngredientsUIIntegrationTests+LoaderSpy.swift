@@ -9,7 +9,7 @@ import DrinGoFeediOS
 
 extension IngredientsUIIntegrationTests {
     
-    class LoaderSpy: CocktailImageDataLoader {
+    class LoaderSpy: ImageDataLoader {
         
         // MARK: - IngredientsLoader
         
@@ -36,14 +36,14 @@ extension IngredientsUIIntegrationTests {
         
         // MARK: - FeedImageDataLoader
         
-        private struct TaskSpy: CocktailImageDataLoaderTask {
+        private struct TaskSpy: ImageDataLoaderTask {
             let cancelCallback: () -> Void
             func cancel() {
                 cancelCallback()
             }
         }
         
-        private var imageRequests = [(url: URL, completion: (CocktailImageDataLoader.Result) -> Void)]()
+        private var imageRequests = [(url: URL, completion: (ImageDataLoader.Result) -> Void)]()
         
         var loadedImageURLs: [URL] {
             return imageRequests.map { $0.url }
@@ -51,7 +51,7 @@ extension IngredientsUIIntegrationTests {
         
         private(set) var cancelledImageURLs = [URL]()
         
-        func loadImageData(from url: URL, completion: @escaping (CocktailImageDataLoader.Result) -> Void) -> CocktailImageDataLoaderTask {
+        func loadImageData(from url: URL, completion: @escaping (ImageDataLoader.Result) -> Void) -> ImageDataLoaderTask {
             imageRequests.append((url, completion))
             return TaskSpy { [weak self] in self?.cancelledImageURLs.append(url) }
         }

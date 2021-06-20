@@ -14,7 +14,7 @@ public final class IngredientsUIComposer {
     
     public static func ingredientsComposedWith(
         ingredientsLoader: @escaping () -> AnyPublisher<[CocktailIngredient], Error>,
-        imageLoader: @escaping (URL) -> CocktailImageDataLoader.Publisher,
+        imageLoader: @escaping (URL) -> ImageDataLoader.Publisher,
         name: String,
         imageBaseURL: URL
     ) -> ListViewController {

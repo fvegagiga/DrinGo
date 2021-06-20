@@ -65,12 +65,12 @@ class DrinGoFeedAPIEndToEndTests: XCTestCase {
         return receivedResult
     }
     
-    private func getCocktailImageDataResult(file: StaticString = #file, line: UInt = #line) -> CocktailImageDataLoader.Result? {
+    private func getCocktailImageDataResult(file: StaticString = #file, line: UInt = #line) -> ImageDataLoader.Result? {
         let client = ephemeralClient()
         let url = imageURL(at: 0)
         let exp = expectation(description: "Wait for load completion")
         
-        var receivedResult: CocktailImageDataLoader.Result?
+        var receivedResult: ImageDataLoader.Result?
         client.get(from: url) { result in
             receivedResult = result.flatMap { (data, response) in
                 do {

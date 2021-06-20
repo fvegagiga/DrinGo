@@ -8,12 +8,12 @@ import DrinGoFeediOS
 
 final class IngredientsViewAdapter: ResourceView {
     private weak var controller: ListViewController?
-    private let imageLoader: (URL) -> CocktailImageDataLoader.Publisher
+    private let imageLoader: (URL) -> ImageDataLoader.Publisher
     private let imageBaseURL: URL
     
     private typealias ImageDataPresentationAdapter = LoadResourcePresentationAdapter<Data, WeakRefVirtualProxy<IngredientCellController>>
     
-    init(controller: ListViewController, imageLoader: @escaping (URL) -> CocktailImageDataLoader.Publisher, imageBaseURL: URL) {
+    init(controller: ListViewController, imageLoader: @escaping (URL) -> ImageDataLoader.Publisher, imageBaseURL: URL) {
         self.controller = controller
         self.imageLoader = imageLoader
         self.imageBaseURL = imageBaseURL

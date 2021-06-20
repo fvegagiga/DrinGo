@@ -7,7 +7,7 @@ protocol CocktailImageDataLoaderTestsCase: XCTestCase {}
 
 extension CocktailImageDataLoaderTestsCase {
 
-    func expect(_ sut: CocktailImageDataLoader, toCompleteWith expectedResult: CocktailImageDataLoader.Result, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
+    func expect(_ sut: ImageDataLoader, toCompleteWith expectedResult: ImageDataLoader.Result, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
         let exp = expectation(description: "Wait for load completion")
         
         _ = sut.loadImageData(from: anyURL()) { receivedResult in

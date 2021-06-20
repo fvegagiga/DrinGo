@@ -52,7 +52,7 @@ class LoadCocktailImageDataFromCacheUseCaseTests: XCTestCase {
         let (sut, store) = makeSUT()
         let foundData = anyData()
         
-        var received = [CocktailImageDataLoader.Result]()
+        var received = [ImageDataLoader.Result]()
         let task = sut.loadImageData(from: anyURL()) { received.append($0) }
         task.cancel()
         
@@ -67,7 +67,7 @@ class LoadCocktailImageDataFromCacheUseCaseTests: XCTestCase {
         let store = CocktailImageDataStoreSpy()
         var sut: LocalCocktailImageDataLoader? = LocalCocktailImageDataLoader(store: store)
         
-        var received = [CocktailImageDataLoader.Result]()
+        var received = [ImageDataLoader.Result]()
         _ = sut?.loadImageData(from: anyURL()) { received.append($0) }
         
         sut = nil
@@ -86,7 +86,7 @@ class LoadCocktailImageDataFromCacheUseCaseTests: XCTestCase {
         return (sut, store)
     }
     
-    private func expect(_ sut: LocalCocktailImageDataLoader, toCompleteWith expectedResult: CocktailImageDataLoader.Result, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
+    private func expect(_ sut: LocalCocktailImageDataLoader, toCompleteWith expectedResult: ImageDataLoader.Result, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
         let exp = expectation(description: "Wait for load completion")
         
         _ = sut.loadImageData(from: anyURL()) { receivedResult in
@@ -110,11 +110,11 @@ class LoadCocktailImageDataFromCacheUseCaseTests: XCTestCase {
     }
 
     
-    private func failed() -> CocktailImageDataLoader.Result {
+    private func failed() -> ImageDataLoader.Result {
         return .failure(LocalCocktailImageDataLoader.LoadError.failed)
     }
     
-    private func notFound() -> CocktailImageDataLoader.Result {
+    private func notFound() -> ImageDataLoader.Result {
         return .failure(LocalCocktailImageDataLoader.LoadError.notFound)
     }
 }

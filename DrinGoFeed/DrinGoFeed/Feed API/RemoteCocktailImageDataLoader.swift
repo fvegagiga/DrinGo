@@ -4,7 +4,7 @@
 
 import Foundation
 
-public final class RemoteCocktailImageDataLoader: CocktailImageDataLoader {
+public final class RemoteCocktailImageDataLoader: ImageDataLoader {
     
     private let client: HTTPClient
     
@@ -17,16 +17,16 @@ public final class RemoteCocktailImageDataLoader: CocktailImageDataLoader {
         case connectivity
     }
     
-    private final class HTTPClientTaskWrapper: CocktailImageDataLoaderTask {
-        private var completion: ((CocktailImageDataLoader.Result) -> Void)?
+    private final class HTTPClientTaskWrapper: ImageDataLoaderTask {
+        private var completion: ((ImageDataLoader.Result) -> Void)?
 
         var wrapped: HTTPClientTask?
 
-        init(_ completion: @escaping (CocktailImageDataLoader.Result) -> Void) {
+        init(_ completion: @escaping (ImageDataLoader.Result) -> Void) {
             self.completion = completion
         }
         
-        func complete(with result: CocktailImageDataLoader.Result) {
+        func complete(with result: ImageDataLoader.Result) {
             completion?(result)
         }
         
@@ -40,7 +40,7 @@ public final class RemoteCocktailImageDataLoader: CocktailImageDataLoader {
         }
     }
     
-    public func loadImageData(from url: URL, completion: @escaping (CocktailImageDataLoader.Result) -> Void) -> CocktailImageDataLoaderTask {
+    public func loadImageData(from url: URL, completion: @escaping (ImageDataLoader.Result) -> Void) -> ImageDataLoaderTask {
         let task = HTTPClientTaskWrapper(completion)
         
         task.wrapped = client.get(from: url) { [weak self] result in

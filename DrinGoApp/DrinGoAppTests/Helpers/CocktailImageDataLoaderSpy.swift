@@ -5,8 +5,8 @@
 import Foundation
 import DrinGoFeed
 
-class CocktailImageDataLoaderSpy: CocktailImageDataLoader {
-    private var messages = [(url: URL, completion: (CocktailImageDataLoader.Result) -> Void)]()
+class CocktailImageDataLoaderSpy: ImageDataLoader {
+    private var messages = [(url: URL, completion: (ImageDataLoader.Result) -> Void)]()
 
     private(set) var cancelledURLs = [URL]()
 
@@ -14,12 +14,12 @@ class CocktailImageDataLoaderSpy: CocktailImageDataLoader {
         return messages.map { $0.url }
     }
 
-    private struct Task: CocktailImageDataLoaderTask {
+    private struct Task: ImageDataLoaderTask {
         let callback: () -> Void
         func cancel() { callback() }
     }
 
-    func loadImageData(from url: URL, completion: @escaping (CocktailImageDataLoader.Result) -> Void) -> CocktailImageDataLoaderTask {
+    func loadImageData(from url: URL, completion: @escaping (ImageDataLoader.Result) -> Void) -> ImageDataLoaderTask {
         messages.append((url, completion))
         return Task { [weak self] in
             self?.cancelledURLs.append(url)

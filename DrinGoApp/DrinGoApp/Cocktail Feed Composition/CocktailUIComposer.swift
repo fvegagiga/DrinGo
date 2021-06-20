@@ -14,7 +14,7 @@ public final class CocktailUIComposer {
     
     public static func feedComposedWith(
         feedLoader: @escaping () -> AnyPublisher<[CocktailItem], Error>,
-        imageLoader: @escaping (URL) -> CocktailImageDataLoader.Publisher,
+        imageLoader: @escaping (URL) -> ImageDataLoader.Publisher,
         selection: @escaping (CocktailItem) -> Void = { _ in }
     ) -> ListViewController {
         

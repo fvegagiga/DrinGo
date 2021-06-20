@@ -101,7 +101,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     // MARK: - Image Data Loader
     
-    private func makeLocalImageDataLoaderWithRemoteFallback(url: URL) -> CocktailImageDataLoader.Publisher {
+    private func makeLocalImageDataLoaderWithRemoteFallback(url: URL) -> ImageDataLoader.Publisher {
         let localImageLoader = LocalCocktailImageDataLoader(store: store)
         let localFilePath = getCacheDirectoryFilePath(for: url)
         
@@ -115,7 +115,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             })
     }
     
-    private func makeRemoteImageDataLoader(url: URL) -> CocktailImageDataLoader.Publisher {
+    private func makeRemoteImageDataLoader(url: URL) -> ImageDataLoader.Publisher {
         return httpClient
             .getPublisher(url: url)
             .tryMap(ImageDataMapper.map)

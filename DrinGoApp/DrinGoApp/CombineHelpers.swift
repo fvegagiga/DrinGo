@@ -22,13 +22,13 @@ public extension HTTPClient {
     }
 }
 
-// MARK: - CocktailImageDataLoader
+// MARK: - ImageDataLoader
 
-public extension CocktailImageDataLoader {
+public extension ImageDataLoader {
     typealias Publisher = AnyPublisher<Data, Error>
     
     func loadImageDataPublisher(from url: URL) -> Publisher {
-        var task: CocktailImageDataLoaderTask?
+        var task: ImageDataLoaderTask?
         
         return Deferred {
             Future { completion in
