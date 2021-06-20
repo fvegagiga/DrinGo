@@ -545,7 +545,6 @@
 			isa = PBXGroup;
 			children = (
 				C6504A5F263EBC9E00F4FCD1 /* CocktailItem.swift */,
-				C6719FB32658D93500ACDF8A /* CocktailImageDataLoader.swift */,
 				C63DFAD12664FDA800C29543 /* CocktailCache.swift */,
 				C63DFADB26650DDB00C29543 /* CoctailImageDataCache.swift */,
 			);
@@ -596,14 +595,15 @@
 				C6504A49263EACA600F4FCD1 /* Info.plist */,
 				C63673ED266B8AC100C669C9 /* Shared API */,
 				C63673EE266B8AE400C669C9 /* Shared API Infra */,
+				C6CB4FFD267F2D23002844A4 /* Shared Feature */,
 				C6FEFBC92673717E00585391 /* Shared Presentation */,
-				C63673EA266B67F400C669C9 /* Ingredients Feature */,
-				C63673F2266B8BA000C669C9 /* Ingredients API */,
-				C639D54F26749DEB000F4043 /* Ingredients Presentation */,
+				C64DD9FF263F1339009D70AE /* Feed API */,
 				C6D87F2A264D029C00749974 /* Feed Cache */,
 				C64DD9FC263F065D009D70AE /* Feed Feature */,
-				C64DD9FF263F1339009D70AE /* Feed API */,
 				C61FA0DF265A68320026D999 /* Feed Presentation */,
+				C63673F2266B8BA000C669C9 /* Ingredients API */,
+				C63673EA266B67F400C669C9 /* Ingredients Feature */,
+				C639D54F26749DEB000F4043 /* Ingredients Presentation */,
 			);
 			path = DrinGoFeed;
 			sourceTree = "<group>";
@@ -613,14 +613,14 @@
 			children = (
 				C6504A55263EACA700F4FCD1 /* Info.plist */,
 				C6A01C2126427C370071A344 /* Helpers */,
-				C6FEFBC62673709E00585391 /* Shared Presentation */,
-				C6414DC4264C1D260066DC59 /* Feed Cache */,
 				C63673EF266B8B1F00C669C9 /* Shared API */,
 				C63673F1266B8B3000C669C9 /* Shared API Infra */,
+				C6FEFBC62673709E00585391 /* Shared Presentation */,
+				C6E30159264155DC009DC1D5 /* Feed API */,
+				C6414DC4264C1D260066DC59 /* Feed Cache */,
+				C61FA0D6265A62EE0026D999 /* Feed Presentation */,
 				C63673F3266B8BCF00C669C9 /* Ingredients API */,
 				C639D54C26749CCC000F4043 /* Ingredients Presentation */,
-				C6E30159264155DC009DC1D5 /* Feed API */,
-				C61FA0D6265A62EE0026D999 /* Feed Presentation */,
 			);
 			path = DrinGoFeedTests;
 			sourceTree = "<group>";
@@ -809,6 +809,14 @@
 				C6FEFBD42673B05900585391 /* SharedLocalizationTestHelpers.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		C6CB4FFD267F2D23002844A4 /* Shared Feature */ = {
+			isa = PBXGroup;
+			children = (
+				C6719FB32658D93500ACDF8A /* CocktailImageDataLoader.swift */,
+			);
+			path = "Shared Feature";
 			sourceTree = "<group>";
 		};
 		C6D87F2A264D029C00749974 /* Feed Cache */ = {
