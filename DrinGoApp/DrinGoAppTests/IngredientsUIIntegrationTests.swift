@@ -138,6 +138,7 @@ class IngredientsUIIntegrationTests: XCTestCase {
     
     func test_deinit_cancelsRunningRequests() {
         var cancelCallCount = 0
+        let loader = LoaderSpy()
         var sut: ListViewController?
         
         autoreleasepool {
@@ -146,7 +147,10 @@ class IngredientsUIIntegrationTests: XCTestCase {
                     .handleEvents(receiveCancel: {
                         cancelCallCount += 1
                     }).eraseToAnyPublisher()
-            }, name: "any")
+            },
+            imageLoader: loader.loadImageDataPublisher,
+            name: "any",
+            imageBaseURL: anyURL())
             sut?.loadViewIfNeeded()
         }
         
@@ -161,7 +165,11 @@ class IngredientsUIIntegrationTests: XCTestCase {
 
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: ListViewController, loader: LoaderSpy) {
         let loader = LoaderSpy()
-        let sut = IngredientsUIComposer.ingredientsComposedWith(ingredientsLoader: loader.loadPublisher, name: "any")
+        let sut = IngredientsUIComposer.ingredientsComposedWith(
+            ingredientsLoader: loader.loadPublisher,
+            imageLoader: loader.loadImageDataPublisher,
+            name: "any",
+            imageBaseURL: anyURL())
         trackForMemoryLeaks(loader, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
         return (sut, loader)
@@ -169,38 +177,5 @@ class IngredientsUIIntegrationTests: XCTestCase {
     
     private func makeIngredient(id: Int = 0, name: String = "any ingredient", measure: String = "any measure") -> CocktailIngredient {
         return CocktailIngredient(name: name, measure: measure)
-    }
-    
-    func assertThat(_ sut: ListViewController, isRendering ingredients: [CocktailIngredient], file: StaticString = #file, line: UInt = #line) {
-        XCTAssertEqual(sut.numberOfRenderedIngredients(), ingredients.count, "ingredients count", file: file, line: line)
-        
-        ingredients.enumerated().forEach { index, ingredient in
-            XCTAssertEqual(sut.ingredientName(at: index), ingredient.name, "ingredient name at \(index)", file: file, line: line)
-            XCTAssertEqual(sut.ingredientMeasure(at: index), ingredient.measure, "ingredient name at \(index)", file: file, line: line)
-        }
-    }
-
-    private class LoaderSpy {
-        
-        private var requests = [PassthroughSubject<[CocktailIngredient], Error>]()
-        
-        var loadIngredientsCallCount: Int {
-            return requests.count
-        }
-        
-        func loadPublisher() -> AnyPublisher<[CocktailIngredient], Error> {
-            let publisher = PassthroughSubject<[CocktailIngredient], Error>()
-            requests.append(publisher)
-            return publisher.eraseToAnyPublisher()
-        }
-        
-        func completeIngredientsLoading(with ingredients: [CocktailIngredient] = [], at index: Int = 0) {
-            requests[index].send(ingredients)
-            requests[index].send(completion: .finished)
-        }
-        
-        func completeIngredientsLoadingWithError(at index: Int = 0) {
-            requests[index].send(completion: .failure(anyNSError()))
-        }
     }
 }

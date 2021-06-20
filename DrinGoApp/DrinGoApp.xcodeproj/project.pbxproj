@@ -43,6 +43,9 @@
 		C67EC6852677BE200075C7C2 /* IngredientsUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67EC6842677BE200075C7C2 /* IngredientsUIComposer.swift */; };
 		C68065E6266A278A0022A14B /* CombineHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68065E5266A278A0022A14B /* CombineHelpers.swift */; };
 		C684350A267C93D100B1D992 /* IngredientsViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6843509267C93D100B1D992 /* IngredientsViewAdapter.swift */; };
+		C690F08C267DD1380060727E /* UIImage+tryMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = C690F08B267DD1380060727E /* UIImage+tryMake.swift */; };
+		C6CB4FFA267F26B5002844A4 /* IngredientsUIIntegrationTests+LoaderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CB4FF9267F26B5002844A4 /* IngredientsUIIntegrationTests+LoaderSpy.swift */; };
+		C6CB4FFC267F2945002844A4 /* IngredientsUIIntegrationTests+Assertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CB4FFB267F2945002844A4 /* IngredientsUIIntegrationTests+Assertions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +112,9 @@
 		C67EC6842677BE200075C7C2 /* IngredientsUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsUIComposer.swift; sourceTree = "<group>"; };
 		C68065E5266A278A0022A14B /* CombineHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineHelpers.swift; sourceTree = "<group>"; };
 		C6843509267C93D100B1D992 /* IngredientsViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsViewAdapter.swift; sourceTree = "<group>"; };
+		C690F08B267DD1380060727E /* UIImage+tryMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+tryMake.swift"; sourceTree = "<group>"; };
+		C6CB4FF9267F26B5002844A4 /* IngredientsUIIntegrationTests+LoaderSpy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IngredientsUIIntegrationTests+LoaderSpy.swift"; sourceTree = "<group>"; };
+		C6CB4FFB267F2945002844A4 /* IngredientsUIIntegrationTests+Assertions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IngredientsUIIntegrationTests+Assertions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +166,7 @@
 				C684350B267C942200B1D992 /* Shared Composition */,
 				C6843507267C939600B1D992 /* Cocktail Feed Composition */,
 				C6843508267C93B700B1D992 /* Ingredients Composition */,
+				C690F08A267DD11D0060727E /* Extensions */,
 				C6089E5C26636DED00EE1A7D /* Assets.xcassets */,
 				C6089E5E26636DED00EE1A7D /* LaunchScreen.storyboard */,
 				C6089E6126636DED00EE1A7D /* Info.plist */,
@@ -200,7 +207,9 @@
 				C66406502666044400F1355C /* ListViewController+TestHelpers.swift */,
 				C66406562666044500F1355C /* CocktailFeedCell+TestHelpers.swift */,
 				C664064E2666044400F1355C /* CocktailFeedUIIntegrationTests+LoaderSpy.swift */,
+				C6CB4FF9267F26B5002844A4 /* IngredientsUIIntegrationTests+LoaderSpy.swift */,
 				C664064F2666044400F1355C /* CocktailFeedUIIntegrationTests+Assertions.swift */,
+				C6CB4FFB267F2945002844A4 /* IngredientsUIIntegrationTests+Assertions.swift */,
 				C65BD049266398890024F84D /* XCTestCase+MemoryLeakTracking.swift */,
 				C65BD04B266399050024F84D /* SharedTestHelpers.swift */,
 				C63DFACD2664E4AE00C29543 /* CocktailLoaderStub.swift */,
@@ -237,6 +246,14 @@
 				C66406462666040F00F1355C /* LoadResourcePresentationAdapter.swift */,
 			);
 			path = "Shared Composition";
+			sourceTree = "<group>";
+		};
+		C690F08A267DD11D0060727E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C690F08B267DD1380060727E /* UIImage+tryMake.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -349,6 +366,7 @@
 				C6089E5626636DEC00EE1A7D /* SceneDelegate.swift in Sources */,
 				C66406482666040F00F1355C /* WeakRefVirtualProxy.swift in Sources */,
 				C68065E6266A278A0022A14B /* CombineHelpers.swift in Sources */,
+				C690F08C267DD1380060727E /* UIImage+tryMake.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +381,7 @@
 				C6640641266601AD00F1355C /* SceneDelegateTests.swift in Sources */,
 				C664065D2666044500F1355C /* CocktailFeedUIIntegrationTests+LoaderSpy.swift in Sources */,
 				C63DFAD02664E61800C29543 /* XCTestCase+CocktailLoader.swift in Sources */,
+				C6CB4FFA267F26B5002844A4 /* IngredientsUIIntegrationTests+LoaderSpy.swift in Sources */,
 				C66406632666067500F1355C /* CocktailFeedAcceptanceTests.swift in Sources */,
 				C67EC6832677BD1B0075C7C2 /* IngredientsUIIntegrationTests.swift in Sources */,
 				C6640667266615A400F1355C /* InMemoryFeedStore.swift in Sources */,
@@ -377,6 +396,7 @@
 				C63DFADA26650A6D00C29543 /* XCTestCase+CocktailImageDataLoader.swift in Sources */,
 				C664065F2666044500F1355C /* ListViewController+TestHelpers.swift in Sources */,
 				C66406582666044500F1355C /* UIButton+TestHelpers.swift in Sources */,
+				C6CB4FFC267F2945002844A4 /* IngredientsUIIntegrationTests+Assertions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

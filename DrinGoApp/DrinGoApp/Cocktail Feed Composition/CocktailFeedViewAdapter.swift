@@ -32,25 +32,15 @@ final class CocktailFeedViewAdapter: ResourceView {
                     selection(model)
                 })
             
-            adapter.presenter = LoadResoucePresenter(resourceView: WeakRefVirtualProxy(view),
-                                                     loadingView: WeakRefVirtualProxy(view),
-                                                     errorView: WeakRefVirtualProxy(view),
-                                                     mapper: UIImage.tryMake)
+            adapter.presenter = LoadResoucePresenter(
+                resourceView: WeakRefVirtualProxy(view),
+                loadingView: WeakRefVirtualProxy(view),
+                errorView: WeakRefVirtualProxy(view),
+                mapper: UIImage.tryMake)
+            
             return CellController(id: model, view)
         }
         
         controller?.display(controllers)
     }
 }
-
-extension UIImage {
-    struct InvalidImageData: Error {}
-    
-    static func tryMake(data: Data) throws -> UIImage {
-        guard let image = UIImage(data: data) else {
-            throw InvalidImageData()
-        }
-        return image
-    }
-}
-

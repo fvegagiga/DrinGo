@@ -25,6 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }()
     
     private lazy var baseURL = URL(string: "https://www.thecocktaildb.com/api/json/v2/9973533")!
+    private lazy var imageBaseURL = URL(string: "https://www.thecocktaildb.com/images/ingredients")!
     
     private lazy var navigationController = UINavigationController(
         rootViewController: CocktailUIComposer.feedComposedWith(
@@ -114,6 +115,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             })
     }
     
+    private func makeRemoteImageDataLoader(url: URL) -> CocktailImageDataLoader.Publisher {
+        return httpClient
+            .getPublisher(url: url)
+            .tryMap(ImageDataMapper.map)
+            .eraseToAnyPublisher()
+    }
+    
     // MARK: - Ingredients Loader
     
     private func makeRemoteIngredientsLoader(url: URL) -> () -> AnyPublisher<[CocktailIngredient], Error> {
@@ -128,8 +136,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // MARK: - Navigation
     
     private func showIngredients(for cocktail: CocktailItem) {
-        let url = IngredientsEndopoint.get(cocktail.id).url(baseURL: baseURL)
-        let ingredients = IngredientsUIComposer.ingredientsComposedWith(ingredientsLoader: makeRemoteIngredientsLoader(url: url), name: cocktail.name)
+        let url = IngredientsEndopoint.getIngredients(cocktail.id).url(baseURL: baseURL)
+        let ingredients = IngredientsUIComposer.ingredientsComposedWith(
+            ingredientsLoader: makeRemoteIngredientsLoader(url: url),
+            imageLoader: makeRemoteImageDataLoader,
+            name: cocktail.name,
+            imageBaseURL: imageBaseURL)
         navigationController.pushViewController(ingredients, animated: true)
     }
 }

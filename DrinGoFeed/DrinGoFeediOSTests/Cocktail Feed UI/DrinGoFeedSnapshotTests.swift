@@ -71,7 +71,7 @@ private extension ListViewController {
     }
 }
 
-private class ImageStub: FeedImageCellControllerDelegate {
+private class ImageStub: ImageCellControllerDelegate {
     let viewModel: CocktailImageViewModel
     let image: UIImage?
     weak var controller: CocktailFeedCellController?

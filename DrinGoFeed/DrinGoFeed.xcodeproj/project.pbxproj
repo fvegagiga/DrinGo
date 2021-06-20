@@ -89,7 +89,7 @@
 		C6700B7A26766AD000320C9E /* IngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6700B7926766AD000320C9E /* IngredientCell.swift */; };
 		C6719FC02658DEC300ACDF8A /* CocktailFeedCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6719FBF2658DEC300ACDF8A /* CocktailFeedCellController.swift */; };
 		C6719FD2265951EE00ACDF8A /* CocktailFeed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6719FD1265951EE00ACDF8A /* CocktailFeed.storyboard */; };
-		C6719FD42659529D00ACDF8A /* CocktailFeed.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6719FD32659529D00ACDF8A /* CocktailFeed.xcassets */; };
+		C6719FD42659529D00ACDF8A /* DrinGo.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6719FD32659529D00ACDF8A /* DrinGo.xcassets */; };
 		C6719FD62659626600ACDF8A /* UITableView+Dequeueing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6719FD52659626600ACDF8A /* UITableView+Dequeueing.swift */; };
 		C6719FD8265962AD00ACDF8A /* UIImageView+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6719FD7265962AD00ACDF8A /* UIImageView+Animations.swift */; };
 		C67EC679267738B70075C7C2 /* CellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67EC678267738B70075C7C2 /* CellController.swift */; };
@@ -97,6 +97,7 @@
 		C67EC67D267773C50075C7C2 /* INGREDIENTS_light_extraExtraExtraLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = C67EC67C267773C50075C7C2 /* INGREDIENTS_light_extraExtraExtraLarge.png */; };
 		C67EC67F267774880075C7C2 /* FEED_WITH_CONTENT_light_extraExtraExtraLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = C67EC67E267774880075C7C2 /* FEED_WITH_CONTENT_light_extraExtraExtraLarge.png */; };
 		C67EC6812677B8F70075C7C2 /* UIView+Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67EC6802677B8F70075C7C2 /* UIView+Container.swift */; };
+		C684350D267CB9D800B1D992 /* ImageCellControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C684350C267CB9D800B1D992 /* ImageCellControllerDelegate.swift */; };
 		C6A01C2326427C530071A344 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A01C2226427C530071A344 /* XCTestCase+MemoryLeakTracking.swift */; };
 		C6D87F2C264D02AC00749974 /* LocalCocktailLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D87F2B264D02AC00749974 /* LocalCocktailLoader.swift */; };
 		C6D87F2E264D035500749974 /* FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D87F2D264D035500749974 /* FeedStore.swift */; };
@@ -261,7 +262,7 @@
 		C6719FB32658D93500ACDF8A /* CocktailImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailImageDataLoader.swift; sourceTree = "<group>"; };
 		C6719FBF2658DEC300ACDF8A /* CocktailFeedCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailFeedCellController.swift; sourceTree = "<group>"; };
 		C6719FD1265951EE00ACDF8A /* CocktailFeed.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CocktailFeed.storyboard; sourceTree = "<group>"; };
-		C6719FD32659529D00ACDF8A /* CocktailFeed.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CocktailFeed.xcassets; sourceTree = "<group>"; };
+		C6719FD32659529D00ACDF8A /* DrinGo.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DrinGo.xcassets; sourceTree = "<group>"; };
 		C6719FD52659626600ACDF8A /* UITableView+Dequeueing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Dequeueing.swift"; sourceTree = "<group>"; };
 		C6719FD7265962AD00ACDF8A /* UIImageView+Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Animations.swift"; sourceTree = "<group>"; };
 		C6719FE226596C8700ACDF8A /* CocktailFeedLocalizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailFeedLocalizationTests.swift; sourceTree = "<group>"; };
@@ -272,6 +273,7 @@
 		C67EC6802677B8F70075C7C2 /* UIView+Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Container.swift"; sourceTree = "<group>"; };
 		C6835BC426578FF0000EFEF8 /* DrinGoFeediOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DrinGoFeediOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6835BC726578FF0000EFEF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C684350C267CB9D800B1D992 /* ImageCellControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCellControllerDelegate.swift; sourceTree = "<group>"; };
 		C6A01C2226427C530071A344 /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 		C6D87F2B264D02AC00749974 /* LocalCocktailLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCocktailLoader.swift; sourceTree = "<group>"; };
 		C6D87F2D264D035500749974 /* FeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStore.swift; sourceTree = "<group>"; };
@@ -359,15 +361,6 @@
 				C61E1AD82643C68F0051E30C /* Info.plist */,
 			);
 			path = DrinGoFeedAPIEndToEndTests;
-			sourceTree = "<group>";
-		};
-		C61FA0D1265A59E60026D999 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				C637936D26582553000118E4 /* UIView+Shimmering.swift */,
-				C6719FD7265962AD00ACDF8A /* UIImageView+Animations.swift */,
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 		C61FA0D6265A62EE0026D999 /* Feed Presentation */ = {
@@ -656,6 +649,7 @@
 			children = (
 				C63793692658130B000118E4 /* ListViewController.swift */,
 				C67EC678267738B70075C7C2 /* CellController.swift */,
+				C684350C267CB9D800B1D992 /* ImageCellControllerDelegate.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -665,6 +659,7 @@
 			children = (
 				C655D99526765DCF0012A19E /* Helpers */,
 				C61FA0CF265A569D0026D999 /* ErrorView.swift */,
+				C6719FD32659529D00ACDF8A /* DrinGo.xcassets */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -676,6 +671,8 @@
 				C6719FD52659626600ACDF8A /* UITableView+Dequeueing.swift */,
 				C6DA3E0A26667F0F00A3A325 /* UITableView+HeaderSizing.swift */,
 				C67EC6802677B8F70075C7C2 /* UIView+Container.swift */,
+				C637936D26582553000118E4 /* UIView+Shimmering.swift */,
+				C6719FD7265962AD00ACDF8A /* UIImageView+Animations.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -787,10 +784,8 @@
 		C6719FB12658D90500ACDF8A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C61FA0D1265A59E60026D999 /* Helpers */,
 				C637936B265817FF000118E4 /* CocktailFeedCell.swift */,
 				C6719FD1265951EE00ACDF8A /* CocktailFeed.storyboard */,
-				C6719FD32659529D00ACDF8A /* CocktailFeed.xcassets */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1114,7 +1109,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6719FD2265951EE00ACDF8A /* CocktailFeed.storyboard in Resources */,
-				C6719FD42659529D00ACDF8A /* CocktailFeed.xcassets in Resources */,
+				C6719FD42659529D00ACDF8A /* DrinGo.xcassets in Resources */,
 				C6700B732676694D00320C9E /* Ingredients.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1256,6 +1251,7 @@
 				C6719FC02658DEC300ACDF8A /* CocktailFeedCellController.swift in Sources */,
 				C6700B7A26766AD000320C9E /* IngredientCell.swift in Sources */,
 				C6700B6E2676683100320C9E /* IngredientCellController.swift in Sources */,
+				C684350D267CB9D800B1D992 /* ImageCellControllerDelegate.swift in Sources */,
 				C6719FD8265962AD00ACDF8A /* UIImageView+Animations.swift in Sources */,
 				C637936A2658130B000118E4 /* ListViewController.swift in Sources */,
 				C637936C265817FF000118E4 /* CocktailFeedCell.swift in Sources */,

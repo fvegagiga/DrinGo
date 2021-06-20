@@ -30,24 +30,55 @@ class IngredientsSnapshotTests: XCTestCase {
         return controller
     }
     
-    private func ingredients() -> [CellController] {
-        ingredientsControllers().map { CellController(id: UUID(), $0) }
-    }
-    
-    private func ingredientsControllers() -> [IngredientCellController] {
+    private func ingredients() -> [ImageStub] {
         return [
-            IngredientCellController(
-                model: IngredientViewModel(
-                    ingredient: "First ingredient",
-                    measure: "1 1/2 oz")),
-            IngredientCellController(
-                model: IngredientViewModel(
-                    ingredient: "Second ingredient with a long name",
-                    measure: "1 oz")),
-            IngredientCellController(
-                model: IngredientViewModel(
-                    ingredient: "Third ingredient",
-                    measure: ""))
+            ImageStub(ingredient: "First ingredient",
+                      measure: "1 1/2 oz",
+                      image: UIImage.make(withColor: .red)),
+            ImageStub(ingredient: "Second ingredient with a long name",
+                      measure: "1 oz",
+                      image: UIImage.make(withColor: .green)),
+            ImageStub(ingredient: "Third ingredient",
+                      measure: "",
+                      image: nil)
         ]
     }
+}
+
+private extension ListViewController {
+    func display(_ stubs: [ImageStub]) {
+        let cells: [CellController] = stubs.map { stub in
+            let cellController = IngredientCellController(viewModel: stub.viewModel, delegate: stub)
+            stub.controller = cellController
+            return CellController(id: UUID(), cellController)
+        }
+        
+        display(cells)
+    }
+}
+
+private class ImageStub: ImageCellControllerDelegate {
+    let viewModel: IngredientViewModel
+    let image: UIImage?
+    weak var controller: IngredientCellController?
+
+    init(ingredient: String, measure: String, image: UIImage?) {
+        self.viewModel = IngredientViewModel(
+            ingredient: ingredient,
+            measure: measure)
+        self.image = image
+    }
+    
+    func didRequestImage() {
+        controller?.display(ResourceLoadingViewModel(isLoading: false))
+        
+        if let image = image {
+            controller?.display(image)
+            controller?.display(ResourceErrorViewModel(message: .none))
+        } else {
+            controller?.display(ResourceErrorViewModel(message: "any"))
+        }
+    }
+    
+    func didCancelImageRequest() {}
 }

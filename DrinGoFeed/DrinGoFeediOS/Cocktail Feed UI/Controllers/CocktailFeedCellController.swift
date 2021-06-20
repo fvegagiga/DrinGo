@@ -5,21 +5,16 @@
 import UIKit
 import DrinGoFeed
 
-public protocol FeedImageCellControllerDelegate {
-    func didRequestImage()
-    func didCancelImageRequest()
-}
-
 public final class CocktailFeedCellController: NSObject {
     
     public typealias ResourceViewModel = UIImage
     
     private let viewModel: CocktailImageViewModel
-    private let delegate: FeedImageCellControllerDelegate
+    private let delegate: ImageCellControllerDelegate
     private let selection: () -> Void
     private var cell: CocktailFeedCell?
 
-    public init(viewModel: CocktailImageViewModel, delegate: FeedImageCellControllerDelegate, selection: @escaping () -> Void) {
+    public init(viewModel: CocktailImageViewModel, delegate: ImageCellControllerDelegate, selection: @escaping () -> Void) {
         self.viewModel = viewModel
         self.delegate = delegate
         self.selection = selection

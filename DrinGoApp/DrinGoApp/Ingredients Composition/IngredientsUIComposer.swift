@@ -14,7 +14,9 @@ public final class IngredientsUIComposer {
     
     public static func ingredientsComposedWith(
         ingredientsLoader: @escaping () -> AnyPublisher<[CocktailIngredient], Error>,
-        name: String
+        imageLoader: @escaping (URL) -> CocktailImageDataLoader.Publisher,
+        name: String,
+        imageBaseURL: URL
     ) -> ListViewController {
         
         let presentationAdapter = IngredientsPresentationAdapter(loader: ingredientsLoader)
@@ -25,7 +27,10 @@ public final class IngredientsUIComposer {
         ingredientsController.onRefresh = presentationAdapter.loadResource
         
         presentationAdapter.presenter = LoadResoucePresenter(
-            resourceView: IngredientsViewAdapter(controller: ingredientsController),
+            resourceView: IngredientsViewAdapter(
+                controller: ingredientsController,
+                imageLoader: imageLoader,
+                imageBaseURL: imageBaseURL),
             loadingView: WeakRefVirtualProxy(ingredientsController),
             errorView: WeakRefVirtualProxy(ingredientsController),
             mapper: IngredientsPresenter.map)

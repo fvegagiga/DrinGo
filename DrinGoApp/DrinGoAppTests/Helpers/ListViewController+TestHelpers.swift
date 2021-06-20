@@ -57,7 +57,7 @@ extension ListViewController {
         ingredientView(at: row)?.measureLabel.text
     }
     
-    private func ingredientView(at row: Int) -> IngredientCell? {
+    func ingredientView(at row: Int) -> IngredientCell? {
         cell(row: row, section: ingredientsSection) as? IngredientCell
     }
     
