@@ -159,9 +159,7 @@
 				C6843507267C939600B1D992 /* Cocktail Feed Composition */,
 				C6843508267C93B700B1D992 /* Ingredients Composition */,
 				C690F08A267DD11D0060727E /* Extensions */,
-				C6089E5C26636DED00EE1A7D /* Assets.xcassets */,
-				C6089E5E26636DED00EE1A7D /* LaunchScreen.storyboard */,
-				C6089E6126636DED00EE1A7D /* Info.plist */,
+				C64C6A7326806B9E00EFF661 /* Supporting Files */,
 			);
 			path = DrinGoApp;
 			sourceTree = "<group>";
@@ -186,6 +184,16 @@
 				C6089E8526636F7D00EE1A7D /* DrinGoFeediOS.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C64C6A7326806B9E00EFF661 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C6089E5C26636DED00EE1A7D /* Assets.xcassets */,
+				C6089E5E26636DED00EE1A7D /* LaunchScreen.storyboard */,
+				C6089E6126636DED00EE1A7D /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		C65BD048266398580024F84D /* Helpers */ = {
@@ -529,7 +537,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5MPC35WK7F;
-				INFOPLIST_FILE = DrinGoApp/Info.plist;
+				INFOPLIST_FILE = "DrinGoApp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -548,7 +556,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5MPC35WK7F;
-				INFOPLIST_FILE = DrinGoApp/Info.plist;
+				INFOPLIST_FILE = "DrinGoApp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
